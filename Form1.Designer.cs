@@ -78,7 +78,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(370, 281);
+
+            this.ClientSize = new System.Drawing.Size(1069, 531);
+
             this.Controls.Add(this.btnTestGit);
             this.Controls.Add(this.tabControlMain);
             this.Name = "FormMain";
