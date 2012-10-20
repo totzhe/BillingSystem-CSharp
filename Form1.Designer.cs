@@ -78,18 +78,26 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+<<<<<<< HEAD
             this.ClientSize = new System.Drawing.Size(1069, 531);
+=======
+            this.ClientSize = new System.Drawing.Size(370, 281);
+>>>>>>> 4e8ce650b33e3b8caed6907a0bf8d477d2105d22
             this.Controls.Add(this.btnTestGit);
             this.Controls.Add(this.tabControlMain);
             this.Name = "FormMain";
             this.Text = "Биллинговая система";
+            this.tabControlMain.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4e8ce650b33e3b8caed6907a0bf8d477d2105d22
         private System.Windows.Forms.TabControl tabControlMain;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
