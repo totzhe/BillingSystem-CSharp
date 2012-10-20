@@ -31,6 +31,7 @@
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnTestGit = new System.Windows.Forms.Button();
             this.tabControlMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,11 +65,21 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // btnTestGit
+            // 
+            this.btnTestGit.Location = new System.Drawing.Point(525, 82);
+            this.btnTestGit.Name = "btnTestGit";
+            this.btnTestGit.Size = new System.Drawing.Size(75, 23);
+            this.btnTestGit.TabIndex = 1;
+            this.btnTestGit.Text = "btnTestGit";
+            this.btnTestGit.UseVisualStyleBackColor = true;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1069, 531);
+            this.Controls.Add(this.btnTestGit);
             this.Controls.Add(this.tabControlMain);
             this.Name = "FormMain";
             this.Text = "Form1";
@@ -82,6 +93,7 @@
         private System.Windows.Forms.TabControl tabControlMain;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Button btnTestGit;
     }
 }
 
