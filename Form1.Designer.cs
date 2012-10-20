@@ -78,11 +78,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1069, 531);
+            this.ClientSize = new System.Drawing.Size(370, 281);
             this.Controls.Add(this.btnTestGit);
             this.Controls.Add(this.tabControlMain);
             this.Name = "FormMain";
-            this.Text = "Form1";
+            this.Text = "Биллинговая система";
             this.tabControlMain.ResumeLayout(false);
             this.ResumeLayout(false);
 
