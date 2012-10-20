@@ -28,10 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-//<< HEAD
-            this.SuspendLayout();
-            // 
-//===
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -78,18 +74,13 @@
             this.btnTestGit.Text = "btnTestGit";
             this.btnTestGit.UseVisualStyleBackColor = true;
             // 
-//>>> origin/master
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-//<< HEAD
-            this.ClientSize = new System.Drawing.Size(366, 280);
-//===
             this.ClientSize = new System.Drawing.Size(1069, 531);
             this.Controls.Add(this.btnTestGit);
             this.Controls.Add(this.tabControlMain);
-//>>> origin/master
             this.Name = "FormMain";
             this.Text = "Биллинговая система";
             this.ResumeLayout(false);
@@ -98,13 +89,11 @@
 
         #endregion
 
-//<< HEAD
-//===
+
         private System.Windows.Forms.TabControl tabControlMain;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button btnTestGit;
-//>>> origin/master
     }
 }
 
