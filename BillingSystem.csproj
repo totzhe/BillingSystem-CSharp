@@ -34,6 +34,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="mysql.data">
+      <HintPath>Lib\mysql.data.dll</HintPath>
+    </Reference>
+    <Reference Include="mysql.data.entity">
+      <HintPath>Lib\mysql.data.entity.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,16 +52,68 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="ConnectionManager.cs" />
+    <Compile Include="Controllers\IDetailedInfController.cs" />
+    <Compile Include="Controllers\INumberController.cs" />
+    <Compile Include="Controllers\ISearchController.cs" />
+    <Compile Include="Controllers\IStatisticsController.cs" />
+    <Compile Include="Controllers\ISubscriberController.cs" />
+    <Compile Include="Controllers\ISupportController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="DatabaseUtils.cs" />
+    <Compile Include="Exceptions\NoConnectionException.cs" />
+    <Compile Include="FormSearch.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FormSearch.Designer.cs">
+      <DependentUpon>FormSearch.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\BillingOperations.cs" />
+    <Compile Include="Model\Call.cs" />
+    <Compile Include="Model\Charge.cs" />
+    <Compile Include="Model\Payment.cs" />
+    <Compile Include="Model\PhoneNumber.cs" />
+    <Compile Include="Model\Price.cs" />
+    <Compile Include="Model\Service.cs" />
+    <Compile Include="Model\Subscriber.cs" />
+    <Compile Include="Model\Tariff.cs" />
+    <Compile Include="Model\TariffHistory.cs" />
+    <Compile Include="Other\Person.cs" />
+    <Compile Include="Other\Staff.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="View\FormDetailedInf.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormDetailedInf.Designer.cs">
+      <DependentUpon>FormDetailedInf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormNumber.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormNumber.Designer.cs">
+      <DependentUpon>FormNumber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormStatistics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormStatistics.Designer.cs">
+      <DependentUpon>FormStatistics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormSubscriber.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormSubscriber.Designer.cs">
+      <DependentUpon>FormSubscriber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormSupport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormSupport.Designer.cs">
+      <DependentUpon>FormSupport.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="FormSearch.resx">
+      <DependentUpon>FormSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -66,6 +124,15 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\FormDetailedInf.resx">
+      <DependentUpon>FormDetailedInf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormNumber.resx">
+      <DependentUpon>FormNumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormSubscriber.resx">
+      <DependentUpon>FormSubscriber.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -76,6 +143,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

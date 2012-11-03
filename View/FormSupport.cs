@@ -7,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace BillingSystem
+namespace BillingSystem.View
 {
-    public partial class FormMain : Form
+    public partial class FormSupport : Form
     {
-        public FormMain()
+        public FormSupport()
         {
             InitializeComponent();
         }

@@ -1,0 +1,22 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace BillingSystem.Other
+{
+    public class Staff : Person
+    {
+        private string _position;
+
+        public string Position
+        {
+            get { return _position; }
+            set { /*_position = value;*/ }
+        }
+
+        public void SetPosition(string position)
+        {
+        }
+    }
+}
