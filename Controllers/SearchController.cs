@@ -10,12 +10,19 @@ namespace BillingSystem.Controllers
 {
     public class SearchController: ISearchController
     {
-        public List<string[]> Search(string name, string patronymic, string surname, string phoneNumber, double debt)
+        public List<string[]> Search(string name, string patronymic, string surname, string phoneNumber, string debt)
         {
+            //TODO: Распарсить входящие значения и преобразовать в нужны формат
+
             List<string[]> result = new List<string[]>();
+
             //TODO: Через DatabaseUtils получить нужных абонентов, перегнать в строки, записать; если debt < 0, значит, выводятся абоненты с любым размером долга
-            for(int i = 0; i < 5; i++)result.Add(new string[6]);
-            //
+
+            for (int i = 0; i < 50; i++)
+            {
+                result.Add(new string[5]);
+            }
+
             return result;
         }
 
