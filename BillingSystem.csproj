@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="mysql.data">
       <HintPath>Lib\mysql.data.dll</HintPath>
     </Reference>
@@ -41,7 +44,11 @@
       <HintPath>Lib\mysql.data.entity.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -61,6 +68,54 @@
     <Compile Include="Controllers\ISupportController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="DatabaseUtils.cs" />
+    <Compile Include="DataModel\BillingDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BillingDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\BillingDataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BillingDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\BillingDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BillingDataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\calls.cs">
+      <DependentUpon>BillingDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\charge.cs">
+      <DependentUpon>BillingDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\payment.cs">
+      <DependentUpon>BillingDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\phone_number.cs">
+      <DependentUpon>BillingDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\position.cs">
+      <DependentUpon>BillingDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\price.cs">
+      <DependentUpon>BillingDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\service.cs">
+      <DependentUpon>BillingDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\staff.cs">
+      <DependentUpon>BillingDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\subscriber.cs">
+      <DependentUpon>BillingDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\tariff.cs">
+      <DependentUpon>BillingDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\tariff_history.cs">
+      <DependentUpon>BillingDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Exceptions\NoConnectionException.cs" />
     <Compile Include="FormSearch.cs">
       <SubType>Form</SubType>
@@ -133,6 +188,25 @@
     <EmbeddedResource Include="View\FormSubscriber.resx">
       <DependentUpon>FormSubscriber.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="App.Config" />
+    <EntityDeploy Include="DataModel\BillingDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BillingDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DataModel\BillingDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BillingDataModel.edmx</DependentUpon>
+      <LastGenOutput>BillingDataModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="DataModel\BillingDataModel.edmx.diagram">
+      <DependentUpon>BillingDataModel.edmx</DependentUpon>
+    </None>
+    <None Include="DataModel\BillingDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BillingDataModel.edmx</DependentUpon>
+      <LastGenOutput>BillingDataModel.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -143,7 +217,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
