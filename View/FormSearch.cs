@@ -10,6 +10,9 @@ using BillingSystem.Controllers;
 
 namespace BillingSystem
 {
+    /// <summary>
+    /// Главная форма проекта
+    /// </summary>
     public partial class FormSearch : Form
     {
         private ISearchController _controller;
