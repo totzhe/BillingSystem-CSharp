@@ -1,6 +1,6 @@
 ﻿namespace BillingSystem.View
 {
-    partial class FormNumber
+    partial class FormSelectTariff
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@
             this.comboBoxTariff = new System.Windows.Forms.ComboBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
-            this.textBoxBalance = new System.Windows.Forms.TextBox();
+            this.textBoxDescription = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // comboBoxTariff
@@ -42,6 +42,7 @@
             this.comboBoxTariff.Name = "comboBoxTariff";
             this.comboBoxTariff.Size = new System.Drawing.Size(121, 21);
             this.comboBoxTariff.TabIndex = 0;
+            this.comboBoxTariff.SelectedIndexChanged += new System.EventHandler(this.comboBoxTariff_SelectedIndexChanged);
             // 
             // btnCancel
             // 
@@ -61,24 +62,25 @@
             this.btnOK.Text = "ОК";
             this.btnOK.UseVisualStyleBackColor = true;
             // 
-            // textBoxBalance
+            // textBoxDescription
             // 
-            this.textBoxBalance.Location = new System.Drawing.Point(27, 53);
-            this.textBoxBalance.Name = "textBoxBalance";
-            this.textBoxBalance.Size = new System.Drawing.Size(100, 20);
-            this.textBoxBalance.TabIndex = 21;
+            this.textBoxDescription.Location = new System.Drawing.Point(27, 53);
+            this.textBoxDescription.Multiline = true;
+            this.textBoxDescription.Name = "textBoxDescription";
+            this.textBoxDescription.Size = new System.Drawing.Size(245, 148);
+            this.textBoxDescription.TabIndex = 21;
             // 
-            // FormNumber
+            // FormSelectTariff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
-            this.Controls.Add(this.textBoxBalance);
+            this.Controls.Add(this.textBoxDescription);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.comboBoxTariff);
-            this.Name = "FormNumber";
-            this.Text = "FormNumber";
+            this.Name = "FormSelectTariff";
+            this.Text = "Выбор тарифа";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -89,6 +91,6 @@
         private System.Windows.Forms.ComboBox comboBoxTariff;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnOK;
-        private System.Windows.Forms.TextBox textBoxBalance;
+        private System.Windows.Forms.TextBox textBoxDescription;
     }
 }

@@ -13,7 +13,7 @@ namespace BillingSystem.Model
         public string Email
         {
             get { return _email; }
-            set { /*_email = value;*/ }
+            set { _email = value; }
         }
 
         private double _balance;
@@ -21,7 +21,19 @@ namespace BillingSystem.Model
         public double Balance
         {
             get { return _balance; }
-            set { /*_balance = value;*/ }
+            set { _balance = value; }
+        }
+
+        public Subscriber(long id, string name, string patronymic, string surname, string email, double balance, string login, string passwordHash)
+        {
+            _id = id;
+            _name = name;
+            _patronymic = patronymic;
+            _surname = surname;
+            _email = email;
+            _balance = balance;
+            _login = login;
+            _passwordHash = passwordHash;
         }
 
         /*public void WriteOffMoney(double sum)

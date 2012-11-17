@@ -8,7 +8,7 @@ namespace BillingSystem.Controllers
     public interface ISearchController
     {
         /// <summary>
-        /// Метод возвращяет список пользователей по заданным параметрам
+        /// Метод возвращяет список пользователей по заданным параметрам.
         /// </summary>
         /// <param name="name">Имя пользователя</param>
         /// <param name="patronymic">Отчество пользователя</param>
@@ -19,20 +19,20 @@ namespace BillingSystem.Controllers
         List<string[]> Search(string name, string patronymic, string surname, string phoneNumber, string debt);
 
         /// <summary>
-        /// Создает форму добавления пользователя
+        /// Создает форму добавления пользователя.
         /// </summary>
         void AddSubscriber();
 
         /// <summary>
-        /// Создает форму редактирования пользователя
+        /// Создает форму редактирования пользователя.
         /// </summary>
         /// <param name="id">id пользователя</param>
-        void EditSubscriber(int id);
+        void EditSubscriber(long id);
 
         /// <summary>
-        /// Создает форму детализации пользователя
+        /// Создает форму детализации пользователя.
         /// </summary>
         /// <param name="id">id пользователя</param>
-        void ShowInfo(int id);
+        void ShowInfo(long id);
     }
 }

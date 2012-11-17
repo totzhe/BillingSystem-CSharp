@@ -21,11 +21,11 @@ namespace BillingSystem.View
             InitializeComponent();
         }
 
-        public FormSubscriber(int subscriberID)
+        public FormSubscriber(long subscriberID)
         {
             //здесь - контроллер EditSubscriberController
             InitializeComponent();
-            //_controller = new EditSubscriberController(subscriberID);
+            _controller = new EditSubscriberController(subscriberID);
             List<string> phoneNumbers = _controller.getPhoneNumbers();
             textBoxName.Text = _controller.getName();
             textBoxSurname.Text = _controller.getSurname();
@@ -42,13 +42,24 @@ namespace BillingSystem.View
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            _controller.ConfirmChanges();
+            _controller.ConfirmChanges(textBoxName.Text, textBoxPatronymic.Text, textBoxSurname.Text, textBoxEmail.Text, textBoxLogin.Text);
             DialogResult = DialogResult.OK;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             _controller.Cancel();
+        }
+
+        private void btnResetPassword_Click(object sender, EventArgs e)
+        {
+            _controller.ResetPassword();
+        }
+
+        private void btnEditNumber_Click(object sender, EventArgs e)
+        {
+            if(listBoxPhoneNumbers.SelectedIndex >= 0)
+                _controller.EditPhoneNumber(listBoxPhoneNumbers.SelectedItem.ToString());
         }
     }
 }

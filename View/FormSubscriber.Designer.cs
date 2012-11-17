@@ -73,10 +73,6 @@
             // listBoxPhoneNumbers
             // 
             this.listBoxPhoneNumbers.FormattingEnabled = true;
-            this.listBoxPhoneNumbers.Items.AddRange(new object[] {
-            "+79083435679",
-            "+79789544353",
-            "+79544878756"});
             this.listBoxPhoneNumbers.Location = new System.Drawing.Point(247, 12);
             this.listBoxPhoneNumbers.Name = "listBoxPhoneNumbers";
             this.listBoxPhoneNumbers.Size = new System.Drawing.Size(120, 95);
@@ -99,6 +95,7 @@
             this.btnEditNumber.TabIndex = 14;
             this.btnEditNumber.Text = "Edit";
             this.btnEditNumber.UseVisualStyleBackColor = true;
+            this.btnEditNumber.Click += new System.EventHandler(this.btnEditNumber_Click);
             // 
             // textBoxLogin
             // 
@@ -115,6 +112,7 @@
             this.btnResetPassword.TabIndex = 16;
             this.btnResetPassword.Text = "Сбросить пароль";
             this.btnResetPassword.UseVisualStyleBackColor = true;
+            this.btnResetPassword.Click += new System.EventHandler(this.btnResetPassword_Click);
             // 
             // btnOK
             // 

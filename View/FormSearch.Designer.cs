@@ -28,17 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDetailedInf = new System.Windows.Forms.Button();
             this.dataGridViewSearchResults = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SubscriberSurname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SubscriberName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SubscriberPatronymic = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PhoneNumbers = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Debt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.textBoxPatronymic = new System.Windows.Forms.TextBox();
             this.textBoxSurname = new System.Windows.Forms.TextBox();
@@ -49,6 +44,12 @@
             this.labelSurname = new System.Windows.Forms.Label();
             this.labelPhoneNumber = new System.Windows.Forms.Label();
             this.labelDebt = new System.Windows.Forms.Label();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SubscriberSurname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SubscriberName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SubscriberPatronymic = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PhoneNumbers = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Debt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSearchResults)).BeginInit();
             this.SuspendLayout();
             // 
@@ -105,6 +106,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewSearchResults.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewSearchResults.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridViewSearchResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewSearchResults.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
@@ -120,43 +122,6 @@
             this.dataGridViewSearchResults.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewSearchResults.Size = new System.Drawing.Size(652, 422);
             this.dataGridViewSearchResults.TabIndex = 4;
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Visible = false;
-            // 
-            // SubscriberSurname
-            // 
-            this.SubscriberSurname.HeaderText = "Фамилия";
-            this.SubscriberSurname.Name = "SubscriberSurname";
-            this.SubscriberSurname.ReadOnly = true;
-            // 
-            // SubscriberName
-            // 
-            this.SubscriberName.HeaderText = "Имя";
-            this.SubscriberName.Name = "SubscriberName";
-            this.SubscriberName.ReadOnly = true;
-            // 
-            // SubscriberPatronymic
-            // 
-            this.SubscriberPatronymic.HeaderText = "Отчество";
-            this.SubscriberPatronymic.Name = "SubscriberPatronymic";
-            this.SubscriberPatronymic.ReadOnly = true;
-            // 
-            // PhoneNumbers
-            // 
-            this.PhoneNumbers.HeaderText = "Телефоны";
-            this.PhoneNumbers.Name = "PhoneNumbers";
-            this.PhoneNumbers.ReadOnly = true;
-            // 
-            // Debt
-            // 
-            this.Debt.HeaderText = "Задолженность";
-            this.Debt.Name = "Debt";
-            this.Debt.ReadOnly = true;
             // 
             // textBoxName
             // 
@@ -248,11 +213,50 @@
             this.labelDebt.TabIndex = 14;
             this.labelDebt.Text = "Задолженность";
             // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Visible = false;
+            // 
+            // SubscriberSurname
+            // 
+            this.SubscriberSurname.HeaderText = "Фамилия";
+            this.SubscriberSurname.Name = "SubscriberSurname";
+            this.SubscriberSurname.ReadOnly = true;
+            // 
+            // SubscriberName
+            // 
+            this.SubscriberName.HeaderText = "Имя";
+            this.SubscriberName.Name = "SubscriberName";
+            this.SubscriberName.ReadOnly = true;
+            // 
+            // SubscriberPatronymic
+            // 
+            this.SubscriberPatronymic.HeaderText = "Отчество";
+            this.SubscriberPatronymic.Name = "SubscriberPatronymic";
+            this.SubscriberPatronymic.ReadOnly = true;
+            // 
+            // PhoneNumbers
+            // 
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.PhoneNumbers.DefaultCellStyle = dataGridViewCellStyle2;
+            this.PhoneNumbers.HeaderText = "Телефоны";
+            this.PhoneNumbers.Name = "PhoneNumbers";
+            this.PhoneNumbers.ReadOnly = true;
+            // 
+            // Debt
+            // 
+            this.Debt.HeaderText = "Задолженность";
+            this.Debt.Name = "Debt";
+            this.Debt.ReadOnly = true;
+            // 
             // FormSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.ClientSize = new System.Drawing.Size(784, 562);
             this.Controls.Add(this.labelDebt);
             this.Controls.Add(this.labelPhoneNumber);
             this.Controls.Add(this.labelSurname);
@@ -289,17 +293,17 @@
         private System.Windows.Forms.TextBox textBoxSurname;
         private System.Windows.Forms.TextBox textBoxPhoneNumber;
         private System.Windows.Forms.TextBox textBoxDebt;
+        private System.Windows.Forms.Label labelName;
+        private System.Windows.Forms.Label labelPatronymic;
+        private System.Windows.Forms.Label labelSurname;
+        private System.Windows.Forms.Label labelPhoneNumber;
+        private System.Windows.Forms.Label labelDebt;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn SubscriberSurname;
         private System.Windows.Forms.DataGridViewTextBoxColumn SubscriberName;
         private System.Windows.Forms.DataGridViewTextBoxColumn SubscriberPatronymic;
         private System.Windows.Forms.DataGridViewTextBoxColumn PhoneNumbers;
         private System.Windows.Forms.DataGridViewTextBoxColumn Debt;
-        private System.Windows.Forms.Label labelName;
-        private System.Windows.Forms.Label labelPatronymic;
-        private System.Windows.Forms.Label labelSurname;
-        private System.Windows.Forms.Label labelPhoneNumber;
-        private System.Windows.Forms.Label labelDebt;
 
     }
 }

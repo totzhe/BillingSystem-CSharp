@@ -29,7 +29,7 @@ namespace BillingSystem.Controllers
 
         void ResetPassword();
 
-        void ConfirmChanges();
+        void ConfirmChanges(string name, string patronymic, string surname, string email, string login);
 
         void Cancel();
     }

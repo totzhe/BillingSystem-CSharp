@@ -53,19 +53,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConnectionManager.cs" />
+    <Compile Include="Controllers\EditSubscriberController.cs" />
     <Compile Include="Controllers\IDetailedInfController.cs" />
-    <Compile Include="Controllers\INumberController.cs" />
+    <Compile Include="Controllers\ISelectTariffController.cs" />
     <Compile Include="Controllers\ISearchController.cs" />
     <Compile Include="Controllers\IStatisticsController.cs" />
     <Compile Include="Controllers\ISubscriberController.cs" />
     <Compile Include="Controllers\ISupportController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\SelectTariffController.cs" />
     <Compile Include="DatabaseUtils.cs" />
     <Compile Include="Exceptions\NoConnectionException.cs" />
-    <Compile Include="FormSearch.cs">
+    <Compile Include="Constants.cs" />
+    <Compile Include="View\FormSearch.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormSearch.Designer.cs">
+    <Compile Include="View\FormSearch.Designer.cs">
       <DependentUpon>FormSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\BillingOperations.cs" />
@@ -78,8 +81,12 @@
     <Compile Include="Model\Subscriber.cs" />
     <Compile Include="Model\Tariff.cs" />
     <Compile Include="Model\TariffHistory.cs" />
-    <Compile Include="Other\Person.cs" />
-    <Compile Include="Other\Staff.cs" />
+    <Compile Include="Other\CSVExporter.cs" />
+    <Compile Include="Other\CSVImporter.cs" />
+    <Compile Include="Other\IFileExporter.cs" />
+    <Compile Include="Other\IFileImporter.cs" />
+    <Compile Include="Model\Person.cs" />
+    <Compile Include="Model\Staff.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\FormDetailedInf.cs">
@@ -88,11 +95,11 @@
     <Compile Include="View\FormDetailedInf.Designer.cs">
       <DependentUpon>FormDetailedInf.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\FormNumber.cs">
+    <Compile Include="View\FormSelectTariff.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\FormNumber.Designer.cs">
-      <DependentUpon>FormNumber.cs</DependentUpon>
+    <Compile Include="View\FormSelectTariff.Designer.cs">
+      <DependentUpon>FormSelectTariff.cs</DependentUpon>
     </Compile>
     <Compile Include="View\FormStatistics.cs">
       <SubType>Form</SubType>
@@ -112,7 +119,7 @@
     <Compile Include="View\FormSupport.Designer.cs">
       <DependentUpon>FormSupport.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="FormSearch.resx">
+    <EmbeddedResource Include="View\FormSearch.resx">
       <DependentUpon>FormSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -127,8 +134,8 @@
     <EmbeddedResource Include="View\FormDetailedInf.resx">
       <DependentUpon>FormDetailedInf.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\FormNumber.resx">
-      <DependentUpon>FormNumber.cs</DependentUpon>
+    <EmbeddedResource Include="View\FormSelectTariff.resx">
+      <DependentUpon>FormSelectTariff.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormSubscriber.resx">
       <DependentUpon>FormSubscriber.cs</DependentUpon>

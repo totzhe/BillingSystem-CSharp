@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace BillingSystem.Other
+namespace BillingSystem.Model
 {
     public abstract class Person
     {
-        private int _id;
+        protected long _id;
 
-        public int ID
+        public long ID
         {
             get { return _id; }
             set { /*_id = value;*/ }
         }
 
-        private string _name;
+        protected string _name;
 
         public string Name
         {
@@ -23,7 +23,7 @@ namespace BillingSystem.Other
             set { _name = value; }
         }
 
-        private string _patronymic;
+        protected string _patronymic;
 
         public string Patronymic
         {
@@ -31,7 +31,7 @@ namespace BillingSystem.Other
             set { _patronymic = value; }
         }
 
-        private string _surname;
+        protected string _surname;
 
         public string Surname
         {
@@ -39,7 +39,7 @@ namespace BillingSystem.Other
             set { _surname = value; }
         }
 
-        private string _login;
+        protected string _login;
 
         public string Login
         {
@@ -47,13 +47,13 @@ namespace BillingSystem.Other
             set { _login = value; }
         }
 
-        private string _passwordHash;
+        protected string _passwordHash;
 
-        private string _saltHash;
+        //private string _passwordSalt;
 
         public void ResetPassword()
         {
-
+            _passwordHash = Constants.DefaultPasswordHash;
         }
     }
 }
