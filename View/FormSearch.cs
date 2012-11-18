@@ -23,7 +23,7 @@ namespace BillingSystem
             InitializeComponent();
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
+        private void Search()
         {
             dataGridViewSearchResults.Rows.Clear();
             List<string[]> _items = _controller.Search(textBoxName.Text, textBoxPatronymic.Text, textBoxSurname.Text, textBoxPhoneNumber.Text, textBoxDebt.Text);
@@ -33,6 +33,11 @@ namespace BillingSystem
             }
         }
 
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            Search();
+        }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
             _controller.AddSubscriber();
@@ -40,7 +45,11 @@ namespace BillingSystem
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            _controller.EditSubscriber(0);
+            if (dataGridViewSearchResults.CurrentRow != null)
+            {
+                _controller.EditSubscriber(long.Parse(dataGridViewSearchResults.CurrentRow.Cells[0].Value.ToString()));
+                Search();
+            }
         }
 
         private void btnDetailedInf_Click(object sender, EventArgs e)

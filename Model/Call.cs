@@ -7,9 +7,9 @@ namespace BillingSystem.Model
 {
     public class Call
     {
-        private int _id;
+        private long _id;
 
-        public int ID
+        public long ID
         {
             get { return _id; }
             set { /*_id = value;*/ }

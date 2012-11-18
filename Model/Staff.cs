@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace BillingSystem.Other
+namespace BillingSystem.Model
 {
     public class Staff : Person
     {

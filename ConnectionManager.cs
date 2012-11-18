@@ -24,7 +24,7 @@ namespace BillingSystem
             }
             else
             {
-                throw new ArgumentException("Connection cannot be obtained, connection string is null. Please call Init() method first");
+                throw new ArgumentException("Connection cannot be obtained, connection string is null. Please call Init() method first.");
             }
         }
     }

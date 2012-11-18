@@ -7,9 +7,9 @@ namespace BillingSystem.Model
 {
     public class Price
     {
-        private int _tariffID;
+        private long _tariffID;
 
-        public int TariffID
+        public long TariffID
         {
             get { return _tariffID; }
             set { /*_tariffID = value;*/ }

@@ -94,12 +94,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listBoxPhoneNumbers.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.listBoxPhoneNumbers.FormattingEnabled = true;
-            this.listBoxPhoneNumbers.ItemHeight = 19;
-            this.listBoxPhoneNumbers.Items.AddRange(new object[] {
-            "+79083435679",
-            "+79789544353",
-            "+79544878756"});
-            this.listBoxPhoneNumbers.Location = new System.Drawing.Point(253, 12);
+            this.listBoxPhoneNumbers.Location = new System.Drawing.Point(247, 12);
             this.listBoxPhoneNumbers.Name = "listBoxPhoneNumbers";
             this.listBoxPhoneNumbers.Size = new System.Drawing.Size(119, 270);
             this.listBoxPhoneNumbers.TabIndex = 12;
@@ -123,6 +118,7 @@
             this.btnEditNumber.TabIndex = 14;
             this.btnEditNumber.Text = "Изменить номер";
             this.btnEditNumber.UseVisualStyleBackColor = true;
+            this.btnEditNumber.Click += new System.EventHandler(this.btnEditNumber_Click);
             // 
             // textBoxLogin
             // 
@@ -142,7 +138,6 @@
             this.btnResetPassword.TabIndex = 16;
             this.btnResetPassword.Text = "Сбросить пароль";
             this.btnResetPassword.UseVisualStyleBackColor = true;
-            this.btnResetPassword.Visible = false;
             this.btnResetPassword.Click += new System.EventHandler(this.btnResetPassword_Click);
             // 
             // btnOK

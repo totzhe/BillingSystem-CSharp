@@ -66,5 +66,11 @@ namespace BillingSystem.Controllers
         {
             throw new NotImplementedException();
         }
+
+
+        public void ConfirmChanges(string name, string patronymic, string surname, string email, string login)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

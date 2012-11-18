@@ -7,9 +7,9 @@ namespace BillingSystem.Model
 {
     public class Tariff
     {
-        private int _id;
+        private long _id;
 
-        public int ID
+        public long ID
         {
             get { return _id; }
             set { /*_id = value;*/ }
@@ -31,13 +31,12 @@ namespace BillingSystem.Model
             set { /*_description = value;*/ }
         }
 
-        private int _debtThreshold;
+        /*private double _debtThreshold;
 
-        public int DebtThreshold
+        public double DebtThreshold
         {
             get { return _debtThreshold; }
-            set { /*_debtThreshold = value;*/ }
-        }
+        }*/
 
         private bool _active;
 
@@ -45,6 +44,14 @@ namespace BillingSystem.Model
         {
             get { return _active; }
             set { /*_active = value;*/ }
+        }
+
+        public Tariff(long id, string name, string description, bool active)
+        {
+            _id = id;
+            _name = name;
+            _description = description;
+            _active = active;
         }
     }
 }

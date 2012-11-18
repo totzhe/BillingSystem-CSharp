@@ -7,20 +7,18 @@ namespace BillingSystem.Model
 {
     public class PhoneNumber
     {
-        private int _id;
+        private long _id;
 
-        public int ID
+        public long ID
         {
             get { return _id; }
-            set { /*_id = value;*/ }
         }
 
-        private int _subscriberID;
+        private long _subscriberID;
 
-        public int SubscriberID
+        public long SubscriberID
         {
             get { return _subscriberID; }
-            set { }
         }
 
         private string _number;
@@ -31,14 +29,21 @@ namespace BillingSystem.Model
             set { /*_number = value;*/ }
         }
 
-        private int _tariffID;
+        private long _tariffID;
 
-        public int TariffID
+        public long TariffID
         {
             get { return _tariffID; }
-            set { /*_tariffID = value;*/ }
+            set { _tariffID = value; }
         }
 
+        public PhoneNumber(long id, long subscriberID, string number, long tariffID)
+        {
+            _id = id;
+            _subscriberID = subscriberID;
+            _number = number;
+            _tariffID = tariffID;
+        }
 
         public void ChangeTariff(Tariff tariff)
         {

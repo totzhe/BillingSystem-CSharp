@@ -7,25 +7,25 @@ namespace BillingSystem.Model
 {
     public class TariffHistory
     {
-        private int _id;
+        private long _id;
 
-        public int ID
+        public long ID
         {
             get { return _id; }
             set { /*_id = value;*/ }
         }
 
-        private int _phoneID;
+        private long _phoneID;
 
-        public int PhoneID
+        public long PhoneID
         {
             get { return _phoneID; }
             set { /*_phoneID = value;*/ }
         }
 
-        private int _tariffID;
+        private long _tariffID;
 
-        public int TariffID
+        public long TariffID
         {
             get { return _tariffID; }
             set { /*_tariffID = value;*/ }

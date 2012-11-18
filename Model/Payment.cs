@@ -7,17 +7,17 @@ namespace BillingSystem.Model
 {
     public class Payment
     {
-        private int _id;
+        private long _id;
 
-        public int ID
+        public long ID
         {
             get { return _id; }
             set { /*_id = value;*/ }
         }
 
-        private int _subscriberID;
+        private long _subscriberID;
 
-        public int SubscriberID
+        public long SubscriberID
         {
             get { return _subscriberID; }
             set { }
