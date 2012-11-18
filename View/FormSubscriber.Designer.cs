@@ -45,8 +45,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.labelNewPassword = new System.Windows.Forms.Label();
-            this.textBoxNewPasword = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // textBoxSurname
@@ -57,7 +55,7 @@
             this.textBoxSurname.Location = new System.Drawing.Point(113, 12);
             this.textBoxSurname.Name = "textBoxSurname";
             this.textBoxSurname.Size = new System.Drawing.Size(124, 30);
-            this.textBoxSurname.TabIndex = 10;
+            this.textBoxSurname.TabIndex = 7;
             // 
             // textBoxPatronymic
             // 
@@ -94,6 +92,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listBoxPhoneNumbers.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.listBoxPhoneNumbers.FormattingEnabled = true;
+            this.listBoxPhoneNumbers.ItemHeight = 19;
             this.listBoxPhoneNumbers.Location = new System.Drawing.Point(247, 12);
             this.listBoxPhoneNumbers.Name = "listBoxPhoneNumbers";
             this.listBoxPhoneNumbers.Size = new System.Drawing.Size(119, 270);
@@ -108,6 +107,7 @@
             this.btnAddNumber.TabIndex = 13;
             this.btnAddNumber.Text = "Добавить номер";
             this.btnAddNumber.UseVisualStyleBackColor = true;
+            this.btnAddNumber.Click += new System.EventHandler(this.btnAddNumber_Click);
             // 
             // btnEditNumber
             // 
@@ -128,7 +128,7 @@
             this.textBoxLogin.Location = new System.Drawing.Point(12, 194);
             this.textBoxLogin.Name = "textBoxLogin";
             this.textBoxLogin.Size = new System.Drawing.Size(100, 30);
-            this.textBoxLogin.TabIndex = 15;
+            this.textBoxLogin.TabIndex = 10;
             // 
             // btnResetPassword
             // 
@@ -168,9 +168,10 @@
             this.btnDeleteNumber.Location = new System.Drawing.Point(253, 376);
             this.btnDeleteNumber.Name = "btnDeleteNumber";
             this.btnDeleteNumber.Size = new System.Drawing.Size(119, 23);
-            this.btnDeleteNumber.TabIndex = 19;
+            this.btnDeleteNumber.TabIndex = 15;
             this.btnDeleteNumber.Text = "Удалить номер";
             this.btnDeleteNumber.UseVisualStyleBackColor = true;
+            this.btnDeleteNumber.Click += new System.EventHandler(this.btnDeleteNumber_Click);
             // 
             // label1
             // 
@@ -198,7 +199,7 @@
             this.label3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.Location = new System.Drawing.Point(13, 112);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 19);
+            this.label3.Size = new System.Drawing.Size(84, 19);
             this.label3.TabIndex = 22;
             this.label3.Text = "Отчество:";
             // 
@@ -221,37 +222,15 @@
             this.label5.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label5.Location = new System.Drawing.Point(137, 162);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(59, 19);
+            this.label5.Size = new System.Drawing.Size(60, 19);
             this.label5.TabIndex = 24;
             this.label5.Text = "E-mail:";
-            // 
-            // labelNewPassword
-            // 
-            this.labelNewPassword.AutoSize = true;
-            this.labelNewPassword.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelNewPassword.Location = new System.Drawing.Point(8, 253);
-            this.labelNewPassword.Name = "labelNewPassword";
-            this.labelNewPassword.Size = new System.Drawing.Size(120, 19);
-            this.labelNewPassword.TabIndex = 25;
-            this.labelNewPassword.Text = "Новый пароль:";
-            this.labelNewPassword.Visible = false;
-            // 
-            // textBoxNewPasword
-            // 
-            this.textBoxNewPasword.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxNewPasword.Location = new System.Drawing.Point(137, 247);
-            this.textBoxNewPasword.Name = "textBoxNewPasword";
-            this.textBoxNewPasword.Size = new System.Drawing.Size(100, 30);
-            this.textBoxNewPasword.TabIndex = 26;
-            this.textBoxNewPasword.Visible = false;
             // 
             // FormSubscriber
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 411);
-            this.Controls.Add(this.textBoxNewPasword);
-            this.Controls.Add(this.labelNewPassword);
+            this.ClientSize = new System.Drawing.Size(384, 412);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -296,7 +275,5 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label labelNewPassword;
-        private System.Windows.Forms.TextBox textBoxNewPasword;
     }
 }

@@ -16,7 +16,7 @@ namespace BillingSystem
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            DatabaseUtils.Connect(@"server=vragov.com;userid=billing;password=billing;database=billing");
+            DatabaseUtils.Connect(@"server=vragov.com;userid=billing;password=billing;database=billing;charset=utf8");
 
             Application.Run(new FormSearch());
         }

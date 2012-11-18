@@ -19,6 +19,7 @@ namespace BillingSystem.Model
         public long SubscriberID
         {
             get { return _subscriberID; }
+            set { _subscriberID = value; }
         }
 
         private string _number;

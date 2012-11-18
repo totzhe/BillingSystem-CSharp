@@ -47,7 +47,7 @@ namespace BillingSystem.Controllers
                     else
                         item[4] += Environment.NewLine + n.Number;
                 }
-                item[5] = ((s.Balance > 0) ? Constants.No : (-s.Balance).ToString() + " " + Constants.Currency);
+                item[5] = ((s.Balance >= 0) ? Constants.No : (-s.Balance).ToString() + " " + Constants.Currency);
                 result.Add(item);
             }/*
             for (int i = 0; i < 50; i++)
@@ -59,19 +59,28 @@ namespace BillingSystem.Controllers
 
         public void AddSubscriber()
         {
-            FormSubscriber form = new FormSubscriber();
+            AddSubscriberController controller = new AddSubscriberController();
+            FormSubscriber form = new FormSubscriber(controller);
             if (form.ShowDialog() == DialogResult.OK)
             {
 
+            }
+            else
+            {
+                controller.Cancel();
             }
         }
 
         public void EditSubscriber(long id)
         {
-            FormSubscriber form = new FormSubscriber(id);
+            EditSubscriberController controller = new EditSubscriberController(id);
+            FormSubscriber form = new FormSubscriber(controller);
             if (form.ShowDialog() == DialogResult.OK)
             {
-
+            }
+            else
+            {
+                controller.Cancel();
             }
         }
 

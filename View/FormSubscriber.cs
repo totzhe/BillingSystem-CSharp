@@ -15,26 +15,42 @@ namespace BillingSystem.View
     {
         private ISubscriberController _controller;
 
-        public FormSubscriber()
+        public FormSubscriber(AddSubscriberController controller)
         {
             //здесь - контроллер AddSubscriberController
+            _controller = controller;
             InitializeComponent();
         }
 
-        public FormSubscriber(long subscriberID)
+        public FormSubscriber(EditSubscriberController controller)
         {
             //здесь - контроллер EditSubscriberController
             InitializeComponent();
-            _controller = new EditSubscriberController(subscriberID);
-            List<string> phoneNumbers = _controller.getPhoneNumbers();
+            _controller = controller;
             textBoxName.Text = _controller.getName();
             textBoxSurname.Text = _controller.getSurname();
             textBoxPatronymic.Text = _controller.getPatronymic();
             textBoxEmail.Text = _controller.getEmail();
             textBoxLogin.Text = _controller.getLogin();
+            RefreshNumbers();
+        }
+
+        private void RefreshNumbers()
+        {
+            int ind = listBoxPhoneNumbers.SelectedIndex;
+            listBoxPhoneNumbers.Items.Clear();
+            List<string> phoneNumbers = _controller.getPhoneNumbers();
             foreach (string phone in phoneNumbers)
             {
                 listBoxPhoneNumbers.Items.Add(phone);
+            }
+            if (listBoxPhoneNumbers.Items.Count > ind)
+            {
+                listBoxPhoneNumbers.SelectedIndex = ind;
+            }
+            else
+            {
+                listBoxPhoneNumbers.SelectedIndex = listBoxPhoneNumbers.Items.Count - 1;
             }
         }
         // TODO: Кнопка "Редактировать" должна быть активна, только когда выбран номер телефона
@@ -48,7 +64,8 @@ namespace BillingSystem.View
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            _controller.Cancel();
+            //_controller.Cancel();
+            DialogResult = DialogResult.Cancel;
         }
 
         private void btnResetPassword_Click(object sender, EventArgs e)
@@ -60,6 +77,19 @@ namespace BillingSystem.View
         {
             if(listBoxPhoneNumbers.SelectedIndex >= 0)
                 _controller.EditPhoneNumber(listBoxPhoneNumbers.SelectedItem.ToString());
+        }
+
+        private void btnAddNumber_Click(object sender, EventArgs e)
+        {
+            _controller.AddPhoneNumber();
+            RefreshNumbers();
+        }
+
+        private void btnDeleteNumber_Click(object sender, EventArgs e)
+        {
+            if (listBoxPhoneNumbers.SelectedIndex >= 0)
+                _controller.DeletePhoneNumber(listBoxPhoneNumbers.SelectedItem.ToString());
+            RefreshNumbers();
         }
     }
 }

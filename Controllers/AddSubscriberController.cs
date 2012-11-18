@@ -2,75 +2,151 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using BillingSystem.Model;
 
 namespace BillingSystem.Controllers
 {
-    public class AddSubscriberController : ISubscriberController    
+    public class AddSubscriberController : ISubscriberController
     {
+        private Subscriber subscriber;
+
+        private List<PhoneNumber> _phonesToUpdate = new List<PhoneNumber>();
+        private List<PhoneNumber> _phonesToDelete = new List<PhoneNumber>();
+        private List<PhoneNumber> _phonesToAdd = new List<PhoneNumber>();
+
+        public AddSubscriberController()
+        {
+            subscriber = DatabaseUtils.GetNewSubscriber();
+        }
+
+
         public string getName()
         {
-            throw new NotImplementedException();
+            if (subscriber != null)
+                return subscriber.Name;
+            else
+                return null;
         }
 
         public string getSurname()
         {
-            throw new NotImplementedException();
+            if (subscriber != null)
+                return subscriber.Surname;
+            else
+                return null;
         }
 
         public string getPatronymic()
         {
-            throw new NotImplementedException();
+            if (subscriber != null)
+                return subscriber.Patronymic;
+            else
+                return null;
         }
 
         public string getEmail()
         {
-            throw new NotImplementedException();
+            if (subscriber != null)
+                return subscriber.Email;
+            else
+                return null;
         }
 
         public string getLogin()
         {
-            throw new NotImplementedException();
+            if (subscriber != null)
+                return subscriber.Login;
+            else
+                return null;
         }
 
         public List<string> getPhoneNumbers()
         {
-            throw new NotImplementedException();
+            List<PhoneNumber> searchResult = DatabaseUtils.SelectPhoneNumbers(subscriber);
+            List<string> result = new List<string>();
+            foreach (PhoneNumber n in searchResult)
+                result.Add(n.Number);
+            foreach (PhoneNumber n in _phonesToAdd)
+                result.Add(n.Number);
+            foreach (PhoneNumber n in _phonesToDelete)
+                result.Remove(n.Number);
+            return result;
         }
 
         public void AddPhoneNumber()
         {
-            throw new NotImplementedException();
+            PhoneNumber number = DatabaseUtils.GetNewNumber();
+            number.SubscriberID = subscriber.ID;
+            _phonesToAdd.Add(number);
+            ISelectTariffController ctcontr = new ChangeTariffController(number);
+            View.FormSelectTariff form = new View.FormSelectTariff(ctcontr);
+            if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+
+            }
         }
 
         public void EditPhoneNumber(string phoneNumber)
         {
-            throw new NotImplementedException();
+            List<PhoneNumber> searchResult = DatabaseUtils.SelectPhoneNumbers(subscriber);
+            searchResult.AddRange(_phonesToAdd);
+            foreach (PhoneNumber n in searchResult)
+            {
+                if (n.Number == phoneNumber.Trim())
+                {
+                    _phonesToUpdate.Add(n);
+                    ISelectTariffController ctcontr = new ChangeTariffController(n);
+                    View.FormSelectTariff form = new View.FormSelectTariff(ctcontr);
+                    if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+
+                    }
+                    return;
+                }
+            }
         }
+
 
         public void DeletePhoneNumber(string phoneNumber)
         {
-            throw new NotImplementedException();
+            List<PhoneNumber> searchResult = DatabaseUtils.SelectPhoneNumbers(subscriber);
+            searchResult.AddRange(_phonesToAdd);
+            foreach (PhoneNumber n in searchResult)
+            {
+                if (n.Number == phoneNumber.Trim())
+                {
+                    _phonesToDelete.Add(n);
+                    return;
+                }
+            }
         }
 
         public void ResetPassword()
         {
-            throw new NotImplementedException();
+            DatabaseUtils.ResetSubscriberPassword(subscriber);
         }
 
-        public void ConfirmChanges()
+        public void ConfirmChanges(string name, string patronymic, string surname, string email, string login)
         {
-            throw new NotImplementedException();
+            subscriber.Name = name.Trim();
+            subscriber.Patronymic = patronymic.Trim();
+            subscriber.Surname = surname.Trim();
+            subscriber.Email = email.Trim();
+            subscriber.Login = login.Trim();
+            DatabaseUtils.UpdateSubscriber(subscriber);
+            foreach (PhoneNumber n in _phonesToUpdate)
+                DatabaseUtils.UpdatePhoneNumber(n);
+            foreach (PhoneNumber n in _phonesToAdd)
+                DatabaseUtils.UpdatePhoneNumber(n);
+            foreach (PhoneNumber n in _phonesToDelete)
+                DatabaseUtils.DeletePhoneNumber(n);
         }
 
         public void Cancel()
         {
-            throw new NotImplementedException();
-        }
-
-
-        public void ConfirmChanges(string name, string patronymic, string surname, string email, string login)
-        {
-            throw new NotImplementedException();
+            DatabaseUtils.DeleteSubscriber(subscriber);
+            foreach (PhoneNumber n in _phonesToAdd)
+                DatabaseUtils.DeletePhoneNumber(n);
         }
     }
 }

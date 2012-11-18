@@ -7,7 +7,7 @@ namespace BillingSystem.Controllers
 {
     public interface ISelectTariffController
     {
-        string GetCurrentTariff();
+        string GetCurrentTariffName();
 
         string[] GetActiveTariffs();
 

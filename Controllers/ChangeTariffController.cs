@@ -6,21 +6,24 @@ using BillingSystem.Model;
 
 namespace BillingSystem.Controllers
 {
-    public class SelectTariffController : ISelectTariffController
+    public class ChangeTariffController : ISelectTariffController
     {
-        private PhoneNumber number;
+        private PhoneNumber _number;
 
-        private Tariff tariff;
+        private Tariff _tariff;
         
-        public SelectTariffController(long phoneNumberID)
+        public ChangeTariffController(PhoneNumber number)
         {
-            number = DatabaseUtils.SelectPhoneNumberByID(phoneNumberID);
-            tariff = DatabaseUtils.SelectTariffByID(number.TariffID);
+            _number = number;
+            _tariff = DatabaseUtils.SelectTariffByID(number.TariffID);
         }
 
-        public string GetCurrentTariff()
+        public string GetCurrentTariffName()
         {
-            return tariff.Name;
+            if (_tariff != null)
+                return _tariff.Name;
+            else
+                return Constants.No;
         }
 
         public string[] GetActiveTariffs()
@@ -35,7 +38,7 @@ namespace BillingSystem.Controllers
 
         public string GetPhoneNumber()
         {
-            return number.Number;
+            return _number.Number;
         }
 
         public string GetTariffDescription(string tariffName)
@@ -52,8 +55,8 @@ namespace BillingSystem.Controllers
             List<Tariff> tariffs = DatabaseUtils.SelectActiveTariffs(tariffName);
             if (tariffs.Count > 0)
             {
-                number.TariffID = tariffs[0].ID;
-                DatabaseUtils.UpdatePhoneNumber(number);
+                _number.TariffID = tariffs[0].ID;
+                //DatabaseUtils.UpdatePhoneNumber(_number);
             }
         }
 

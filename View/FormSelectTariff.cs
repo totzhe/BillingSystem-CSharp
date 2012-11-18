@@ -14,18 +14,31 @@ namespace BillingSystem.View
     {
         private ISelectTariffController _controller;
 
-        public FormSelectTariff(long phoneNumberID)
+        public FormSelectTariff(ISelectTariffController controller)
         {
-            _controller = new SelectTariffController(phoneNumberID);
+            _controller = controller;
             InitializeComponent();
 
             comboBoxTariff.Items.AddRange(_controller.GetActiveTariffs());
             comboBoxTariff.SelectedIndex = 0;
+            labelCurrentNariffName.Text = "Текущий тариф: " + _controller.GetCurrentTariffName();
         }
 
         private void comboBoxTariff_SelectedIndexChanged(object sender, EventArgs e)
         {
             textBoxDescription.Text = _controller.GetTariffDescription(comboBoxTariff.SelectedItem.ToString());
+        }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+            _controller.Confirm(comboBoxTariff.SelectedItem.ToString());
+            DialogResult = DialogResult.OK;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            _controller.Cancel();
+            DialogResult = DialogResult.Cancel;
         }
     }
 }

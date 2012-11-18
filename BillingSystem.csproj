@@ -64,7 +64,7 @@
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\EditSubscriberController.cs" />
     <Compile Include="Exceptions\NoConnectionException.cs" />
-    <Compile Include="Controllers\SelectTariffController.cs" />
+    <Compile Include="Controllers\ChangeTariffController.cs" />
     <Compile Include="DatabaseUtils.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="View\FormSearch.cs">

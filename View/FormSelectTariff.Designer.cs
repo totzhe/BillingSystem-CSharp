@@ -32,6 +32,7 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
             this.textBoxDescription = new System.Windows.Forms.TextBox();
+            this.labelCurrentNariffName = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // comboBoxTariff
@@ -52,6 +53,7 @@
             this.btnCancel.TabIndex = 20;
             this.btnCancel.Text = "Отмена";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnOK
             // 
@@ -61,6 +63,7 @@
             this.btnOK.TabIndex = 19;
             this.btnOK.Text = "ОК";
             this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // textBoxDescription
             // 
@@ -70,11 +73,20 @@
             this.textBoxDescription.Size = new System.Drawing.Size(245, 148);
             this.textBoxDescription.TabIndex = 21;
             // 
+            // labelCurrentNariffName
+            // 
+            this.labelCurrentNariffName.AutoSize = true;
+            this.labelCurrentNariffName.Location = new System.Drawing.Point(46, 6);
+            this.labelCurrentNariffName.Name = "labelCurrentNariffName";
+            this.labelCurrentNariffName.Size = new System.Drawing.Size(0, 13);
+            this.labelCurrentNariffName.TabIndex = 22;
+            // 
             // FormSelectTariff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Controls.Add(this.labelCurrentNariffName);
             this.Controls.Add(this.textBoxDescription);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
@@ -92,5 +104,6 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.TextBox textBoxDescription;
+        private System.Windows.Forms.Label labelCurrentNariffName;
     }
 }

@@ -54,7 +54,9 @@ namespace BillingSystem
                 MySqlCommand cmd = new MySqlCommand(stm, connection);
                 string version = Convert.ToString(cmd.ExecuteScalar());
                 Console.WriteLine("MySQL version : {0}", version);*/
-                string query = "SELECT * FROM subscriber WHERE LOWER(name) LIKE LOWER ('%" + name + "%') AND LOWER(patronymic) LIKE LOWER ('%" + patronymic + "%') AND LOWER(surname) LIKE LOWER ('%" + surname + "%') AND id in (SELECT subscriber_id FROM phone_number WHERE number LIKE '%" + phoneNumber + "%')";
+                string query = "SELECT * FROM subscriber WHERE LOWER(name) LIKE LOWER ('%" + name + "%') AND LOWER(patronymic) LIKE LOWER ('%" + patronymic + "%') AND LOWER(surname) LIKE LOWER ('%" + surname + "%')";
+                if (phoneNumber != string.Empty)
+                    query += "AND id in (SELECT subscriber_id FROM phone_number WHERE number LIKE '%" + phoneNumber + "%')";
                 if (debt > 0)
                 {
                     query+=" AND balance < -" + debt.ToString();
@@ -92,7 +94,7 @@ namespace BillingSystem
             {
                 connection.Open();
 
-                MySqlCommand cmd = new MySqlCommand("SELECT * FROM phone_number WHERE subscriber_id = " + subscriber.ID.ToString(), connection);
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM phone_number WHERE subscriber_id = " + subscriber.ID.ToString() + " ORDER BY number", connection);
                 MySqlDataReader r = cmd.ExecuteReader();
                 while (r.Read())
                 {
@@ -112,6 +114,22 @@ namespace BillingSystem
         }
 
         /// <summary>
+        /// Создает нового абонента и сохраняет его в БД.
+        /// </summary>
+        /// <returns>Абонент</returns>
+        public static Subscriber GetNewSubscriber()
+        {
+            Subscriber result = new Subscriber(-1, DateTime.Now.ToString(), DateTime.Now.ToString(), DateTime.Now.ToString(), null, 0, null, null);
+            AddSubscriber(result);
+            result = SelectSubscribers(result.Name, result.Patronymic, result.Surname, string.Empty, -1)[0];
+            result.Name = Constants.No;
+            result.Patronymic = Constants.No;
+            result.Surname = Constants.No;
+            return result;
+        }
+        
+        
+        /// <summary>
         /// Получает абонента из БД по его id.
         /// </summary>
         /// <param name="subscriberID">id абонента</param>
@@ -127,7 +145,7 @@ namespace BillingSystem
                 MySqlDataReader r = cmd.ExecuteReader();
                 if (r.Read())
                 {
-                    result = new Subscriber(r.GetInt64("id"), r.GetString("name"), GetStringOrNull(r, "patronymic"), r.GetString("surname"), GetStringOrNull(r, "email"), r.GetDouble("balance"), GetStringOrNull(r, "login"), GetStringOrNull(r, "password_hash"));                
+                    result = new Subscriber(r.GetInt64("id"), r.GetString("name"), GetStringOrNull(r, "patronymic"), r.GetString("surname"), GetStringOrNull(r, "email"), r.GetDouble("balance"), GetStringOrNull(r, "login"), GetStringOrNull(r, "password_hash"));
                 }
             }
             catch (MySqlException ex)
@@ -143,6 +161,29 @@ namespace BillingSystem
         }
 
         /// <summary>
+        /// Добавляет запись абонента в БД.
+        /// </summary>
+        /// <param name="subscriber">Абонент</param>
+        public static void AddSubscriber(Subscriber subscriber)
+        {
+            try
+            {
+                connection.Open();
+                string queryString = "INSERT INTO subscriber (name, patronymic, surname, email, login) VALUES ('" + subscriber.Name + "', '" + subscriber.Patronymic + "', '" + subscriber.Surname + "', '" + subscriber.Email + "', '" + subscriber.Login + "')";
+                MySqlCommand cmd = new MySqlCommand(queryString, connection);
+                cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        /// <summary>
         /// Обновляет запись абонента в БД.
         /// </summary>
         /// <param name="subscriber">Абонент</param>
@@ -152,6 +193,29 @@ namespace BillingSystem
             {
                 connection.Open();
                 string queryString = "UPDATE subscriber SET name = '" + subscriber.Name + "', patronymic = '" + subscriber.Patronymic + "', surname = '" + subscriber.Surname + "', email = '" + subscriber.Email + "', login = '" + subscriber.Login + "' WHERE id = " + subscriber.ID.ToString();
+                MySqlCommand cmd = new MySqlCommand(queryString, connection);
+                cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        /// <summary>
+        /// Удаляет запись абонента в БД.
+        /// </summary>
+        /// <param name="subscriber">Абонент</param>
+        public static void DeleteSubscriber(Subscriber subscriber)
+        {
+            try
+            {
+                connection.Open();
+                string queryString = "DELETE FROM subscriber WHERE id = " + subscriber.ID.ToString();
                 MySqlCommand cmd = new MySqlCommand(queryString, connection);
                 cmd.ExecuteNonQuery();
             }
@@ -220,6 +284,37 @@ namespace BillingSystem
         }
 
         /// <summary>
+        /// Получает телефонный номер из БД по значению номера.
+        /// </summary>
+        /// <param name="phoneNumber">Значение номера</param>
+        /// <returns></returns>
+        public static PhoneNumber SelectPhoneNumberByNumber(string phoneNumber)
+        {
+            PhoneNumber result = null;
+            try
+            {
+                connection.Open();
+
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM phone_number WHERE number = '" + phoneNumber + "'", connection);
+                MySqlDataReader r = cmd.ExecuteReader();
+                if (r.Read())
+                {
+                    result = new PhoneNumber(r.GetInt64("id"), r.GetInt64("subscriber_id"), r.GetString("number"), r.GetInt64("tariff_id"));
+                }
+            }
+            catch (MySqlException ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return result;
+        }
+
+        /// <summary>
         /// Получает тариф из БД по его id.
         /// </summary>
         /// <param name="tariffID">id тарифа</param>
@@ -263,7 +358,7 @@ namespace BillingSystem
             {
                 connection.Open();
 
-                MySqlCommand cmd = new MySqlCommand("SELECT * FROM tariff WHERE active > 0 AND LOWER(name) LIKE LOWER('%" + tariffName + "%')", connection);
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM tariff WHERE active > 0 AND LOWER(name) LIKE LOWER('%" + tariffName + "%') ORDER BY name", connection);
                 MySqlDataReader r = cmd.ExecuteReader();
                 while (r.Read())
                 {
@@ -291,7 +386,7 @@ namespace BillingSystem
             try
             {
                 connection.Open();
-                string queryString = "UPDATE subscriber SET number = '" + phoneNumber.Number + "', subscriber_id = " + phoneNumber.SubscriberID.ToString() + ", tariff_id = " + phoneNumber.TariffID.ToString() + " WHERE id = " + phoneNumber.ID.ToString();
+                string queryString = "UPDATE phone_number SET number = '" + phoneNumber.Number + "', subscriber_id = " + phoneNumber.SubscriberID.ToString() + ", tariff_id = " + phoneNumber.TariffID.ToString() + " WHERE id = " + phoneNumber.ID.ToString() + " OR number = '" + phoneNumber.Number + "'";
                 MySqlCommand cmd = new MySqlCommand(queryString, connection);
                 cmd.ExecuteNonQuery();
             }
@@ -305,6 +400,84 @@ namespace BillingSystem
             }
         }
 
+        /// <summary>
+        /// Добавляет телефон в БД.
+        /// </summary>
+        /// <param name="phoneNumber">Телефон</param>
+        public static void AddPhoneNumber(PhoneNumber phoneNumber)
+        {
+            try
+            {
+                connection.Open();
+                string queryString = "INSERT INTO phone_number (number,  subscriber_id, tariff_id) VALUES  ('" + phoneNumber.Number + "', " + phoneNumber.SubscriberID.ToString() + ", " + phoneNumber.TariffID.ToString() + ")";
+                MySqlCommand cmd = new MySqlCommand(queryString, connection);
+                cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        /// <summary>
+        /// Удаляет телефон из БД.
+        /// </summary>
+        /// <param name="phoneNumber">Телефон</param>
+        public static void DeletePhoneNumber(PhoneNumber phoneNumber)
+        {
+            try
+            {
+                connection.Open();
+                string queryString = "DELETE FROM phone_number WHERE id = " + phoneNumber.ID.ToString() + " OR number = '" + phoneNumber.Number + "'";
+                MySqlCommand cmd = new MySqlCommand(queryString, connection);
+                cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        /// <summary>
+        /// Возвращает новый не занятый номер телефона.
+        /// </summary>
+        /// <returns>Телефон</returns>
+        public static PhoneNumber GetNewNumber()
+        {
+            string number = "";
+            try
+            {
+                connection.Open();
+
+                MySqlCommand cmd = new MySqlCommand("SELECT MAX(number) FROM phone_number", connection);
+                MySqlDataReader r = cmd.ExecuteReader();
+                if (r.Read())
+                {
+                    string temp = GetStringOrNull(r, "MAX(number)");
+                    long n = Int64.Parse(temp);
+                    number = "+" + (++n).ToString();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                connection.Close();
+            }
+            PhoneNumber num = new PhoneNumber(-1, -1, number, -1);
+            AddPhoneNumber(num);
+            return num;
+        }
 
         //TODO: Сделать всякие запросы к БД по необходимости, стараться передавать в методы и возвращать не просто данные (строки, числа и т.п.), а объекты модели
     }
