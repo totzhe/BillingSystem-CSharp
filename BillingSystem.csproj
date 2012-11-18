@@ -54,12 +54,12 @@
   <ItemGroup>
     <Compile Include="ConnectionManager.cs" />
     <Compile Include="Controllers\EditSubscriberController.cs" />
-    <Compile Include="Controllers\IDetailedInfController.cs" />
-    <Compile Include="Controllers\ISelectTariffController.cs" />
-    <Compile Include="Controllers\ISearchController.cs" />
-    <Compile Include="Controllers\IStatisticsController.cs" />
-    <Compile Include="Controllers\ISubscriberController.cs" />
-    <Compile Include="Controllers\ISupportController.cs" />
+    <Compile Include="Controllers\IControllers\IDetailedInfController.cs" />
+    <Compile Include="Controllers\IControllers\ISelectTariffController.cs" />
+    <Compile Include="Controllers\IControllers\ISearchController.cs" />
+    <Compile Include="Controllers\IControllers\IStatisticsController.cs" />
+    <Compile Include="Controllers\IControllers\ISubscriberController.cs" />
+    <Compile Include="Controllers\IControllers\ISupportController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\SelectTariffController.cs" />
     <Compile Include="DatabaseUtils.cs" />
