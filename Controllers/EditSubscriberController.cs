@@ -17,6 +17,8 @@ namespace BillingSystem.Controllers
         public EditSubscriberController(long subscriberID)
         {
             subscriber = DatabaseUtils.SelectSubscriberByID(subscriberID);
+            if (subscriber == null)
+                throw new BillingSystem.Exceptions.ModelObjectNotFoundException("Subscriber with id = " + subscriberID);
         }
 
 
@@ -128,11 +130,11 @@ namespace BillingSystem.Controllers
 
         public void ConfirmChanges(string name, string patronymic, string surname, string email, string login)
         {
-            subscriber.Name = name.Trim();
-            subscriber.Patronymic = patronymic.Trim();
-            subscriber.Surname = surname.Trim();
-            subscriber.Email = email.Trim();
-            subscriber.Login = login.Trim();
+            subscriber.Name = name == null ? null : name.Trim();
+            subscriber.Patronymic = patronymic == null ? null : patronymic.Trim();
+            subscriber.Surname = surname == null ? null : surname.Trim();
+            subscriber.Email = email == null ? null : email.Trim();
+            subscriber.Login = login == null ? null : login.Trim();
             DatabaseUtils.UpdateSubscriber(subscriber);
             foreach (PhoneNumber n in _phonesToUpdate)
                 DatabaseUtils.UpdatePhoneNumber(n);
