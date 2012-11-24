@@ -11,11 +11,12 @@
     <RootNamespace>BillingSystem</RootNamespace>
     <AssemblyName>BillingSystem</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -34,12 +35,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="mysql.data">
       <HintPath>Lib\mysql.data.dll</HintPath>
     </Reference>
     <Reference Include="mysql.data.entity">
       <HintPath>Lib\mysql.data.entity.dll</HintPath>
     </Reference>
+    <Reference Include="nunit.framework, Version=2.6.2.12296, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -63,10 +66,13 @@
     <Compile Include="Controllers\IControllers\ISupportController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\EditSubscriberController.cs" />
+    <Compile Include="Exceptions\ModelObjectNotFound.cs" />
     <Compile Include="Exceptions\NoConnectionException.cs" />
     <Compile Include="Controllers\ChangeTariffController.cs" />
     <Compile Include="DatabaseUtils.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="Tests\DatabaseUtilsTest.cs" />
+    <Compile Include="Tests\EditSubscriberControllerTest.cs" />
     <Compile Include="View\FormSearch.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +138,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="View\FormDetailedInf.resx">
       <DependentUpon>FormDetailedInf.cs</DependentUpon>
@@ -142,6 +149,7 @@
     <EmbeddedResource Include="View\FormSubscriber.resx">
       <DependentUpon>FormSubscriber.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

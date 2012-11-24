@@ -12,5 +12,7 @@ namespace BillingSystem
         public const string No = "Нет";
 
         public const string DefaultPasswordHash = "111";
+
+        public const string ConnectionString = @"server=vragov.com;userid=billing;password=billing;database=billing;charset=utf8";
     }
 }
