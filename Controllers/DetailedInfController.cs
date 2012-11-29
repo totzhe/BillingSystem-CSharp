@@ -45,8 +45,23 @@ namespace BillingSystem.Controllers
             foreach (Call c in calls)
             {
                 string[] item = new string[6];
-                item[0] = c.StartTime.Date.ToString();
-                item[1] = c.StartTime.TimeOfDay.ToString();
+                item[0] = c.StartTime.ToShortDateString();
+                item[1] = c.StartTime.ToShortTimeString();
+                if (c.CalledNumber == pn.Number)
+                {
+                    item[2] = c.CallingNumber;
+                    item[3] = Constants.Incoming;
+                    item[5] = Constants.No;
+                }
+                else
+                {
+                    item[2] = c.CalledNumber;
+                    Tariff tariff = DatabaseUtils.SelectTariffByDate(pn, c.StartTime);
+                    item[3] = Constants.Outgoing;
+                    item[5] = BillingOperations.CalculateCallCost(c, tariff).ToString() + " " + Constants.Currency;
+                }
+                item[4] = c.Duration.ToString();
+                //System.Windows.Forms.MessageBox.Show(tariff.Name);
                 searchResult.Add(item);
             }
             

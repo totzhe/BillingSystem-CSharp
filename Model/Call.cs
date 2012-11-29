@@ -46,6 +46,17 @@ namespace BillingSystem.Model
             set { /*_endDate = value;*/ }
         }
 
+        public TimeSpan Duration
+        {
+            get
+            {
+                if (_startTime != null && _endTime != null)
+                    return EndTime - StartTime;
+                else
+                    return new TimeSpan(0, 0, 0);
+            }
+        }
+
         public Call(long id, string callingNumber, string calledNumber, DateTime startTime, DateTime endTime)
         {
             _id = id;

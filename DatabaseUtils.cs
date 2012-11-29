@@ -479,8 +479,7 @@ namespace BillingSystem
             return num;
         }
 
-        public static List<Call> SelectCallsByPhoneNumber(PhoneNumber phoneNumber, DateTime from,
-            DateTime to)
+        public static List<Call> SelectCallsByPhoneNumber(PhoneNumber phoneNumber, DateTime from, DateTime to)
         {
             List<Call> result = new List<Call>();
             try
@@ -495,7 +494,7 @@ namespace BillingSystem
                 */
                 
                 string query = "SELECT * FROM calls WHERE (calling_number = '" + phoneNumber.Number + "' OR called_number = '" + phoneNumber.Number + "')"
-                    + " AND DATE(start_time) >= DATE(@from) AND DATE(start_time) <= DATE(@to)";
+                    + " AND DATE(start_time) >= DATE(@from) AND DATE(start_time) <= DATE(@to) ORDER BY start_time, end_time, called_number, calling_number";
                 /*
                 string query = "SELECT * FROM calls WHERE (calling_number = '" + phoneNumber.Number + "' OR called_number = '" + phoneNumber.Number + "')"
                     + " AND DATE(start_time) >= DATE(STR_TO_DATE('" + from.ToString() + "', '%d.%m.%Y %H:%i:%s')) AND DATE(start_time) <= DATE(STR_TO_DATE('" + to.ToString() + "', '%d.%m.%Y %H:%i:%s'))";
@@ -516,6 +515,72 @@ namespace BillingSystem
             {
                 System.Windows.Forms.MessageBox.Show(ex.ToString());
                 
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return result;
+        }
+
+
+        public static Tariff SelectTariffByDate(PhoneNumber phoneNumber, DateTime date)
+        {
+            Tariff result = null;
+            try
+            {
+                connection.Open();
+
+                string query = "SELECT * FROM tariff WHERE id = (SELECT tariff_id FROM tariff_history WHERE phone_id = @phone_id AND start_date <= @date AND (end_date > @date OR end_date IS NULL))";
+
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@phone_id", phoneNumber.ID);
+                cmd.Parameters.AddWithValue("@date", date);
+
+                MySqlDataReader r = cmd.ExecuteReader();
+                while (r.Read())
+                {
+                    result = new Tariff(r.GetInt64("id"), r.GetString("name"), GetStringOrNull(r, "description"), r.GetBoolean("active"));
+                }
+            }
+            catch (MySqlException ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.ToString());
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return result;
+        }
+
+
+        public static Price SelectPrice(Tariff tariff, string phone)
+        {
+            Price result = null;
+            try
+            {
+                connection.Open();
+
+                string query = "SELECT * FROM price WHERE tariff_id = @tariff_id AND @phone LIKE CONCAT(prefix, '%') ORDER BY LENGTH(prefix) DESC LIMIT 1";
+
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@tariff_id", tariff.ID);
+                cmd.Parameters.AddWithValue("@phone", phone);
+
+                MySqlDataReader r = cmd.ExecuteReader();
+                if (r.Read())
+                {
+                    result = new Price(r.GetInt64("tariff_id"), r.GetString("prefix"), r.GetFloat("cost"));
+                }
+            }
+            catch (MySqlException ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.ToString());
+
             }
             finally
             {
