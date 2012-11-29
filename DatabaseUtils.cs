@@ -479,6 +479,54 @@ namespace BillingSystem
             return num;
         }
 
+        public static List<Call> SelectCallsByPhoneNumber(PhoneNumber phoneNumber, DateTime from,
+            DateTime to)
+        {
+            List<Call> result = new List<Call>();
+            try
+            {
+                connection.Open();
+                /*
+                string query = "SELECT * FROM calls WHERE ((calling_number = '"
+                    + phoneNumber.Number + "' OR called_number = '" + phoneNumber.Number + "')"
+                    + " AND (STR_TO_DATE(DATE_FORMAT(start_time, '%Y-%m-%d %H:%i:%s'), '%Y-%m-%d %H:%i:%s') BETWEEN STR_TO_DATE(DATE_FORMAT('" + from.ToString() + "', '%Y-%m-%d %H:%i:%s'), '%Y-%m-%d %H:%i:%s') AND STR_TO_DATE(DATE_FORMAT('"
+                    + to.ToString() + "', '%Y-%m-%d %H:%i:%s'), '%Y-%m-%d %H:%i:%s')) AND (STR_TO_DATE(DATE_FORMAT(end_time, '%Y-%m-%d %H:%i:%s'), '%Y-%m-%d %H:%i:%s') BETWEEN STR_TO_DATE(DATE_FORMAT('"
+                    + from.ToString() + "', %Y-%m-%d %H:%i:%s), '%Y-%m-%d %H:%i:%s') AND STR_TO_DATE(DATE_FORMAT('" + to.ToString() + "', '%Y-%m-%d %H:%i:%s'), '%Y-%m-%d %H:%i:%s')) ORDER BY start_time, end_time";
+                */
+                
+                string query = "SELECT * FROM calls WHERE (calling_number = '" + phoneNumber.Number + "' OR called_number = '" + phoneNumber.Number + "')"
+                    + " AND DATE(start_time) >= DATE(@from) AND DATE(start_time) <= DATE(@to)";
+                /*
+                string query = "SELECT * FROM calls WHERE (calling_number = '" + phoneNumber.Number + "' OR called_number = '" + phoneNumber.Number + "')"
+                    + " AND DATE(start_time) >= DATE(STR_TO_DATE('" + from.ToString() + "', '%d.%m.%Y %H:%i:%s')) AND DATE(start_time) <= DATE(STR_TO_DATE('" + to.ToString() + "', '%d.%m.%Y %H:%i:%s'))";
+                */
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@from", from);
+                cmd.Parameters.AddWithValue("@to", to);
+
+                //System.Windows.Forms.MessageBox.Show(cmd.CommandText);
+                MySqlDataReader r = cmd.ExecuteReader();
+                while (r.Read())
+                {
+                    result.Add(new Call(r.GetInt64("id"), r.GetString("calling_number"), 
+                        r.GetString("called_number"), r.GetDateTime("start_time"), r.GetDateTime("end_time")));
+                }
+            }
+            catch (MySqlException ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.ToString());
+                
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return result;
+        }
+
+
+
         //TODO: Сделать всякие запросы к БД по необходимости, стараться передавать в методы и возвращать не просто данные (строки, числа и т.п.), а объекты модели
     }
 }

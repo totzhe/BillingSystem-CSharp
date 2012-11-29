@@ -8,7 +8,7 @@ namespace BillingSystem.Controllers
     public interface ISearchController
     {
         /// <summary>
-        /// Метод возвращяет список пользователей по заданным параметрам.
+        /// Метод возвращает список пользователей по заданным параметрам.
         /// </summary>
         /// <param name="name">Имя пользователя</param>
         /// <param name="patronymic">Отчество пользователя</param>
