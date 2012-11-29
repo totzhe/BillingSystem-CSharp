@@ -13,7 +13,7 @@ namespace BillingSystem.Controllers
         public List<string[]> Search(string name, string patronymic, string surname, string phoneNumber, string debt)
         {
             List<string[]> result = new List<string[]>();
-            //TODO: Распарсить входящие значения и преобразовать в нужны формат
+            //TODO: Распарсить входящие значения и преобразовать в нужный формат
             double d;
             if (debt != string.Empty)
             {
@@ -49,11 +49,8 @@ namespace BillingSystem.Controllers
                 }
                 item[5] = ((s.Balance >= 0) ? Constants.No : (-s.Balance).ToString() + " " + Constants.Currency);
                 result.Add(item);
-            }/*
-            for (int i = 0; i < 50; i++)
-            {
-                result.Add(new string[6]);
-            }*/
+                
+            }
             return result;
         }
 

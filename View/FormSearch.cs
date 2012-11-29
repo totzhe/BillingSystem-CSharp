@@ -54,7 +54,12 @@ namespace BillingSystem
 
         private void btnDetailedInf_Click(object sender, EventArgs e)
         {
-            _controller.ShowInfo(0);
+            if (dataGridViewSearchResults.CurrentRow != null)
+            {
+                _controller.ShowInfo(long.Parse(dataGridViewSearchResults.CurrentRow.Cells[0].Value.ToString()));
+               
+            }
+            
         }
     }
 }

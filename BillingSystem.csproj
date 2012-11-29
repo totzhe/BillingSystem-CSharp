@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="ConnectionManager.cs" />
     <Compile Include="Controllers\AddSubscriberController.cs" />
+    <Compile Include="Controllers\DetailedInfController.cs" />
     <Compile Include="Controllers\IControllers\INumberController.cs" />
     <Compile Include="Controllers\IControllers\IDetailedInfController.cs" />
     <Compile Include="Controllers\IControllers\ISelectTariffController.cs" />

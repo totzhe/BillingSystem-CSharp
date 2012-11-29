@@ -12,7 +12,6 @@ namespace BillingSystem.Model
         public long ID
         {
             get { return _id; }
-            set { /*_id = value;*/ }
         }
 
         private string _callingNumber;
@@ -46,6 +45,16 @@ namespace BillingSystem.Model
             get { return _endTime.ToLocalTime(); }
             set { /*_endDate = value;*/ }
         }
+
+        public Call(long id, string callingNumber, string calledNumber, DateTime startTime, DateTime endTime)
+        {
+            _id = id;
+            _callingNumber = callingNumber;
+            _calledNumber = calledNumber;
+            _startTime = startTime;
+            _endTime = endTime;
+        }
+
 
         // TODO: Добавить конструкторы в зависимости от того, как объекты будут читаться из БД
         // TODO: Добавить методы по мере необходимости
