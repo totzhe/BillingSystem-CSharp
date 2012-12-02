@@ -12,9 +12,9 @@ namespace BillingSystem.Controllers
 
         public DetailedInfController(long subscriberID)
         {
-            _subscriber = DatabaseUtils.SelectSubscriberByID(subscriberID);
+            _subscriber = Subscriber.SelectSubscriberByID(subscriberID);
             if (_subscriber == null)
-                throw new BillingSystem.Exceptions.ModelObjectNotFoundException("Subscriber with id = " + subscriberID);
+                throw new BillingSystem.Exceptions.ModelObjectNotFoundException("Subscriber with number = " + subscriberID);
         }
 
         public string GetSubscriberFullName()
@@ -29,7 +29,7 @@ namespace BillingSystem.Controllers
         
         public List<string> GetPhoneNumbers(long id)
         {
-            List<PhoneNumber> searchResult = DatabaseUtils.SelectPhoneNumbers(_subscriber);
+            List<PhoneNumber> searchResult = _subscriber.GetPhoneNumbers();
             List<string> result = new List<string>();
             foreach (PhoneNumber n in searchResult)
                 result.Add(n.Number);
@@ -38,8 +38,8 @@ namespace BillingSystem.Controllers
 
         public List<string[]> Search(string phoneNumber, DateTime from, DateTime to)
         {
-            PhoneNumber pn = DatabaseUtils.SelectPhoneNumberByNumber(phoneNumber);
-            List<Call> calls = DatabaseUtils.SelectCallsByPhoneNumber(pn, from, to);
+            PhoneNumber pn = PhoneNumber.SelectPhoneNumberByNumber(phoneNumber);
+            List<Call> calls = pn.SelectCalls(from, to);
             List<string[]> searchResult = new List<string[]>();
 
             foreach (Call c in calls)
@@ -56,7 +56,7 @@ namespace BillingSystem.Controllers
                 else
                 {
                     item[2] = c.CalledNumber;
-                    Tariff tariff = DatabaseUtils.SelectTariffByDate(pn, c.StartTime);
+                    Tariff tariff = pn.SelectTariffByDate(c.StartTime);
                     item[3] = Constants.Outgoing;
                     item[5] = BillingOperations.CalculateCallCost(c, tariff).ToString() + " " + Constants.Currency;
                 }
@@ -65,7 +65,7 @@ namespace BillingSystem.Controllers
                 searchResult.Add(item);
             }
             
-            //searchResult = DatabaseUtils.SelectDetailedInfByCalls(pn);
+            //phones = DatabaseUtils.SelectDetailedInfByCalls(pn);
             return searchResult;
         }
     }

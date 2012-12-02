@@ -29,6 +29,12 @@
         private void InitializeComponent()
         {
             this.dgvInf = new System.Windows.Forms.DataGridView();
+            this.colDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colService = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDuration = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtpTo = new System.Windows.Forms.DateTimePicker();
             this.dtpFrom = new System.Windows.Forms.DateTimePicker();
             this.rbCalls = new System.Windows.Forms.RadioButton();
@@ -46,12 +52,6 @@
             this.lbSelectNo = new System.Windows.Forms.Label();
             this.lbSNP = new System.Windows.Forms.Label();
             this.lbFullName = new System.Windows.Forms.Label();
-            this.colDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colService = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDuration = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInf)).BeginInit();
             this.gbDetailType.SuspendLayout();
             this.gbPeriod.SuspendLayout();
@@ -77,12 +77,50 @@
             this.dgvInf.Size = new System.Drawing.Size(585, 403);
             this.dgvInf.TabIndex = 0;
             // 
+            // colDate
+            // 
+            this.colDate.HeaderText = "Дата";
+            this.colDate.Name = "colDate";
+            this.colDate.ReadOnly = true;
+            this.colDate.Width = 80;
+            // 
+            // colTime
+            // 
+            this.colTime.HeaderText = "Время";
+            this.colTime.Name = "colTime";
+            this.colTime.ReadOnly = true;
+            // 
+            // colNumber
+            // 
+            this.colNumber.HeaderText = "Номер";
+            this.colNumber.Name = "colNumber";
+            this.colNumber.ReadOnly = true;
+            // 
+            // colService
+            // 
+            this.colService.HeaderText = "Тип";
+            this.colService.Name = "colService";
+            this.colService.ReadOnly = true;
+            // 
+            // colDuration
+            // 
+            this.colDuration.HeaderText = "Длительность";
+            this.colDuration.Name = "colDuration";
+            this.colDuration.ReadOnly = true;
+            // 
+            // colCost
+            // 
+            this.colCost.HeaderText = "Стоимость";
+            this.colCost.Name = "colCost";
+            this.colCost.ReadOnly = true;
+            // 
             // dtpTo
             // 
             this.dtpTo.Location = new System.Drawing.Point(32, 54);
             this.dtpTo.Name = "dtpTo";
             this.dtpTo.Size = new System.Drawing.Size(154, 20);
             this.dtpTo.TabIndex = 1;
+            this.dtpTo.CloseUp += new System.EventHandler(this.dtpTo_CloseUp);
             // 
             // dtpFrom
             // 
@@ -90,6 +128,7 @@
             this.dtpFrom.Name = "dtpFrom";
             this.dtpFrom.Size = new System.Drawing.Size(154, 20);
             this.dtpFrom.TabIndex = 2;
+            this.dtpFrom.CloseUp += new System.EventHandler(this.dtpFrom_CloseUp);
             // 
             // rbCalls
             // 
@@ -241,43 +280,6 @@
             this.lbFullName.Name = "lbFullName";
             this.lbFullName.Size = new System.Drawing.Size(256, 13);
             this.lbFullName.TabIndex = 17;
-            // 
-            // colDate
-            // 
-            this.colDate.HeaderText = "Дата";
-            this.colDate.Name = "colDate";
-            this.colDate.ReadOnly = true;
-            this.colDate.Width = 80;
-            // 
-            // colTime
-            // 
-            this.colTime.HeaderText = "Время";
-            this.colTime.Name = "colTime";
-            this.colTime.ReadOnly = true;
-            // 
-            // colNumber
-            // 
-            this.colNumber.HeaderText = "Номер";
-            this.colNumber.Name = "colNumber";
-            this.colNumber.ReadOnly = true;
-            // 
-            // colService
-            // 
-            this.colService.HeaderText = "Тип";
-            this.colService.Name = "colService";
-            this.colService.ReadOnly = true;
-            // 
-            // colDuration
-            // 
-            this.colDuration.HeaderText = "Длительность";
-            this.colDuration.Name = "colDuration";
-            this.colDuration.ReadOnly = true;
-            // 
-            // colCost
-            // 
-            this.colCost.HeaderText = "Стоимость";
-            this.colCost.Name = "colCost";
-            this.colCost.ReadOnly = true;
             // 
             // FormDetailedInf
             // 

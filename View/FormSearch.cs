@@ -21,6 +21,7 @@ namespace BillingSystem
         {
             _controller = new SearchController();
             InitializeComponent();
+            Search();
         }
 
         private void Search()

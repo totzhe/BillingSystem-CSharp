@@ -9,9 +9,9 @@ namespace BillingSystem.Controllers
     public interface IDetailedInfController
     {
         /// <summary>
-        /// Метод. Возвращает список телефонных номеров, имеющихся у пользователя с заданным id
+        /// Метод. Возвращает список телефонных номеров, имеющихся у пользователя с заданным number
         /// </summary>
-        /// <param name="id">id абонента</param>
+        /// <param name="number">number абонента</param>
         /// <returns></returns>
         List<string> GetPhoneNumbers(long id);
 

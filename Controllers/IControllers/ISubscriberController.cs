@@ -7,7 +7,7 @@ namespace BillingSystem.Controllers
 {
     public interface ISubscriberController
     {
-        //ISubscriberController(int id); //ищет абонента в БД
+        //ISubscriberController(int number); //ищет абонента в БД
 
         string getName();
 

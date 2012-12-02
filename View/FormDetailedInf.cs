@@ -51,6 +51,16 @@ namespace BillingSystem.View
         {
 
         }
+
+        private void dtpFrom_CloseUp(object sender, EventArgs e)
+        {
+            Search();
+        }
+
+        private void dtpTo_CloseUp(object sender, EventArgs e)
+        {
+            Search();
+        }
         // TODO: Сдеать, чтобы при нажатии кнопки "Поиск" контроллер переключался на соответствующий выбронному радиобаттону и затем вызывал метод Search
 
         // TODO: На этой же форме заодно будут выводиться фамилия, имя, отчество, почта и баланс абонента (без редактирования)

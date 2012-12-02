@@ -65,6 +65,7 @@
     <Compile Include="Controllers\IControllers\IStatisticsController.cs" />
     <Compile Include="Controllers\IControllers\ISubscriberController.cs" />
     <Compile Include="Controllers\IControllers\ISupportController.cs" />
+    <Compile Include="Controllers\SubscriberController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\EditSubscriberController.cs" />
     <Compile Include="Exceptions\ModelObjectNotFound.cs" />
