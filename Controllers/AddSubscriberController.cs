@@ -21,18 +21,22 @@ namespace BillingSystem.Controllers
                     return;
                 }
             }
-        }
+        }*/
         
         public override void ConfirmChanges(string name, string patronymic, string surname, string email, string login)
         {
-            subscriber.Name = name.Trim();
-            subscriber.Patronymic = patronymic.Trim();
-            subscriber.Surname = surname.Trim();
-            subscriber.Email = email.Trim();
-            subscriber.Login = login.Trim();
+            subscriber.Name = name == null ? Constants.No : name.Trim();
+            subscriber.Patronymic = patronymic == null ? null : patronymic.Trim();
+            subscriber.Surname = surname == null ? Constants.No : surname.Trim();
+            subscriber.Email = email == null ? null : email.Trim();
+            subscriber.Login = login == null ? null : login.Trim();
             subscriber.Add();
+            foreach (PhoneNumber n in _phonesToUpdate)
+                n.Update();
             foreach (PhoneNumber n in _phonesToAdd)
                 n.Add();
-        }*/
+            foreach (PhoneNumber n in _phonesToDelete)
+                n.Delete();
+        }
     }
 }

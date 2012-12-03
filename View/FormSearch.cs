@@ -42,6 +42,7 @@ namespace BillingSystem
         private void btnAdd_Click(object sender, EventArgs e)
         {
             _controller.AddSubscriber();
+            Search();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)

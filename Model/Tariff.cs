@@ -74,7 +74,8 @@ namespace BillingSystem.Model
             {
                 connection.Open();
 
-                MySqlCommand cmd = new MySqlCommand("SELECT * FROM tariff WHERE id = " + tariffID.ToString(), connection);
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM tariff WHERE id = @tariffID", connection);
+                cmd.Parameters.AddWithValue("@tariffID", tariffID);
                 MySqlDataReader r = cmd.ExecuteReader();
                 if (r.Read())
                 {

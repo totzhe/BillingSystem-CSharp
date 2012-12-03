@@ -33,10 +33,15 @@ namespace BillingSystem.Model
 
         private long _tariffID;
 
+        private long _newTariffID = -1;
+
         public long TariffID
         {
-            get { return _tariffID; }
-            set { _tariffID = value; }
+            get
+            {
+                return _newTariffID > 0 ? _newTariffID : _tariffID;
+            }
+            set { _newTariffID = value; }
         }
 
         private static MySqlConnection _connection;
@@ -143,6 +148,15 @@ namespace BillingSystem.Model
             {
                 connection.Close();
             }
+
+            if (_tariffID > 0 && _tariffID != _newTariffID)
+            {
+                Service s = Service.SelectChangeTariffService();
+                Charge ch = new Charge(this, s, 0);
+                ch.WriteOff();
+            }
+            _tariffID = _newTariffID;
+            _newTariffID = -1;
         }
 
         /// <summary>
@@ -315,7 +329,7 @@ namespace BillingSystem.Model
 
 
         public void WriteOffMoney(Charge charge)
-        {            
+        {
         }
     }
 }
