@@ -63,5 +63,10 @@ namespace BillingSystem
             }
             
         }
+
+        private void dataGridViewSearchResults_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            _controller.ShowInfo(long.Parse(dataGridViewSearchResults.Rows[e.RowIndex].Cells[0].Value.ToString()));
+        }
     }
 }

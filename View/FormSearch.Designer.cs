@@ -34,6 +34,12 @@
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDetailedInf = new System.Windows.Forms.Button();
             this.dataGridViewSearchResults = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SubscriberSurname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SubscriberName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SubscriberPatronymic = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PhoneNumbers = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Debt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.textBoxPatronymic = new System.Windows.Forms.TextBox();
             this.textBoxSurname = new System.Windows.Forms.TextBox();
@@ -44,12 +50,6 @@
             this.labelSurname = new System.Windows.Forms.Label();
             this.labelPhoneNumber = new System.Windows.Forms.Label();
             this.labelDebt = new System.Windows.Forms.Label();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SubscriberSurname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SubscriberName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SubscriberPatronymic = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PhoneNumbers = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Debt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSearchResults)).BeginInit();
             this.SuspendLayout();
             // 
@@ -102,9 +102,9 @@
             this.dataGridViewSearchResults.AllowUserToDeleteRows = false;
             this.dataGridViewSearchResults.AllowUserToResizeColumns = false;
             this.dataGridViewSearchResults.AllowUserToResizeRows = false;
-            this.dataGridViewSearchResults.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewSearchResults.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewSearchResults.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewSearchResults.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridViewSearchResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -122,6 +122,46 @@
             this.dataGridViewSearchResults.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewSearchResults.Size = new System.Drawing.Size(652, 422);
             this.dataGridViewSearchResults.TabIndex = 4;
+            this.dataGridViewSearchResults.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSearchResults_CellDoubleClick);
+            // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Visible = false;
+            // 
+            // SubscriberSurname
+            // 
+            this.SubscriberSurname.HeaderText = "Фамилия";
+            this.SubscriberSurname.Name = "SubscriberSurname";
+            this.SubscriberSurname.ReadOnly = true;
+            // 
+            // SubscriberName
+            // 
+            this.SubscriberName.HeaderText = "Имя";
+            this.SubscriberName.Name = "SubscriberName";
+            this.SubscriberName.ReadOnly = true;
+            // 
+            // SubscriberPatronymic
+            // 
+            this.SubscriberPatronymic.HeaderText = "Отчество";
+            this.SubscriberPatronymic.Name = "SubscriberPatronymic";
+            this.SubscriberPatronymic.ReadOnly = true;
+            // 
+            // PhoneNumbers
+            // 
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.PhoneNumbers.DefaultCellStyle = dataGridViewCellStyle1;
+            this.PhoneNumbers.HeaderText = "Телефоны";
+            this.PhoneNumbers.Name = "PhoneNumbers";
+            this.PhoneNumbers.ReadOnly = true;
+            // 
+            // Debt
+            // 
+            this.Debt.HeaderText = "Задолженность";
+            this.Debt.Name = "Debt";
+            this.Debt.ReadOnly = true;
             // 
             // textBoxName
             // 
@@ -212,45 +252,6 @@
             this.labelDebt.Size = new System.Drawing.Size(114, 17);
             this.labelDebt.TabIndex = 14;
             this.labelDebt.Text = "Задолженность";
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Visible = false;
-            // 
-            // SubscriberSurname
-            // 
-            this.SubscriberSurname.HeaderText = "Фамилия";
-            this.SubscriberSurname.Name = "SubscriberSurname";
-            this.SubscriberSurname.ReadOnly = true;
-            // 
-            // SubscriberName
-            // 
-            this.SubscriberName.HeaderText = "Имя";
-            this.SubscriberName.Name = "SubscriberName";
-            this.SubscriberName.ReadOnly = true;
-            // 
-            // SubscriberPatronymic
-            // 
-            this.SubscriberPatronymic.HeaderText = "Отчество";
-            this.SubscriberPatronymic.Name = "SubscriberPatronymic";
-            this.SubscriberPatronymic.ReadOnly = true;
-            // 
-            // PhoneNumbers
-            // 
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.PhoneNumbers.DefaultCellStyle = dataGridViewCellStyle1;
-            this.PhoneNumbers.HeaderText = "Телефоны";
-            this.PhoneNumbers.Name = "PhoneNumbers";
-            this.PhoneNumbers.ReadOnly = true;
-            // 
-            // Debt
-            // 
-            this.Debt.HeaderText = "Задолженность";
-            this.Debt.Name = "Debt";
-            this.Debt.ReadOnly = true;
             // 
             // FormSearch
             // 
