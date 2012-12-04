@@ -312,7 +312,6 @@ namespace BillingSystem.Model
             List<TariffHistory> result = new List<TariffHistory>();
             try
             {
-                
                 connection.Open();
                 string query = @"SELECT th.id id, th.phone_id phone_id, th.tariff_id tariff_id,
                     t.name name, th.start_date start_date, 

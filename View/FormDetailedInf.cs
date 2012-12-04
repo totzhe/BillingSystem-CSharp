@@ -31,7 +31,7 @@ namespace BillingSystem.View
             _subscriberID = subscriberId;
             initController(_subscriberID);
             lblFullName.Text = _controller.GetSubscriberFullName();
-            List<string> _phoneNumbers = _controller.GetPhoneNumbers(_subscriberID);
+            List<string> _phoneNumbers = _controller.GetPhoneNumbers();
             foreach (string n in _phoneNumbers)
             {
                 lbNumbers.Items.Add(n);
@@ -92,7 +92,7 @@ namespace BillingSystem.View
                 dgvInf.Columns[0].Name = "Дата подключения";
                 dgvInf.Columns[1].Name = "Время подключения";
                 dgvInf.Columns[2].Name = "Тарифный план";
-                dgvInf.Columns[3].Name = "Время отключения";
+                dgvInf.Columns[3].Name = "Дата отключения";
                 TariffHistorySearch();
             }
             if (rbtnPayments.Checked == true)
@@ -174,6 +174,7 @@ namespace BillingSystem.View
                 rbtnTariffs.Checked = false;
                 rbtnServices.Checked = false;
             }
+            
             initDataGridView();
         }
 
@@ -186,18 +187,6 @@ namespace BillingSystem.View
                 rbtnTariffs.Checked = false;
                 rbtnPayments.Checked = false;
             }
-            initDataGridView();
-        }
-
-        private void dtpFrom_ValueChanged(object sender, EventArgs e)
-        {
-            initController(_subscriberID);
-            initDataGridView();
-        }
-
-        private void dtpTo_ValueChanged(object sender, EventArgs e)
-        {
-            initController(_subscriberID);
             initDataGridView();
         }
 

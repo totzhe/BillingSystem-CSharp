@@ -20,7 +20,7 @@ namespace BillingSystem.Controllers
                 return null;
         }
 
-        public virtual List<string> GetPhoneNumbers(long id)
+        public virtual List<string> GetPhoneNumbers()
         {
             List<PhoneNumber> phones = _subscriber.GetPhoneNumbers();
             List<string> searchResult = new List<string>();

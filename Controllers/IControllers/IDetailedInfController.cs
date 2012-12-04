@@ -9,11 +9,10 @@ namespace BillingSystem.Controllers
     public interface IDetailedInfController
     {
         /// <summary>
-        /// Метод. Возвращает список телефонных номеров, имеющихся у пользователя с заданным number
+        ///Возвращает список телефонных номеров, имеющихся у пользователя
         /// </summary>
-        /// <param name="number">number абонента</param>
-        /// <returns></returns>
-        List<string> GetPhoneNumbers(long id);
+        /// <returns>Номера телефонов</returns>
+        List<string> GetPhoneNumbers();
 
         /// <summary>
         /// Метод. Возвращает полное имя абонента
