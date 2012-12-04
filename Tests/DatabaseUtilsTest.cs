@@ -16,11 +16,5 @@ namespace BillingSystem.Tests
         {
             DatabaseUtils.Connect(Constants.ConnectionString);
         }
-
-        [Test]
-        public static void SelectTariffByIDTest()
-        {
-            StringAssert.Contains(DatabaseUtils.SelectTariffByID(5).Name.ToLower(), "Базовый".ToLower());
-        }
     }
 }

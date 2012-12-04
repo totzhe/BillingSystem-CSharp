@@ -30,5 +30,13 @@ namespace BillingSystem.Model
             get { return _cost; }
             set { /*_cost = value;*/ }
         }
+
+        public Price(long tariffID, string prefix, float cost)
+        {
+            _tariffID = tariffID;
+            _prefix = prefix;
+            _cost = cost;
+        }
+
     }
 }

@@ -26,13 +26,13 @@ namespace BillingSystem.Controllers
         /// <summary>
         /// Создает форму редактирования пользователя.
         /// </summary>
-        /// <param name="id">id пользователя</param>
+        /// <param name="number">number пользователя</param>
         void EditSubscriber(long id);
 
         /// <summary>
         /// Создает форму детализации пользователя.
         /// </summary>
-        /// <param name="id">id пользователя</param>
+        /// <param name="number">number пользователя</param>
         void ShowInfo(long id);
     }
 }

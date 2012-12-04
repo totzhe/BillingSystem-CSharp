@@ -51,7 +51,7 @@ namespace BillingSystem.Model
 
         //private string _passwordSalt;
 
-        public void ResetPassword()
+        public virtual void ResetPassword()
         {
             _passwordHash = Constants.DefaultPasswordHash;
         }

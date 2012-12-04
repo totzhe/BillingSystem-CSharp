@@ -6,18 +6,11 @@ using BillingSystem.Model;
 
 namespace BillingSystem.Controllers
 {
-    class DetailedInfController : IDetailedInfController
+    public abstract class DetailedInfController : IDetailedInfController
     {
-        private Subscriber _subscriber;
+        protected Subscriber _subscriber;
 
-        public DetailedInfController(long subscriberID)
-        {
-            _subscriber = DatabaseUtils.SelectSubscriberByID(subscriberID);
-            if (_subscriber == null)
-                throw new BillingSystem.Exceptions.ModelObjectNotFoundException("Subscriber with id = " + subscriberID);
-        }
-
-        public string GetSubscriberFullName()
+        public virtual string GetSubscriberFullName()
         {
             if (_subscriber != null)
             {
@@ -26,32 +19,23 @@ namespace BillingSystem.Controllers
             else
                 return null;
         }
-        
-        public List<string> GetPhoneNumbers(long id)
+
+        public virtual List<string> GetPhoneNumbers(long id)
         {
-            List<PhoneNumber> searchResult = DatabaseUtils.SelectPhoneNumbers(_subscriber);
-            List<string> result = new List<string>();
-            foreach (PhoneNumber n in searchResult)
-                result.Add(n.Number);
-            return result;
+            List<PhoneNumber> phones = _subscriber.GetPhoneNumbers();
+            List<string> searchResult = new List<string>();
+            foreach (PhoneNumber n in phones)
+                searchResult.Add(n.Number);
+            return searchResult;
         }
 
-        public List<string[]> Search(string phoneNumber, DateTime from, DateTime to)
-        {
-            PhoneNumber pn = DatabaseUtils.SelectPhoneNumberByNumber(phoneNumber);
-            List<Call> calls = DatabaseUtils.SelectCallsByPhoneNumber(pn, from, to);
-            List<string[]> searchResult = new List<string[]>();
+        public abstract List<string[]> Search(string phoneNumber, DateTime from, DateTime to);
 
-            foreach (Call c in calls)
-            {
-                string[] item = new string[6];
-                item[0] = c.StartTime.Date.ToString();
-                item[1] = c.StartTime.TimeOfDay.ToString();
-                searchResult.Add(item);
-            }
-            
-            //searchResult = DatabaseUtils.SelectDetailedInfByCalls(pn);
-            return searchResult;
+        public DetailedInfController(long subscriberID)
+        {
+            _subscriber = Subscriber.SelectSubscriberByID(subscriberID);
+            if (_subscriber == null)
+                throw new BillingSystem.Exceptions.ModelObjectNotFoundException("Subscriber with number = " + subscriberID);
         }
     }
 }

@@ -29,7 +29,7 @@ namespace BillingSystem.Controllers
             }
             else
                 d = 0;
-            List<Subscriber> searchResult = DatabaseUtils.SelectSubscribers(name.Trim(), patronymic.Trim(), surname.Trim(), phoneNumber.Trim(), d);
+            List<Subscriber> searchResult = Subscriber.SelectSubscribers(name.Trim(), patronymic.Trim(), surname.Trim(), phoneNumber.Trim(), d);
 
             //TODO: Через DatabaseUtils получить нужных абонентов, перегнать в строки, записать; если debt < 0, значит, выводятся абоненты с любым размером долга
             foreach (Subscriber s in searchResult)
@@ -40,7 +40,7 @@ namespace BillingSystem.Controllers
                 item[2] = s.Name;
                 item[3] = s.Patronymic;
                 item[4] = string.Empty;
-                foreach (PhoneNumber n in DatabaseUtils.SelectPhoneNumbers(s))
+                foreach (PhoneNumber n in s.GetPhoneNumbers())
                 {
                     if (item[4] == string.Empty)
                         item[4] = n.Number;
