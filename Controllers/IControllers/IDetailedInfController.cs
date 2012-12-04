@@ -21,14 +21,14 @@ namespace BillingSystem.Controllers
         /// <returns></returns>
         string GetSubscriberFullName();
 
-        /// <summary>
-        /// Метод. Осуществляет поиск абонентов по заданным параметрам
-        /// </summary>
-        /// <param name="phoneNumber">Телефонный номер</param>
-        /// <param name="parameter">Параметр детализации</param>
-        /// <param name="from">Дата начала периода</param>
-        /// <param name="to">Дата конца периода</param>
-        /// <returns></returns>
+        //// <summary>
+        //// Метод. Осуществляет поиск абонентов по заданным параметрам
+        //// </summary>
+        //// <param name="phoneNumber">Телефонный номер</param>
+        //// <param name="parameter">Параметр детализации</param>
+        //// <param name="from">Дата начала периода</param>
+        //// <param name="to">Дата конца периода</param>
+        //// <returns></returns>
         List<string[]> Search(string phoneNumber, DateTime from, DateTime to);
     }
 }

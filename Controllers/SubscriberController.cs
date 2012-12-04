@@ -162,6 +162,7 @@ namespace BillingSystem.Controllers
             subscriber.ResetPassword();
         }
 
+
         public abstract void ConfirmChanges(string name, string patronymic, string surname, string email, string login);
 
         public virtual void Cancel()

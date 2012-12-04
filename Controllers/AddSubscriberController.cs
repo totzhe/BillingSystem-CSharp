@@ -9,19 +9,6 @@ namespace BillingSystem.Controllers
     public class AddSubscriberController : SubscriberController
     {
         public AddSubscriberController() : base() { }
-
-
-        /*public override void DeletePhoneNumber(string phoneNumber)
-        {
-            foreach (PhoneNumber n in _phonesToAdd)
-            {
-                if (n.Number == phoneNumber.Trim())
-                {
-                    _phonesToAdd.Remove(n);
-                    return;
-                }
-            }
-        }*/
         
         public override void ConfirmChanges(string name, string patronymic, string surname, string email, string login)
         {
@@ -37,6 +24,7 @@ namespace BillingSystem.Controllers
                 n.Add();
             foreach (PhoneNumber n in _phonesToDelete)
                 n.Delete();
-        }
+        }       
+        
     }
 }

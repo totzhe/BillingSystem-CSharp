@@ -67,7 +67,6 @@ namespace BillingSystem.Model
         /// <summary>
         /// Получает телефонный номер из БД по его id.
         /// </summary>
-        /// <param name="phoneNumberID">id номера</param>
         /// <returns>Номер</returns>
         public static PhoneNumber SelectPhoneNumberByID(long phoneNumberID)
         {
@@ -148,7 +147,6 @@ namespace BillingSystem.Model
             {
                 connection.Close();
             }
-
             if (_tariffID > 0 && _tariffID != _newTariffID)
             {
                 Service s = Service.SelectChangeTariffService();
@@ -280,8 +278,8 @@ namespace BillingSystem.Model
         /// <summary>
         /// Возвращает все звонки для данного номера за указанный период
         /// </summary>
-        /// <param name="from">Начало периода</param>
-        /// <param name="to">Конец периода</param>
+        /// <param name="from">Дата начала периода поиска</param>
+        /// <param name="to">Дата конца периода поиска</param>
         /// <returns>Звонки</returns>
         public List<Call> SelectCalls(DateTime from, DateTime to)
         {
@@ -295,8 +293,6 @@ namespace BillingSystem.Model
                 MySqlCommand cmd = new MySqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@from", from);
                 cmd.Parameters.AddWithValue("@to", to);
-
-                //System.Windows.Forms.MessageBox.Show(cmd.CommandText);
                 MySqlDataReader r = cmd.ExecuteReader();
                 while (r.Read())
                 {
@@ -308,7 +304,6 @@ namespace BillingSystem.Model
             catch (MySqlException ex)
             {
                 System.Windows.Forms.MessageBox.Show(ex.ToString());
-
             }
             finally
             {
@@ -317,6 +312,57 @@ namespace BillingSystem.Model
 
             return result;
         }
+
+        /// <summary>
+        /// Возвращает историю смены тарифов
+        /// </summary>
+        /// <param name="from">Дата начала периода поиска</param>
+        /// <param name="to">Дата конца периода поиска</param>
+        /// <returns>История тарифов</returns>
+        public List<TariffHistory> SelectTariffHistory(DateTime from, DateTime to)
+        {
+            List<TariffHistory> result = new List<TariffHistory>();
+            try
+            {
+                connection.Open();
+                string query = @"SELECT th.id id, th.phone_id phone_id, th.tariff_id tariff_id,
+                    t.name name, th.start_date start_date, 
+                    IF(th.end_date IS NULL, NULL, DATE(th.end_date)) end_date 
+                    FROM tariff_history th, tariff t, service s
+                    WHERE th.phone_id = @phone_id
+                    AND t.id = th.tariff_id
+                    AND LOWER(s.name) LIKE LOWER(@param)
+                    AND (DATE(th.start_date) >= DATE(@from) AND DATE(th.start_date) <= DATE(@to))
+                    AND (DATE(th.end_date) <= DATE(@to) OR th.end_date IS NULL)
+                    AND (DATE(th.end_date) >= DATE(@from) OR th.end_date IS NULL)";
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@phone_id", ID);
+                cmd.Parameters.AddWithValue("@from", from);
+                cmd.Parameters.AddWithValue("@to", to);
+                cmd.Parameters.AddWithValue("@param", Constants.TariffChanging);
+                MySqlDataReader r = cmd.ExecuteReader();
+                while (r.Read())
+                {
+                    result.Add(new TariffHistory(r.GetInt64("id"),
+                        r.GetInt64("phone_id"),
+                        r.GetInt64("tariff_id"),
+                        r.GetString("name"),
+                        r.GetDateTime("start_date"),
+                        r.IsDBNull(r.GetOrdinal("end_date")) ? null : (DateTime?) r.GetDateTime("end_date")));
+                }
+                r.Close();
+            }
+            catch (MySqlException ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return result;
+        }
+
 
         /// <summary>
         /// Возвращает текущий тариф
@@ -330,6 +376,7 @@ namespace BillingSystem.Model
 
         public void WriteOffMoney(Charge charge)
         {
+
         }
     }
 }

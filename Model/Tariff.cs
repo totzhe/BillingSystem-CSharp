@@ -63,9 +63,9 @@ namespace BillingSystem.Model
 
 
         /// <summary>
-        /// Получает тариф из БД по его number.
+        /// Получает тариф из БД по его tariffID.
         /// </summary>
-        /// <param name="tariffID">number тарифа</param>
+        /// <param name="tariffID">tariffID тарифа</param>
         /// <returns>Тариф</returns>
         public static Tariff SelectTariffByID(long tariffID)
         {

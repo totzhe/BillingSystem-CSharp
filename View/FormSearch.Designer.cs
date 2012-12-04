@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
@@ -77,7 +77,7 @@
             // btnEdit
             // 
             this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEdit.Location = new System.Drawing.Point(670, 85);
+            this.btnEdit.Location = new System.Drawing.Point(119, 526);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(102, 23);
             this.btnEdit.TabIndex = 2;
@@ -88,7 +88,7 @@
             // btnDetailedInf
             // 
             this.btnDetailedInf.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDetailedInf.Location = new System.Drawing.Point(670, 114);
+            this.btnDetailedInf.Location = new System.Drawing.Point(236, 526);
             this.btnDetailedInf.Name = "btnDetailedInf";
             this.btnDetailedInf.Size = new System.Drawing.Size(102, 23);
             this.btnDetailedInf.TabIndex = 3;
@@ -151,8 +151,45 @@
             // 
             // PhoneNumbers
             // 
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.PhoneNumbers.DefaultCellStyle = dataGridViewCellStyle1;
+            this.PhoneNumbers.HeaderText = "Телефоны";
+            this.PhoneNumbers.Name = "PhoneNumbers";
+            this.PhoneNumbers.ReadOnly = true;
+            // 
+            // Debt
+            // 
+            this.Debt.HeaderText = "Задолженность";
+            this.Debt.Name = "Debt";
+            this.Debt.ReadOnly = true;
+            // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Visible = false;
+            // 
+            // SubscriberSurname
+            // 
+            this.SubscriberSurname.HeaderText = "Фамилия";
+            this.SubscriberSurname.Name = "SubscriberSurname";
+            this.SubscriberSurname.ReadOnly = true;
+            // 
+            // SubscriberName
+            // 
+            this.SubscriberName.HeaderText = "Имя";
+            this.SubscriberName.Name = "SubscriberName";
+            this.SubscriberName.ReadOnly = true;
+            // 
+            // SubscriberPatronymic
+            // 
+            this.SubscriberPatronymic.HeaderText = "Отчество";
+            this.SubscriberPatronymic.Name = "SubscriberPatronymic";
+            this.SubscriberPatronymic.ReadOnly = true;
+            // 
+            // PhoneNumbers
+            // 
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.PhoneNumbers.DefaultCellStyle = dataGridViewCellStyle2;
             this.PhoneNumbers.HeaderText = "Телефоны";
             this.PhoneNumbers.Name = "PhoneNumbers";
             this.PhoneNumbers.ReadOnly = true;

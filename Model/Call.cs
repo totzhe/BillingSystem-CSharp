@@ -19,7 +19,7 @@ namespace BillingSystem.Model
         public string CallingNumber
         {
             get { return _callingNumber; }
-            set { /*_callingNumber = value;*/ }
+            set { }
         }
 
         private string _calledNumber;
@@ -27,7 +27,7 @@ namespace BillingSystem.Model
         public string CalledNumber
         {
             get { return _calledNumber; }
-            set { /*_calledNumber = value;*/ }
+            set { }
         }
 
         private DateTime _startTime;
@@ -35,7 +35,7 @@ namespace BillingSystem.Model
         public DateTime StartTime
         {
             get { return _startTime.ToLocalTime(); }
-            set { /*_startDate = value;*/ }
+            set { }
         }
 
         private DateTime _endTime;
@@ -43,7 +43,7 @@ namespace BillingSystem.Model
         public DateTime EndTime
         {
             get { return _endTime.ToLocalTime(); }
-            set { /*_endDate = value;*/ }
+            set { }
         }
 
         public TimeSpan Duration
