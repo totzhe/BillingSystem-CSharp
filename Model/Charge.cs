@@ -44,7 +44,7 @@ namespace BillingSystem.Model
 
         public DateTime Date
         {
-            get { return _date.ToLocalTime(); }
+            get { return _date/*.ToLocalTime()*/; }
             set { /*_date = value;*/ }
         }
 
@@ -64,7 +64,7 @@ namespace BillingSystem.Model
 
         public Charge(PhoneNumber phone, Service service, double sum)
         {
-            _date = System.DateTime.UtcNow;
+            _date = System.DateTime./*Utc*/Now;
             _phoneID = phone.ID;
             _serviceID = service.ID;
             _sum = sum + service.Cost;

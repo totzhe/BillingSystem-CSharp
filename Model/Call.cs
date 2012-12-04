@@ -34,7 +34,7 @@ namespace BillingSystem.Model
 
         public DateTime StartTime
         {
-            get { return _startTime.ToLocalTime(); }
+            get { return _startTime/*.ToLocalTime()*/; }
             set { }
         }
 
@@ -42,7 +42,7 @@ namespace BillingSystem.Model
 
         public DateTime EndTime
         {
-            get { return _endTime.ToLocalTime(); }
+            get { return _endTime/*.ToLocalTime()*/; }
             set { }
         }
 

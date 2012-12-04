@@ -28,7 +28,7 @@ namespace BillingSystem.Model
         public string Number
         {
             get { return _number; }
-            set { }
+            set { /*_number = value;*/ }
         }
 
         private long _tariffID;
@@ -147,14 +147,43 @@ namespace BillingSystem.Model
             {
                 connection.Close();
             }
-            if (_tariffID > 0 && _tariffID != _newTariffID)
+            if (_tariffID != _newTariffID)
             {
-                Service s = Service.SelectChangeTariffService();
-                Charge ch = new Charge(this, s, 0);
-                ch.WriteOff();
+                updateTariffHistory();
+                if (_tariffID > 0)
+                {
+                    Service s = Service.SelectChangeTariffService();
+                    Charge ch = new Charge(this, s, 0);
+                    ch.WriteOff();
+                }
             }
             _tariffID = _newTariffID;
             _newTariffID = -1;
+        }
+
+        private void updateTariffHistory()
+        {
+            try
+            {
+                connection.Open();
+                DateTime date = DateTime./*Utc*/Now;
+                string queryString = @"UPDATE tariff_history SET end_date = @end WHERE phone_id = @phone_id AND tariff_id = @tariff_id AND end_date IS NULL;
+                                     INSERT INTO tariff_history (phone_id, tariff_id, start_date) VALUES (@phone_id, @new_tariff_id, @end)";
+                MySqlCommand cmd = new MySqlCommand(queryString, connection);
+                cmd.Parameters.AddWithValue("@end", DateTime./*Utc*/Now);
+                cmd.Parameters.AddWithValue("@phone_id", ID);
+                cmd.Parameters.AddWithValue("@tariff_id", _tariffID);
+                cmd.Parameters.AddWithValue("@new_tariff_id", _newTariffID);
+                cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                connection.Close();
+            }
         }
 
         /// <summary>
@@ -165,8 +194,13 @@ namespace BillingSystem.Model
             try
             {
                 connection.Open();
-                string queryString = "INSERT INTO phone_number (number,  subscriber_id, tariff_id) VALUES  ('" + Number + "', " + SubscriberID.ToString() + ", " + TariffID.ToString() + ")";
+                string queryString = @"INSERT INTO phone_number (number,  subscriber_id, tariff_id) VALUES  (@number, @subscriber_id, @new_tariff_id);
+                                     INSERT INTO tariff_history (phone_id, tariff_id, start_date) VALUES ((SELECT MAX(id) FROM phone_number WHERE number LIKE(@number)), @new_tariff_id, @start)";
                 MySqlCommand cmd = new MySqlCommand(queryString, connection);
+                cmd.Parameters.AddWithValue("@subscriber_id", _subscriberID);
+                cmd.Parameters.AddWithValue("@number", _number);
+                cmd.Parameters.AddWithValue("@new_tariff_id", _newTariffID);
+                cmd.Parameters.AddWithValue("@start", DateTime./*Utc*/Now);
                 cmd.ExecuteNonQuery();
             }
             catch (MySqlException ex)
@@ -253,7 +287,7 @@ namespace BillingSystem.Model
 
                 MySqlCommand cmd = new MySqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@phone_id", ID);
-                cmd.Parameters.AddWithValue("@date", date);
+                cmd.Parameters.AddWithValue("@date", date/*.ToUniversalTime()*/);
 
                 MySqlDataReader r = cmd.ExecuteReader();
                 while (r.Read())
@@ -291,8 +325,8 @@ namespace BillingSystem.Model
                 string query = "SELECT * FROM calls WHERE (calling_number = '" + Number + "' OR called_number = '" + Number + "')"
                     + " AND DATE(start_time) >= DATE(@from) AND DATE(start_time) <= DATE(@to) AND end_time IS NOT NULL ORDER BY start_time, end_time, called_number, calling_number";
                 MySqlCommand cmd = new MySqlCommand(query, connection);
-                cmd.Parameters.AddWithValue("@from", from);
-                cmd.Parameters.AddWithValue("@to", to);
+                cmd.Parameters.AddWithValue("@from", from/*.ToUniversalTime()*/);
+                cmd.Parameters.AddWithValue("@to", to/*.ToUniversalTime()*/);
                 MySqlDataReader r = cmd.ExecuteReader();
                 while (r.Read())
                 {
@@ -337,8 +371,8 @@ namespace BillingSystem.Model
                     AND (DATE(th.end_date) >= DATE(@from) OR th.end_date IS NULL)";
                 MySqlCommand cmd = new MySqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@phone_id", ID);
-                cmd.Parameters.AddWithValue("@from", from);
-                cmd.Parameters.AddWithValue("@to", to);
+                cmd.Parameters.AddWithValue("@from", from/*.ToUniversalTime()*/);
+                cmd.Parameters.AddWithValue("@to", to/*.ToUniversalTime()*/);
                 cmd.Parameters.AddWithValue("@param", Constants.TariffChanging);
                 MySqlDataReader r = cmd.ExecuteReader();
                 while (r.Read())
@@ -371,12 +405,6 @@ namespace BillingSystem.Model
         public Tariff GetTariff()
         {
             return Tariff.SelectTariffByID(TariffID);
-        }
-
-
-        public void WriteOffMoney(Charge charge)
-        {
-
         }
     }
 }

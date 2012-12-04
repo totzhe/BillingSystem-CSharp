@@ -9,7 +9,7 @@ namespace BillingSystem.Controllers
     public class EditSubscriberController : SubscriberController
     {
         public EditSubscriberController(long subscriberID) : base(subscriberID) { }
-
+        
         public override void ConfirmChanges(string name, string patronymic, string surname, string email, string login)
         {
             subscriber.Name = name == null ? Constants.NoInfo : name.Trim();

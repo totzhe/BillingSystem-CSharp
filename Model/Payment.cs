@@ -35,13 +35,13 @@ namespace BillingSystem.Model
 
         public DateTime Date
         {
-            get { return _date.ToLocalTime(); }
+            get { return _date/*.ToLocalTime()*/; }
             set { /*_date = value;*/ }
         }
 
         public Payment(Subscriber subscriber, double sum)
         {
-            _date = System.DateTime.UtcNow;
+            _date = System.DateTime./*Utc*/Now;
             _subscriberID = subscriber.ID;
             _sum = sum;
         }

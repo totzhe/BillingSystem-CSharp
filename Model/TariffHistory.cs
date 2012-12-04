@@ -13,7 +13,7 @@ namespace BillingSystem.Model
         public long ID
         {
             get { return _id; }
-            set { _id = value; }
+            set { /*_id = value;*/ }
         }
 
         private long _phoneID;
@@ -21,7 +21,7 @@ namespace BillingSystem.Model
         public long PhoneID
         {
             get { return _phoneID; }
-            set { _phoneID = value; }
+            set { /*_phoneID = value;*/ }
         }
 
         private long _tariffID;
@@ -29,23 +29,23 @@ namespace BillingSystem.Model
         public long TariffID
         {
             get { return _tariffID; }
-            set { _tariffID = value;}
+            set { /*_tariffID = value;*/}
         }
 
         private DateTime _startDate;
 
         public DateTime StartDate
         {
-            get { return _startDate.ToLocalTime(); }
-            set { _startDate = value; }
+            get { return _startDate/*.ToLocalTime()*/; }
+            set { /*_startDate = value;*/ }
         }
 
         private DateTime? _endDate;
 
         public DateTime? EndDate
         {
-            get { return _endDate == null ? null : (DateTime?)_endDate.Value.ToLocalTime(); }
-            set { _endDate = value;}
+            get { return _endDate == null ? null : (DateTime?)_endDate.Value/*.ToLocalTime()*/; }
+            set { /*_endDate = value;*/}
         }
 
         private string _tariffName;
@@ -75,6 +75,24 @@ namespace BillingSystem.Model
             _phoneID = phoneID;
             _tariffID = tariffID;
             _tariffName = tariffName;
+            /*_startDate = startDate.ToUniversalTime();
+            if (endDate != null)
+                _endDate = ((DateTime)endDate).ToUniversalTime();
+            else
+                endDate = null;*/
+            _startDate = startDate;
+            _endDate = endDate;
+        }
+
+        public TariffHistory(long phoneID, long tariffID, DateTime startDate, DateTime? endDate)
+        {
+            _phoneID = phoneID;
+            _tariffID = tariffID;
+            /*_startDate = startDate.ToUniversalTime();
+            if (endDate != null)
+                _endDate = ((DateTime)endDate).ToUniversalTime();
+            else
+                endDate = null;*/
             _startDate = startDate;
             _endDate = endDate;
         }
