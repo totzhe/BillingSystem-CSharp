@@ -65,7 +65,7 @@ namespace BillingSystem.Model
                 string query = "SELECT * FROM service WHERE LOWER(name) LIKE LOWER(@name) ORDER BY LENGTH(name) ASC LIMIT 1";
 
                 MySqlCommand cmd = new MySqlCommand(query, connection);
-                cmd.Parameters.AddWithValue("@name", Constants.ChangeTariffService);
+                cmd.Parameters.AddWithValue("@name", Constants.TariffChanging);
 
                 MySqlDataReader r = cmd.ExecuteReader();
                 if (r.Read())

@@ -80,15 +80,24 @@ namespace BillingSystem.Model
             {
                 connection.Open();
 
-                string query = "SELECT * FROM subscriber WHERE LOWER(name) LIKE LOWER ('%" + name + "%') AND LOWER(patronymic) LIKE LOWER ('%" + patronymic + "%') AND LOWER(surname) LIKE LOWER ('%" + surname + "%')";
+                string query = "SELECT * FROM subscriber WHERE LOWER(name) LIKE LOWER (CONCAT('%',@name,'%')) AND LOWER(patronymic) LIKE LOWER (CONCAT('%',@patr,'%')) AND LOWER(surname) LIKE LOWER (CONCAT('%',@surname,'%'))";
                 if (phoneNumber != string.Empty)
-                    query += "AND number in (SELECT subscriber_id FROM phone_number WHERE number LIKE '%" + phoneNumber + "%')";
+                    query += "AND number in (SELECT subscriber_id FROM phone_number WHERE number LIKE CONCAT('%',@phone,'%')";
                 if (debt > 0)
                 {
-                    query += " AND balance < -" + debt.ToString();
+                    query += " AND balance < @balance";
                 }
                 query += " ORDER BY surname, name, patronymic, balance";
                 MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@name", name);
+                cmd.Parameters.AddWithValue("@surname", surname);
+                cmd.Parameters.AddWithValue("@patr", patronymic);
+                if (phoneNumber != string.Empty) 
+                    cmd.Parameters.AddWithValue("@phone", phoneNumber);
+                if (debt > 0)
+                {
+                    cmd.Parameters.AddWithValue("@balance", -debt);
+                }
                 MySqlDataReader r = cmd.ExecuteReader();
                 while (r.Read())
                 {
@@ -157,7 +166,8 @@ namespace BillingSystem.Model
             {
                 connection.Open();
 
-                MySqlCommand cmd = new MySqlCommand("SELECT * FROM subscriber WHERE id = " + subscriberID.ToString(), connection);
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM subscriber WHERE id = @id", connection);
+                cmd.Parameters.AddWithValue("@id", subscriberID);
                 MySqlDataReader r = cmd.ExecuteReader();
                 if (r.Read())
                 {
@@ -189,7 +199,8 @@ namespace BillingSystem.Model
             {
                 connection.Open();
 
-                MySqlCommand cmd = new MySqlCommand("SELECT * FROM phone_number WHERE subscriber_id = " + ID.ToString() + " ORDER BY number", connection);
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM phone_number WHERE subscriber_id = @id ORDER BY number", connection);
+                cmd.Parameters.AddWithValue("@id", ID);
                 MySqlDataReader r = cmd.ExecuteReader();
                 while (r.Read())
                 {
@@ -217,8 +228,14 @@ namespace BillingSystem.Model
             try
             {
                 connection.Open();
-                string queryString = "INSERT INTO subscriber (id, name, patronymic, surname, email, login) VALUES (" + ID.ToString() + ", '" + Name + "', '" + Patronymic + "', '" + Surname + "', '" + Email + "', '" + Login + "')";
+                string queryString = "INSERT INTO subscriber (id, name, patronymic, surname, email, login) VALUES (@id, @name, @patr, @surname, @email, @login)";
                 MySqlCommand cmd = new MySqlCommand(queryString, connection);
+                cmd.Parameters.AddWithValue("@id", ID);
+                cmd.Parameters.AddWithValue("@name", Name);
+                cmd.Parameters.AddWithValue("@surname", Surname);
+                cmd.Parameters.AddWithValue("@patr", Patronymic);
+                cmd.Parameters.AddWithValue("@email", Email);
+                cmd.Parameters.AddWithValue("@login", Login);
                 cmd.ExecuteNonQuery();
             }
             catch (MySqlException ex)
@@ -239,8 +256,14 @@ namespace BillingSystem.Model
             try
             {
                 connection.Open();
-                string queryString = "UPDATE subscriber SET name = '" + Name + "', patronymic = '" + Patronymic + "', surname = '" + Surname + "', email = '" + Email + "', login = '" + Login + "' WHERE id = " + ID.ToString();
+                string queryString = "UPDATE subscriber SET name = @name, patronymic = @patr, surname = @surname, email = @email, login = @login WHERE id = @id";
                 MySqlCommand cmd = new MySqlCommand(queryString, connection);
+                cmd.Parameters.AddWithValue("@id", ID);
+                cmd.Parameters.AddWithValue("@name", Name);
+                cmd.Parameters.AddWithValue("@surname", Surname);
+                cmd.Parameters.AddWithValue("@patr", Patronymic);
+                cmd.Parameters.AddWithValue("@email", Email);
+                cmd.Parameters.AddWithValue("@login", Login);
                 cmd.ExecuteNonQuery();
             }
             catch (MySqlException ex)
@@ -261,8 +284,9 @@ namespace BillingSystem.Model
             try
             {
                 connection.Open();
-                string queryString = "DELETE FROM subscriber WHERE id = " + ID.ToString();
+                string queryString = "DELETE FROM subscriber WHERE id = @id";
                 MySqlCommand cmd = new MySqlCommand(queryString, connection);
+                cmd.Parameters.AddWithValue("@id", ID);
                 cmd.ExecuteNonQuery();
             }
             catch (MySqlException ex)
@@ -283,8 +307,10 @@ namespace BillingSystem.Model
             try
             {
                 connection.Open();
-                string queryString = "UPDATE subscriber SET password_hash = '" + Constants.DefaultPasswordHash + "' WHERE id = " + ID.ToString();
+                string queryString = "UPDATE subscriber SET password_hash = @hash WHERE id = @id";
                 MySqlCommand cmd = new MySqlCommand(queryString, connection);
+                cmd.Parameters.AddWithValue("@id", ID);
+                cmd.Parameters.AddWithValue("@hash", Constants.DefaultPasswordHash);
                 cmd.ExecuteNonQuery();
             }
             catch (MySqlException ex)

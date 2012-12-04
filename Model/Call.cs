@@ -62,8 +62,8 @@ namespace BillingSystem.Model
             _id = id;
             _callingNumber = callingNumber;
             _calledNumber = calledNumber;
-            _startTime = startTime;
-            _endTime = endTime;
+            _startTime = startTime.ToUniversalTime();
+            _endTime = endTime.ToUniversalTime();
         }
 
 

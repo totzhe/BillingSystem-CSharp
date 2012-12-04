@@ -12,9 +12,9 @@ namespace BillingSystem.Controllers
         
         public override void ConfirmChanges(string name, string patronymic, string surname, string email, string login)
         {
-            subscriber.Name = name == null ? Constants.No : name.Trim();
+            subscriber.Name = name == null ? Constants.NoInfo : name.Trim();
             subscriber.Patronymic = patronymic == null ? null : patronymic.Trim();
-            subscriber.Surname = surname == null ? Constants.No : surname.Trim();
+            subscriber.Surname = surname == null ? Constants.NoInfo : surname.Trim();
             subscriber.Email = email == null ? null : email.Trim();
             subscriber.Login = login == null ? null : login.Trim();
             subscriber.Add();

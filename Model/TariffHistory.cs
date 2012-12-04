@@ -79,5 +79,13 @@ namespace BillingSystem.Model
             _endDate = endDate;
         }
 
+        public TariffHistory(long phoneID, long tariffID, DateTime startDate, DateTime? endDate)
+        {
+            _phoneID = phoneID;
+            _tariffID = tariffID;
+            _startDate = startDate;
+            _endDate = endDate;
+        }
+
     }
 }

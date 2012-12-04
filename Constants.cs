@@ -18,7 +18,6 @@ namespace BillingSystem
         public const string Incoming = "Входящий";
         public const string Outgoing = "Исходящий";
 
-        public const string ChangeTariffService = "Смена тарифа";
         public const string TariffChanging = "Смена тарифа";
         public const string NoInfo = "Неизвестно";
     }
