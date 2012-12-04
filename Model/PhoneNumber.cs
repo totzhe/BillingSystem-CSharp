@@ -28,7 +28,7 @@ namespace BillingSystem.Model
         public string Number
         {
             get { return _number; }
-            set { /*_number = value;*/ }
+            set { }
         }
 
         private long _tariffID;

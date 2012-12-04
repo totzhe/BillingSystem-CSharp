@@ -120,7 +120,6 @@
             this.dtpTo.Size = new System.Drawing.Size(154, 20);
             this.dtpTo.TabIndex = 1;
             this.dtpTo.CloseUp += new System.EventHandler(this.dtpTo_CloseUp);
-            this.dtpTo.ValueChanged += new System.EventHandler(this.dtpTo_ValueChanged);
             // 
             // dtpFrom
             // 
@@ -129,7 +128,6 @@
             this.dtpFrom.Size = new System.Drawing.Size(154, 20);
             this.dtpFrom.TabIndex = 2;
             this.dtpFrom.CloseUp += new System.EventHandler(this.dtpFrom_CloseUp);
-            this.dtpFrom.ValueChanged += new System.EventHandler(this.dtpFrom_ValueChanged);
             // 
             // rbtnCalls
             // 
