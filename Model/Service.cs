@@ -70,7 +70,7 @@ namespace BillingSystem.Model
                 MySqlDataReader r = cmd.ExecuteReader();
                 if (r.Read())
                 {
-                    result = new Service(r.GetInt64("id"), r.GetString("name"), r.GetFloat("cost"));
+                    result = new Service(r.GetInt64("id"), r.GetString("name"), r.GetDouble("cost"));
                 }
                 r.Close();
             }
@@ -85,6 +85,38 @@ namespace BillingSystem.Model
             }
 
             return result;
+        }
+
+        /// <summary>
+        /// Получает из БД услугу по ее ID
+        /// </summary>
+        /// <param name="serviceID">ID услуги</param>
+        /// <returns>Услуга</returns>
+        public static Service SearchServiceByID(long serviceID)
+        {
+            Service searchResult = null;
+            try
+            {
+                connection.Open();
+                string query = @"SELECT * FROM service WHERE id = @id";
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@id", serviceID);
+                MySqlDataReader r = cmd.ExecuteReader();
+                if (r.Read())
+                {
+                    searchResult = new Service(r.GetInt64("id"), r.GetString("name"), r.GetDouble("cost"));
+                }
+                r.Close();
+            }
+            catch (MySqlException ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return searchResult;
         }
     }
 }

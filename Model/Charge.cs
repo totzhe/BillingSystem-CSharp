@@ -71,6 +71,42 @@ namespace BillingSystem.Model
             _phoneNumber = phone;
         }
 
+        public Charge(long id, long phoneID, long serviceID, double sum, DateTime date)
+        {
+            _id = id;
+            _phoneID = phoneID;
+            _serviceID = serviceID;
+            _sum = sum;
+            _date = date;
+        }
+
+        public Service SearchServiceByChargeID(long chargeID)
+        {
+            Service result = null;
+            try
+            {
+                connection.Open();
+                string query = @"SELECT s.id id, s.name, s.cost FROM service s, charge c
+                    WHERE c.id = @id AND s.id = c.service_id";
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@id", chargeID);
+                MySqlDataReader r = cmd.ExecuteReader();
+                while(r.Read())
+                {
+                    result = Service.SearchServiceByID(r.GetInt64("id"));
+                }
+                r.Close();
+            }
+            catch (MySqlException ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return result;
+        }
 
         /// <summary>
         /// Списывает деньги за услугу со счета абонента.

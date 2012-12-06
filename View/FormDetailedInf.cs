@@ -49,6 +49,14 @@ namespace BillingSystem.View
             {
                 _controller = new TariffsDetailedInfController(subscriberId);
             }
+            if (rbtnPayments.Checked == true)
+            {
+                _controller = new PaymentsDetailedInfController(subscriberId);
+            }
+            if (rbtnServices.Checked == true)
+            {
+                _controller = new ServicesDetailedInfController(subscriberId);
+            }
         }
 
         private void CallsSearch()
@@ -61,6 +69,24 @@ namespace BillingSystem.View
         }
 
         private void TariffHistorySearch()
+        {
+            List<string[]> items = _controller.Search(lbNumbers.SelectedItem.ToString(), dtpFrom.Value, dtpTo.Value);
+            foreach (string[] item in items)
+            {
+                dgvInf.Rows.Add(item);
+            }
+        }
+
+        private void PaymentsSearch()
+        {
+            List<string[]> items = _controller.Search(lbNumbers.SelectedItem.ToString(), dtpFrom.Value, dtpTo.Value);
+            foreach (string[] item in items)
+            {
+                dgvInf.Rows.Add(item);
+            }
+        }
+
+        private void ServicesSearch()
         {
             List<string[]> items = _controller.Search(lbNumbers.SelectedItem.ToString(), dtpFrom.Value, dtpTo.Value);
             foreach (string[] item in items)
@@ -103,6 +129,7 @@ namespace BillingSystem.View
                 dgvInf.Columns[0].Name = "Дата";
                 dgvInf.Columns[1].Name = "Время";
                 dgvInf.Columns[2].Name = "Сумма";
+                PaymentsSearch();
             }
             if (rbtnServices.Checked == true)
             {
@@ -111,8 +138,9 @@ namespace BillingSystem.View
                 dgvInf.ColumnCount = 4;
                 dgvInf.Columns[0].Name = "Дата";
                 dgvInf.Columns[1].Name = "Время";
-                dgvInf.Columns[2].Name = "Операция";
+                dgvInf.Columns[2].Name = "Услуга";
                 dgvInf.Columns[3].Name = "Стоимость";
+                ServicesSearch();
             }
         }
 
@@ -174,7 +202,7 @@ namespace BillingSystem.View
                 rbtnTariffs.Checked = false;
                 rbtnServices.Checked = false;
             }
-            
+            initController(_subscriberID);
             initDataGridView();
         }
 
@@ -187,6 +215,7 @@ namespace BillingSystem.View
                 rbtnTariffs.Checked = false;
                 rbtnPayments.Checked = false;
             }
+            initController(_subscriberID);
             initDataGridView();
         }
 

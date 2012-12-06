@@ -397,7 +397,140 @@ namespace BillingSystem.Model
             return result;
         }
 
+        /// <summary>
+        /// Возвращает идентификатор абонента по имеющемуся у него телефонному номеру
+        /// </summary>
+        /// <param name="phoneNumber">Номер телефона</param>
+        /// <returns>Идентификатор абонента</returns>
+        public Int64 GetSubscriberIDByPhoneNumber(string phoneNumber)
+        {
+            Int64 result = new Int64();
+            try
+            {
+                connection.Open();
+                string query = @"SELECT subscriber_id FROM phone_number WHERE number = @number";
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@number", phoneNumber);
+                MySqlDataReader r = cmd.ExecuteReader();
+                while (r.Read())
+                {
+                    result = r.GetInt64("subscriber_id");
+                }
+                r.Close();
+            }
+            catch (MySqlException ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return result;
+        }
 
+        /// <summary>
+        /// Возвращает платежи указанного абонента за указанный период
+        /// </summary>
+        /// <param name="subscriberID">Идентификатор абонента</param>
+        /// <param name="from">Начальная дата указанног периода</param>
+        /// <param name="to">Конечная дата указанного периода</param>
+        /// <returns>Спсисок платежей</returns>
+        public List<Payment> SearchPaymentsForSubscriber(long subscriberID, DateTime from, DateTime to)
+        {
+            List<Payment> searchResult = new List<Payment>();
+            try
+            {
+                connection.Open();
+                string query = @"SELECT id, subscriber_id, sum, date FROM payment WHERE subscriber_id = @subscriber_id
+                    AND (DATE(date) <= DATE(@to) AND DATE(date) >= DATE(@from))";
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@subscriber_id", subscriberID);
+                MySqlDataReader r = cmd.ExecuteReader();
+                while (r.Read())
+                {
+                    searchResult.Add(new Payment(r.GetInt64("id"), r.GetInt64("subscriber_id"),
+                        r.GetDouble("sum"), r.GetDateTime("date")));
+                }
+                r.Close();
+            }
+            catch (MySqlException ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return searchResult;
+        }
+
+        /// <summary>
+        /// Возвращает список использованных услуг у абонента за указанный период
+        /// </summary>
+        /// <param name="phoneNumber">Номер телефона абонента</param>
+        /// <param name="from">Начальная дата указанного периода</param>
+        /// <param name="to">Конечная дата указанного периода</param>
+        /// <returns></returns>
+        public List<Charge> SearchCharges(PhoneNumber phoneNumber, DateTime from, DateTime to)
+        {
+            List<Charge> searchResult = new List<Charge>();
+            try
+            {
+                connection.Open();
+                string query = @"SELECT id, phone_id, service_id, sum, date FROM charge
+                    WHERE phone_id = @phone_id AND (DATE(date) >= DATE(@from) AND DATE(date) <= DATE(@to))";
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@phone_id", phoneNumber.ID);
+                cmd.Parameters.AddWithValue("@from", from);
+                cmd.Parameters.AddWithValue("@to", to);
+                MySqlDataReader r = cmd.ExecuteReader();
+                while (r.Read())
+                {
+                    searchResult.Add(new Charge(r.GetInt64("id"), r.GetInt64("phone_id"), r.GetInt64("service_id"),
+                        r.GetDouble("sum"), r.GetDateTime("date")));
+                }
+                r.Close();
+            }
+            catch (MySqlException ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return searchResult;
+        }
+
+
+        public static Int64 SelectPhoneNumberIDByNumber(string phoneNumber)
+        {
+            Int64 result = new Int64();
+            try
+            {
+                connection.Open();
+                string query = @"SELECT id from phone_number WHERE id = @id";
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@id", phoneNumber);
+                MySqlDataReader r = cmd.ExecuteReader();
+                if (r.Read())
+                {
+                    result = r.GetInt64("id");
+                }
+                r.Close();
+            }
+            catch (MySqlException ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return result;
+        }
+        
         /// <summary>
         /// Возвращает текущий тариф
         /// </summary>

@@ -45,5 +45,13 @@ namespace BillingSystem.Model
             _subscriberID = subscriber.ID;
             _sum = sum;
         }
+
+        public Payment(long id, long subscriberID, double sum, DateTime paymentDate)
+        {
+            _id = id;
+            _subscriberID = subscriberID;
+            _sum = sum;
+            _date = paymentDate;
+        }
     }
 }
