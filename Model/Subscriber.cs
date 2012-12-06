@@ -22,7 +22,7 @@ namespace BillingSystem.Model
         public double Balance
         {
             get { return _balance; }
-            set { _balance = value; }
+            set { /*_balance = value;*/ }
         }
 
         private static MySqlConnection _connection;
@@ -256,7 +256,7 @@ namespace BillingSystem.Model
             try
             {
                 connection.Open();
-                string queryString = "UPDATE subscriber SET name = @name, patronymic = @patr, surname = @surname, email = @email, login = @login WHERE id = @id";
+                string queryString = "UPDATE subscriber SET name = @name, patronymic = @patr, surname = @surname, email = @email, login = @login, balance = @balance WHERE id = @id";
                 MySqlCommand cmd = new MySqlCommand(queryString, connection);
                 cmd.Parameters.AddWithValue("@id", ID);
                 cmd.Parameters.AddWithValue("@name", Name);
@@ -264,6 +264,7 @@ namespace BillingSystem.Model
                 cmd.Parameters.AddWithValue("@patr", Patronymic);
                 cmd.Parameters.AddWithValue("@email", Email);
                 cmd.Parameters.AddWithValue("@login", Login);
+                cmd.Parameters.AddWithValue("@balance", Balance);
                 cmd.ExecuteNonQuery();
             }
             catch (MySqlException ex)
@@ -324,9 +325,8 @@ namespace BillingSystem.Model
         }
 
         /// <summary>
-        /// Возвращает платежи указанного абонента за указанный период
+        /// Возвращает платежи абонента за указанный период
         /// </summary>
-        /// <param name="subscriberID">Идентификатор абонента</param>
         /// <param name="from">Начальная дата указанног периода</param>
         /// <param name="to">Конечная дата указанного периода</param>
         /// <returns>Список платежей</returns>
@@ -335,9 +335,10 @@ namespace BillingSystem.Model
             List<Payment> searchResult = new List<Payment>();
             try
             {
+                //from.
                 connection.Open();
                 string query = @"SELECT id, subscriber_id, sum, date FROM payment WHERE subscriber_id = @subscriber_id
-                    AND (DATE(date) <= DATE(@to) AND DATE(date) >= DATE(@from))";
+                    AND date <= @to AND date >= @from ORDER BY date";
                 MySqlCommand cmd = new MySqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@subscriber_id", _id);
                 cmd.Parameters.AddWithValue("@from", from);
@@ -361,8 +362,55 @@ namespace BillingSystem.Model
             return searchResult;
         }
 
+        public double GetBalanceByDate(DateTime date)
+        {
+            double balance = 0;
+            try
+            {
+                //from.
+                connection.Open();
+                string query = @"SELECT balance - (SELECT IFNULL(SUM(sum), 0) FROM payment WHERE date > @date AND subscriber_id = @id) + (SELECT IFNULL(SUM(sum), 0) FROM charge WHERE date > @date AND phone_id IN (SELECT id FROM phone_number WHERE subscriber_id = @id)) as b FROM subscriber WHERE id = @id";
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@id", _id);
+                cmd.Parameters.AddWithValue("@date", date);
+                MySqlDataReader r = cmd.ExecuteReader();
+                if (r.Read())
+                {
+                    balance = r.GetDouble("b");
+                }
+                r.Close();
+            }
+            catch (MySqlException ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return balance;
+        }
+
         public void DepositMoney(double sum)
         {
+            try
+            {
+                connection.Open();
+                string queryString = "UPDATE subscriber SET balance = balance + @sum WHERE id = @id; INSERT INTO payment (subscriber_id, sum, date) VALUES (@id, @sum, @date)";
+                MySqlCommand cmd = new MySqlCommand(queryString, connection);
+                cmd.Parameters.AddWithValue("@id", _id);
+                cmd.Parameters.AddWithValue("@date", DateTime.Now);
+                cmd.Parameters.AddWithValue("@sum", sum);
+                cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                connection.Close();
+            }
         }
     }
 }

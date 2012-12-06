@@ -10,6 +10,7 @@ namespace BillingSystem
         public const string Currency = "руб.";
 
         public const string No = "Нет";
+        public const string NoInfo = "Неизвестно";
 
         public const string DefaultPasswordHash = "111";
 
@@ -19,6 +20,6 @@ namespace BillingSystem
         public const string Outgoing = "Исходящий";
 
         public const string TariffChanging = "Смена тарифа";
-        public const string NoInfo = "Неизвестно";
+        public const string ChargeCalls = "Оплата звонков";
     }
 }

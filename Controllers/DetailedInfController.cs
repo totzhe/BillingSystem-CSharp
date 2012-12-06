@@ -36,6 +36,16 @@ namespace BillingSystem.Controllers
             return result;
         }
 
+        public string GetBalanceByDate(DateTime date)
+        {
+            return Math.Round(_subscriber.GetBalanceByDate(date), 2).ToString() + " " + Constants.Currency;
+        }
+
+        public string GetBalance()
+        {
+            return Math.Round(_subscriber.Balance, 2).ToString() + " " + Constants.Currency;
+        }
+
         public abstract List<string[]> Search(string phoneNumber, DateTime from, DateTime to);
 
     }

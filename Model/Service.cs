@@ -51,7 +51,7 @@ namespace BillingSystem.Model
             _cost = cost;
         }
 
-        /// <summary>
+        /*/// <summary>
         /// Получает из БД услугу смены тарифа
         /// </summary>
         /// <returns>Услуга смены тарифа</returns>
@@ -66,6 +66,43 @@ namespace BillingSystem.Model
 
                 MySqlCommand cmd = new MySqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@name", Constants.TariffChanging);
+
+                MySqlDataReader r = cmd.ExecuteReader();
+                if (r.Read())
+                {
+                    result = new Service(r.GetInt64("id"), r.GetString("name"), r.GetDouble("cost"));
+                }
+                r.Close();
+            }
+            catch (MySqlException ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.ToString());
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return result;
+        }*/
+
+        /// <summary>
+        /// Получает услугу по ее имени
+        /// </summary>
+        /// <param name="name">Имя услуги</param>
+        /// <returns>Услуга</returns>
+        public static Service SelectServiceByName(string name)
+        {
+            Service result = null;
+            try
+            {
+                connection.Open();
+
+                string query = "SELECT * FROM service WHERE LOWER(name) LIKE LOWER(@name) ORDER BY LENGTH(name) ASC LIMIT 1";
+
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@name", name);
 
                 MySqlDataReader r = cmd.ExecuteReader();
                 if (r.Read())

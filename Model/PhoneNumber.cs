@@ -65,6 +65,37 @@ namespace BillingSystem.Model
         }
 
         /// <summary>
+        /// Получает из БД все телефонные номера
+        /// </summary>
+        /// <returns>Список номеров</returns>
+        public static List<PhoneNumber> SelectAllPhoneNumbers()
+        {
+            List<PhoneNumber> result = new List<PhoneNumber>();
+            try
+            {
+                connection.Open();
+
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM phone_number ORDER BY number", connection);
+                MySqlDataReader r = cmd.ExecuteReader();
+                while (r.Read())
+                {
+                    result.Add(new PhoneNumber(r.GetInt64("id"), r.GetInt64("subscriber_id"), r.GetString("number"), r.GetInt64("tariff_id")));
+                }
+                r.Close();
+            }
+            catch (MySqlException ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return result;
+        }
+
+        /// <summary>
         /// Получает телефонный номер из БД по его id.
         /// </summary>
         /// <returns>Номер</returns>
@@ -75,7 +106,8 @@ namespace BillingSystem.Model
             {
                 connection.Open();
 
-                MySqlCommand cmd = new MySqlCommand("SELECT * FROM phone_number WHERE id = " + phoneNumberID.ToString(), connection);
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM phone_number WHERE id = @id", connection);
+                cmd.Parameters.AddWithValue("@id", phoneNumberID);
                 MySqlDataReader r = cmd.ExecuteReader();
                 if (r.Read())
                 {
@@ -107,7 +139,8 @@ namespace BillingSystem.Model
             {
                 connection.Open();
 
-                MySqlCommand cmd = new MySqlCommand("SELECT * FROM phone_number WHERE number = '" + phoneNumber + "'", connection);
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM phone_number WHERE number = @number", connection);
+                cmd.Parameters.AddWithValue("@number", phoneNumber);
                 MySqlDataReader r = cmd.ExecuteReader();
                 if (r.Read())
                 {
@@ -135,8 +168,12 @@ namespace BillingSystem.Model
             try
             {
                 connection.Open();
-                string queryString = "UPDATE phone_number SET number = '" + Number + "', subscriber_id = " + SubscriberID.ToString() + ", tariff_id = " + TariffID.ToString() + " WHERE id = " + ID.ToString() + " OR number = '" + Number + "'";
+                string queryString = "UPDATE phone_number SET number = @number, subscriber_id = @subscriber_id, tariff_id = @tariff_id WHERE id = @id OR number = @number";
                 MySqlCommand cmd = new MySqlCommand(queryString, connection);
+                cmd.Parameters.AddWithValue("@number", _number);
+                cmd.Parameters.AddWithValue("@subscriber_id", _subscriberID);
+                cmd.Parameters.AddWithValue("@tariff_id", _tariffID);
+                cmd.Parameters.AddWithValue("@id", _id);
                 cmd.ExecuteNonQuery();
             }
             catch (MySqlException ex)
@@ -152,8 +189,8 @@ namespace BillingSystem.Model
                 updateTariffHistory();
                 if (_tariffID > 0)
                 {
-                    Service s = Service.SelectChangeTariffService();
-                    Charge ch = new Charge(this, s, 0);
+                    Service s = Service.SelectServiceByName(Constants.TariffChanging);
+                    Charge ch = new Charge(this, s, 0, DateTime.Now);
                     ch.WriteOff();
                 }
             }
@@ -221,8 +258,10 @@ namespace BillingSystem.Model
             try
             {
                 connection.Open();
-                string queryString = "DELETE FROM phone_number WHERE id = " + ID.ToString() + " OR number = '" + Number + "'";
+                string queryString = "DELETE FROM phone_number WHERE id = @id OR number = @number";
                 MySqlCommand cmd = new MySqlCommand(queryString, connection);
+                cmd.Parameters.AddWithValue("@number", _number);
+                cmd.Parameters.AddWithValue("@id", _id);
                 cmd.ExecuteNonQuery();
             }
             catch (MySqlException ex)
@@ -322,9 +361,10 @@ namespace BillingSystem.Model
             {
                 connection.Open();
 
-                string query = "SELECT * FROM calls WHERE (calling_number = '" + Number + "' OR called_number = '" + Number + "')"
-                    + " AND DATE(start_time) >= DATE(@from) AND DATE(start_time) <= DATE(@to) AND end_time IS NOT NULL ORDER BY start_time, end_time, called_number, calling_number";
+                string query = @"SELECT * FROM calls WHERE (calling_number = @number OR called_number = @number)
+                     AND start_time >= @from AND start_time <= @to AND end_time IS NOT NULL ORDER BY start_time, end_time, called_number, calling_number";
                 MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@number", _number);
                 cmd.Parameters.AddWithValue("@from", from/*.ToUniversalTime()*/);
                 cmd.Parameters.AddWithValue("@to", to/*.ToUniversalTime()*/);
                 MySqlDataReader r = cmd.ExecuteReader();
@@ -366,9 +406,9 @@ namespace BillingSystem.Model
                     WHERE th.phone_id = @phone_id
                     AND t.id = th.tariff_id
                     AND LOWER(s.name) LIKE LOWER(@param)
-                    AND (DATE(th.start_date) >= DATE(@from) AND DATE(th.start_date) <= DATE(@to))
-                    AND (DATE(th.end_date) <= DATE(@to) OR th.end_date IS NULL)
-                    AND (DATE(th.end_date) >= DATE(@from) OR th.end_date IS NULL)";
+                    AND (th.start_date >= @from AND th.start_date <= @to)
+                    AND ((th.end_date <= @to AND th.end_date >= @from) OR th.end_date IS NULL)
+                    ORDER BY start_date, end_date, name";
                 MySqlCommand cmd = new MySqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@phone_id", ID);
                 cmd.Parameters.AddWithValue("@from", from/*.ToUniversalTime()*/);
@@ -411,7 +451,7 @@ namespace BillingSystem.Model
             {
                 connection.Open();
                 string query = @"SELECT id, phone_id, service_id, sum, date FROM charge
-                    WHERE phone_id = @phone_id AND (DATE(date) >= DATE(@from) AND DATE(date) <= DATE(@to))";
+                    WHERE phone_id = @phone_id AND (date >= @from AND date <= @to) ORDER BY date";
                 MySqlCommand cmd = new MySqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@phone_id", phoneNumber.ID);
                 cmd.Parameters.AddWithValue("@from", from);

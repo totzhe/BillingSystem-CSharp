@@ -62,9 +62,9 @@ namespace BillingSystem.Model
             }
         }
 
-        public Charge(PhoneNumber phone, Service service, double sum)
+        public Charge(PhoneNumber phone, Service service, double sum, DateTime date)
         {
-            _date = System.DateTime./*Utc*/Now;
+            _date = date;
             _phoneID = phone.ID;
             _serviceID = service.ID;
             _sum = sum + service.Cost;

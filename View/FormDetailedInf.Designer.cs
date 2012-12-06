@@ -49,8 +49,12 @@
             this.lblFrom = new System.Windows.Forms.Label();
             this.gbSelectNumber = new System.Windows.Forms.GroupBox();
             this.lblSelectNo = new System.Windows.Forms.Label();
-            this.lblSNP = new System.Windows.Forms.Label();
-            this.lblFullName = new System.Windows.Forms.Label();
+            this.lblFromBalance = new System.Windows.Forms.Label();
+            this.lblToBalance = new System.Windows.Forms.Label();
+            this.lblBalance = new System.Windows.Forms.Label();
+            this.lblBalanceText = new System.Windows.Forms.Label();
+            this.lblBalanceToText = new System.Windows.Forms.Label();
+            this.lblBalanceFromText = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInf)).BeginInit();
             this.gbDetailType.SuspendLayout();
             this.gbPeriod.SuspendLayout();
@@ -69,7 +73,7 @@
             this.colService,
             this.colDuration,
             this.colCost});
-            this.dgvInf.Location = new System.Drawing.Point(12, 47);
+            this.dgvInf.Location = new System.Drawing.Point(12, 30);
             this.dgvInf.Name = "dgvInf";
             this.dgvInf.ReadOnly = true;
             this.dgvInf.RowHeadersVisible = false;
@@ -127,6 +131,7 @@
             this.dtpFrom.Name = "dtpFrom";
             this.dtpFrom.Size = new System.Drawing.Size(154, 20);
             this.dtpFrom.TabIndex = 2;
+            this.dtpFrom.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.dtpFrom.CloseUp += new System.EventHandler(this.dtpFrom_CloseUp);
             // 
             // rbtnCalls
@@ -171,7 +176,7 @@
             // 
             // btnSaveToFile
             // 
-            this.btnSaveToFile.Location = new System.Drawing.Point(607, 427);
+            this.btnSaveToFile.Location = new System.Drawing.Point(607, 410);
             this.btnSaveToFile.Name = "btnSaveToFile";
             this.btnSaveToFile.Size = new System.Drawing.Size(192, 23);
             this.btnSaveToFile.TabIndex = 6;
@@ -207,7 +212,7 @@
             this.gbDetailType.Controls.Add(this.rbtnTariffs);
             this.gbDetailType.Controls.Add(this.rbtnServices);
             this.gbDetailType.Controls.Add(this.rbtnPayments);
-            this.gbDetailType.Location = new System.Drawing.Point(607, 187);
+            this.gbDetailType.Location = new System.Drawing.Point(607, 170);
             this.gbDetailType.Name = "gbDetailType";
             this.gbDetailType.Size = new System.Drawing.Size(192, 130);
             this.gbDetailType.TabIndex = 13;
@@ -220,7 +225,7 @@
             this.gbPeriod.Controls.Add(this.lblFrom);
             this.gbPeriod.Controls.Add(this.dtpFrom);
             this.gbPeriod.Controls.Add(this.dtpTo);
-            this.gbPeriod.Location = new System.Drawing.Point(607, 324);
+            this.gbPeriod.Location = new System.Drawing.Point(607, 307);
             this.gbPeriod.Name = "gbPeriod";
             this.gbPeriod.Size = new System.Drawing.Size(192, 87);
             this.gbPeriod.TabIndex = 14;
@@ -249,7 +254,7 @@
             // 
             this.gbSelectNumber.Controls.Add(this.lblSelectNo);
             this.gbSelectNumber.Controls.Add(this.lbNumbers);
-            this.gbSelectNumber.Location = new System.Drawing.Point(607, 45);
+            this.gbSelectNumber.Location = new System.Drawing.Point(607, 28);
             this.gbSelectNumber.Name = "gbSelectNumber";
             this.gbSelectNumber.Size = new System.Drawing.Size(191, 136);
             this.gbSelectNumber.TabIndex = 15;
@@ -264,28 +269,72 @@
             this.lblSelectNo.TabIndex = 0;
             this.lblSelectNo.Text = "Выберите номер из списка:";
             // 
-            // lblSNP
+            // lblFromBalance
             // 
-            this.lblSNP.Location = new System.Drawing.Point(12, 21);
-            this.lblSNP.Name = "lblSNP";
-            this.lblSNP.Size = new System.Drawing.Size(100, 23);
-            this.lblSNP.TabIndex = 18;
-            this.lblSNP.Text = "ФИО:";
+            this.lblFromBalance.AutoSize = true;
+            this.lblFromBalance.Location = new System.Drawing.Point(319, 9);
+            this.lblFromBalance.Name = "lblFromBalance";
+            this.lblFromBalance.Size = new System.Drawing.Size(79, 13);
+            this.lblFromBalance.TabIndex = 19;
+            this.lblFromBalance.Text = "lblFromBalance";
             // 
-            // lblFullName
+            // lblToBalance
             // 
-            this.lblFullName.Location = new System.Drawing.Point(98, 21);
-            this.lblFullName.Name = "lblFullName";
-            this.lblFullName.Size = new System.Drawing.Size(256, 13);
-            this.lblFullName.TabIndex = 17;
+            this.lblToBalance.AutoSize = true;
+            this.lblToBalance.Location = new System.Drawing.Point(544, 9);
+            this.lblToBalance.Name = "lblToBalance";
+            this.lblToBalance.Size = new System.Drawing.Size(69, 13);
+            this.lblToBalance.TabIndex = 20;
+            this.lblToBalance.Text = "lblToBalance";
+            // 
+            // lblBalance
+            // 
+            this.lblBalance.AutoSize = true;
+            this.lblBalance.Location = new System.Drawing.Point(112, 9);
+            this.lblBalance.Name = "lblBalance";
+            this.lblBalance.Size = new System.Drawing.Size(56, 13);
+            this.lblBalance.TabIndex = 21;
+            this.lblBalance.Text = "lblBalance";
+            this.lblBalance.Click += new System.EventHandler(this.lblBalance_Click);
+            // 
+            // lblBalanceText
+            // 
+            this.lblBalanceText.AutoSize = true;
+            this.lblBalanceText.Location = new System.Drawing.Point(12, 9);
+            this.lblBalanceText.Name = "lblBalanceText";
+            this.lblBalanceText.Size = new System.Drawing.Size(94, 13);
+            this.lblBalanceText.TabIndex = 22;
+            this.lblBalanceText.Text = "Текущий баланс:";
+            // 
+            // lblBalanceToText
+            // 
+            this.lblBalanceToText.AutoSize = true;
+            this.lblBalanceToText.Location = new System.Drawing.Point(404, 9);
+            this.lblBalanceToText.Name = "lblBalanceToText";
+            this.lblBalanceToText.Size = new System.Drawing.Size(134, 13);
+            this.lblBalanceToText.TabIndex = 23;
+            this.lblBalanceToText.Text = "Баланс в конце периода:";
+            // 
+            // lblBalanceFromText
+            // 
+            this.lblBalanceFromText.AutoSize = true;
+            this.lblBalanceFromText.Location = new System.Drawing.Point(174, 9);
+            this.lblBalanceFromText.Name = "lblBalanceFromText";
+            this.lblBalanceFromText.Size = new System.Drawing.Size(139, 13);
+            this.lblBalanceFromText.TabIndex = 24;
+            this.lblBalanceFromText.Text = "Баланс в начале периода:";
             // 
             // FormDetailedInf
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(807, 477);
-            this.Controls.Add(this.lblFullName);
-            this.Controls.Add(this.lblSNP);
+            this.ClientSize = new System.Drawing.Size(807, 445);
+            this.Controls.Add(this.lblBalanceFromText);
+            this.Controls.Add(this.lblBalanceToText);
+            this.Controls.Add(this.lblBalanceText);
+            this.Controls.Add(this.lblBalance);
+            this.Controls.Add(this.lblToBalance);
+            this.Controls.Add(this.lblFromBalance);
             this.Controls.Add(this.gbSelectNumber);
             this.Controls.Add(this.gbPeriod);
             this.Controls.Add(this.gbDetailType);
@@ -300,6 +349,7 @@
             this.gbPeriod.PerformLayout();
             this.gbSelectNumber.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -321,13 +371,17 @@
         private System.Windows.Forms.Label lblFrom;
         private System.Windows.Forms.GroupBox gbSelectNumber;
         private System.Windows.Forms.Label lblSelectNo;
-        private System.Windows.Forms.Label lblSNP;
-        private System.Windows.Forms.Label lblFullName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn colService;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDuration;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCost;
+        private System.Windows.Forms.Label lblFromBalance;
+        private System.Windows.Forms.Label lblToBalance;
+        private System.Windows.Forms.Label lblBalance;
+        private System.Windows.Forms.Label lblBalanceText;
+        private System.Windows.Forms.Label lblBalanceToText;
+        private System.Windows.Forms.Label lblBalanceFromText;
     }
 }

@@ -58,7 +58,9 @@
     <Compile Include="ConnectionManager.cs" />
     <Compile Include="Controllers\AddSubscriberController.cs" />
     <Compile Include="Controllers\CallsDetailedInfController.cs" />
+    <Compile Include="Controllers\DepositController.cs" />
     <Compile Include="Controllers\DetailedInfController.cs" />
+    <Compile Include="Controllers\IControllers\IDepositController.cs" />
     <Compile Include="Controllers\IControllers\INumberController.cs" />
     <Compile Include="Controllers\IControllers\IDetailedInfController.cs" />
     <Compile Include="Controllers\IControllers\ISelectTariffController.cs" />
@@ -79,6 +81,12 @@
     <Compile Include="Constants.cs" />
     <Compile Include="Tests\DatabaseUtilsTest.cs" />
     <Compile Include="Tests\EditSubscriberControllerTest.cs" />
+    <Compile Include="View\FormDeposit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormDeposit.Designer.cs">
+      <DependentUpon>FormDeposit.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FormSearch.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +141,9 @@
     <Compile Include="View\FormSupport.Designer.cs">
       <DependentUpon>FormSupport.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\FormDeposit.resx">
+      <DependentUpon>FormDeposit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FormSearch.resx">
       <DependentUpon>FormSearch.cs</DependentUpon>
     </EmbeddedResource>

@@ -68,5 +68,18 @@ namespace BillingSystem
         {
             _controller.ShowInfo(long.Parse(dataGridViewSearchResults.Rows[e.RowIndex].Cells[0].Value.ToString()));
         }
+
+        private void btnChargeCalls_Click(object sender, EventArgs e)
+        {
+            BillingSystem.Model.BillingOperations.ChargeCalls();
+        }
+
+        private void btnDeposit_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewSearchResults.CurrentRow != null)
+            {
+                _controller.Deposit(long.Parse(dataGridViewSearchResults.CurrentRow.Cells[0].Value.ToString()));               
+            }
+        }
     }
 }

@@ -34,5 +34,11 @@ namespace BillingSystem.Controllers
         /// </summary>
         /// <param name="number">number пользователя</param>
         void ShowInfo(long id);
+
+        /// <summary>
+        /// Вызывает форму пополнения баланса
+        /// </summary>
+        /// <param name="id"></param>
+        void Deposit(long id);
     }
 }

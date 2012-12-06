@@ -35,7 +35,7 @@ namespace BillingSystem.Controllers
                     item[2] = c.CalledNumber;
                     Tariff tariff = pn.SelectTariffByDate(c.StartTime);
                     item[3] = Constants.Outgoing;
-                    item[5] = BillingOperations.CalculateCallCost(c, tariff).ToString() + " " + Constants.Currency;
+                    item[5] = Math.Round(BillingOperations.CalculateCallCost(c, tariff), 2).ToString() + " " + Constants.Currency;
                 }
                 item[4] = c.Duration.ToString();
                 searchResult.Add(item);

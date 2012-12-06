@@ -47,7 +47,7 @@ namespace BillingSystem.Controllers
                     else
                         item[4] += Environment.NewLine + n.Number;
                 }
-                item[5] = ((s.Balance >= 0) ? Constants.No : (-s.Balance).ToString() + " " + Constants.Currency);
+                item[5] = ((s.Balance >= 0) ? Constants.No : (Math.Round(-s.Balance, 2)).ToString() + " " + Constants.Currency);
                 result.Add(item);
                 
             }
@@ -84,6 +84,15 @@ namespace BillingSystem.Controllers
         public void ShowInfo(long id)
         {
             FormDetailedInf form = new FormDetailedInf(id);
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+        }
+
+        public void Deposit(long id)
+        {
+            FormDeposit form = new FormDeposit(id);
             if (form.ShowDialog() == DialogResult.OK)
             {
 

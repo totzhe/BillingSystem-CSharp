@@ -22,7 +22,7 @@ namespace BillingSystem.View
 
             lbNumbers.Enabled = true;
             lbNumbers.Items.Clear();
-                        
+
             rbtnCalls.Checked = true;
             rbtnTariffs.Checked = false;
             rbtnPayments.Checked = false;
@@ -30,13 +30,21 @@ namespace BillingSystem.View
 
             _subscriberID = subscriberId;
             initController(_subscriberID);
-            lblFullName.Text = _controller.GetSubscriberFullName();
+            Text = _controller.GetSubscriberFullName();
             List<string> _phoneNumbers = _controller.GetPhoneNumbers();
             foreach (string n in _phoneNumbers)
             {
                 lbNumbers.Items.Add(n);
             }
             lbNumbers.SelectedIndex = 0;
+            initBalance();
+        }
+
+        private void initBalance()
+        {
+            lblBalance.Text = _controller.GetBalance();
+            lblFromBalance.Text = _controller.GetBalanceByDate(dtpFrom.Value);
+            lblToBalance.Text = _controller.GetBalanceByDate(dtpTo.Value);
         }
 
         private void initController(long subscriberId)
@@ -59,36 +67,10 @@ namespace BillingSystem.View
             }
         }
 
-        private void CallsSearch()
+        private void Search()
         {
             List<string[]> items = _controller.Search(lbNumbers.SelectedItem.ToString(), dtpFrom.Value, dtpTo.Value);
-            foreach (string[] item in items)
-            {
-                dgvInf.Rows.Add(item);
-            }
-        }
-
-        private void TariffHistorySearch()
-        {
-            List<string[]> items = _controller.Search(lbNumbers.SelectedItem.ToString(), dtpFrom.Value, dtpTo.Value);
-            foreach (string[] item in items)
-            {
-                dgvInf.Rows.Add(item);
-            }
-        }
-
-        private void PaymentsSearch()
-        {
-            List<string[]> items = _controller.Search(lbNumbers.SelectedItem.ToString(), dtpFrom.Value, dtpTo.Value);
-            foreach (string[] item in items)
-            {
-                dgvInf.Rows.Add(item);
-            }
-        }
-
-        private void ServicesSearch()
-        {
-            List<string[]> items = _controller.Search(lbNumbers.SelectedItem.ToString(), dtpFrom.Value, dtpTo.Value);
+            dgvInf.Rows.Clear();
             foreach (string[] item in items)
             {
                 dgvInf.Rows.Add(item);
@@ -108,7 +90,7 @@ namespace BillingSystem.View
                 dgvInf.Columns[3].Name = "Тип";
                 dgvInf.Columns[4].Name = "Длительность";
                 dgvInf.Columns[5].Name = "Стоимость";
-                CallsSearch();
+                //Search();
             }
             if (rbtnTariffs.Checked == true)
             {
@@ -120,7 +102,7 @@ namespace BillingSystem.View
                 dgvInf.Columns[2].Name = "Тарифный план";
                 dgvInf.Columns[3].Name = "Дата отключения";
                 dgvInf.Columns[4].Name = "Время отключения";
-                TariffHistorySearch();
+                //Search();
             }
             if (rbtnPayments.Checked == true)
             {
@@ -130,7 +112,7 @@ namespace BillingSystem.View
                 dgvInf.Columns[0].Name = "Дата";
                 dgvInf.Columns[1].Name = "Время";
                 dgvInf.Columns[2].Name = "Сумма";
-                PaymentsSearch();
+                //Search();
             }
             if (rbtnServices.Checked == true)
             {
@@ -141,14 +123,16 @@ namespace BillingSystem.View
                 dgvInf.Columns[1].Name = "Время";
                 dgvInf.Columns[2].Name = "Услуга";
                 dgvInf.Columns[3].Name = "Стоимость";
-                ServicesSearch();
+                //dgvInf.Columns[4].Name = "Состояние баланса";
+                //Search();
             }
         }
 
         private void lbNumbers_SelectedIndexChanged(object sender, EventArgs e)
         {
-            initController(_subscriberID);
-            initDataGridView();            
+            //initController(_subscriberID);
+            //initDataGridView();     
+            Search();
         }
 
         private void btnSaveToFile_Click(object sender, EventArgs e)
@@ -158,14 +142,22 @@ namespace BillingSystem.View
 
         private void dtpFrom_CloseUp(object sender, EventArgs e)
         {
-            initController(_subscriberID);
-            initDataGridView();
+            //initController(_subscriberID);
+            //initDataGridView();  
+            dtpFrom.Value = dtpFrom.Value.Date;
+            //System.Windows.Forms.MessageBox.Show(dtpFrom.Value.ToString());
+            initBalance();
+            Search();
         }
 
         private void dtpTo_CloseUp(object sender, EventArgs e)
         {
-            initController(_subscriberID);
-            initDataGridView();
+            //initController(_subscriberID);
+            //initDataGridView();   
+            dtpTo.Value = dtpTo.Value.Date.AddHours(23).AddMinutes(59).AddSeconds(59).AddMilliseconds(59);
+            //System.Windows.Forms.MessageBox.Show(dtpTo.Value.ToString());
+            initBalance();
+            Search();
         }
 
         private void rbtnCalls_Click(object sender, EventArgs e)
@@ -177,9 +169,10 @@ namespace BillingSystem.View
                 rbtnTariffs.Checked = false;
                 rbtnPayments.Checked = false;
                 rbtnServices.Checked = false;
+                initController(_subscriberID);
+                initDataGridView();
+                Search();
             }
-            initController(_subscriberID);
-            initDataGridView();
         }
 
         private void rbtnTariffs_Click(object sender, EventArgs e)
@@ -191,9 +184,10 @@ namespace BillingSystem.View
                 rbtnCalls.Checked = false;
                 rbtnPayments.Checked = false;
                 rbtnServices.Checked = false;
+                initController(_subscriberID);
+                initDataGridView();
+                Search();
             }
-            initController(_subscriberID);
-            initDataGridView();
         }
 
         private void rbtnPayments_Click(object sender, EventArgs e)
@@ -205,9 +199,10 @@ namespace BillingSystem.View
                 rbtnCalls.Checked = false;
                 rbtnTariffs.Checked = false;
                 rbtnServices.Checked = false;
+                initController(_subscriberID);
+                initDataGridView();
+                Search();
             }
-            initController(_subscriberID);
-            initDataGridView();
         }
 
         private void rbtnServices_Click(object sender, EventArgs e)
@@ -219,9 +214,15 @@ namespace BillingSystem.View
                 rbtnCalls.Checked = false;
                 rbtnTariffs.Checked = false;
                 rbtnPayments.Checked = false;
+                initController(_subscriberID);
+                initDataGridView();
+                Search();
             }
-            initController(_subscriberID);
-            initDataGridView();
+        }
+
+        private void lblBalance_Click(object sender, EventArgs e)
+        {
+
         }
 
         // TODO: Сдеать, чтобы при нажатии кнопки "Поиск" контроллер переключался на соответствующий выбронному радиобаттону и затем вызывал метод CallsSearch

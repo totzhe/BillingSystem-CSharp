@@ -23,7 +23,7 @@ namespace BillingSystem.Controllers
                 string[] item = new string[3];
                 item[0] = p.Date.ToShortDateString();
                 item[1] = p.Date.ToLongTimeString();
-                item[2] = p.Sum.ToString();
+                item[2] = Math.Round(p.Sum, 2).ToString() + " " + Constants.Currency;
                 searchResult.Add(item);
             }
             return searchResult;

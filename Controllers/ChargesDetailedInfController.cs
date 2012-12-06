@@ -18,14 +18,15 @@ namespace BillingSystem.Controllers
             PhoneNumber phone = PhoneNumber.SelectPhoneNumberByNumber(phoneNumber);
             List<Charge> charges = phone.SelectCharges(phone, from, to);
             List<string[]> result = new List<string[]>();
-
             foreach (Charge c in charges)
             {
                 string [] item = new string[4];
                 item[0] = c.Date.ToShortDateString();
                 item[1] = c.Date.ToLongTimeString();
                 item[2] = c.GetService().Name;
-                item[3] = c.Sum.ToString();
+                item[3] = Math.Round(c.Sum, 2).ToString() + " " + Constants.Currency;
+                /*item[4] = balance.ToString() + " " + Constants.Currency;
+                balance -= c.Sum;*/
                 result.Add(item);
             }
             return result;
