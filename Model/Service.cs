@@ -92,7 +92,7 @@ namespace BillingSystem.Model
         /// </summary>
         /// <param name="serviceID">ID услуги</param>
         /// <returns>Услуга</returns>
-        public static Service SearchServiceByID(long serviceID)
+        public static Service SelectServiceByID(long serviceID)
         {
             Service searchResult = null;
             try

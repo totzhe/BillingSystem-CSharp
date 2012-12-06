@@ -23,7 +23,7 @@ namespace BillingSystem.Controllers
             {
                 string[] item = new string[6];
                 item[0] = c.StartTime.ToShortDateString();
-                item[1] = c.StartTime.ToShortTimeString();
+                item[1] = c.StartTime.ToLongTimeString();
                 if (c.CalledNumber == pn.Number)
                 {
                     item[2] = c.CallingNumber;

@@ -6,9 +6,9 @@ using BillingSystem.Model;
 
 namespace BillingSystem.Controllers
 {
-    class ServicesDetailedInfController : DetailedInfController
+    class ChargesDetailedInfController : DetailedInfController
     {
-        public ServicesDetailedInfController(long subscriberID)
+        public ChargesDetailedInfController(long subscriberID)
             : base(subscriberID)
         {
         }
@@ -16,7 +16,7 @@ namespace BillingSystem.Controllers
         public override List<string[]> Search(string phoneNumber, DateTime from, DateTime to)
         {
             PhoneNumber phone = PhoneNumber.SelectPhoneNumberByNumber(phoneNumber);
-            List<Charge> charges = phone.SearchCharges(phone, from, to);
+            List<Charge> charges = phone.SelectCharges(phone, from, to);
             List<string[]> result = new List<string[]>();
 
             foreach (Charge c in charges)
@@ -24,7 +24,7 @@ namespace BillingSystem.Controllers
                 string [] item = new string[4];
                 item[0] = c.Date.ToShortDateString();
                 item[1] = c.Date.ToLongTimeString();
-                item[2] = c.SearchServiceByChargeID(c.ID).Name;
+                item[2] = c.GetService().Name;
                 item[3] = c.Sum.ToString();
                 result.Add(item);
             }

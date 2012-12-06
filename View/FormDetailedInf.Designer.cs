@@ -149,10 +149,10 @@
             this.rbtnServices.AutoSize = true;
             this.rbtnServices.Location = new System.Drawing.Point(9, 97);
             this.rbtnServices.Name = "rbtnServices";
-            this.rbtnServices.Size = new System.Drawing.Size(137, 17);
+            this.rbtnServices.Size = new System.Drawing.Size(119, 17);
             this.rbtnServices.TabIndex = 4;
             this.rbtnServices.TabStop = true;
-            this.rbtnServices.Text = "Управление услугами";
+            this.rbtnServices.Text = "История списаний";
             this.rbtnServices.UseVisualStyleBackColor = true;
             this.rbtnServices.Click += new System.EventHandler(this.rbtnServices_Click);
             // 

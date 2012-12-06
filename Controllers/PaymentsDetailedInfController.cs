@@ -16,9 +16,8 @@ namespace BillingSystem.Controllers
         public override List<string[]> Search(string phoneNumber, DateTime from, DateTime to)
         {
             PhoneNumber pn = PhoneNumber.SelectPhoneNumberByNumber(phoneNumber);
-            List<Payment> payments = pn.SearchPaymentsForSubscriber(_subscriber.ID, from, to);
+            List<Payment> payments = _subscriber.SelectPayments(from, to);
             List<string[]> searchResult = new List<string[]>();
-
             foreach (Payment p in payments)
             {
                 string[] item = new string[3];

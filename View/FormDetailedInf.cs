@@ -55,7 +55,7 @@ namespace BillingSystem.View
             }
             if (rbtnServices.Checked == true)
             {
-                _controller = new ServicesDetailedInfController(subscriberId);
+                _controller = new ChargesDetailedInfController(subscriberId);
             }
         }
 
@@ -114,11 +114,12 @@ namespace BillingSystem.View
             {
                 dgvInf.Rows.Clear();
                 dgvInf.Columns.Clear();
-                dgvInf.ColumnCount = 4;
+                dgvInf.ColumnCount = 5;
                 dgvInf.Columns[0].Name = "Дата подключения";
                 dgvInf.Columns[1].Name = "Время подключения";
                 dgvInf.Columns[2].Name = "Тарифный план";
                 dgvInf.Columns[3].Name = "Дата отключения";
+                dgvInf.Columns[4].Name = "Время отключения";
                 TariffHistorySearch();
             }
             if (rbtnPayments.Checked == true)
@@ -171,6 +172,7 @@ namespace BillingSystem.View
         {
             if (rbtnCalls.Checked == false)
             {
+                lbNumbers.Enabled = true;
                 rbtnCalls.Checked = true;
                 rbtnTariffs.Checked = false;
                 rbtnPayments.Checked = false;
@@ -184,6 +186,7 @@ namespace BillingSystem.View
         {
             if (rbtnTariffs.Checked == false)
             {
+                lbNumbers.Enabled = true;
                 rbtnTariffs.Checked = true;
                 rbtnCalls.Checked = false;
                 rbtnPayments.Checked = false;
@@ -197,6 +200,7 @@ namespace BillingSystem.View
         {
             if (rbtnPayments.Checked == false)
             {
+                lbNumbers.Enabled = false;
                 rbtnPayments.Checked = true;
                 rbtnCalls.Checked = false;
                 rbtnTariffs.Checked = false;
@@ -210,6 +214,7 @@ namespace BillingSystem.View
         {
             if (rbtnServices.Checked == false)
             {
+                lbNumbers.Enabled = true;
                 rbtnServices.Checked = true;
                 rbtnCalls.Checked = false;
                 rbtnTariffs.Checked = false;

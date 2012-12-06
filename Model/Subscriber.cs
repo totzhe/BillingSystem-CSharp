@@ -323,6 +323,44 @@ namespace BillingSystem.Model
             }
         }
 
+        /// <summary>
+        /// Возвращает платежи указанного абонента за указанный период
+        /// </summary>
+        /// <param name="subscriberID">Идентификатор абонента</param>
+        /// <param name="from">Начальная дата указанног периода</param>
+        /// <param name="to">Конечная дата указанного периода</param>
+        /// <returns>Список платежей</returns>
+        public List<Payment> SelectPayments(DateTime from, DateTime to)
+        {
+            List<Payment> searchResult = new List<Payment>();
+            try
+            {
+                connection.Open();
+                string query = @"SELECT id, subscriber_id, sum, date FROM payment WHERE subscriber_id = @subscriber_id
+                    AND (DATE(date) <= DATE(@to) AND DATE(date) >= DATE(@from))";
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@subscriber_id", _id);
+                cmd.Parameters.AddWithValue("@from", from);
+                cmd.Parameters.AddWithValue("@to", to);
+                MySqlDataReader r = cmd.ExecuteReader();
+                while (r.Read())
+                {
+                    searchResult.Add(new Payment(r.GetInt64("id"), r.GetInt64("subscriber_id"),
+                        r.GetDouble("sum"), r.GetDateTime("date")));
+                }
+                r.Close();
+            }
+            catch (MySqlException ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return searchResult;
+        }
+
         public void DepositMoney(double sum)
         {
         }

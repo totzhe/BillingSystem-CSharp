@@ -80,32 +80,13 @@ namespace BillingSystem.Model
             _date = date;
         }
 
-        public Service SearchServiceByChargeID(long chargeID)
+        /// <summary>
+        /// Получает услугу
+        /// </summary>
+        /// <returns>Услуга</returns>
+        public Service GetService()
         {
-            Service result = null;
-            try
-            {
-                connection.Open();
-                string query = @"SELECT s.id id, s.name, s.cost FROM service s, charge c
-                    WHERE c.id = @id AND s.id = c.service_id";
-                MySqlCommand cmd = new MySqlCommand(query, connection);
-                cmd.Parameters.AddWithValue("@id", chargeID);
-                MySqlDataReader r = cmd.ExecuteReader();
-                while(r.Read())
-                {
-                    result = Service.SearchServiceByID(r.GetInt64("id"));
-                }
-                r.Close();
-            }
-            catch (MySqlException ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.ToString());
-            }
-            finally
-            {
-                connection.Close();
-            }
-            return result;
+            return Service.SelectServiceByID(_serviceID);
         }
 
         /// <summary>

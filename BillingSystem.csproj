@@ -67,7 +67,7 @@
     <Compile Include="Controllers\IControllers\ISubscriberController.cs" />
     <Compile Include="Controllers\IControllers\ISupportController.cs" />
     <Compile Include="Controllers\PaymentsDetailedInfController.cs" />
-    <Compile Include="Controllers\ServicesDetailedInfController.cs" />
+    <Compile Include="Controllers\ChargesDetailedInfController.cs" />
     <Compile Include="Controllers\SubscriberController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\EditSubscriberController.cs" />

@@ -21,17 +21,19 @@ namespace BillingSystem.Controllers
 
             foreach (TariffHistory th in tariffHistory)
             {
-                string[] items = new string[4];
+                string[] items = new string[5];
                 items[0] = th.StartDate.ToShortDateString();
-                items[1] = th.StartDate.ToShortTimeString();
+                items[1] = th.StartDate.ToLongTimeString();
                 items[2] = th.TariffName;
                 if (th.EndDate != null)
                 {
                     items[3] = th.EndDate.Value.ToShortDateString();
+                    items[4] = th.EndDate.Value.ToLongTimeString();
                 }
                 else
                 {
                     items[3] = Constants.NoInfo;
+                    items[4] = Constants.NoInfo;
                 }
                 searchResult.Add(items);
             }
