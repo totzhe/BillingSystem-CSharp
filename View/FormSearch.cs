@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using BillingSystem.Controllers;
+using BillingSystem.Model;
 
 namespace BillingSystem
 {
@@ -80,6 +81,20 @@ namespace BillingSystem
             {
                 _controller.Deposit(long.Parse(dataGridViewSearchResults.CurrentRow.Cells[0].Value.ToString()));               
             }
+        }
+
+        private void SaveToFile_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK && saveFileDialog.FileName.Length > 0)
+            {
+                FileExporter.DGVtoCSV(dataGridViewSearchResults, saveFileDialog.FileName);
+            }
+        }
+
+        private void btnImportCalls_Click(object sender, EventArgs e)
+        {
+            _controller.ShowCallsImport();
+            Search();
         }
     }
 }

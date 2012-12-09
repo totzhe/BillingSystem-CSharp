@@ -52,6 +52,9 @@
             this.labelDebt = new System.Windows.Forms.Label();
             this.btnChargeCalls = new System.Windows.Forms.Button();
             this.btnDeposit = new System.Windows.Forms.Button();
+            this.btnSaveToFile = new System.Windows.Forms.Button();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.btnImportCalls = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSearchResults)).BeginInit();
             this.SuspendLayout();
             // 
@@ -275,11 +278,39 @@
             this.btnDeposit.UseVisualStyleBackColor = true;
             this.btnDeposit.Click += new System.EventHandler(this.btnDeposit_Click);
             // 
+            // btnSaveToFile
+            // 
+            this.btnSaveToFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSaveToFile.Location = new System.Drawing.Point(553, 526);
+            this.btnSaveToFile.Name = "btnSaveToFile";
+            this.btnSaveToFile.Size = new System.Drawing.Size(111, 23);
+            this.btnSaveToFile.TabIndex = 17;
+            this.btnSaveToFile.Text = "Сохранить в CSV";
+            this.btnSaveToFile.UseVisualStyleBackColor = true;
+            this.btnSaveToFile.Click += new System.EventHandler(this.SaveToFile_Click);
+            // 
+            // saveFileDialog
+            // 
+            this.saveFileDialog.Filter = "csv files (*.csv)|*.csv";
+            // 
+            // btnImportCalls
+            // 
+            this.btnImportCalls.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnImportCalls.Location = new System.Drawing.Point(676, 130);
+            this.btnImportCalls.Name = "btnImportCalls";
+            this.btnImportCalls.Size = new System.Drawing.Size(96, 40);
+            this.btnImportCalls.TabIndex = 18;
+            this.btnImportCalls.Text = "Импорт Звонков";
+            this.btnImportCalls.UseVisualStyleBackColor = true;
+            this.btnImportCalls.Click += new System.EventHandler(this.btnImportCalls_Click);
+            // 
             // FormSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 562);
+            this.Controls.Add(this.btnImportCalls);
+            this.Controls.Add(this.btnSaveToFile);
             this.Controls.Add(this.btnDeposit);
             this.Controls.Add(this.btnChargeCalls);
             this.Controls.Add(this.labelDebt);
@@ -331,6 +362,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Debt;
         private System.Windows.Forms.Button btnChargeCalls;
         private System.Windows.Forms.Button btnDeposit;
+        private System.Windows.Forms.Button btnSaveToFile;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
+        private System.Windows.Forms.Button btnImportCalls;
 
     }
 }

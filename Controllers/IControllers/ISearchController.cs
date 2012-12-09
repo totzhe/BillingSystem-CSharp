@@ -40,5 +40,10 @@ namespace BillingSystem.Controllers
         /// </summary>
         /// <param name="id"></param>
         void Deposit(long id);
+
+        /// <summary>
+        /// Создает форму импорта звонков
+        /// </summary>
+        void ShowCallsImport();
     }
 }
