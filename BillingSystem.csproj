@@ -67,8 +67,10 @@
     <Compile Include="Controllers\CallsImportController.cs" />
     <Compile Include="Controllers\DepositController.cs" />
     <Compile Include="Controllers\DetailedInfController.cs" />
+    <Compile Include="Controllers\EditTariffController.cs" />
     <Compile Include="Controllers\IControllers\ICallsImportController.cs" />
     <Compile Include="Controllers\IControllers\IDepositController.cs" />
+    <Compile Include="Controllers\IControllers\IEditTariffController.cs" />
     <Compile Include="Controllers\IControllers\INumberController.cs" />
     <Compile Include="Controllers\IControllers\IDetailedInfController.cs" />
     <Compile Include="Controllers\IControllers\ISelectTariffController.cs" />
@@ -101,6 +103,12 @@
     </Compile>
     <Compile Include="View\FormDeposit.Designer.cs">
       <DependentUpon>FormDeposit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormEditTariff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormEditTariff.Designer.cs">
+      <DependentUpon>FormEditTariff.cs</DependentUpon>
     </Compile>
     <Compile Include="View\FormSearch.cs">
       <SubType>Form</SubType>
@@ -158,6 +166,9 @@
     <EmbeddedResource Include="View\FormDeposit.resx">
       <DependentUpon>FormDeposit.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\FormEditTariff.resx">
+      <DependentUpon>FormEditTariff.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FormSearch.resx">
       <DependentUpon>FormSearch.cs</DependentUpon>
     </EmbeddedResource>
@@ -191,7 +202,45 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\user_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user_go.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\script_save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\database_save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document_export.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document_import.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\telephone_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\telephone_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\moneybox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\money_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\google_custom_search.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

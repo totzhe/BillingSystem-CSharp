@@ -45,5 +45,10 @@ namespace BillingSystem.Controllers
         /// Создает форму импорта звонков
         /// </summary>
         void ShowCallsImport();
+
+        /// <summary>
+        /// Создает форму изменения тарифа
+        /// </summary>
+        void ShowEditTariff();
     }
 }

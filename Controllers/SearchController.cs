@@ -97,6 +97,13 @@ namespace BillingSystem.Controllers
             form.ShowDialog();
         }
 
+        public void ShowEditTariff()
+        {
+            EditTariffController controller = new EditTariffController();
+            FormEditTariff form = new FormEditTariff(controller);
+            form.ShowDialog();
+        }
+
         public void Deposit(long id)
         {
             FormDeposit form = new FormDeposit(id);

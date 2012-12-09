@@ -40,13 +40,43 @@ namespace BillingSystem
             Search();
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void dataGridViewSearchResults_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            _controller.AddSubscriber();
-            Search();
+            _controller.ShowInfo(long.Parse(dataGridViewSearchResults.Rows[e.RowIndex].Cells[0].Value.ToString()));
         }
 
-        private void btnEdit_Click(object sender, EventArgs e)
+        private void tsmCallsImport_Click(object sender, EventArgs e)
+        {
+            _controller.ShowCallsImport();
+        }
+
+        private void tsmDeposit_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewSearchResults.CurrentRow != null)
+            {
+                _controller.Deposit(long.Parse(dataGridViewSearchResults.CurrentRow.Cells[0].Value.ToString()));
+            }
+        }
+
+        private void tsmEditTariff_Click(object sender, EventArgs e)
+        {
+            _controller.ShowEditTariff();
+        }
+
+        private void tsmCharge_Click(object sender, EventArgs e)
+        {
+            BillingSystem.Model.BillingOperations.ChargeCalls();
+        }
+
+        private void tsmInfoSubscriber_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewSearchResults.CurrentRow != null)
+            {
+                _controller.ShowInfo(long.Parse(dataGridViewSearchResults.CurrentRow.Cells[0].Value.ToString()));
+            }
+        }
+
+        private void tsmEditSubscriber_Click(object sender, EventArgs e)
         {
             if (dataGridViewSearchResults.CurrentRow != null)
             {
@@ -55,46 +85,18 @@ namespace BillingSystem
             }
         }
 
-        private void btnDetailedInf_Click(object sender, EventArgs e)
+        private void tsmAddSubscriber_Click(object sender, EventArgs e)
         {
-            if (dataGridViewSearchResults.CurrentRow != null)
-            {
-                _controller.ShowInfo(long.Parse(dataGridViewSearchResults.CurrentRow.Cells[0].Value.ToString()));
-               
-            }
-            
+            _controller.AddSubscriber();
+            Search();
         }
 
-        private void dataGridViewSearchResults_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            _controller.ShowInfo(long.Parse(dataGridViewSearchResults.Rows[e.RowIndex].Cells[0].Value.ToString()));
-        }
-
-        private void btnChargeCalls_Click(object sender, EventArgs e)
-        {
-            BillingSystem.Model.BillingOperations.ChargeCalls();
-        }
-
-        private void btnDeposit_Click(object sender, EventArgs e)
-        {
-            if (dataGridViewSearchResults.CurrentRow != null)
-            {
-                _controller.Deposit(long.Parse(dataGridViewSearchResults.CurrentRow.Cells[0].Value.ToString()));               
-            }
-        }
-
-        private void SaveToFile_Click(object sender, EventArgs e)
+        private void tsmSaveToCSV_Click(object sender, EventArgs e)
         {
             if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK && saveFileDialog.FileName.Length > 0)
             {
                 FileExporter.DGVtoCSV(dataGridViewSearchResults, saveFileDialog.FileName);
             }
-        }
-
-        private void btnImportCalls_Click(object sender, EventArgs e)
-        {
-            _controller.ShowCallsImport();
-            Search();
         }
     }
 }
