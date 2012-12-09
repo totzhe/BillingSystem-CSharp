@@ -8,6 +8,8 @@ using System.Text;
 using System.Windows.Forms;
 using BillingSystem.Controllers;
 using BillingSystem.Model;
+using Kent.Boogaart.KBCsv;
+using Kent.Boogaart.HelperTrinity;
 
 namespace BillingSystem.View
 {
@@ -137,7 +139,10 @@ namespace BillingSystem.View
 
         private void btnSaveToFile_Click(object sender, EventArgs e)
         {
-
+            if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK && saveFileDialog.FileName.Length > 0)
+            {
+                FileExporter.DGVtoCSV(dgvInf, saveFileDialog.FileName);
+            }
         }
 
         private void dtpFrom_CloseUp(object sender, EventArgs e)

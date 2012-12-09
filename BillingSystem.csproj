@@ -35,6 +35,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Kent.Boogaart.HelperTrinity">
+      <HintPath>Lib\Kent.Boogaart.HelperTrinity.dll</HintPath>
+    </Reference>
+    <Reference Include="Kent.Boogaart.KBCsv">
+      <HintPath>Lib\Kent.Boogaart.KBCsv.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="mysql.data">
       <HintPath>Lib\mysql.data.dll</HintPath>
@@ -58,9 +64,13 @@
     <Compile Include="ConnectionManager.cs" />
     <Compile Include="Controllers\AddSubscriberController.cs" />
     <Compile Include="Controllers\CallsDetailedInfController.cs" />
+    <Compile Include="Controllers\CallsImportController.cs" />
     <Compile Include="Controllers\DepositController.cs" />
     <Compile Include="Controllers\DetailedInfController.cs" />
+    <Compile Include="Controllers\EditTariffController.cs" />
+    <Compile Include="Controllers\IControllers\ICallsImportController.cs" />
     <Compile Include="Controllers\IControllers\IDepositController.cs" />
+    <Compile Include="Controllers\IControllers\IEditTariffController.cs" />
     <Compile Include="Controllers\IControllers\INumberController.cs" />
     <Compile Include="Controllers\IControllers\IDetailedInfController.cs" />
     <Compile Include="Controllers\IControllers\ISelectTariffController.cs" />
@@ -79,13 +89,26 @@
     <Compile Include="Controllers\ChangeTariffController.cs" />
     <Compile Include="DatabaseUtils.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="Model\FileExporter.cs" />
     <Compile Include="Tests\DatabaseUtilsTest.cs" />
     <Compile Include="Tests\EditSubscriberControllerTest.cs" />
+    <Compile Include="View\FormCallsImport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormCallsImport.Designer.cs">
+      <DependentUpon>FormCallsImport.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FormDeposit.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\FormDeposit.Designer.cs">
       <DependentUpon>FormDeposit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormEditTariff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormEditTariff.Designer.cs">
+      <DependentUpon>FormEditTariff.cs</DependentUpon>
     </Compile>
     <Compile Include="View\FormSearch.cs">
       <SubType>Form</SubType>
@@ -103,10 +126,6 @@
     <Compile Include="Model\Subscriber.cs" />
     <Compile Include="Model\Tariff.cs" />
     <Compile Include="Model\TariffHistory.cs" />
-    <Compile Include="Other\CSVExporter.cs" />
-    <Compile Include="Other\CSVImporter.cs" />
-    <Compile Include="Other\IFileExporter.cs" />
-    <Compile Include="Other\IFileImporter.cs" />
     <Compile Include="Model\Person.cs" />
     <Compile Include="Model\Staff.cs" />
     <Compile Include="Program.cs" />
@@ -141,8 +160,14 @@
     <Compile Include="View\FormSupport.Designer.cs">
       <DependentUpon>FormSupport.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\FormCallsImport.resx">
+      <DependentUpon>FormCallsImport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FormDeposit.resx">
       <DependentUpon>FormDeposit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormEditTariff.resx">
+      <DependentUpon>FormEditTariff.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormSearch.resx">
       <DependentUpon>FormSearch.cs</DependentUpon>
@@ -177,7 +202,45 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\user_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user_go.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\script_save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\database_save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document_export.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document_import.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\telephone_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\telephone_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\moneybox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\money_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\google_custom_search.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

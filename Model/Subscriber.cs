@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using BillingSystem.Other;
 using MySql.Data.MySqlClient;
 
 namespace BillingSystem.Model
