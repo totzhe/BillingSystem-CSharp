@@ -55,6 +55,7 @@
             this.lblBalanceText = new System.Windows.Forms.Label();
             this.lblBalanceToText = new System.Windows.Forms.Label();
             this.lblBalanceFromText = new System.Windows.Forms.Label();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInf)).BeginInit();
             this.gbDetailType.SuspendLayout();
             this.gbPeriod.SuspendLayout();
@@ -65,6 +66,10 @@
             // 
             this.dgvInf.AllowUserToAddRows = false;
             this.dgvInf.AllowUserToDeleteRows = false;
+            this.dgvInf.AllowUserToResizeColumns = false;
+            this.dgvInf.AllowUserToResizeRows = false;
+            this.dgvInf.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvInf.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvInf.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvInf.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colDate,
@@ -77,6 +82,7 @@
             this.dgvInf.Name = "dgvInf";
             this.dgvInf.ReadOnly = true;
             this.dgvInf.RowHeadersVisible = false;
+            this.dgvInf.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvInf.Size = new System.Drawing.Size(585, 403);
             this.dgvInf.TabIndex = 0;
             // 
@@ -85,7 +91,6 @@
             this.colDate.HeaderText = "Дата";
             this.colDate.Name = "colDate";
             this.colDate.ReadOnly = true;
-            this.colDate.Width = 80;
             // 
             // colTime
             // 
@@ -324,6 +329,10 @@
             this.lblBalanceFromText.TabIndex = 24;
             this.lblBalanceFromText.Text = "Баланс в начале периода:";
             // 
+            // saveFileDialog
+            // 
+            this.saveFileDialog.Filter = "csv files (*.csv)|*.csv";
+            // 
             // FormDetailedInf
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -383,5 +392,6 @@
         private System.Windows.Forms.Label lblBalanceText;
         private System.Windows.Forms.Label lblBalanceToText;
         private System.Windows.Forms.Label lblBalanceFromText;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
     }
 }
