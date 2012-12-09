@@ -22,11 +22,6 @@ namespace BillingSystem.Model
 
         public static void ChargeCalls()
         {
-            PhoneNumber number; //получить из БД по number
-            //Price price = new Price(); //получить из БД по префиксу и number тарифа, полученного из tariff_history, полученного по дате
-            //TimeSpan duration = call.EndTime - call.StartTime;
-            //double cost = price.Cost * (duration.TotalSeconds);
-            //спиcать деньги в БД
             DateTime lastChargeTime = DateTime.Now;
             DateTime currentTime = DateTime.Now;
             Service service = Service.SelectServiceByName(Constants.ChargeCalls);
@@ -53,6 +48,9 @@ namespace BillingSystem.Model
             }
 
             List<PhoneNumber> phones = PhoneNumber.SelectAllPhoneNumbers();
+            double full_sum = 0;
+            int phones_count = 0;
+            int calls_count = 0;
             foreach (PhoneNumber pn in phones)
             {
                 //System.Windows.Forms.MessageBox.Show(pn.Number);
@@ -64,14 +62,18 @@ namespace BillingSystem.Model
                     {
                         Tariff tariff = pn.SelectTariffByDate(call.StartTime);
                         sum += CalculateCallCost(call, tariff);
+                        calls_count++;
                     }
                 }
                 if (sum > 0)
                 {
                     Charge callsCharge = new Charge(pn, service, sum, currentTime);
                     callsCharge.WriteOff();
+                    full_sum += sum;
+                    phones_count++;
                 }
             }
+            System.Windows.Forms.MessageBox.Show("Списано " + full_sum.ToString() + " " + Constants.Currency + " с " + phones_count.ToString() + " номеров за " + calls_count.ToString() + " звонков.", "Списание средств завершено");
         }
 
         public static double CalculateCallCost(Call call, Tariff tariff)
