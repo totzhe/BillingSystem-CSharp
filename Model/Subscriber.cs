@@ -408,5 +408,10 @@ namespace BillingSystem.Model
                 connection.Close();
             }
         }
+
+        public string GetFullName()
+        {
+            return Surname + " " + Name + " " + Patronymic;
+        }
     }
 }

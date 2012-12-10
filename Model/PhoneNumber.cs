@@ -440,11 +440,10 @@ namespace BillingSystem.Model
         /// <summary>
         /// Возвращает список использованных услуг у абонента за указанный период
         /// </summary>
-        /// <param name="phoneNumber">Номер телефона абонента</param>
         /// <param name="from">Начальная дата указанного периода</param>
         /// <param name="to">Конечная дата указанного периода</param>
         /// <returns></returns>
-        public List<Charge> SelectCharges(PhoneNumber phoneNumber, DateTime from, DateTime to)
+        public List<Charge> SelectCharges(DateTime from, DateTime to)
         {
             List<Charge> searchResult = new List<Charge>();
             try
@@ -453,7 +452,7 @@ namespace BillingSystem.Model
                 string query = @"SELECT id, phone_id, service_id, sum, date FROM charge
                     WHERE phone_id = @phone_id AND (date >= @from AND date <= @to) ORDER BY date";
                 MySqlCommand cmd = new MySqlCommand(query, connection);
-                cmd.Parameters.AddWithValue("@phone_id", phoneNumber.ID);
+                cmd.Parameters.AddWithValue("@phone_id", ID);
                 cmd.Parameters.AddWithValue("@from", from);
                 cmd.Parameters.AddWithValue("@to", to);
                 MySqlDataReader r = cmd.ExecuteReader();

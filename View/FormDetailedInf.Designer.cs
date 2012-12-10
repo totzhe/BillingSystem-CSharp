@@ -277,7 +277,7 @@
             // lblFromBalance
             // 
             this.lblFromBalance.AutoSize = true;
-            this.lblFromBalance.Location = new System.Drawing.Point(319, 9);
+            this.lblFromBalance.Location = new System.Drawing.Point(311, 9);
             this.lblFromBalance.Name = "lblFromBalance";
             this.lblFromBalance.Size = new System.Drawing.Size(79, 13);
             this.lblFromBalance.TabIndex = 19;
@@ -286,7 +286,7 @@
             // lblToBalance
             // 
             this.lblToBalance.AutoSize = true;
-            this.lblToBalance.Location = new System.Drawing.Point(544, 9);
+            this.lblToBalance.Location = new System.Drawing.Point(536, 9);
             this.lblToBalance.Name = "lblToBalance";
             this.lblToBalance.Size = new System.Drawing.Size(69, 13);
             this.lblToBalance.TabIndex = 20;
@@ -295,7 +295,7 @@
             // lblBalance
             // 
             this.lblBalance.AutoSize = true;
-            this.lblBalance.Location = new System.Drawing.Point(112, 9);
+            this.lblBalance.Location = new System.Drawing.Point(104, 9);
             this.lblBalance.Name = "lblBalance";
             this.lblBalance.Size = new System.Drawing.Size(56, 13);
             this.lblBalance.TabIndex = 21;

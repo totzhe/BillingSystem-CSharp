@@ -117,18 +117,43 @@ namespace BillingSystem.Model
             }
         }
 
-        public static DateTime GetLastChargeTime(long serviceID)
-        {
-            DateTime result = DateTime.MinValue;
+        public static void RemoveCharges(long serviceID, DateTime from, DateTime to)
+        {            
             try
             {
                 connection.Open();
-                MySqlCommand cmd = new MySqlCommand("SELECT MAX(date) FROM charge WHERE service_id = @service_id", connection);
+                MySqlCommand cmd = new MySqlCommand("DELETE FROM charge WHERE service_id = @service_id AND date >= @from AND date <= @to", connection);
                 cmd.Parameters.AddWithValue("@service_id", serviceID);
+                cmd.Parameters.AddWithValue("@from", from);
+                cmd.Parameters.AddWithValue("@to", to);
+                cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        /*public static List<Charge> SelectCharges(DateTime from, DateTime to)
+        {
+            List<Charge> searchResult = new List<Charge>();
+            try
+            {
+                connection.Open();
+                string query = @"SELECT id, phone_id, service_id, sum, date FROM charge
+                    WHERE (date >= @from AND date <= @to) ORDER BY date";
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@from", from);
+                cmd.Parameters.AddWithValue("@to", to);
                 MySqlDataReader r = cmd.ExecuteReader();
-                if (r.Read())
+                while (r.Read())
                 {
-                    result = r.IsDBNull(r.GetOrdinal("MAX(date)")) ? DateTime.MinValue : r.GetDateTime("MAX(date)");
+                    searchResult.Add(new Charge(r.GetInt64("id"), r.GetInt64("phone_id"), r.GetInt64("service_id"),
+                        r.GetDouble("sum"), r.GetDateTime("date")));
                 }
                 r.Close();
             }
@@ -140,7 +165,7 @@ namespace BillingSystem.Model
             {
                 connection.Close();
             }
-            return result;
-        }
+            return searchResult;
+        }*/
     }
 }

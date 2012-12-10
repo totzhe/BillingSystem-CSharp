@@ -44,8 +44,8 @@ namespace BillingSystem.Controllers
 
         public void RndCall(int count)
         {
-            DateTime lastTime = Charge.GetLastChargeTime(2);
-            DateTime currentTime = DateTime.Now;
+            DateTime to = DateTime.Now;
+            DateTime from = new DateTime(to.Year, to.Month, 1, 0, 0, 0, 0);
             List<PhoneNumber> listPN = PhoneNumber.SelectAllPhoneNumbers();
             for (int i = 0; i < count; i++)
             {
@@ -55,12 +55,12 @@ namespace BillingSystem.Controllers
                 {
                     rnd2 = rnd.Next(listPN.Count);
                 }
-                TimeSpan delta = currentTime - lastTime;
+                TimeSpan delta = to - from;
                 int rnd3 = rnd.Next((int)(delta.TotalSeconds));
                 int rnd4 = rnd.Next(3600);
-                DateTime start = lastTime.AddSeconds(rnd3);
+                DateTime start = from.AddSeconds(rnd3);
                 DateTime finish = start.AddSeconds(rnd4);
-                if (finish > currentTime)
+                if (finish > to)
                     finish = DateTime.Now;
                 _listCall.Add(new Call(listPN[rnd1].Number, listPN[rnd2].Number, start, finish));
             }

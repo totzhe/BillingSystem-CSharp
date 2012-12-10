@@ -16,7 +16,7 @@ namespace BillingSystem.Controllers
         public override List<string[]> Search(string phoneNumber, DateTime from, DateTime to)
         {
             PhoneNumber phone = PhoneNumber.SelectPhoneNumberByNumber(phoneNumber);
-            List<Charge> charges = phone.SelectCharges(phone, from, to);
+            List<Charge> charges = phone.SelectCharges(from, to);
             List<string[]> result = new List<string[]>();
             foreach (Charge c in charges)
             {

@@ -107,7 +107,28 @@ namespace BillingSystem.Controllers
 
         public void Deposit(long id)
         {
-            FormDeposit form = new FormDeposit(id);
+            IControllers.IDepositController controller = new DepositController(id);
+            FormDeposit form = new FormDeposit(controller);
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+        }
+
+        public void ChargeCalls()
+        {
+            IControllers.IChargeCallsController controller = new ChargeCallsController();
+            FormChargeCalls form = new FormChargeCalls(controller);
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+        }
+
+        public void ShowMonthlyInfo()
+        {
+            IMonthlyInfoController controller = new MonthlyInfoController();
+            FormMonthlyInfo form = new FormMonthlyInfo(controller);
             if (form.ShowDialog() == DialogResult.OK)
             {
 
