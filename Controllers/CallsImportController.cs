@@ -10,7 +10,8 @@ namespace BillingSystem.Controllers
 {
     public class CallsImportController : ICallsImportController 
     {
-        public List<Call> _listCall { get; set; }
+        private List<Call> _listCall = new List<Call>();
+        private Random rnd = new Random();
 
         public void OpenFile(string filename)
         {
@@ -19,7 +20,7 @@ namespace BillingSystem.Controllers
             List<string[]> _items = FileExporter.CSVtoList(filename);
             foreach (string[] item in _items)
             {
-                _listCall.Add(new Call(null, item[0], item[1], DateTime.Parse(item[2]), DateTime.Parse(item[3])));
+                _listCall.Add(new Call(item[0], item[1], DateTime.Parse(item[2]), DateTime.Parse(item[3])));
             }
         }
 
@@ -28,6 +29,40 @@ namespace BillingSystem.Controllers
             foreach (Call item in _listCall)
             {
                 item.Add();
+            }
+        }
+
+        public List<Dictionary<string, string>> GetCalls()
+        {
+            List<Dictionary<string, string>> result = new List<Dictionary<string, string>>();
+            foreach (Call call in _listCall)
+            {
+                result.Add(call.ToDictionary());
+            }
+            return result;
+        }
+
+        public void RndCall(int count)
+        {
+            DateTime lastTime = Charge.GetLastChargeTime(2);
+            DateTime currentTime = DateTime.Now;
+            List<PhoneNumber> listPN = PhoneNumber.SelectAllPhoneNumbers();
+            for (int i = 0; i < count; i++)
+            {
+                int rnd1 = rnd.Next(listPN.Count);
+                int rnd2 = rnd.Next(listPN.Count);
+                while (rnd1 == rnd2)
+                {
+                    rnd2 = rnd.Next(listPN.Count);
+                }
+                TimeSpan delta = currentTime - lastTime;
+                int rnd3 = rnd.Next((int)(delta.TotalSeconds));
+                int rnd4 = rnd.Next(3600);
+                DateTime start = lastTime.AddSeconds(rnd3);
+                DateTime finish = start.AddSeconds(rnd4);
+                if (finish > currentTime)
+                    finish = DateTime.Now;
+                _listCall.Add(new Call(listPN[rnd1].Number, listPN[rnd2].Number, start, finish));
             }
         }
     }

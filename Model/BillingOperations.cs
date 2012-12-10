@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using MySql.Data.MySqlClient;
+//using MySql.Data.MySqlClient;
 
 namespace BillingSystem.Model
 {
     public static class BillingOperations
     {
-        private static MySqlConnection _connection;
+        /*private static MySqlConnection _connection;
 
         private static MySqlConnection connection
         {
@@ -18,34 +18,15 @@ namespace BillingSystem.Model
                     _connection = ConnectionManager.GetConnection();
                 return _connection;
             }
-        }
+        }*/
 
         public static void ChargeCalls()
         {
             DateTime lastChargeTime = DateTime.Now;
             DateTime currentTime = DateTime.Now;
             Service service = Service.SelectServiceByName(Constants.ChargeCalls);
-            try
-            {
-                connection.Open();
-                MySqlCommand cmd = new MySqlCommand("SELECT MAX(date) FROM charge WHERE service_id = @service_id", connection);
-                cmd.Parameters.AddWithValue("@service_id", service.ID);
-                MySqlDataReader r = cmd.ExecuteReader();
-                if (r.Read())
-                {
-                    lastChargeTime = r.IsDBNull(r.GetOrdinal("MAX(date)")) ? DateTime.MinValue : r.GetDateTime("MAX(date)");
-                    //System.Windows.Forms.MessageBox.Show(lastChargeTime.ToString());
-                }
-                r.Close();
-            }
-            catch (MySqlException ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.ToString());
-            }
-            finally
-            {
-                connection.Close();
-            }
+
+            lastChargeTime = Charge.GetLastChargeTime(service.ID);
 
             List<PhoneNumber> phones = PhoneNumber.SelectAllPhoneNumbers();
             double full_sum = 0;

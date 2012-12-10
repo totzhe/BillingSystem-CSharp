@@ -47,7 +47,8 @@ namespace BillingSystem.Controllers
                     else
                         item[4] += Environment.NewLine + n.Number;
                 }
-                item[5] = ((s.Balance >= 0) ? Constants.No : (Math.Round(-s.Balance, 2)).ToString() + " " + Constants.Currency);
+                double balance = s.Balance;
+                item[5] = ((balance >= 0) ? Constants.No : (Math.Round(-balance, 2)).ToString() + " " + Constants.Currency);
                 result.Add(item);
                 
             }

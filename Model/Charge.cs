@@ -116,5 +116,31 @@ namespace BillingSystem.Model
                 connection.Close();
             }
         }
+
+        public static DateTime GetLastChargeTime(long serviceID)
+        {
+            DateTime result = DateTime.MinValue;
+            try
+            {
+                connection.Open();
+                MySqlCommand cmd = new MySqlCommand("SELECT MAX(date) FROM charge WHERE service_id = @service_id", connection);
+                cmd.Parameters.AddWithValue("@service_id", serviceID);
+                MySqlDataReader r = cmd.ExecuteReader();
+                if (r.Read())
+                {
+                    result = r.IsDBNull(r.GetOrdinal("MAX(date)")) ? DateTime.MinValue : r.GetDateTime("MAX(date)");
+                }
+                r.Close();
+            }
+            catch (MySqlException ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return result;
+        }
     }
 }

@@ -8,9 +8,9 @@ namespace BillingSystem.Model
 {
     public class Call
     {
-        private long? _id;
+        private long _id;
 
-        public long? ID
+        public long ID
         {
             get { return _id; }
         }
@@ -70,7 +70,15 @@ namespace BillingSystem.Model
             }
         }
 
-        public Call(long? id, string callingNumber, string calledNumber, DateTime startTime, DateTime endTime)
+        public Call(string callingNumber, string calledNumber, DateTime startTime, DateTime endTime)
+        {
+            _callingNumber = callingNumber;
+            _calledNumber = calledNumber;
+            _startTime = startTime;
+            _endTime = endTime;
+        }
+
+        public Call(long id, string callingNumber, string calledNumber, DateTime startTime, DateTime endTime)
         {
             _id = id;
             _callingNumber = callingNumber;
@@ -84,9 +92,8 @@ namespace BillingSystem.Model
             try
             {
                 connection.Open();
-                string queryString = "INSERT INTO calls (id, calling_number, called_number, start_time, end_time) VALUES (@id, @callingNumber, @calledNumber, @startTime, @endTime)";
+                string queryString = "INSERT INTO calls (calling_number, called_number, start_time, end_time) VALUES (@callingNumber, @calledNumber, @startTime, @endTime)";
                 MySqlCommand cmd = new MySqlCommand(queryString, connection);
-                cmd.Parameters.AddWithValue("@id", _id);
                 cmd.Parameters.AddWithValue("@callingNumber", _callingNumber);
                 cmd.Parameters.AddWithValue("@calledNumber", _calledNumber);
                 cmd.Parameters.AddWithValue("@startTime", _startTime);
@@ -101,6 +108,16 @@ namespace BillingSystem.Model
             {
                 connection.Close();
             }
+        }
+
+        public Dictionary<string, string> ToDictionary()
+        {
+            Dictionary<string, string> result = new Dictionary<string, string>();
+            result.Add("CallingNumber", CallingNumber);
+            result.Add("CalledNumber", CalledNumber);
+            result.Add("StartTime", StartTime.ToString());
+            result.Add("EndTime", EndTime.ToString());
+            return result;
         }
 
         // TODO: Добавить конструкторы в зависимости от того, как объекты будут читаться из БД

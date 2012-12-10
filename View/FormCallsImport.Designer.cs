@@ -36,6 +36,7 @@
             this.start_time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.end_time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.btnRnd = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvImportCalls)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,9 +61,9 @@
             this.dgvImportCalls.AllowUserToDeleteRows = false;
             this.dgvImportCalls.AllowUserToResizeColumns = false;
             this.dgvImportCalls.AllowUserToResizeRows = false;
-            this.dgvImportCalls.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvImportCalls.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvImportCalls.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvImportCalls.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvImportCalls.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -109,11 +110,22 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
+            // btnRnd
+            // 
+            this.btnRnd.Location = new System.Drawing.Point(120, 340);
+            this.btnRnd.Name = "btnRnd";
+            this.btnRnd.Size = new System.Drawing.Size(75, 23);
+            this.btnRnd.TabIndex = 3;
+            this.btnRnd.Text = "Рандом";
+            this.btnRnd.UseVisualStyleBackColor = true;
+            this.btnRnd.Click += new System.EventHandler(this.btnRnd_Click);
+            // 
             // FormCallsImport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(538, 375);
+            this.ClientSize = new System.Drawing.Size(538, 376);
+            this.Controls.Add(this.btnRnd);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.dgvImportCalls);
             this.Controls.Add(this.btnOpenFile);
@@ -135,5 +147,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn start_time;
         private System.Windows.Forms.DataGridViewTextBoxColumn end_time;
         private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnRnd;
     }
 }

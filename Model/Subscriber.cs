@@ -16,11 +16,11 @@ namespace BillingSystem.Model
             set { _email = value; }
         }
 
-        private double _balance;
+        //private double _balance;
 
         public double Balance
         {
-            get { return _balance; }
+            get { return GetBalanceByDate(DateTime.Now); }
             set { /*_balance = value;*/ }
         }
 
@@ -48,14 +48,14 @@ namespace BillingSystem.Model
             }
         }*/
 
-        private Subscriber(long id, string name, string patronymic, string surname, string email, double balance, string login, string passwordHash)
+        private Subscriber(long id, string name, string patronymic, string surname, string email, /*double balance,*/ string login, string passwordHash)
         {
             _id = id;
             _name = name;
             _patronymic = patronymic;
             _surname = surname;
             _email = email;
-            _balance = balance;
+            //_balance = balance;
             _login = login;
             _passwordHash = passwordHash;
         }
@@ -79,12 +79,12 @@ namespace BillingSystem.Model
             {
                 connection.Open();
 
-                string query = "SELECT * FROM subscriber WHERE LOWER(name) LIKE LOWER (CONCAT('%',@name,'%')) AND LOWER(patronymic) LIKE LOWER (CONCAT('%',@patr,'%')) AND LOWER(surname) LIKE LOWER (CONCAT('%',@surname,'%'))";
+                string query = "SELECT * FROM subscriber s WHERE LOWER(name) LIKE LOWER (CONCAT('%',@name,'%')) AND LOWER(patronymic) LIKE LOWER (CONCAT('%',@patr,'%')) AND LOWER(surname) LIKE LOWER (CONCAT('%',@surname,'%'))";
                 if (phoneNumber != string.Empty)
                     query += "AND number in (SELECT subscriber_id FROM phone_number WHERE number LIKE CONCAT('%',@phone,'%')";
                 if (debt > 0)
                 {
-                    query += " AND balance < @balance";
+                    query += " AND (SELECT (SELECT IFNULL(SUM(sum), 0) FROM payment WHERE subscriber_id = s.id) - (SELECT IFNULL(SUM(sum), 0) FROM charge WHERE phone_id IN (SELECT id FROM phone_number WHERE subscriber_id = s.id)) as b FROM dual) < @balance";
                 }
                 query += " ORDER BY surname, name, patronymic, balance";
                 MySqlCommand cmd = new MySqlCommand(query, connection);
@@ -100,7 +100,7 @@ namespace BillingSystem.Model
                 MySqlDataReader r = cmd.ExecuteReader();
                 while (r.Read())
                 {
-                    result.Add(new Subscriber(r.GetInt64("id"), r.GetString("name"), DatabaseUtils.GetStringOrNull(r, "patronymic"), r.GetString("surname"), DatabaseUtils.GetStringOrNull(r, "email"), r.GetDouble("balance"), DatabaseUtils.GetStringOrNull(r, "login"), DatabaseUtils.GetStringOrNull(r, "password_hash")));
+                    result.Add(new Subscriber(r.GetInt64("id"), r.GetString("name"), DatabaseUtils.GetStringOrNull(r, "patronymic"), r.GetString("surname"), DatabaseUtils.GetStringOrNull(r, "email"), DatabaseUtils.GetStringOrNull(r, "login"), DatabaseUtils.GetStringOrNull(r, "password_hash")));
                 }
                 r.Close();
             }
@@ -137,7 +137,7 @@ namespace BillingSystem.Model
                     MySqlCommand cmd2 = new MySqlCommand("UPDATE subscriber_id SET id = @id", connection);
                     cmd2.Parameters.AddWithValue("@id", id+1);
                     cmd2.ExecuteNonQuery();
-                    result = new Subscriber(id, Constants.No, Constants.No, Constants.No, Constants.No, 0, Constants.No, Constants.DefaultPasswordHash);
+                    result = new Subscriber(id, Constants.No, Constants.No, Constants.No, Constants.No, Constants.No, Constants.DefaultPasswordHash);
                 }
                 r.Close();
             }
@@ -170,7 +170,7 @@ namespace BillingSystem.Model
                 MySqlDataReader r = cmd.ExecuteReader();
                 if (r.Read())
                 {
-                    result = new Subscriber(r.GetInt64("id"), r.GetString("name"), DatabaseUtils.GetStringOrNull(r, "patronymic"), r.GetString("surname"), DatabaseUtils.GetStringOrNull(r, "email"), r.GetDouble("balance"), DatabaseUtils.GetStringOrNull(r, "login"), DatabaseUtils.GetStringOrNull(r, "password_hash"));
+                    result = new Subscriber(r.GetInt64("id"), r.GetString("name"), DatabaseUtils.GetStringOrNull(r, "patronymic"), r.GetString("surname"), DatabaseUtils.GetStringOrNull(r, "email"), DatabaseUtils.GetStringOrNull(r, "login"), DatabaseUtils.GetStringOrNull(r, "password_hash"));
                 }
                 r.Close();
             }
@@ -255,7 +255,7 @@ namespace BillingSystem.Model
             try
             {
                 connection.Open();
-                string queryString = "UPDATE subscriber SET name = @name, patronymic = @patr, surname = @surname, email = @email, login = @login, balance = @balance WHERE id = @id";
+                string queryString = "UPDATE subscriber SET name = @name, patronymic = @patr, surname = @surname, email = @email, login = @login WHERE id = @id";
                 MySqlCommand cmd = new MySqlCommand(queryString, connection);
                 cmd.Parameters.AddWithValue("@id", ID);
                 cmd.Parameters.AddWithValue("@name", Name);
@@ -263,7 +263,6 @@ namespace BillingSystem.Model
                 cmd.Parameters.AddWithValue("@patr", Patronymic);
                 cmd.Parameters.AddWithValue("@email", Email);
                 cmd.Parameters.AddWithValue("@login", Login);
-                cmd.Parameters.AddWithValue("@balance", Balance);
                 cmd.ExecuteNonQuery();
             }
             catch (MySqlException ex)
@@ -334,7 +333,6 @@ namespace BillingSystem.Model
             List<Payment> searchResult = new List<Payment>();
             try
             {
-                //from.
                 connection.Open();
                 string query = @"SELECT id, subscriber_id, sum, date FROM payment WHERE subscriber_id = @subscriber_id
                     AND date <= @to AND date >= @from ORDER BY date";
@@ -366,9 +364,8 @@ namespace BillingSystem.Model
             double balance = 0;
             try
             {
-                //from.
                 connection.Open();
-                string query = @"SELECT balance - (SELECT IFNULL(SUM(sum), 0) FROM payment WHERE date > @date AND subscriber_id = @id) + (SELECT IFNULL(SUM(sum), 0) FROM charge WHERE date > @date AND phone_id IN (SELECT id FROM phone_number WHERE subscriber_id = @id)) as b FROM subscriber WHERE id = @id";
+                string query = @"SELECT (SELECT IFNULL(SUM(sum), 0) FROM payment WHERE date <= @date AND subscriber_id = @id) - (SELECT IFNULL(SUM(sum), 0) FROM charge WHERE date <= @date AND phone_id IN (SELECT id FROM phone_number WHERE subscriber_id = @id)) as b FROM dual";
                 MySqlCommand cmd = new MySqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@id", _id);
                 cmd.Parameters.AddWithValue("@date", date);
@@ -395,7 +392,7 @@ namespace BillingSystem.Model
             try
             {
                 connection.Open();
-                string queryString = "UPDATE subscriber SET balance = balance + @sum WHERE id = @id; INSERT INTO payment (subscriber_id, sum, date) VALUES (@id, @sum, @date)";
+                string queryString = "INSERT INTO payment (subscriber_id, sum, date) VALUES (@id, @sum, @date)";
                 MySqlCommand cmd = new MySqlCommand(queryString, connection);
                 cmd.Parameters.AddWithValue("@id", _id);
                 cmd.Parameters.AddWithValue("@date", DateTime.Now);
