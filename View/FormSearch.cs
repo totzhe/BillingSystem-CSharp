@@ -65,7 +65,7 @@ namespace BillingSystem
 
         private void tsmCharge_Click(object sender, EventArgs e)
         {
-            BillingSystem.Model.BillingOperations.ChargeCalls();
+            _controller.ChargeCalls();
         }
 
         private void tsmInfoSubscriber_Click(object sender, EventArgs e)
@@ -97,6 +97,11 @@ namespace BillingSystem
             {
                 FileExporter.DGVtoCSV(dataGridViewSearchResults, saveFileDialog.FileName);
             }
+        }
+
+        private void tsmMonthlyInfo_Click(object sender, EventArgs e)
+        {
+            _controller.ShowMonthlyInfo();
         }
     }
 }

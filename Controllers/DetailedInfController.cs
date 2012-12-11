@@ -21,7 +21,7 @@ namespace BillingSystem.Controllers
         {
             if (_subscriber != null)
             {
-                return _subscriber.Surname + " " + _subscriber.Name + " " + _subscriber.Patronymic;
+                return _subscriber.GetFullName();
             }
             else
                 return null;

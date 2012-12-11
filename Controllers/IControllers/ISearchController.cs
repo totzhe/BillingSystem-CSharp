@@ -50,5 +50,15 @@ namespace BillingSystem.Controllers
         /// Создает форму изменения тарифа
         /// </summary>
         void ShowEditTariff();
+
+        /// <summary>
+        /// Создает форму расчета и списания стоимости звонков
+        /// </summary>
+        void ChargeCalls();
+
+        /// <summary>
+        /// Создает форму показа статистики за месяц
+        /// </summary>
+        void ShowMonthlyInfo();
     }
 }

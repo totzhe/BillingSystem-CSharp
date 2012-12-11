@@ -16,7 +16,7 @@ namespace BillingSystem.Controllers
 
         public string GetFullName()
         {
-            return _subscriber.Surname + " " + _subscriber.Name + " " + _subscriber.Patronymic;
+            return _subscriber.GetFullName();
         }
 
         public string GetBalance()

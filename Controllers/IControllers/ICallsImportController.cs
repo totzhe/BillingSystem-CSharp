@@ -8,8 +8,10 @@ namespace BillingSystem.Controllers
 {
     public interface ICallsImportController
     {
-        List<Call> _listCall {get; set;}
+        //List<Call> _listCall {get; set;}
         void OpenFile(string filename);
         void AddCall();
+        List<Dictionary<string, string>> GetCalls();
+        void RndCall(int count);
     }
 }

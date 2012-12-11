@@ -13,9 +13,9 @@ namespace BillingSystem.View
     public partial class FormDeposit : Form
     {
         private BillingSystem.Controllers.IControllers.IDepositController _controller;
-        public FormDeposit(long id)
+        public FormDeposit(BillingSystem.Controllers.IControllers.IDepositController controller)
         {
-            _controller = new DepositController(id);
+            _controller = controller;
             InitializeComponent();
             Text = _controller.GetFullName();
             lblBalance.Text = _controller.GetBalance();

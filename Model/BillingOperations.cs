@@ -20,65 +20,86 @@ namespace BillingSystem.Model
             }
         }
 
-        public static void ChargeCalls()
+        public static List<Charge> CalculateCharges(DateTime from, DateTime to)
         {
-            PhoneNumber number; //получить из БД по number
-            //Price price = new Price(); //получить из БД по префиксу и number тарифа, полученного из tariff_history, полученного по дате
-            //TimeSpan duration = call.EndTime - call.StartTime;
-            //double cost = price.Cost * (duration.TotalSeconds);
-            //спиcать деньги в БД
-            DateTime lastChargeTime = DateTime.Now;
-            DateTime currentTime = DateTime.Now;
             Service service = Service.SelectServiceByName(Constants.ChargeCalls);
-            try
-            {
-                connection.Open();
-                MySqlCommand cmd = new MySqlCommand("SELECT MAX(date) FROM charge WHERE service_id = @service_id", connection);
-                cmd.Parameters.AddWithValue("@service_id", service.ID);
-                MySqlDataReader r = cmd.ExecuteReader();
-                if (r.Read())
-                {
-                    lastChargeTime = r.IsDBNull(r.GetOrdinal("MAX(date)")) ? DateTime.MinValue : r.GetDateTime("MAX(date)");
-                    //System.Windows.Forms.MessageBox.Show(lastChargeTime.ToString());
-                }
-                r.Close();
-            }
-            catch (MySqlException ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.ToString());
-            }
-            finally
-            {
-                connection.Close();
-            }
-
             List<PhoneNumber> phones = PhoneNumber.SelectAllPhoneNumbers();
+            double full_sum = 0;
+            int phones_count = 0;
+            //int calls_count = 0;
+            List<Charge> result = new List<Charge>();
             foreach (PhoneNumber pn in phones)
             {
-                //System.Windows.Forms.MessageBox.Show(pn.Number);
                 double sum = 0;
-                List<Call> calls = pn.SelectCalls(lastChargeTime, currentTime);
+
+                try
+                {
+                    connection.Open();
+                    string query = @"
+                    SELECT SUM(TIMESTAMPDIFF(SECOND, c.start_time, c.end_time) *
+                    (
+                        SELECT cost FROM price 
+                        WHERE
+                        (
+                            tariff_id = 
+                            (
+                                SELECT tariff_id FROM tariff_history 
+                                WHERE phone_id = @phone_id AND start_date <= c.start_time AND (end_date > c.start_time OR end_date IS NULL)
+                            )
+                            AND @number LIKE CONCAT(prefix, '%') 
+                        )
+                        ORDER BY LENGTH(prefix) DESC LIMIT 1
+                    )
+                    ) as sum FROM calls c WHERE calling_number LIKE(@number) AND end_time IS NOT NULL AND start_time >= @from AND start_time <= @to";
+                    MySqlCommand cmd = new MySqlCommand(query, connection);
+                    cmd.Parameters.AddWithValue("@phone_id", pn.ID);
+                    cmd.Parameters.AddWithValue("@number", pn.Number);
+                    cmd.Parameters.AddWithValue("@from", from);
+                    cmd.Parameters.AddWithValue("@to", to);
+                    MySqlDataReader r = cmd.ExecuteReader();
+                    if (r.Read())
+                    {
+                        sum = r.IsDBNull(r.GetOrdinal("sum")) ? 0 : r.GetDouble("sum");
+                    }
+                    r.Close();
+                }
+                catch (MySqlException ex)
+                {
+                    System.Windows.Forms.MessageBox.Show(ex.ToString());
+                }
+                finally
+                {
+                    connection.Close();
+                }
+                /*List<Call> calls = pn.SelectCalls(from, to);
                 foreach (Call call in calls)
                 {
                     if (call.CallingNumber == pn.Number)
                     {
                         Tariff tariff = pn.SelectTariffByDate(call.StartTime);
                         sum += CalculateCallCost(call, tariff);
+                        calls_count++;
                     }
-                }
+                }*/
                 if (sum > 0)
                 {
-                    Charge callsCharge = new Charge(pn, service, sum, currentTime);
-                    callsCharge.WriteOff();
+                    DateTime time = (to.Month == DateTime.Now.Month && to.Year == DateTime.Now.Year || to > DateTime.Now) ? DateTime.Now : to;
+                    Charge callsCharge = new Charge(pn, service, sum, time);
+                    result.Add(callsCharge);
+                    full_sum += sum;
+                    phones_count++;
                 }
             }
+            full_sum = Math.Round(full_sum, 2);
+            System.Windows.Forms.MessageBox.Show("Будет списано " + full_sum.ToString() + " " + Constants.Currency + " с " + phones_count.ToString() + " номеров.", "Расчет завершен");
+            return result;
         }
+
 
         public static double CalculateCallCost(Call call, Tariff tariff)
         {
             Price price = tariff.SelectCallPrice(call.CalledNumber);
             double cost = price.Cost * (call.Duration.TotalSeconds);
-            //спиcать деньги в БД
             return Math.Round(cost, 2);
         }
 

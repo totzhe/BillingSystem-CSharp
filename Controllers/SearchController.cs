@@ -47,7 +47,8 @@ namespace BillingSystem.Controllers
                     else
                         item[4] += Environment.NewLine + n.Number;
                 }
-                item[5] = ((s.Balance >= 0) ? Constants.No : (Math.Round(-s.Balance, 2)).ToString() + " " + Constants.Currency);
+                double balance = s.Balance;
+                item[5] = ((balance >= 0) ? Constants.No : (Math.Round(-balance, 2)).ToString() + " " + Constants.Currency);
                 result.Add(item);
                 
             }
@@ -106,7 +107,28 @@ namespace BillingSystem.Controllers
 
         public void Deposit(long id)
         {
-            FormDeposit form = new FormDeposit(id);
+            IControllers.IDepositController controller = new DepositController(id);
+            FormDeposit form = new FormDeposit(controller);
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+        }
+
+        public void ChargeCalls()
+        {
+            IControllers.IChargeCallsController controller = new ChargeCallsController();
+            FormChargeCalls form = new FormChargeCalls(controller);
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+        }
+
+        public void ShowMonthlyInfo()
+        {
+            IMonthlyInfoController controller = new MonthlyInfoController();
+            FormMonthlyInfo form = new FormMonthlyInfo(controller);
             if (form.ShowDialog() == DialogResult.OK)
             {
 

@@ -65,9 +65,11 @@
     <Compile Include="Controllers\AddSubscriberController.cs" />
     <Compile Include="Controllers\CallsDetailedInfController.cs" />
     <Compile Include="Controllers\CallsImportController.cs" />
+    <Compile Include="Controllers\ChargeCallsController.cs" />
     <Compile Include="Controllers\DepositController.cs" />
     <Compile Include="Controllers\DetailedInfController.cs" />
     <Compile Include="Controllers\EditTariffController.cs" />
+    <Compile Include="Controllers\IControllers\IChargeCallsController.cs" />
     <Compile Include="Controllers\IControllers\ICallsImportController.cs" />
     <Compile Include="Controllers\IControllers\IDepositController.cs" />
     <Compile Include="Controllers\IControllers\IEditTariffController.cs" />
@@ -78,6 +80,8 @@
     <Compile Include="Controllers\IControllers\IStatisticsController.cs" />
     <Compile Include="Controllers\IControllers\ISubscriberController.cs" />
     <Compile Include="Controllers\IControllers\ISupportController.cs" />
+    <Compile Include="Controllers\IControllers\IMonthlyInfoController.cs" />
+    <Compile Include="Controllers\MonthlyInfoController.cs" />
     <Compile Include="Controllers\PaymentsDetailedInfController.cs" />
     <Compile Include="Controllers\ChargesDetailedInfController.cs" />
     <Compile Include="Controllers\SubscriberController.cs" />
@@ -98,6 +102,12 @@
     <Compile Include="View\FormCallsImport.Designer.cs">
       <DependentUpon>FormCallsImport.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\FormChargeCalls.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormChargeCalls.Designer.cs">
+      <DependentUpon>FormChargeCalls.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FormDeposit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +119,12 @@
     </Compile>
     <Compile Include="View\FormEditTariff.Designer.cs">
       <DependentUpon>FormEditTariff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormMonthlyInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormMonthlyInfo.Designer.cs">
+      <DependentUpon>FormMonthlyInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="View\FormSearch.cs">
       <SubType>Form</SubType>
@@ -163,11 +179,17 @@
     <EmbeddedResource Include="View\FormCallsImport.resx">
       <DependentUpon>FormCallsImport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\FormChargeCalls.resx">
+      <DependentUpon>FormChargeCalls.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FormDeposit.resx">
       <DependentUpon>FormDeposit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormEditTariff.resx">
       <DependentUpon>FormEditTariff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormMonthlyInfo.resx">
+      <DependentUpon>FormMonthlyInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormSearch.resx">
       <DependentUpon>FormSearch.cs</DependentUpon>
