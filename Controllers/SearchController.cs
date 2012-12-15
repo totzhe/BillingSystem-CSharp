@@ -100,8 +100,8 @@ namespace BillingSystem.Controllers
 
         public void ShowEditTariff()
         {
-            EditTariffController controller = new EditTariffController();
-            FormEditTariff form = new FormEditTariff(controller);
+            ITariffController controller = new EditTariffController();
+            FormTariff form = new FormTariff(controller);
             form.ShowDialog();
         }
 

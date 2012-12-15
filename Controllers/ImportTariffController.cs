@@ -5,8 +5,7 @@ using System.Text;
 
 namespace BillingSystem.Controllers
 {
-    public interface IEditTariffController
+    public class ImportTariffController
     {
-
     }
 }

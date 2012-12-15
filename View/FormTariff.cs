@@ -11,14 +11,18 @@ using System.Windows.Forms;
 
 namespace BillingSystem.View
 {
-    public partial class FormEditTariff : Form
+    public partial class FormTariff : Form
     {
-        private IEditTariffController _controller;
+        private ITariffController _controller;
 
-        public FormEditTariff(EditTariffController controller)
+        public FormTariff(ITariffController controller)
         {
             _controller = controller;
             InitializeComponent();
+            foreach (Tariff item in _controller.listTariff)
+            {
+                dgvTariffName.Rows.Add(item.ID, item.Name);
+            }
         }
     }
 }

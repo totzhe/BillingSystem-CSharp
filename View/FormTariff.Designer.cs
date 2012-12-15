@@ -1,6 +1,6 @@
 ﻿namespace BillingSystem.View
 {
-    partial class FormEditTariff
+    partial class FormTariff
     {
         /// <summary>
         /// Required designer variable.
@@ -28,50 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button6 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.gbDataTarrif = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.tbTariffDescription = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbTariffName = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.dgvPrice = new System.Windows.Forms.DataGridView();
+            this.btnDelPrice = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnAddPrice = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbCost = new System.Windows.Forms.TextBox();
+            this.tbPrefix = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dgvTariffName = new System.Windows.Forms.DataGridView();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2.SuspendLayout();
             this.gbDataTarrif.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPrice)).BeginInit();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTariffName)).BeginInit();
             this.SuspendLayout();
-            // 
-            // button6
-            // 
-            this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button6.Location = new System.Drawing.Point(12, 389);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 12;
-            this.button6.Text = "Удалить";
-            this.button6.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.button5);
+            this.groupBox2.Controls.Add(this.btnSave);
             this.groupBox2.Controls.Add(this.gbDataTarrif);
             this.groupBox2.Controls.Add(this.groupBox1);
             this.groupBox2.Location = new System.Drawing.Point(178, 12);
@@ -81,15 +70,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Информация по тарифу";
             // 
-            // button5
+            // btnSave
             // 
-            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button5.Location = new System.Drawing.Point(6, 377);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 6;
-            this.button5.Text = "Изменить";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSave.Location = new System.Drawing.Point(6, 377);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 6;
+            this.btnSave.Text = "Сохранить";
+            this.btnSave.UseVisualStyleBackColor = true;
             // 
             // gbDataTarrif
             // 
@@ -97,9 +86,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gbDataTarrif.Controls.Add(this.label2);
-            this.gbDataTarrif.Controls.Add(this.richTextBox1);
+            this.gbDataTarrif.Controls.Add(this.tbTariffDescription);
             this.gbDataTarrif.Controls.Add(this.label1);
-            this.gbDataTarrif.Controls.Add(this.textBox1);
+            this.gbDataTarrif.Controls.Add(this.tbTariffName);
             this.gbDataTarrif.Location = new System.Drawing.Point(6, 19);
             this.gbDataTarrif.Name = "gbDataTarrif";
             this.gbDataTarrif.Size = new System.Drawing.Size(177, 352);
@@ -119,16 +108,16 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Описание";
             // 
-            // richTextBox1
+            // tbTariffDescription
             // 
-            this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tbTariffDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBox1.Location = new System.Drawing.Point(6, 94);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(161, 246);
-            this.richTextBox1.TabIndex = 2;
-            this.richTextBox1.Text = "";
+            this.tbTariffDescription.Location = new System.Drawing.Point(6, 94);
+            this.tbTariffDescription.Name = "tbTariffDescription";
+            this.tbTariffDescription.Size = new System.Drawing.Size(161, 246);
+            this.tbTariffDescription.TabIndex = 2;
+            this.tbTariffDescription.Text = "";
             // 
             // label1
             // 
@@ -141,22 +130,21 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Название";
             // 
-            // textBox1
+            // tbTariffName
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbTariffName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(6, 47);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(161, 20);
-            this.textBox1.TabIndex = 0;
+            this.tbTariffName.Location = new System.Drawing.Point(6, 47);
+            this.tbTariffName.Name = "tbTariffName";
+            this.tbTariffName.Size = new System.Drawing.Size(161, 20);
+            this.tbTariffName.TabIndex = 0;
             // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.dataGridView2);
-            this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Controls.Add(this.button3);
+            this.groupBox1.Controls.Add(this.dgvPrice);
+            this.groupBox1.Controls.Add(this.btnDelPrice);
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Location = new System.Drawing.Point(189, 19);
             this.groupBox1.Name = "groupBox1";
@@ -165,32 +153,32 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Таблица стоимости";
             // 
-            // button4
+            // dgvPrice
             // 
-            this.button4.Enabled = false;
-            this.button4.Location = new System.Drawing.Point(201, 209);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "Удалить";
-            this.button4.UseVisualStyleBackColor = true;
+            this.dgvPrice.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.dgvPrice.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPrice.Location = new System.Drawing.Point(6, 20);
+            this.dgvPrice.Name = "dgvPrice";
+            this.dgvPrice.Size = new System.Drawing.Size(189, 320);
+            this.dgvPrice.TabIndex = 6;
             // 
-            // button3
+            // btnDelPrice
             // 
-            this.button3.Enabled = false;
-            this.button3.Location = new System.Drawing.Point(201, 179);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Изменить";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnDelPrice.Enabled = false;
+            this.btnDelPrice.Location = new System.Drawing.Point(201, 178);
+            this.btnDelPrice.Name = "btnDelPrice";
+            this.btnDelPrice.Size = new System.Drawing.Size(75, 23);
+            this.btnDelPrice.TabIndex = 5;
+            this.btnDelPrice.Text = "Удалить";
+            this.btnDelPrice.UseVisualStyleBackColor = true;
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.button2);
+            this.groupBox3.Controls.Add(this.btnAddPrice);
             this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.textBox3);
-            this.groupBox3.Controls.Add(this.textBox2);
+            this.groupBox3.Controls.Add(this.tbCost);
+            this.groupBox3.Controls.Add(this.tbPrefix);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Location = new System.Drawing.Point(201, 28);
             this.groupBox3.Name = "groupBox3";
@@ -199,14 +187,14 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Добавить стоимость";
             // 
-            // button2
+            // btnAddPrice
             // 
-            this.button2.Location = new System.Drawing.Point(10, 113);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Добавить";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnAddPrice.Location = new System.Drawing.Point(10, 113);
+            this.btnAddPrice.Name = "btnAddPrice";
+            this.btnAddPrice.Size = new System.Drawing.Size(75, 23);
+            this.btnAddPrice.TabIndex = 4;
+            this.btnAddPrice.Text = "Добавить";
+            this.btnAddPrice.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
@@ -217,19 +205,19 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "Цена";
             // 
-            // textBox3
+            // tbCost
             // 
-            this.textBox3.Location = new System.Drawing.Point(6, 87);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(130, 20);
-            this.textBox3.TabIndex = 2;
+            this.tbCost.Location = new System.Drawing.Point(6, 87);
+            this.tbCost.Name = "tbCost";
+            this.tbCost.Size = new System.Drawing.Size(130, 20);
+            this.tbCost.TabIndex = 2;
             // 
-            // textBox2
+            // tbPrefix
             // 
-            this.textBox2.Location = new System.Drawing.Point(6, 42);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(130, 20);
-            this.textBox2.TabIndex = 1;
+            this.tbPrefix.Location = new System.Drawing.Point(6, 42);
+            this.tbPrefix.Name = "tbPrefix";
+            this.tbPrefix.Size = new System.Drawing.Size(130, 20);
+            this.tbPrefix.TabIndex = 1;
             // 
             // label3
             // 
@@ -240,82 +228,84 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Префикс";
             // 
-            // button1
+            // dgvTariffName
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.Location = new System.Drawing.Point(97, 389);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Добавить";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dgvTariffName.AllowUserToAddRows = false;
+            this.dgvTariffName.AllowUserToDeleteRows = false;
+            this.dgvTariffName.AllowUserToResizeColumns = false;
+            this.dgvTariffName.AllowUserToResizeRows = false;
+            this.dgvTariffName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 13);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(160, 370);
-            this.dataGridView1.TabIndex = 13;
+            this.dgvTariffName.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvTariffName.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvTariffName.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTariffName.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id,
+            this.TName});
+            this.dgvTariffName.Location = new System.Drawing.Point(12, 13);
+            this.dgvTariffName.Name = "dgvTariffName";
+            this.dgvTariffName.ReadOnly = true;
+            this.dgvTariffName.RowHeadersVisible = false;
+            this.dgvTariffName.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvTariffName.Size = new System.Drawing.Size(160, 370);
+            this.dgvTariffName.TabIndex = 13;
             // 
-            // dataGridView2
+            // id
             // 
-            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(6, 20);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(189, 320);
-            this.dataGridView2.TabIndex = 6;
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
             // 
-            // FormEditTariff
+            // TName
+            // 
+            this.TName.HeaderText = "Название";
+            this.TName.Name = "TName";
+            this.TName.ReadOnly = true;
+            // 
+            // FormTariff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(730, 424);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.button6);
+            this.Controls.Add(this.dgvTariffName);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.button1);
             this.MinimumSize = new System.Drawing.Size(746, 455);
-            this.Name = "FormEditTariff";
+            this.Name = "FormTariff";
             this.Text = "FormEditTariff";
             this.groupBox2.ResumeLayout(false);
             this.gbDataTarrif.ResumeLayout(false);
             this.gbDataTarrif.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPrice)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTariffName)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.GroupBox gbDataTarrif;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox tbTariffDescription;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbTariffName;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnDelPrice;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnAddPrice;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbCost;
+        private System.Windows.Forms.TextBox tbPrefix;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvPrice;
+        private System.Windows.Forms.DataGridView dgvTariffName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TName;
 
     }
 }

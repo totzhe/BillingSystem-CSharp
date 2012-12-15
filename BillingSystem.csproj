@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="ConnectionManager.cs" />
     <Compile Include="Controllers\AddSubscriberController.cs" />
+    <Compile Include="Controllers\AddTariffController.cs" />
     <Compile Include="Controllers\CallsDetailedInfController.cs" />
     <Compile Include="Controllers\CallsImportController.cs" />
     <Compile Include="Controllers\ChargeCallsController.cs" />
@@ -72,7 +73,7 @@
     <Compile Include="Controllers\IControllers\IChargeCallsController.cs" />
     <Compile Include="Controllers\IControllers\ICallsImportController.cs" />
     <Compile Include="Controllers\IControllers\IDepositController.cs" />
-    <Compile Include="Controllers\IControllers\IEditTariffController.cs" />
+    <Compile Include="Controllers\IControllers\ITariffController.cs" />
     <Compile Include="Controllers\IControllers\INumberController.cs" />
     <Compile Include="Controllers\IControllers\IDetailedInfController.cs" />
     <Compile Include="Controllers\IControllers\ISelectTariffController.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="Controllers\IControllers\ISubscriberController.cs" />
     <Compile Include="Controllers\IControllers\ISupportController.cs" />
     <Compile Include="Controllers\IControllers\IMonthlyInfoController.cs" />
+    <Compile Include="Controllers\ImportTariffController.cs" />
     <Compile Include="Controllers\MonthlyInfoController.cs" />
     <Compile Include="Controllers\PaymentsDetailedInfController.cs" />
     <Compile Include="Controllers\ChargesDetailedInfController.cs" />
@@ -114,11 +116,11 @@
     <Compile Include="View\FormDeposit.Designer.cs">
       <DependentUpon>FormDeposit.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\FormEditTariff.cs">
+    <Compile Include="View\FormTariff.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\FormEditTariff.Designer.cs">
-      <DependentUpon>FormEditTariff.cs</DependentUpon>
+    <Compile Include="View\FormTariff.Designer.cs">
+      <DependentUpon>FormTariff.cs</DependentUpon>
     </Compile>
     <Compile Include="View\FormMonthlyInfo.cs">
       <SubType>Form</SubType>
@@ -185,8 +187,8 @@
     <EmbeddedResource Include="View\FormDeposit.resx">
       <DependentUpon>FormDeposit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\FormEditTariff.resx">
-      <DependentUpon>FormEditTariff.cs</DependentUpon>
+    <EmbeddedResource Include="View\FormTariff.resx">
+      <DependentUpon>FormTariff.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormMonthlyInfo.resx">
       <DependentUpon>FormMonthlyInfo.cs</DependentUpon>

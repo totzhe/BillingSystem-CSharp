@@ -9,7 +9,6 @@ namespace BillingSystem.Model
     public class Tariff
     {
         private long _id;
-
         public long ID
         {
             get { return _id; }
@@ -17,7 +16,6 @@ namespace BillingSystem.Model
         }
 
         private string _name;
-
         public string Name
         {
             get { return _name; }
@@ -25,7 +23,6 @@ namespace BillingSystem.Model
         }
 
         private string _description;
-
         public string Description
         {
             get { return _description; }
@@ -33,7 +30,6 @@ namespace BillingSystem.Model
         }
 
         private bool _active;
-
         public bool Active
         {
             get { return _active; }
@@ -60,7 +56,35 @@ namespace BillingSystem.Model
             _active = active;
         }
 
+        /// <summary>
+        /// Получает список всех тарифов из базы данных
+        /// </summary>
+        /// <returns>Возвращяет список тарифов</returns>
+        public static List<Tariff> SelectAllTariff()
+        {
+            List<Tariff> result = new List<Tariff>();
+            try
+            {
+                connection.Open();
 
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM tariff", connection);
+                MySqlDataReader r = cmd.ExecuteReader();
+                while (r.Read())
+                {
+                    result.Add(new Tariff(r.GetInt64("id"), r.GetString("name"), DatabaseUtils.GetStringOrNull(r, "description"), r.GetBoolean("active")));
+                }
+                r.Close();
+            }
+            catch (MySqlException ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return result;
+        }
 
         /// <summary>
         /// Получает тариф из БД по его tariffID.
