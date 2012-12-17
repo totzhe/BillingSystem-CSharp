@@ -3,17 +3,39 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using BillingSystem.Model;
+using BillingSystem.Controllers.IControllers;
 
 namespace BillingSystem.Controllers
 {
-    public class ChargeCallsController : BillingSystem.Controllers.IControllers.IChargeCallsController
+    /// <summary>
+    /// Класс контроллера списания за звонки. Реализует интерфейс BillingSystem.Controllers.IControllers.IChargeCallsController.
+    /// </summary>
+    public class ChargeCallsController : IChargeCallsController
     {
+        /// <summary>
+        /// Список списаний
+        /// </summary>
         private List<Charge> _charges = new List<Charge>();
 
+        /// <summary>
+        /// Начало периода
+        /// </summary>
         private DateTime to = DateTime.Now;
+
+        /// <summary>
+        /// Конец периода
+        /// </summary>
         private DateTime from = DateTime.Now;
+        
+        /// <summary>
+        /// Рассчитано
+        /// </summary>
         private bool calculated = false;
 
+        /// <summary>
+        /// Вычисляет сумму списаний.
+        /// </summary>
+        /// <param name="date"></param>
         public void CalculateCharges(DateTime date)
         {
             from = new DateTime(date.Year, date.Month, 1, 0, 0, 0, 0);
@@ -22,6 +44,10 @@ namespace BillingSystem.Controllers
             calculated = true;
         }
 
+        /// <summary>
+        /// Возвращает информацию о списаниях.
+        /// </summary>
+        /// <returns>Подробная информация о списаниях</returns>
         public List<Dictionary<string, string>> GetCharges()
         {
             List<Dictionary<string, string>> result = new List<Dictionary<string, string>>();
@@ -35,6 +61,9 @@ namespace BillingSystem.Controllers
             return result;
         }
 
+        /// <summary>
+        /// Подтверждает изменения.
+        /// </summary>
         public void ConfirmCharges()
         {
             if (calculated)

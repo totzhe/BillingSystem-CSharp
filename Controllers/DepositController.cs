@@ -3,27 +3,51 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using BillingSystem.Model;
+using BillingSystem.Controllers.IControllers;
 
 namespace BillingSystem.Controllers
 {
-    public class DepositController: IControllers.IDepositController
+    /// <summary>
+    /// Класс контроллера пополнения счета для абонента. Реализует интерфейс BillingSystem.Controllers.IControllers.IDepositController.
+    /// </summary>
+    public class DepositController: IDepositController
     {
+        /// <summary>
+        /// Абонент. Экземпляр класса Subscriber.
+        /// </summary>
         private Subscriber _subscriber;
+        
+        /// <summary>
+        /// Создает экземпляр класса DepositController.
+        /// </summary>
+        /// <param name="id">ID абонента</param>
         public DepositController(long id)
         {
             _subscriber = Subscriber.SelectSubscriberByID(id);
         }
 
+        /// <summary>
+        /// Возвращает ФИО абонента.
+        /// </summary>
+        /// <returns>ФИО</returns>
         public string GetFullName()
         {
             return _subscriber.GetFullName();
         }
 
+        /// <summary>
+        /// Возвращает баланс абонента.
+        /// </summary>
+        /// <returns>Баланс</returns>
         public string GetBalance()
         {
             return Math.Round(_subscriber.Balance, 2).ToString() + " " + Constants.Currency;
         }
 
+        /// <summary>
+        /// Подтверждает изменения.
+        /// </summary>
+        /// <param name="sum">Сумма</param>
         public void Confirm(string sum)
         {
             try
@@ -37,6 +61,9 @@ namespace BillingSystem.Controllers
             }
         }
 
+        /// <summary>
+        /// Отмена действий
+        /// </summary>
         public void Cancel()
         {
         }

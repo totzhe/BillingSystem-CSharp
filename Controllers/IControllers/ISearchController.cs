@@ -5,59 +5,62 @@ using System.Text;
 
 namespace BillingSystem.Controllers
 {
+    /// <summary>
+    /// Интерфейс контроллера поиска абонентов.
+    /// </summary>
     public interface ISearchController
     {
         /// <summary>
-        /// Метод возвращает список пользователей по заданным параметрам.
+        /// Возвращает список абонентов по заданным параметрам:
         /// </summary>
-        /// <param name="name">Имя пользователя</param>
-        /// <param name="patronymic">Отчество пользователя</param>
-        /// <param name="surname">Фамилия пользователя</param>
-        /// <param name="phoneNumber">Номер пользователя</param>
+        /// <param name="name">Имя</param>
+        /// <param name="patronymic">Отчество</param>
+        /// <param name="surname">Фамилия</param>
+        /// <param name="phoneNumber">Номер</param>
         /// <param name="debt">Размер задолжености</param>
-        /// <returns>Возвращает список массива строк</returns>
+        /// <returns>Список информации об абонентах</returns>
         List<string[]> Search(string name, string patronymic, string surname, string phoneNumber, string debt);
 
         /// <summary>
-        /// Создает форму добавления пользователя.
+        /// Вызывает форму добавления абонента.
         /// </summary>
         void AddSubscriber();
 
         /// <summary>
-        /// Создает форму редактирования пользователя.
+        /// Вызывает форму редактирования абонента.
         /// </summary>
-        /// <param name="number">number пользователя</param>
+        /// <param name="id">ID абонента</param>
         void EditSubscriber(long id);
 
         /// <summary>
-        /// Создает форму детализации пользователя.
+        /// Вызывает форму детализации абонента.
         /// </summary>
-        /// <param name="number">number пользователя</param>
+        /// <param name="id">ID абонента</param>
         void ShowInfo(long id);
 
         /// <summary>
-        /// Вызывает форму пополнения баланса
+        /// Вызывает форму пополнения счета для абонента.
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">ID абонента</param>
         void Deposit(long id);
 
         /// <summary>
-        /// Создает форму импорта звонков
+        /// Вызывает форму импорта звонков.
         /// </summary>
         void ShowCallsImport();
 
         /// <summary>
-        /// Создает форму изменения тарифа
+        /// Вызывает форму изменения тарифа.
         /// </summary>
         void ShowEditTariff();
 
         /// <summary>
-        /// Создает форму расчета и списания стоимости звонков
+        /// Вызывает форму расчета и списания стоимости звонков.
         /// </summary>
         void ChargeCalls();
 
         /// <summary>
-        /// Создает форму показа статистики за месяц
+        /// Вызывает форму показа статистики за месяц.
         /// </summary>
         void ShowMonthlyInfo();
     }

@@ -24,6 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\BillingSystem.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -73,13 +74,10 @@
     <Compile Include="Controllers\IControllers\ICallsImportController.cs" />
     <Compile Include="Controllers\IControllers\IDepositController.cs" />
     <Compile Include="Controllers\IControllers\IEditTariffController.cs" />
-    <Compile Include="Controllers\IControllers\INumberController.cs" />
     <Compile Include="Controllers\IControllers\IDetailedInfController.cs" />
     <Compile Include="Controllers\IControllers\ISelectTariffController.cs" />
     <Compile Include="Controllers\IControllers\ISearchController.cs" />
-    <Compile Include="Controllers\IControllers\IStatisticsController.cs" />
     <Compile Include="Controllers\IControllers\ISubscriberController.cs" />
-    <Compile Include="Controllers\IControllers\ISupportController.cs" />
     <Compile Include="Controllers\IControllers\IMonthlyInfoController.cs" />
     <Compile Include="Controllers\MonthlyInfoController.cs" />
     <Compile Include="Controllers\PaymentsDetailedInfController.cs" />

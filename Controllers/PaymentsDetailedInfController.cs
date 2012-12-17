@@ -6,13 +6,27 @@ using BillingSystem.Model;
 
 namespace BillingSystem.Controllers
 {
+    /// <summary>
+    /// Класс котроллера детализированной информации о платежах. Наследует класс BillingSystem.Controllers.DetailedInfController.
+    /// </summary>
     class PaymentsDetailedInfController : DetailedInfController
     {
+        /// <summary>
+        /// Создает экземпляр класса PaymentsDetailedInfController. 
+        /// </summary>
+        /// <param name="subscriberID">ID абонента</param>
         public PaymentsDetailedInfController(long subscriberID)
             : base(subscriberID)
         {
         }
 
+        /// <summary>
+        /// Возвращает детализированную информацию о платежах по указанным параметрам:
+        /// </summary>
+        /// <param name="phoneNumber">Номер телефона</param>
+        /// <param name="from">Начало периода</param>
+        /// <param name="to">Конец периода</param>
+        /// <returns>Детализированная информация</returns>
         public override List<string[]> Search(string phoneNumber, DateTime from, DateTime to)
         {
             PhoneNumber pn = PhoneNumber.SelectPhoneNumberByNumber(phoneNumber);

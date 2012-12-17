@@ -8,11 +8,22 @@ using BillingSystem.View;
 
 namespace BillingSystem.Controllers
 {
+    /// <summary>
+    /// Класс контроллера импорта звонков. Реализует интерфейс BillingSystem.Controllers.IControllers.ICallsImportController.
+    /// </summary>
     public class CallsImportController : ICallsImportController 
     {
+        /// <summary>
+        /// Список звонков.
+        /// </summary>
         private List<Call> _listCall = new List<Call>();
+        
         private Random rnd = new Random();
 
+        /// <summary>
+        /// Открывает файл с указанным именем.
+        /// </summary>
+        /// <param name="filename">Имя файла</param>
         public void OpenFile(string filename)
         {
             _listCall = new List<Call>();
@@ -24,6 +35,9 @@ namespace BillingSystem.Controllers
             }
         }
 
+        /// <summary>
+        /// Добавляет звонок.
+        /// </summary>
         public void AddCall()
         {
             foreach (Call item in _listCall)
@@ -32,6 +46,10 @@ namespace BillingSystem.Controllers
             }
         }
 
+        /// <summary>
+        /// Получает информацию об импортируемых звонках.
+        /// </summary>
+        /// <returns></returns>
         public List<Dictionary<string, string>> GetCalls()
         {
             List<Dictionary<string, string>> result = new List<Dictionary<string, string>>();
@@ -42,6 +60,10 @@ namespace BillingSystem.Controllers
             return result;
         }
 
+        /// <summary>
+        /// Создает звонок со случайными значениями.
+        /// </summary>
+        /// <param name="count"></param>
         public void RndCall(int count)
         {
             DateTime to = DateTime.Now;

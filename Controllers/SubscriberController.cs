@@ -6,15 +6,39 @@ using BillingSystem.Model;
 
 namespace BillingSystem.Controllers
 {
+    /// <summary>
+    /// Абстрактный класс контроллера абонента. Реализует интерфейс BillingSystem.Controllers.IControllers.ISubscriberController. 
+    /// </summary>
     public abstract class SubscriberController : ISubscriberController
     {
+        /// <summary>
+        /// Абонент. Экземпляр класса Subscriber.
+        /// </summary>
         protected Subscriber subscriber;
 
+        /// <summary>
+        /// Телефонные номера для редактирования.
+        /// </summary>
         protected HashSet<PhoneNumber> _phonesToUpdate = new HashSet<PhoneNumber>();
+        
+        /// <summary>
+        /// Телефонные номера для удаления.
+        /// </summary>
         protected HashSet<PhoneNumber> _phonesToDelete = new HashSet<PhoneNumber>();
+        
+        /// <summary>
+        /// Телефонные номера для добавления.
+        /// </summary>
         protected HashSet<PhoneNumber> _phonesToAdd = new HashSet<PhoneNumber>();
+        
+        /// <summary>
+        /// Телефонные номера.
+        /// </summary>
         private List<PhoneNumber> _phones = null;
 
+        /// <summary>
+        /// Получает список имеющихся у абонента телефонных номеров.
+        /// </summary>
         protected List<PhoneNumber> phones
         {
             get
@@ -25,6 +49,10 @@ namespace BillingSystem.Controllers
             }
         }
 
+        /// <summary>
+        /// Возвращает имя абонента.
+        /// </summary>
+        /// <returns>Имя</returns>
         public string getName()
         {
             if (subscriber != null)
@@ -33,6 +61,10 @@ namespace BillingSystem.Controllers
                 return null;
         }
 
+        /// <summary>
+        /// Возвращает фамилию абонента.
+        /// </summary>
+        /// <returns>Фамилия</returns>
         public string getSurname()
         {
             if (subscriber != null)
@@ -41,6 +73,10 @@ namespace BillingSystem.Controllers
                 return null;
         }
 
+        /// <summary>
+        /// Возвращает отчество абонента.
+        /// </summary>
+        /// <returns>Отчество</returns>
         public string getPatronymic()
         {
             if (subscriber != null)
@@ -49,6 +85,10 @@ namespace BillingSystem.Controllers
                 return null;
         }
 
+        /// <summary>
+        /// Возвращает адрес электронной почты абонента.
+        /// </summary>
+        /// <returns>Адрес электронной почты</returns>
         public string getEmail()
         {
             if (subscriber != null)
@@ -57,6 +97,10 @@ namespace BillingSystem.Controllers
                 return null;
         }
 
+        /// <summary>
+        /// Возвращает логин абонента.
+        /// </summary>
+        /// <returns>Логин</returns>
         public string getLogin()
         {
             if (subscriber != null)
@@ -65,11 +109,18 @@ namespace BillingSystem.Controllers
                 return null;
         }
 
+        /// <summary>
+        /// Создает новый экземпляр класса Subscriber.
+        /// </summary>
         public SubscriberController()
         {
             subscriber = Subscriber.GetNewSubscriber();
         }
 
+        /// <summary>
+        /// Создает новый экземпляр класса Subscriber с указанным параметром:
+        /// </summary>
+        /// <param name="subscriberID">ID абонента</param>
         public SubscriberController(long subscriberID)
         {
             subscriber = Subscriber.SelectSubscriberByID(subscriberID);
@@ -77,6 +128,10 @@ namespace BillingSystem.Controllers
                 throw new BillingSystem.Exceptions.ModelObjectNotFoundException("Subscriber with id = " + subscriberID + " doesn't exist");
         }
 
+        /// <summary>
+        /// Возвращает номера телефонов абонента.
+        /// </summary>
+        /// <returns>Номера телефонов</returns>
         public virtual List<string> getPhoneNumbers()
         {
             List<string> result = new List<string>();
@@ -89,6 +144,9 @@ namespace BillingSystem.Controllers
             return result;
         }
 
+        /// <summary>
+        /// Добавляет телефонный номер.
+        /// </summary>
         public virtual void AddPhoneNumber()
         {
             PhoneNumber number = PhoneNumber.GetNewNumber();
@@ -102,6 +160,10 @@ namespace BillingSystem.Controllers
             }
         }
 
+        /// <summary>
+        /// Редактирует телефонный номер.
+        /// </summary>
+        /// <param name="phoneNumber">Номер телефона</param>
         public virtual void EditPhoneNumber(string phoneNumber)
         {
             foreach (PhoneNumber n in phones)
@@ -134,7 +196,10 @@ namespace BillingSystem.Controllers
             }
         }
 
-
+        /// <summary>
+        /// Удаляет телефонный номер.
+        /// </summary>
+        /// <param name="phoneNumber">Номер телефона</param>
         public virtual void DeletePhoneNumber(string phoneNumber)
         {
             foreach (PhoneNumber n in phones)
@@ -157,14 +222,27 @@ namespace BillingSystem.Controllers
             }
         }
 
+        /// <summary>
+        /// Сбрасывает пароль.
+        /// </summary>
         public virtual void ResetPassword()
         {
             subscriber.ResetPassword();
         }
 
-
+        /// <summary>
+        /// Подтверждает изменения для абонента:
+        /// </summary>
+        /// <param name="name">Имя</param>
+        /// <param name="patronymic">Отчество</param>
+        /// <param name="surname">Фамилия</param>
+        /// <param name="email">Адрес электронной почты</param>
+        /// <param name="login">Логин</param>
         public abstract void ConfirmChanges(string name, string patronymic, string surname, string email, string login);
 
+        /// <summary>
+        /// Отмена действий.
+        /// </summary>
         public virtual void Cancel()
         {
         }

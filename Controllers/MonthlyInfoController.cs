@@ -3,14 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using BillingSystem.Model;
+using BillingSystem.Controllers.IControllers;
 
 namespace BillingSystem.Controllers
 {
-    public class MonthlyInfoController : BillingSystem.Controllers.IMonthlyInfoController
+    /// <summary>
+    /// Класс контроллера информации за месяц. Реализует интерфейс BillingSystem.Controllers.IControllers.IMonthlyInfoController.
+    /// </summary>
+    public class MonthlyInfoController : IMonthlyInfoController
     {
+        /// <summary>
+        /// Сумма списаний
+        /// </summary>
         private double payments_sum = 0;
+
+        /// <summary>
+        /// Сумма платежей
+        /// </summary>
         private double charges_sum = 0;
 
+        /// <summary>
+        /// Возвращает все списания за месяц.
+        /// </summary>
+        /// <param name="date">Последняя дата списания</param>
+        /// <returns>Списания</returns>
         public List<Dictionary<string, string>> GetCharges(DateTime date)
         {
             DateTime from = new DateTime(date.Year, date.Month, 1, 0, 0, 0, 0);
@@ -37,6 +53,11 @@ namespace BillingSystem.Controllers
             return result;
         }
 
+        /// <summary>
+        /// Возвращает все платежи абонентов за месяц.
+        /// </summary>
+        /// <param name="date">Дата последнего платежа</param>
+        /// <returns>Платежи</returns>
         public List<Dictionary<string, string>> GetPayments(DateTime date)
         {
             DateTime from = new DateTime(date.Year, date.Month, 1, 0, 0, 0, 0);
@@ -63,11 +84,19 @@ namespace BillingSystem.Controllers
             return result;
         }
 
+        /// <summary>
+        /// Возвращает сумму списаний в указанной валюте.
+        /// </summary>
+        /// <returns>Сумма</returns>
         public string GetChargesSum()
         {
             return Math.Round(charges_sum, 2) + " " + Constants.Currency;
         }
 
+        /// <summary>
+        /// Возвращает сумму платежей в указанной валюте.
+        /// </summary>
+        /// <returns>Сумма</returns>
         public string GetPaymentsSum()
         {
             return Math.Round(payments_sum, 2) + " " + Constants.Currency;

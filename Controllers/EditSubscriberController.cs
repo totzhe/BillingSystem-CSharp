@@ -6,10 +6,25 @@ using BillingSystem.Model;
 
 namespace BillingSystem.Controllers
 {
+    /// <summary>
+    /// Класс котроллера редактирования абонента. Наследует класс BillingSystem.Controllers.SubscriberController.
+    /// </summary>
     public class EditSubscriberController : SubscriberController
     {
+        /// <summary>
+        /// Создает экземпляр класса EditSubscriberController
+        /// </summary>
+        /// <param name="subscriberID">ID абонента</param>
         public EditSubscriberController(long subscriberID) : base(subscriberID) { }
         
+        /// <summary>
+        /// Подтверждает изменение для абонента:
+        /// </summary>
+        /// <param name="name">Имя</param>
+        /// <param name="patronymic">Отчество</param>
+        /// <param name="surname">Фамилия</param>
+        /// <param name="email">Адрес</param>
+        /// <param name="login">Логин</param>
         public override void ConfirmChanges(string name, string patronymic, string surname, string email, string login)
         {
             subscriber.Name = name == null ? Constants.NoInfo : name.Trim();

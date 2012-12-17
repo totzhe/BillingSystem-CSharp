@@ -6,40 +6,43 @@ using BillingSystem.Model;
 
 namespace BillingSystem.Controllers
 {
+    /// <summary>
+    /// Интерфейс контроллера детализированной информации.
+    /// </summary>
     public interface IDetailedInfController
     {
         /// <summary>
-        ///Возвращает список телефонных номеров, имеющихся у пользователя
+        ///Возвращает список телефонных номеров, имеющихся у пользователя.
         /// </summary>
         /// <returns>Номера телефонов</returns>
         List<string> GetPhoneNumbers();
 
         /// <summary>
-        /// Метод. Возвращает полное имя абонента
+        /// Возвращает ФИО абонента.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>ФИО</returns>
         string GetSubscriberFullName();
 
         /// <summary>
-        /// Осуществляет поиск абонентов по заданным параметрам
+        /// Осуществляет поиск информации по заданным параметрам:
         /// </summary>
         /// <param name="phoneNumber">Телефонный номер</param>
         /// <param name="from">Дата начала периода</param>
         /// <param name="to">Дата конца периода</param>
-        /// <returns></returns>
+        /// <returns>Список информации</returns>
         List<string[]> Search(string phoneNumber, DateTime from, DateTime to);
 
         /// <summary>
-        /// Возвращает баланс абонента по состоянию на определенную дату
+        /// Возвращает баланс абонента по состоянию на определенную дату.
         /// </summary>
         /// <param name="date">Дата</param>
-        /// <returns>Баланс в указанный момент времени</returns>
+        /// <returns>Баланс</returns>
         string GetBalanceByDate(DateTime date);
 
         /// <summary>
-        /// Возвращает текущий баланс абонента
+        /// Возвращает текущий баланс абонента.
         /// </summary>
-        /// <returns>Текущий баланс</returns>
+        /// <returns>Баланс</returns>
         string GetBalance();
     }
 }

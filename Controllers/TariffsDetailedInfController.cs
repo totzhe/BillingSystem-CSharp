@@ -6,13 +6,27 @@ using BillingSystem.Model;
 
 namespace BillingSystem.Controllers
 {
+    /// <summary>
+    /// Класс контроллера детализированной информации о смене тарифа. Наследует класс BillingSystem.Controllers.Controllers.DetailedInfController.
+    /// </summary>
     class TariffsDetailedInfController : DetailedInfController
     {
+        /// <summary>
+        /// Создает экземпляр класса TariffsDetailedInfController.
+        /// </summary>
+        /// <param name="subscriberID">ID абонента</param>
         public TariffsDetailedInfController(long subscriberID)
             : base(subscriberID)
         {
         }
 
+        /// <summary>
+        /// Возвращает детализированную информацию о смене тарифов по указанным параметрам:
+        /// </summary>
+        /// <param name="phoneNumber">Номер телефона</param>
+        /// <param name="from">Начало периода использования тарифа</param>
+        /// <param name="to">Конец периода использования тарифа</param>
+        /// <returns>Информация об использовании тарифов</returns>
         public override List<string[]> Search(string phoneNumber, DateTime from, DateTime to)
         {
             PhoneNumber pn = PhoneNumber.SelectPhoneNumberByNumber(phoneNumber);

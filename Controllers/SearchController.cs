@@ -8,8 +8,20 @@ using BillingSystem.View;
 
 namespace BillingSystem.Controllers
 {
+    /// <summary>
+    /// Класс контроллера поиска. Реализует интерфейс BillingSystem.Controllers.IControllers.ISearchController.
+    /// </summary>
     public class SearchController: ISearchController
     {
+        /// <summary>
+        /// Осуществляет поиск абонентов по указанным параметрам:
+        /// </summary>
+        /// <param name="name">Имя</param>
+        /// <param name="patronymic">Отчество</param>
+        /// <param name="surname">Фамилия</param>
+        /// <param name="phoneNumber">Номер телефона</param>
+        /// <param name="debt">Размер задолженности</param>
+        /// <returns>Информация об абонентах</returns>
         public List<string[]> Search(string name, string patronymic, string surname, string phoneNumber, string debt)
         {
             List<string[]> result = new List<string[]>();
@@ -55,6 +67,9 @@ namespace BillingSystem.Controllers
             return result;
         }
 
+        /// <summary>
+        /// Добавляет абонента.
+        /// </summary>
         public void AddSubscriber()
         {
             AddSubscriberController controller = new AddSubscriberController();
@@ -69,6 +84,10 @@ namespace BillingSystem.Controllers
             }
         }
 
+        /// <summary>
+        /// Редактирует абонента.
+        /// </summary>
+        /// <param name="id">ID абонента</param>
         public void EditSubscriber(long id)
         {
             EditSubscriberController controller = new EditSubscriberController(id);
@@ -82,6 +101,10 @@ namespace BillingSystem.Controllers
             }
         }
 
+        /// <summary>
+        /// Вызывает форму детализированной информации.
+        /// </summary>
+        /// <param name="id">ID абонента</param>
         public void ShowInfo(long id)
         {
             FormDetailedInf form = new FormDetailedInf(id);
@@ -91,6 +114,9 @@ namespace BillingSystem.Controllers
             }
         }
 
+        /// <summary>
+        /// Вызывает форму импорта тарифов.
+        /// </summary>
         public void ShowCallsImport()
         {
             CallsImportController controller = new CallsImportController();
@@ -98,6 +124,9 @@ namespace BillingSystem.Controllers
             form.ShowDialog();
         }
 
+        /// <summary>
+        /// Вызывает форму редакттирования тарифов.
+        /// </summary>
         public void ShowEditTariff()
         {
             EditTariffController controller = new EditTariffController();
@@ -105,6 +134,10 @@ namespace BillingSystem.Controllers
             form.ShowDialog();
         }
 
+        /// <summary>
+        /// Вызывает форму пополнения счета.
+        /// </summary>
+        /// <param name="id">ID абонента</param>
         public void Deposit(long id)
         {
             IControllers.IDepositController controller = new DepositController(id);
@@ -115,6 +148,9 @@ namespace BillingSystem.Controllers
             }
         }
 
+        /// <summary>
+        /// Вызывает форму списаний за звонки.
+        /// </summary>
         public void ChargeCalls()
         {
             IControllers.IChargeCallsController controller = new ChargeCallsController();
@@ -125,6 +161,9 @@ namespace BillingSystem.Controllers
             }
         }
 
+        /// <summary>
+        /// Вызывает форму подробной информации за месяц.
+        /// </summary>
         public void ShowMonthlyInfo()
         {
             IMonthlyInfoController controller = new MonthlyInfoController();
