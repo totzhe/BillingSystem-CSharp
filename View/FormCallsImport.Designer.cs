@@ -42,7 +42,10 @@
             // 
             // openFileDialog
             // 
+            this.openFileDialog.DefaultExt = "csv";
             this.openFileDialog.FileName = "openFileDialog";
+            this.openFileDialog.Filter = "Текст|.*csv";
+            this.openFileDialog.Title = "Открыть";
             // 
             // btnOpenFile
             // 
@@ -51,7 +54,7 @@
             this.btnOpenFile.Name = "btnOpenFile";
             this.btnOpenFile.Size = new System.Drawing.Size(101, 23);
             this.btnOpenFile.TabIndex = 0;
-            this.btnOpenFile.Text = "Открыть файл";
+            this.btnOpenFile.Text = "Открыть...";
             this.btnOpenFile.UseVisualStyleBackColor = true;
             this.btnOpenFile.Click += new System.EventHandler(this.btnOpenFile_Click);
             // 
@@ -76,7 +79,7 @@
             this.dgvImportCalls.Name = "dgvImportCalls";
             this.dgvImportCalls.RowHeadersVisible = false;
             this.dgvImportCalls.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvImportCalls.Size = new System.Drawing.Size(513, 321);
+            this.dgvImportCalls.Size = new System.Drawing.Size(545, 321);
             this.dgvImportCalls.TabIndex = 1;
             // 
             // fromNumber
@@ -102,7 +105,7 @@
             // btnAdd
             // 
             this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAdd.Location = new System.Drawing.Point(450, 340);
+            this.btnAdd.Location = new System.Drawing.Point(482, 340);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 2;
@@ -124,14 +127,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(538, 376);
+            this.ClientSize = new System.Drawing.Size(570, 376);
             this.Controls.Add(this.btnRnd);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.dgvImportCalls);
             this.Controls.Add(this.btnOpenFile);
-            this.MinimumSize = new System.Drawing.Size(554, 414);
+            this.MinimumSize = new System.Drawing.Size(584, 414);
             this.Name = "FormCallsImport";
-            this.Text = "Импорт пользовательских звонков";
+            this.Text = "Импортировать телефонные звонки";
             ((System.ComponentModel.ISupportInitialize)(this.dgvImportCalls)).EndInit();
             this.ResumeLayout(false);
 

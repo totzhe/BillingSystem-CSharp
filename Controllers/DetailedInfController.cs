@@ -12,9 +12,6 @@ namespace BillingSystem.Controllers
     /// </summary>
     public abstract class DetailedInfController : IDetailedInfController
     {
-        /// <summary>
-        /// Абонент. Экземпляр класса Subscriber.
-        /// </summary>
         protected Subscriber _subscriber;
 
         /// <summary>

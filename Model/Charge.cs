@@ -6,46 +6,64 @@ using MySql.Data.MySqlClient;
 
 namespace BillingSystem.Model
 {
+    /// <summary>
+    /// Класс списания.
+    /// </summary>
     public class Charge
     {
         private long _id;
 
+        /// <summary>
+        /// Возвращает или задает идентификатор списания.
+        /// </summary>
         public long ID
         {
             get { return _id; }
-            set { /*_id = value;*/ }
+            set { }
         }
 
         private long _phoneID;
 
+        /// <summary>
+        /// Возвращает или задает идентификатор телефонного номера у списания.
+        /// </summary>
         public long PhoneID
         {
             get { return _phoneID; }
-            set { /*_phoneID = value;*/ }
+            set { }
         }
 
         private long _serviceID;
 
-        public long OperationID
+        /// <summary>
+        /// Возвращает или задает идентификатор услуги, за которую произведено списание.
+        /// </summary>
+        public long ServiceID
         {
             get { return _serviceID; }
-            set { /*_serviceID = value;*/ }
+            set { }
         }
 
         private double _sum;
 
+        /// <summary>
+        /// Возвращает или задает сумму списания.
+        /// </summary>
         public double Sum
         {
             get { return _sum; }
-            set { /*_sum = value;*/ }
+            set { }
         }
 
         private DateTime _date;
 
+        /// <summary>
+        /// Возвращает или задает дату списания.
+        /// </summary>
         public DateTime Date
         {
-            get { return _date/*.ToLocalTime()*/; }
-            set { /*_date = value;*/ }
+            get { return _date; }
+            set { }
         }
 
         private PhoneNumber _phoneNumber;
@@ -62,6 +80,13 @@ namespace BillingSystem.Model
             }
         }
 
+        /// <summary>
+        /// Инициализирует новый экземпляр класса Charge, получая в качесте аргументов следущие параметры:
+        /// </summary>
+        /// <param name="phone">Телефонный номер</param>
+        /// <param name="service">Услуга</param>
+        /// <param name="sum">Сумма</param>
+        /// <param name="date">Дата</param>
         public Charge(PhoneNumber phone, Service service, double sum, DateTime date)
         {
             _date = date;
@@ -71,6 +96,14 @@ namespace BillingSystem.Model
             _phoneNumber = phone;
         }
 
+        /// <summary>
+        /// Инициализирует новый экземпляр класса Charge, получая в качесте аргументов следущие параметры:
+        /// </summary>
+        /// <param name="id">ID списания</param>
+        /// <param name="phoneID">ID телефонного номера</param>
+        /// <param name="serviceID">ID услуги</param>
+        /// <param name="sum">Сумма</param>
+        /// <param name="date">Дата</param>
         public Charge(long id, long phoneID, long serviceID, double sum, DateTime date)
         {
             _id = id;
@@ -81,7 +114,7 @@ namespace BillingSystem.Model
         }
 
         /// <summary>
-        /// Получает услугу
+        /// Получает услугу.
         /// </summary>
         /// <returns>Услуга</returns>
         public Service GetService()
@@ -90,7 +123,7 @@ namespace BillingSystem.Model
         }
 
         /// <summary>
-        /// Списывает деньги за услугу со счета абонента.
+        /// Обновляет поле баланса в таблице базы данных.
         /// </summary>
         public void WriteOff()
         {
@@ -117,6 +150,12 @@ namespace BillingSystem.Model
             }
         }
 
+        /// <summary>
+        /// Удаляет запись о списании с заданным идентификатором услуги из таблицы базы данных. 
+        /// </summary>
+        /// <param name="serviceID">Идентификатор услуги</param>
+        /// <param name="from">Дата начала</param>
+        /// <param name="to">Дата окончания</param>
         public static void RemoveCharges(long serviceID, DateTime from, DateTime to)
         {            
             try
@@ -137,35 +176,5 @@ namespace BillingSystem.Model
                 connection.Close();
             }
         }
-
-        /*public static List<Charge> SelectCharges(DateTime from, DateTime to)
-        {
-            List<Charge> searchResult = new List<Charge>();
-            try
-            {
-                connection.Open();
-                string query = @"SELECT id, phone_id, service_id, sum, date FROM charge
-                    WHERE (date >= @from AND date <= @to) ORDER BY date";
-                MySqlCommand cmd = new MySqlCommand(query, connection);
-                cmd.Parameters.AddWithValue("@from", from);
-                cmd.Parameters.AddWithValue("@to", to);
-                MySqlDataReader r = cmd.ExecuteReader();
-                while (r.Read())
-                {
-                    searchResult.Add(new Charge(r.GetInt64("id"), r.GetInt64("phone_id"), r.GetInt64("service_id"),
-                        r.GetDouble("sum"), r.GetDateTime("date")));
-                }
-                r.Close();
-            }
-            catch (MySqlException ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.ToString());
-            }
-            finally
-            {
-                connection.Close();
-            }
-            return searchResult;
-        }*/
     }
 }

@@ -10,10 +10,17 @@ using BillingSystem.Controllers.IControllers;
 
 namespace BillingSystem.View
 {
+    /// <summary>
+    /// Класс формы списания средств со счетов всех абонентов. Наследует класс System.Windows.Forms.Form.
+    /// </summary>
     public partial class FormChargeCalls : Form
     {
         private IChargeCallsController _controller;
 
+        /// <summary>
+        /// Инициализирует новый экземпляр класса FormChargeCalls, получая в качестве параметра объект класса, реализующего интерфейс IChargeCallsController.
+        /// </summary>
+        /// <param name="controller">Контроллер списания средств за звонки</param>
         public FormChargeCalls(IChargeCallsController controller)
         {
             _controller = controller;

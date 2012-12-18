@@ -12,12 +12,15 @@ using BillingSystem.Model;
 namespace BillingSystem
 {
     /// <summary>
-    /// Главная форма проекта
+    /// Класс формы поиска абонентов. Наследует класс System.Windows.Forms.Form. 
     /// </summary>
     public partial class FormSearch : Form
     {
         private ISearchController _controller;
 
+        /// <summary>
+        /// Инициализирует новый экземпляр класа FormSearch
+        /// </summary>
         public FormSearch()
         {
             _controller = new SearchController();
@@ -25,6 +28,9 @@ namespace BillingSystem
             Search();
         }
 
+        /// <summary>
+        /// Осуществляет поиск абонентов.
+        /// </summary>
         private void Search()
         {
             dataGridViewSearchResults.Rows.Clear();
@@ -93,7 +99,11 @@ namespace BillingSystem
 
         private void tsmSaveToCSV_Click(object sender, EventArgs e)
         {
-            if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK && saveFileDialog.FileName.Length > 0)
+            saveFileDialog.DefaultExt = "csv";
+            saveFileDialog.Filter = "Текстовый файл|*.csv";
+            saveFileDialog.Title = "Сохранить";
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK && saveFileDialog.FileName != string.Empty)
             {
                 FileExporter.DGVtoCSV(dataGridViewSearchResults, saveFileDialog.FileName);
             }

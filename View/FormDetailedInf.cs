@@ -13,11 +13,18 @@ using Kent.Boogaart.HelperTrinity;
 
 namespace BillingSystem.View
 {
+    /// <summary>
+    /// Класс формы детализированной информации. Наследует класс System.Windows.Forms.Form.
+    /// </summary>
     public partial class FormDetailedInf : Form
     {
         private IDetailedInfController _controller;
         private long _subscriberID;
 
+        /// <summary>
+        /// Инициализирует новый экземпляр класса FormDetailedInf, получая в качестве параметра идентификатор абонента 
+        /// </summary>
+        /// <param name="subscriberId">Идентификатор абонента</param>
         public FormDetailedInf(long subscriberId)
         {
             InitializeComponent();
@@ -42,6 +49,9 @@ namespace BillingSystem.View
             initBalance();
         }
 
+        /// <summary>
+        /// Инициализирует баланс для данного абонента.
+        /// </summary>
         private void initBalance()
         {
             lblBalance.Text = _controller.GetBalance();
@@ -49,6 +59,10 @@ namespace BillingSystem.View
             lblToBalance.Text = _controller.GetBalanceByDate(dtpTo.Value);
         }
 
+        /// <summary>
+        /// Инициализацирует контроллер детализированной информации в зависимости от выбранного компонента типа RadioButton. Принимает в качестве аргумента идентификаор абонента.
+        /// </summary>
+        /// <param name="subscriberId">Идентификатор</param>
         private void initController(long subscriberId)
         {
             if (rbtnCalls.Checked == true)
@@ -69,6 +83,9 @@ namespace BillingSystem.View
             }
         }
 
+        /// <summary>
+        /// Осуществляет поиск по заданным критериям.
+        /// </summary>
         private void Search()
         {
             List<string[]> items = _controller.Search(lbNumbers.SelectedItem.ToString(), dtpFrom.Value, dtpTo.Value);
@@ -79,6 +96,9 @@ namespace BillingSystem.View
             }
         }
 
+        /// <summary>
+        /// Инициализирует таблицу, содержащую детализированную информацио в зависимости от выбранного компонента RadioButton.
+        /// </summary>
         private void initDataGridView()
         {
             if (rbtnCalls.Checked == true)
@@ -92,7 +112,6 @@ namespace BillingSystem.View
                 dgvInf.Columns[3].Name = "Тип";
                 dgvInf.Columns[4].Name = "Длительность";
                 dgvInf.Columns[5].Name = "Стоимость";
-                //Search();
             }
             if (rbtnTariffs.Checked == true)
             {
@@ -104,7 +123,6 @@ namespace BillingSystem.View
                 dgvInf.Columns[2].Name = "Тарифный план";
                 dgvInf.Columns[3].Name = "Дата отключения";
                 dgvInf.Columns[4].Name = "Время отключения";
-                //Search();
             }
             if (rbtnPayments.Checked == true)
             {
@@ -114,7 +132,6 @@ namespace BillingSystem.View
                 dgvInf.Columns[0].Name = "Дата";
                 dgvInf.Columns[1].Name = "Время";
                 dgvInf.Columns[2].Name = "Сумма";
-                //Search();
             }
             if (rbtnServices.Checked == true)
             {
@@ -125,15 +142,11 @@ namespace BillingSystem.View
                 dgvInf.Columns[1].Name = "Время";
                 dgvInf.Columns[2].Name = "Услуга";
                 dgvInf.Columns[3].Name = "Стоимость";
-                //dgvInf.Columns[4].Name = "Состояние баланса";
-                //Search();
             }
         }
 
         private void lbNumbers_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //initController(_subscriberID);
-            //initDataGridView();     
+        {   
             Search();
         }
 
@@ -147,20 +160,14 @@ namespace BillingSystem.View
 
         private void dtpFrom_CloseUp(object sender, EventArgs e)
         {
-            //initController(_subscriberID);
-            //initDataGridView();  
             dtpFrom.Value = dtpFrom.Value.Date;
-            //System.Windows.Forms.MessageBox.Show(dtpFrom.Value.ToString());
             initBalance();
             Search();
         }
 
         private void dtpTo_CloseUp(object sender, EventArgs e)
-        {
-            //initController(_subscriberID);
-            //initDataGridView();   
+        {  
             dtpTo.Value = dtpTo.Value.Date.AddHours(23).AddMinutes(59).AddSeconds(59).AddMilliseconds(59);
-            //System.Windows.Forms.MessageBox.Show(dtpTo.Value.ToString());
             initBalance();
             Search();
         }

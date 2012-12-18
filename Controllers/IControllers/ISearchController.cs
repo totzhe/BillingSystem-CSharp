@@ -29,19 +29,19 @@ namespace BillingSystem.Controllers
         /// <summary>
         /// Вызывает форму редактирования абонента.
         /// </summary>
-        /// <param name="id">ID абонента</param>
+        /// <param name="id">Идентификатор абонента</param>
         void EditSubscriber(long id);
 
         /// <summary>
         /// Вызывает форму детализации абонента.
         /// </summary>
-        /// <param name="id">ID абонента</param>
+        /// <param name="id">Идентификатор абонента</param>
         void ShowInfo(long id);
 
         /// <summary>
         /// Вызывает форму пополнения счета для абонента.
         /// </summary>
-        /// <param name="id">ID абонента</param>
+        /// <param name="id">Идентификатор абонента</param>
         void Deposit(long id);
 
         /// <summary>

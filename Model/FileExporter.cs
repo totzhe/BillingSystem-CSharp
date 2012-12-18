@@ -8,13 +8,16 @@ using Kent.Boogaart.HelperTrinity;
 
 namespace BillingSystem.Model
 {
+    /// <summary>
+    /// Класс экспорта из файла.
+    /// </summary>
     public static class FileExporter
     {
         /// <summary>
-        /// Сохраняет DataGridView в CSV по указанному адресу
+        /// Сохраняет DataGridView в CSV в файл с указанным именем.
         /// </summary>
-        /// <param name="dgvInf">Передаем DataGridView</param>
-        /// <param name="filename">Передаем адресс</param>
+        /// <param name="dgvInf">Таблица DataGridView</param>
+        /// <param name="filename">Имя файла</param>
         public static void DGVtoCSV(DataGridView dgvInf, string filename)
         {
             using (CsvWriter writer = new CsvWriter(filename))
@@ -37,10 +40,10 @@ namespace BillingSystem.Model
         }
 
         /// <summary>
-        /// Преобразует CSV файл в список
+        /// Преобразует CSV файл в список.
         /// </summary>
-        /// <param name="filename">Адресс файла</param>
-        /// <returns>Возвращяет список строк</returns>
+        /// <param name="filename">Имя файла</param>
+        /// <returns>Список строк</returns>
         public static List<string[]> CSVtoList(string filename)
         {
             List<string[]> list = new List<string[]>();

@@ -6,6 +6,9 @@ using MySql.Data.MySqlClient;
 
 namespace BillingSystem.Model
 {
+    /// <summary>
+    /// Класс биллинговых операций.
+    /// </summary>
     public static class BillingOperations
     {
         private static MySqlConnection _connection;
@@ -20,6 +23,12 @@ namespace BillingSystem.Model
             }
         }
 
+        /// <summary>
+        /// Возвращает расчет списаний за звонки
+        /// </summary>
+        /// <param name="from">Начальная дата</param>
+        /// <param name="to">Конечная дата</param>
+        /// <returns>Списания</returns>
         public static List<Charge> CalculateCharges(DateTime from, DateTime to)
         {
             Service service = Service.SelectServiceByName(Constants.ChargeCalls);
@@ -95,7 +104,12 @@ namespace BillingSystem.Model
             return result;
         }
 
-
+        /// <summary>
+        /// Рассчитывает стоимость за все звонки.
+        /// </summary>
+        /// <param name="call">Звонок</param>
+        /// <param name="tariff">Тариф</param>
+        /// <returns>Стоимость</returns>
         public static double CalculateCallCost(Call call, Tariff tariff)
         {
             Price price = tariff.SelectCallPrice(call.CalledNumber);
@@ -103,7 +117,6 @@ namespace BillingSystem.Model
             return Math.Round(cost, 2);
         }
 
-        
 
         //TODO: какие-нибудь еще методы по мере необходимости
     }

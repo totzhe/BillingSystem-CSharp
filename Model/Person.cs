@@ -5,18 +5,27 @@ using System.Text;
 
 namespace BillingSystem.Model
 {
+    /// <summary>
+    /// Класс пользователя системы.
+    /// </summary>
     public abstract class Person
-    {
+    {        
         protected long _id;
 
+        /// <summary>
+        /// Возвращает или задает идентификатор пользователя.
+        /// </summary>
         public long ID
         {
             get { return _id; }
-            set { /*_id = value;*/ }
+            set { }
         }
 
         protected string _name;
 
+        /// <summary>
+        /// Возвращает или задает имя пользователя.
+        /// </summary>
         public string Name
         {
             get { return _name; }
@@ -25,6 +34,9 @@ namespace BillingSystem.Model
 
         protected string _patronymic;
 
+        /// <summary>
+        /// Возвращает или задает отчество пользователя.
+        /// </summary>
         public string Patronymic
         {
             get { return _patronymic; }
@@ -33,6 +45,9 @@ namespace BillingSystem.Model
 
         protected string _surname;
 
+        /// <summary>
+        /// Возвращает или задает фамилию пользователя.
+        /// </summary>
         public string Surname
         {
             get { return _surname; }
@@ -41,6 +56,9 @@ namespace BillingSystem.Model
 
         protected string _login;
 
+        /// <summary>
+        /// Возвращает или задает логин пользователя.
+        /// </summary>
         public string Login
         {
             get { return _login; }
@@ -49,8 +67,9 @@ namespace BillingSystem.Model
 
         protected string _passwordHash;
 
-        //private string _passwordSalt;
-
+        /// <summary>
+        /// Устанавливает значение хеша у пароля по умолчанию. 
+        /// </summary>
         public virtual void ResetPassword()
         {
             _passwordHash = Constants.DefaultPasswordHash;

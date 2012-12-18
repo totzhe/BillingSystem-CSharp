@@ -6,30 +6,42 @@ using MySql.Data.MySqlClient;
 
 namespace BillingSystem.Model
 {
+    /// <summary>
+    /// Класс услуги связи.
+    /// </summary>
     public class Service
     {
         private long _id;
 
+        /// <summary>
+        /// Возвращает или задает идентификатор услуги.
+        /// </summary>
         public long ID
         {
             get { return _id; }
-            set { /*_id = value;*/ }
+            set { }
         }
 
         private string _name;
 
+        /// <summary>
+        /// Возвращает или задает наименование услуги.
+        /// </summary>
         public string Name
         {
             get { return _name; }
-            set { /*_name = value;*/ }
+            set { }
         }
 
         private double _cost;
 
+        /// <summary>
+        /// Возвращает или задает стоимость пользования услугой.
+        /// </summary>
         public double Cost
         {
             get { return _cost; }
-            set { /*_cost = value;*/ }
+            set { }
         }
 
         private static MySqlConnection _connection;
@@ -44,6 +56,12 @@ namespace BillingSystem.Model
             }
         }
 
+        /// <summary>
+        /// Инициализирует новый экземпляр класса Service, получая в качестве аргументов следующие параметры:
+        /// </summary>
+        /// <param name="id">Идентификатор услуги</param>
+        /// <param name="name">Наименование</param>
+        /// <param name="cost">Стоимость</param>
         private Service(long id, string name, double cost)
         {
             _id = id;
@@ -51,44 +69,8 @@ namespace BillingSystem.Model
             _cost = cost;
         }
 
-        /*/// <summary>
-        /// Получает из БД услугу смены тарифа
-        /// </summary>
-        /// <returns>Услуга смены тарифа</returns>
-        public static Service SelectChangeTariffService()
-        {
-            Service result = null;
-            try
-            {
-                connection.Open();
-
-                string query = "SELECT * FROM service WHERE LOWER(name) LIKE LOWER(@name) ORDER BY LENGTH(name) ASC LIMIT 1";
-
-                MySqlCommand cmd = new MySqlCommand(query, connection);
-                cmd.Parameters.AddWithValue("@name", Constants.TariffChanging);
-
-                MySqlDataReader r = cmd.ExecuteReader();
-                if (r.Read())
-                {
-                    result = new Service(r.GetInt64("id"), r.GetString("name"), r.GetDouble("cost"));
-                }
-                r.Close();
-            }
-            catch (MySqlException ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.ToString());
-
-            }
-            finally
-            {
-                connection.Close();
-            }
-
-            return result;
-        }*/
-
         /// <summary>
-        /// Получает услугу по ее имени
+        /// Получает услугу по ее наименованию.
         /// </summary>
         /// <param name="name">Имя услуги</param>
         /// <returns>Услуга</returns>
@@ -125,9 +107,9 @@ namespace BillingSystem.Model
         }
 
         /// <summary>
-        /// Получает из БД услугу по ее ID
+        /// Получает из БД услугу по ее идентификатору.
         /// </summary>
-        /// <param name="serviceID">ID услуги</param>
+        /// <param name="serviceID">Идентификатор услуги</param>
         /// <returns>Услуга</returns>
         public static Service SelectServiceByID(long serviceID)
         {

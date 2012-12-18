@@ -6,38 +6,53 @@ using MySql.Data.MySqlClient;
 
 namespace BillingSystem.Model
 {
+    /// <summary>
+    /// Класс тарифного плана.
+    /// </summary>
     public class Tariff
     {
         private long _id;
 
+        /// <summary>
+        /// Возвращает или задает идентификатор тарифа.
+        /// </summary>
         public long ID
         {
             get { return _id; }
-            set { /*_id = value;*/ }
+            set { }
         }
 
         private string _name;
 
+        /// <summary>
+        /// Возвращает или задает название тарифа.
+        /// </summary>
         public string Name
         {
             get { return _name; }
-            set { /*_name = value;*/ }
+            set { }
         }
 
         private string _description;
 
+        /// <summary>
+        /// Возвращает или задает описание тарифного плана.
+        /// </summary>
         public string Description
         {
             get { return _description; }
-            set { /*_description = value;*/ }
+            set { }
         }
 
         private bool _active;
 
+        /// <summary>
+        /// Состояние активности тарифа.
+        /// </summary>
         public bool Active
         {
             get { return _active; }
-            set { /*_active = value;*/ }
+            set { }
         }
 
         private static MySqlConnection _connection;
@@ -52,6 +67,13 @@ namespace BillingSystem.Model
             }
         }
 
+        /// <summary>
+        /// Инициализирует новый экземпляр класса Tariff, получая в качестве аргументов следующие параметры:
+        /// </summary>
+        /// <param name="id">Идентификатор</param>
+        /// <param name="name">Название</param>
+        /// <param name="description">Описание</param>
+        /// <param name="active">Состояние активности</param>
         public Tariff(long id, string name, string description, bool active)
         {
             _id = id;
@@ -61,11 +83,10 @@ namespace BillingSystem.Model
         }
 
 
-
         /// <summary>
-        /// Получает тариф из БД по его tariffID.
+        /// Получает тариф из БД по его идентификатору, паредаваемому в качестве параметра.
         /// </summary>
-        /// <param name="tariffID">tariffID тарифа</param>
+        /// <param name="tariffID">Идентификатор</param>
         /// <returns>Тариф</returns>
         public static Tariff SelectTariffByID(long tariffID)
         {
@@ -128,6 +149,11 @@ namespace BillingSystem.Model
             return result;
         }
 
+        /// <summary>
+        /// Возвращает стоимость звонка на определенные номера с указанным префиксом.
+        /// </summary>
+        /// <param name="phone"></param>
+        /// <returns></returns>
         public Price SelectCallPrice(string phone)
         {
             Price result = null;

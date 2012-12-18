@@ -5,18 +5,27 @@ using System.Text;
 
 namespace BillingSystem.Model
 {
+    /// <summary>
+    /// Класс платежа.
+    /// </summary>
     public class Payment
     {
         private long _id;
 
+        /// <summary>
+        /// Возвращает или задает идентификатор платежа.
+        /// </summary>
         public long ID
         {
             get { return _id; }
-            set { /*_id = value;*/ }
+            set { }
         }
 
         private long _subscriberID;
 
+        /// <summary>
+        /// Возвращает или задает идентификатор абонента, на счет которого поступил платеж.
+        /// </summary>
         public long SubscriberID
         {
             get { return _subscriberID; }
@@ -25,27 +34,45 @@ namespace BillingSystem.Model
 
         private double _sum;
 
+        /// <summary>
+        /// Возвращает или задает сумму платежа.
+        /// </summary>
         public double Sum
         {
             get { return _sum; }
-            set { /*_sum = value;*/ }
+            set { }
         }
 
         private DateTime _date;
 
+        /// <summary>
+        /// Дата платежа.
+        /// </summary>
         public DateTime Date
         {
-            get { return _date/*.ToLocalTime()*/; }
-            set { /*_date = value;*/ }
+            get { return _date; }
+            set { }
         }
 
+        /// <summary>
+        /// Инициализирует новый экземпляр класса Payment, получая в качестве аргументов следующие параметры:
+        /// </summary>
+        /// <param name="subscriber">Абонент</param>
+        /// <param name="sum">Сумма</param>
         public Payment(Subscriber subscriber, double sum)
         {
-            _date = System.DateTime./*Utc*/Now;
+            _date = System.DateTime.Now;
             _subscriberID = subscriber.ID;
             _sum = sum;
         }
 
+        /// <summary>
+        /// Инициализирует новый экземпляр класса Payment, получая в качестве аргументов следующие параметры:
+        /// </summary>
+        /// <param name="id">Идентификатор платежа</param>
+        /// <param name="subscriberID">идентификатор абонента</param>
+        /// <param name="sum">Сумма</param>
+        /// <param name="paymentDate">Дата платежа</param>
         public Payment(long id, long subscriberID, double sum, DateTime paymentDate)
         {
             _id = id;

@@ -6,14 +6,22 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using BillingSystem.Controllers;
+using BillingSystem.Controllers.IControllers;
 
 namespace BillingSystem.View
 {
+    /// <summary>
+    /// Класс формы пополнения счета абонента. Наследует класс System.Windows.Forms.Form.
+    /// </summary>
     public partial class FormDeposit : Form
     {
         private BillingSystem.Controllers.IControllers.IDepositController _controller;
-        public FormDeposit(BillingSystem.Controllers.IControllers.IDepositController controller)
+        
+        /// <summary>
+        /// Инициализирует новый экземпляр класса FormDeposit, получая в качестве параметра объект класса, реализующего интерфейс IDepositController.
+        /// </summary>
+        /// <param name="controller">Контроллер пополнения счета</param>
+        public FormDeposit(IDepositController controller)
         {
             _controller = controller;
             InitializeComponent();

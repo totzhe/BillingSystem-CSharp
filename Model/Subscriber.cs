@@ -6,18 +6,25 @@ using MySql.Data.MySqlClient;
 
 namespace BillingSystem.Model
 {
+    /// <summary>
+    /// Класс абонента.
+    /// </summary>
     public class Subscriber : Person
     {
         private string _email;
 
+        /// <summary>
+        /// Возвращает или задает адрес электронной почты.
+        /// </summary>
         public string Email
         {
             get { return _email; }
             set { _email = value; }
         }
 
-        //private double _balance;
-
+        /// <summary>
+        /// Возвращает или задает баланс на счете абонента.
+        /// </summary>
         public double Balance
         {
             get { return GetBalanceByDate(DateTime.Now); }
@@ -36,30 +43,26 @@ namespace BillingSystem.Model
             }
         }
 
-        /*private List<PhoneNumber> _phoneNumbers = null;
-
-        private List<PhoneNumber> phoneNumbers
-        {
-            get
-            {
-                if (_phoneNumbers == null)
-                    _phoneNumbers = GetPhoneNumbers();
-                return _phoneNumbers;
-            }
-        }*/
-
-        private Subscriber(long id, string name, string patronymic, string surname, string email, /*double balance,*/ string login, string passwordHash)
+        /// <summary>
+        /// Инициализирует новый экземпляр класса Subscriber, получая в качестве аргументов соедующие параметры:
+        /// </summary>
+        /// <param name="id">идентификатор абонента</param>
+        /// <param name="name">Имя</param>
+        /// <param name="patronymic">Отчество</param>
+        /// <param name="surname">Фамилия</param>
+        /// <param name="email">Адрес электронной почты</param>
+        /// <param name="login">Логин</param>
+        /// <param name="passwordHash">Хеш пароля</param>
+        private Subscriber(long id, string name, string patronymic, string surname, string email, string login, string passwordHash)
         {
             _id = id;
             _name = name;
             _patronymic = patronymic;
             _surname = surname;
             _email = email;
-            //_balance = balance;
             _login = login;
             _passwordHash = passwordHash;
         }
-
 
 
         /// <summary>
@@ -154,9 +157,9 @@ namespace BillingSystem.Model
         }
 
         /// <summary>
-        /// Получает абонента из БД по его id.
+        /// Получает абонента из БД по его идентификатору.
         /// </summary>
-        /// <param name="subscriberID">id абонента</param>
+        /// <param name="subscriberID">Идентификатор</param>
         /// <returns>Абонент</returns>
         public static Subscriber SelectSubscriberByID(long subscriberID)
         {
@@ -276,7 +279,7 @@ namespace BillingSystem.Model
         }
 
         /// <summary>
-        /// Удаляет запись абонента в БД.
+        /// Удаляет запись абонента из БД.
         /// </summary>
         public void Delete()
         {
@@ -325,7 +328,7 @@ namespace BillingSystem.Model
         /// <summary>
         /// Возвращает платежи абонента за указанный период
         /// </summary>
-        /// <param name="from">Начальная дата указанног периода</param>
+        /// <param name="from">Начальная дата указанного периода</param>
         /// <param name="to">Конечная дата указанного периода</param>
         /// <returns>Список платежей</returns>
         public List<Payment> SelectPayments(DateTime from, DateTime to)
@@ -359,6 +362,11 @@ namespace BillingSystem.Model
             return searchResult;
         }
 
+        /// <summary>
+        /// Возвращает баланс абонента по состоянию на определенную в качестве аргумента дату.
+        /// </summary>
+        /// <param name="date">Конкретная дата</param>
+        /// <returns>Баланс</returns>
         public double GetBalanceByDate(DateTime date)
         {
             double balance = 0;
@@ -387,6 +395,10 @@ namespace BillingSystem.Model
             return balance;
         }
 
+        /// <summary>
+        /// Пополняет счет абонента.
+        /// </summary>
+        /// <param name="sum">Сумма</param>
         public void DepositMoney(double sum)
         {
             try
@@ -409,6 +421,10 @@ namespace BillingSystem.Model
             }
         }
 
+        /// <summary>
+        /// Возвращает ФИО абонента
+        /// </summary>
+        /// <returns>ФИО</returns>
         public string GetFullName()
         {
             return Surname + " " + Name + " " + Patronymic;

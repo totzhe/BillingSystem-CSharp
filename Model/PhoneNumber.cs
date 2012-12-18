@@ -6,17 +6,26 @@ using MySql.Data.MySqlClient;
 
 namespace BillingSystem.Model
 {
+    /// <summary>
+    /// Класс телефонного номера.
+    /// </summary>
     public class PhoneNumber
     {
         private long _id;
 
+        /// <summary>
+        /// Возвращает или задает идентификатор телефона.
+        /// </summary>
         public long ID
         {
             get { return _id; }
         }
 
         private long _subscriberID;
-
+        
+        /// <summary>
+        /// Возвращает или задает идентификатор абонента.
+        /// </summary>
         public long SubscriberID
         {
             get { return _subscriberID; }
@@ -25,16 +34,22 @@ namespace BillingSystem.Model
 
         private string _number;
 
+        /// <summary>
+        /// Возвращает или задает строку, содержащую номер телефона.
+        /// </summary>
         public string Number
         {
             get { return _number; }
-            set { /*_number = value;*/ }
+            set { }
         }
 
         private long _tariffID;
 
         private long _newTariffID = -1;
 
+        /// <summary>
+        /// Возвращает или задает идентификатор тарифного плана у телефонного номера.
+        /// </summary>
         public long TariffID
         {
             get
@@ -56,6 +71,13 @@ namespace BillingSystem.Model
             }
         }
 
+        /// <summary>
+        /// Инициализирует новый экземпляр класса PhoneNumber, получая в качестве аргументов следующие параметры:
+        /// </summary>
+        /// <param name="id">Идентификатор телефонного номера</param>
+        /// <param name="subscriberID">Идентификатор абонента</param>
+        /// <param name="number">Номер телефона</param>
+        /// <param name="tariffID">Идентификатор тарифа</param>
         public PhoneNumber(long id, long subscriberID, string number, long tariffID)
         {
             _id = id;
@@ -65,7 +87,7 @@ namespace BillingSystem.Model
         }
 
         /// <summary>
-        /// Получает из БД все телефонные номера
+        /// Получает из БД все телефонные номера.
         /// </summary>
         /// <returns>Список номеров</returns>
         public static List<PhoneNumber> SelectAllPhoneNumbers()
@@ -96,7 +118,7 @@ namespace BillingSystem.Model
         }
 
         /// <summary>
-        /// Получает телефонный номер из БД по его id.
+        /// Получает телефонный номер из БД по его идентификатору, передаваемому в качестве аргумента.
         /// </summary>
         /// <returns>Номер</returns>
         public static PhoneNumber SelectPhoneNumberByID(long phoneNumberID)
@@ -131,7 +153,7 @@ namespace BillingSystem.Model
         /// Получает телефонный номер из БД по значению номера.
         /// </summary>
         /// <param name="phoneNumber">Значение номера</param>
-        /// <returns></returns>
+        /// <returns>Телефонный номер</returns>
         public static PhoneNumber SelectPhoneNumberByNumber(string phoneNumber)
         {
             PhoneNumber result = null;
@@ -198,17 +220,20 @@ namespace BillingSystem.Model
             _newTariffID = -1;
         }
 
+        /// <summary>
+        /// Обновляет историю смены тарифов для данного номера.
+        /// </summary>
         private void updateTariffHistory()
         {
             try
             {
                 connection.Open();
-                DateTime date = DateTime./*Utc*/Now;
+                DateTime date = DateTime.Now;
                 string queryString = @"UPDATE tariff_history SET end_date = @end WHERE phone_id = @phone_id AND tariff_id = @tariff_id AND end_date IS NULL;
                                      INSERT INTO tariff_history (phone_id, tariff_id, start_date) VALUES (@phone_id, @new_tariff_id, @end)";
                 MySqlCommand cmd = new MySqlCommand(queryString, connection);
-                cmd.Parameters.AddWithValue("@end", DateTime./*Utc*/Now);
-                cmd.Parameters.AddWithValue("@phone_id", ID);
+                cmd.Parameters.AddWithValue("@end", DateTime.Now);
+                cmd.Parameters.AddWithValue("@phone_id", _id);
                 cmd.Parameters.AddWithValue("@tariff_id", _tariffID);
                 cmd.Parameters.AddWithValue("@new_tariff_id", _newTariffID);
                 cmd.ExecuteNonQuery();
@@ -237,7 +262,7 @@ namespace BillingSystem.Model
                 cmd.Parameters.AddWithValue("@subscriber_id", _subscriberID);
                 cmd.Parameters.AddWithValue("@number", _number);
                 cmd.Parameters.AddWithValue("@new_tariff_id", _newTariffID);
-                cmd.Parameters.AddWithValue("@start", DateTime./*Utc*/Now);
+                cmd.Parameters.AddWithValue("@start", DateTime.Now);
                 cmd.ExecuteNonQuery();
             }
             catch (MySqlException ex)
@@ -311,7 +336,7 @@ namespace BillingSystem.Model
         }
 
         /// <summary>
-        /// Возвращает тариф для этого телефона в указанный момент времени
+        /// Возвращает тариф для данного номера на конкретный момент времени.
         /// </summary>
         /// <param name="date">Дата и время</param>
         /// <returns>Тариф</returns>
@@ -325,8 +350,8 @@ namespace BillingSystem.Model
                 string query = "SELECT * FROM tariff WHERE id = (SELECT tariff_id FROM tariff_history WHERE phone_id = @phone_id AND start_date <= @date AND (end_date > @date OR end_date IS NULL))";
 
                 MySqlCommand cmd = new MySqlCommand(query, connection);
-                cmd.Parameters.AddWithValue("@phone_id", ID);
-                cmd.Parameters.AddWithValue("@date", date/*.ToUniversalTime()*/);
+                cmd.Parameters.AddWithValue("@phone_id", _id);
+                cmd.Parameters.AddWithValue("@date", date);
 
                 MySqlDataReader r = cmd.ExecuteReader();
                 while (r.Read())
@@ -349,7 +374,7 @@ namespace BillingSystem.Model
         }
 
         /// <summary>
-        /// Возвращает все звонки для данного номера за указанный период
+        /// Возвращает все звонки для данного номера за указанный период.
         /// </summary>
         /// <param name="from">Дата начала периода поиска</param>
         /// <param name="to">Дата конца периода поиска</param>
@@ -365,8 +390,8 @@ namespace BillingSystem.Model
                      AND start_time >= @from AND start_time <= @to AND end_time IS NOT NULL ORDER BY start_time, end_time, called_number, calling_number";
                 MySqlCommand cmd = new MySqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@number", _number);
-                cmd.Parameters.AddWithValue("@from", from/*.ToUniversalTime()*/);
-                cmd.Parameters.AddWithValue("@to", to/*.ToUniversalTime()*/);
+                cmd.Parameters.AddWithValue("@from", from);
+                cmd.Parameters.AddWithValue("@to", to);
                 MySqlDataReader r = cmd.ExecuteReader();
                 while (r.Read())
                 {
@@ -388,7 +413,7 @@ namespace BillingSystem.Model
         }
 
         /// <summary>
-        /// Возвращает историю смены тарифов
+        /// Возвращает историю смены тарифов за указанный период.
         /// </summary>
         /// <param name="from">Дата начала периода поиска</param>
         /// <param name="to">Дата конца периода поиска</param>
@@ -410,9 +435,9 @@ namespace BillingSystem.Model
                     AND ((th.end_date <= @to AND th.end_date >= @from) OR th.end_date IS NULL)
                     ORDER BY start_date, end_date, name";
                 MySqlCommand cmd = new MySqlCommand(query, connection);
-                cmd.Parameters.AddWithValue("@phone_id", ID);
-                cmd.Parameters.AddWithValue("@from", from/*.ToUniversalTime()*/);
-                cmd.Parameters.AddWithValue("@to", to/*.ToUniversalTime()*/);
+                cmd.Parameters.AddWithValue("@phone_id", _id);
+                cmd.Parameters.AddWithValue("@from", from);
+                cmd.Parameters.AddWithValue("@to", to);
                 cmd.Parameters.AddWithValue("@param", Constants.TariffChanging);
                 MySqlDataReader r = cmd.ExecuteReader();
                 while (r.Read())
@@ -438,7 +463,7 @@ namespace BillingSystem.Model
         }
 
         /// <summary>
-        /// Возвращает список использованных услуг у абонента за указанный период
+        /// Возвращает список использованных услуг за указанный период
         /// </summary>
         /// <param name="from">Начальная дата указанного периода</param>
         /// <param name="to">Конечная дата указанного периода</param>
@@ -452,7 +477,7 @@ namespace BillingSystem.Model
                 string query = @"SELECT id, phone_id, service_id, sum, date FROM charge
                     WHERE phone_id = @phone_id AND (date >= @from AND date <= @to) ORDER BY date";
                 MySqlCommand cmd = new MySqlCommand(query, connection);
-                cmd.Parameters.AddWithValue("@phone_id", ID);
+                cmd.Parameters.AddWithValue("@phone_id", _id);
                 cmd.Parameters.AddWithValue("@from", from);
                 cmd.Parameters.AddWithValue("@to", to);
                 MySqlDataReader r = cmd.ExecuteReader();

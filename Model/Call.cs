@@ -6,17 +6,27 @@ using MySql.Data.MySqlClient;
 
 namespace BillingSystem.Model
 {
+    /// <summary>
+    /// Класс звонка.
+    /// </summary>
     public class Call
     {
         private long _id;
 
+        /// <summary>
+        /// Возвращает или задает идентификатор звонка.
+        /// </summary>
         public long ID
         {
             get { return _id; }
+            set { }
         }
 
         private string _callingNumber;
 
+        /// <summary>
+        /// Возвращает или задает строку, содержащую номер телефона вызывающего абонента.
+        /// </summary>
         public string CallingNumber
         {
             get { return _callingNumber; }
@@ -25,6 +35,9 @@ namespace BillingSystem.Model
 
         private string _calledNumber;
 
+        /// <summary>
+        /// Возвращает или задает строку, содержащую номер телефона вызываемого абонента.
+        /// </summary>
         public string CalledNumber
         {
             get { return _calledNumber; }
@@ -33,20 +46,29 @@ namespace BillingSystem.Model
 
         private DateTime _startTime;
 
+        /// <summary>
+        /// Возвращает или задает объект типа DateTime, содержащего время начала разговора.
+        /// </summary>
         public DateTime StartTime
         {
-            get { return _startTime/*.ToLocalTime()*/; }
+            get { return _startTime; }
             set { }
         }
 
         private DateTime _endTime;
 
+        /// <summary>
+        /// Возвращает или задает объект типа DateTime, содержащего время окончания разговора.
+        /// </summary>
         public DateTime EndTime
         {
-            get { return _endTime/*.ToLocalTime()*/; }
+            get { return _endTime; }
             set { }
         }
 
+        /// <summary>
+        /// Возвращает или задает объект типа TimeSpan, содержащего длительность разговора.
+        /// </summary>
         public TimeSpan Duration
         {
             get
@@ -70,6 +92,13 @@ namespace BillingSystem.Model
             }
         }
 
+        /// <summary>
+        /// Инициализирует новый экземпляр класса Call, получая в качестве аргументов следующие параметры:
+        /// </summary>
+        /// <param name="callingNumber">Телефонный номер вызывающего абонента</param>
+        /// <param name="calledNumber">Телефонный номер вызываемого абонента</param>
+        /// <param name="startTime">Время начала разговора</param>
+        /// <param name="endTime">Время завершения разговора</param>
         public Call(string callingNumber, string calledNumber, DateTime startTime, DateTime endTime)
         {
             _callingNumber = callingNumber;
@@ -78,6 +107,14 @@ namespace BillingSystem.Model
             _endTime = endTime;
         }
 
+        /// <summary>
+        /// Инициализирует новый экземпляр класса Call, получая в качестве аргументов следующие параметры:
+        /// </summary>
+        /// <param name="id">Идентификатор звонка</param>
+        /// <param name="callingNumber">Телефонный номер вызывающего абонента</param>
+        /// <param name="calledNumber">Телефонный номер вызываемого абонента</param>
+        /// <param name="startTime">Время начала разговора</param>
+        /// <param name="endTime">Время завершения разговора</param>
         public Call(long id, string callingNumber, string calledNumber, DateTime startTime, DateTime endTime)
         {
             _id = id;
@@ -87,6 +124,9 @@ namespace BillingSystem.Model
             _endTime = endTime;
         }
 
+        /// <summary>
+        /// Добавляет запись с данными о звонке в базу данных.
+        /// </summary>
         public void Add()
         {
             try
@@ -110,13 +150,17 @@ namespace BillingSystem.Model
             }
         }
 
+        /// <summary>
+        /// Возвращает основную информацию о звонках для последующего импорта в файл. 
+        /// </summary>
+        /// <returns>Словарь значений</returns>
         public Dictionary<string, string> ToDictionary()
         {
             Dictionary<string, string> result = new Dictionary<string, string>();
-            result.Add("CallingNumber", CallingNumber);
-            result.Add("CalledNumber", CalledNumber);
-            result.Add("StartTime", StartTime.ToString());
-            result.Add("EndTime", EndTime.ToString());
+            result.Add(Constants.Outgoing, CallingNumber);
+            result.Add(Constants.Incoming, CalledNumber);
+            result.Add(Constants.StartTime, StartTime.ToString());
+            result.Add(Constants.EndTime, EndTime.ToString());
             return result;
         }
 

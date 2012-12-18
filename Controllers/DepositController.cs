@@ -12,15 +12,12 @@ namespace BillingSystem.Controllers
     /// </summary>
     public class DepositController: IDepositController
     {
-        /// <summary>
-        /// Абонент. Экземпляр класса Subscriber.
-        /// </summary>
         private Subscriber _subscriber;
         
         /// <summary>
         /// Создает экземпляр класса DepositController.
         /// </summary>
-        /// <param name="id">ID абонента</param>
+        /// <param name="id">Идентификатор абонента</param>
         public DepositController(long id)
         {
             _subscriber = Subscriber.SelectSubscriberByID(id);
@@ -55,7 +52,7 @@ namespace BillingSystem.Controllers
                 double d = Double.Parse(sum);
                 _subscriber.DepositMoney(d);
             }
-            catch (FormatException e)
+            catch (FormatException ex)
             {
                 System.Windows.Forms.MessageBox.Show("Неверный формат суммы!");
             }

@@ -11,10 +11,17 @@ using System.Windows.Forms;
 
 namespace BillingSystem.View
 {
+    /// <summary>
+    /// Класс формы редактирования тарифа. Наследует класс System.Windows.Forms.Form.
+    /// </summary>
     public partial class FormEditTariff : Form
     {
         private IEditTariffController _controller;
 
+        /// <summary>
+        /// инициализирует новый экземпляр класса FormEditTariff. Принимает в качестве параметра контроллер редактирования тарифа.
+        /// </summary>
+        /// <param name="controller">Контроллер</param>
         public FormEditTariff(EditTariffController controller)
         {
             _controller = controller;

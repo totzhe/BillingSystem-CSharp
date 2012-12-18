@@ -211,6 +211,9 @@
     <EmbeddedResource Include="View\FormSubscriber.resx">
       <DependentUpon>FormSubscriber.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\FormSupport.resx">
+      <DependentUpon>FormSupport.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

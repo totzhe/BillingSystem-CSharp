@@ -13,9 +13,6 @@ namespace BillingSystem.Controllers
     /// </summary>
     public class CallsImportController : ICallsImportController 
     {
-        /// <summary>
-        /// Список звонков.
-        /// </summary>
         private List<Call> _listCall = new List<Call>();
         
         private Random rnd = new Random();
@@ -49,7 +46,7 @@ namespace BillingSystem.Controllers
         /// <summary>
         /// Получает информацию об импортируемых звонках.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Звонки</returns>
         public List<Dictionary<string, string>> GetCalls()
         {
             List<Dictionary<string, string>> result = new List<Dictionary<string, string>>();
@@ -63,7 +60,7 @@ namespace BillingSystem.Controllers
         /// <summary>
         /// Создает звонок со случайными значениями.
         /// </summary>
-        /// <param name="count"></param>
+        /// <param name="count">Количество</param>
         public void RndCall(int count)
         {
             DateTime to = DateTime.Now;

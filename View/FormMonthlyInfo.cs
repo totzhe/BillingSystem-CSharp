@@ -10,10 +10,17 @@ using BillingSystem.Controllers;
 
 namespace BillingSystem.View
 {
+    /// <summary>
+    /// Класс формы информации за месяц. Наследует класс System.Windows.Forms.Form.
+    /// </summary>
     public partial class FormMonthlyInfo : Form
     {
         private IMonthlyInfoController _controller;
 
+        /// <summary>
+        /// Инициализирует класс FormMonthlyInfo.
+        /// </summary>
+        /// <param name="controller"></param>
         public FormMonthlyInfo(IMonthlyInfoController controller)
         {
             _controller = controller;

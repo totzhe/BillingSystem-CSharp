@@ -12,7 +12,7 @@ namespace BillingSystem.Controllers
     public abstract class SubscriberController : ISubscriberController
     {
         /// <summary>
-        /// Абонент. Экземпляр класса Subscriber.
+        /// Абонент.
         /// </summary>
         protected Subscriber subscriber;
 
@@ -31,9 +31,6 @@ namespace BillingSystem.Controllers
         /// </summary>
         protected HashSet<PhoneNumber> _phonesToAdd = new HashSet<PhoneNumber>();
         
-        /// <summary>
-        /// Телефонные номера.
-        /// </summary>
         private List<PhoneNumber> _phones = null;
 
         /// <summary>

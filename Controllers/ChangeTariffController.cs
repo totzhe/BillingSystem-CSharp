@@ -11,14 +11,8 @@ namespace BillingSystem.Controllers
     /// </summary>
     public class ChangeTariffController : ISelectTariffController
     {
-        /// <summary>
-        /// Номер телефона.
-        /// </summary>
         private PhoneNumber _number;
 
-        /// <summary>
-        /// Тариф.
-        /// </summary>
         private Tariff _tariff;
         
         /// <summary>

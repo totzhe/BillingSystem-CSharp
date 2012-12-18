@@ -12,14 +12,8 @@ namespace BillingSystem.Controllers
     /// </summary>
     public class MonthlyInfoController : IMonthlyInfoController
     {
-        /// <summary>
-        /// Сумма списаний
-        /// </summary>
         private double payments_sum = 0;
 
-        /// <summary>
-        /// Сумма платежей
-        /// </summary>
         private double charges_sum = 0;
 
         /// <summary>

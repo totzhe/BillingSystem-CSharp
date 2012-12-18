@@ -14,7 +14,7 @@ namespace BillingSystem.Controllers
         /// <summary>
         /// Создает экземпляр класса CallsDetailedInfController.
         /// </summary>
-        /// <param name="subscriberID">ID абонента</param>
+        /// <param name="subscriberID">Идентификатор абонента</param>
         public CallsDetailedInfController(long subscriberID)
             : base(subscriberID)
         {
@@ -26,7 +26,7 @@ namespace BillingSystem.Controllers
         /// <param name="phoneNumber">Номер телефона</param>
         /// <param name="from">Начало периода</param>
         /// <param name="to">Конец периода </param>
-        /// <returns>Информация о звонках</returns>
+        /// <returns>Детализированная информация о звонках</returns>
         public override List<string[]> Search(string phoneNumber, DateTime from, DateTime to)
         {
             PhoneNumber pn = PhoneNumber.SelectPhoneNumberByNumber(phoneNumber);

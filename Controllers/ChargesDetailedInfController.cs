@@ -14,7 +14,7 @@ namespace BillingSystem.Controllers
         /// <summary>
         /// Создает экземпляр класса ChargesDetailedInfController.
         /// </summary>
-        /// <param name="subscriberID">ID абонента</param>
+        /// <param name="subscriberID">Идентификатор абонента</param>
         public ChargesDetailedInfController(long subscriberID)
             : base(subscriberID)
         {

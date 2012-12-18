@@ -19,6 +19,8 @@ namespace BillingSystem
 
         public const string Incoming = "Входящий";
         public const string Outgoing = "Исходящий";
+        public const string StartTime = "Время начала";
+        public const string EndTime = "Время завершения";
 
         public const string TariffChanging = "Смена тарифа";
         public const string ChargeCalls = "Оплата звонков";
