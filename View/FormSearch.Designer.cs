@@ -50,23 +50,25 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmSaveToCSV = new System.Windows.Forms.ToolStripMenuItem();
-            this.пользователиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmAddSubscriber = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmEditSubscriber = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmInfoSubscriber = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiSaveToCsvItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmSubscribers = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiAddSubscriber = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiEditSubscriber = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiInfoSubscriber = new System.Windows.Forms.ToolStripMenuItem();
             this.тарифыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmAddTariff = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmEditTariff = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiAddTariff = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiEditTariff = new System.Windows.Forms.ToolStripMenuItem();
             this.инструментыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmDeposit = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmCharge = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiDeposit = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiCharge = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiMonthlyInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmCallsImport = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiCallsImport = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.импортТарифовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmMonthlyInfo = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiTariffImport = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmHelp = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiAbout = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSearchResults)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -78,9 +80,9 @@
             this.dataGridViewSearchResults.AllowUserToDeleteRows = false;
             this.dataGridViewSearchResults.AllowUserToResizeColumns = false;
             this.dataGridViewSearchResults.AllowUserToResizeRows = false;
-            this.dataGridViewSearchResults.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewSearchResults.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewSearchResults.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewSearchResults.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridViewSearchResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -185,9 +187,9 @@
             this.labelName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.labelName.Location = new System.Drawing.Point(6, 73);
             this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(29, 13);
+            this.labelName.Size = new System.Drawing.Size(32, 13);
             this.labelName.TabIndex = 10;
-            this.labelName.Text = "Имя";
+            this.labelName.Text = "Имя:";
             // 
             // labelPatronymic
             // 
@@ -195,9 +197,9 @@
             this.labelPatronymic.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.labelPatronymic.Location = new System.Drawing.Point(6, 119);
             this.labelPatronymic.Name = "labelPatronymic";
-            this.labelPatronymic.Size = new System.Drawing.Size(54, 13);
+            this.labelPatronymic.Size = new System.Drawing.Size(57, 13);
             this.labelPatronymic.TabIndex = 11;
-            this.labelPatronymic.Text = "Отчество";
+            this.labelPatronymic.Text = "Отчество:";
             // 
             // labelSurname
             // 
@@ -205,9 +207,9 @@
             this.labelSurname.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.labelSurname.Location = new System.Drawing.Point(6, 25);
             this.labelSurname.Name = "labelSurname";
-            this.labelSurname.Size = new System.Drawing.Size(56, 13);
+            this.labelSurname.Size = new System.Drawing.Size(59, 13);
             this.labelSurname.TabIndex = 12;
-            this.labelSurname.Text = "Фамилия";
+            this.labelSurname.Text = "Фамилия:";
             // 
             // labelPhoneNumber
             // 
@@ -215,9 +217,9 @@
             this.labelPhoneNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.labelPhoneNumber.Location = new System.Drawing.Point(6, 169);
             this.labelPhoneNumber.Name = "labelPhoneNumber";
-            this.labelPhoneNumber.Size = new System.Drawing.Size(93, 13);
+            this.labelPhoneNumber.Size = new System.Drawing.Size(96, 13);
             this.labelPhoneNumber.TabIndex = 13;
-            this.labelPhoneNumber.Text = "Номер телефона";
+            this.labelPhoneNumber.Text = "Номер телефона:";
             // 
             // labelDebt
             // 
@@ -225,9 +227,9 @@
             this.labelDebt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.labelDebt.Location = new System.Drawing.Point(6, 223);
             this.labelDebt.Name = "labelDebt";
-            this.labelDebt.Size = new System.Drawing.Size(87, 13);
+            this.labelDebt.Size = new System.Drawing.Size(90, 13);
             this.labelDebt.TabIndex = 14;
-            this.labelDebt.Text = "Задолженность";
+            this.labelDebt.Text = "Задолженность:";
             // 
             // saveFileDialog
             // 
@@ -247,7 +249,7 @@
             this.groupBox1.Controls.Add(this.labelPatronymic);
             this.groupBox1.Controls.Add(this.labelPhoneNumber);
             this.groupBox1.Controls.Add(this.btnSearch);
-            this.groupBox1.Location = new System.Drawing.Point(730, 27);
+            this.groupBox1.Location = new System.Drawing.Point(730, 41);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(166, 305);
             this.groupBox1.TabIndex = 20;
@@ -257,7 +259,7 @@
             // btnSearch
             // 
             this.btnSearch.Image = global::BillingSystem.Properties.Resources.google_custom_search;
-            this.btnSearch.Location = new System.Drawing.Point(9, 276);
+            this.btnSearch.Location = new System.Drawing.Point(6, 276);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.btnSearch.Size = new System.Drawing.Size(148, 23);
@@ -271,153 +273,168 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.файлToolStripMenuItem,
-            this.пользователиToolStripMenuItem,
+            this.tsmFile,
+            this.tsmSubscribers,
             this.тарифыToolStripMenuItem,
             this.инструментыToolStripMenuItem,
-            this.toolStripMenuItem1});
+            this.toolStripMenuItem1,
+            this.tsmHelp});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(908, 24);
             this.menuStrip1.TabIndex = 22;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // файлToolStripMenuItem
+            // tsmFile
             // 
-            this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmSaveToCSV});
-            this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
-            this.файлToolStripMenuItem.Text = "Файл";
+            this.tsmFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiSaveToCsvItem});
+            this.tsmFile.Name = "tsmFile";
+            this.tsmFile.Size = new System.Drawing.Size(48, 20);
+            this.tsmFile.Text = "Файл";
             // 
-            // tsmSaveToCSV
+            // tsmiSaveToCsvItem
             // 
-            this.tsmSaveToCSV.Image = global::BillingSystem.Properties.Resources.script_save;
-            this.tsmSaveToCSV.Name = "tsmSaveToCSV";
-            this.tsmSaveToCSV.Size = new System.Drawing.Size(165, 22);
-            this.tsmSaveToCSV.Text = "Сохранить в CSV";
-            this.tsmSaveToCSV.Click += new System.EventHandler(this.tsmSaveToCSV_Click);
+            this.tsmiSaveToCsvItem.Image = global::BillingSystem.Properties.Resources.script_save;
+            this.tsmiSaveToCsvItem.Name = "tsmiSaveToCsvItem";
+            this.tsmiSaveToCsvItem.Size = new System.Drawing.Size(165, 22);
+            this.tsmiSaveToCsvItem.Text = "Сохранить в CSV";
+            this.tsmiSaveToCsvItem.Click += new System.EventHandler(this.tsmSaveToCSV_Click);
             // 
-            // пользователиToolStripMenuItem
+            // tsmSubscribers
             // 
-            this.пользователиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmAddSubscriber,
-            this.tsmEditSubscriber,
-            this.tsmInfoSubscriber});
-            this.пользователиToolStripMenuItem.Name = "пользователиToolStripMenuItem";
-            this.пользователиToolStripMenuItem.Size = new System.Drawing.Size(97, 20);
-            this.пользователиToolStripMenuItem.Text = "Пользователи";
+            this.tsmSubscribers.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiAddSubscriber,
+            this.tsmiEditSubscriber,
+            this.tsmiInfoSubscriber});
+            this.tsmSubscribers.Name = "tsmSubscribers";
+            this.tsmSubscribers.Size = new System.Drawing.Size(97, 20);
+            this.tsmSubscribers.Text = "Пользователи";
             // 
-            // tsmAddSubscriber
+            // tsmiAddSubscriber
             // 
-            this.tsmAddSubscriber.Image = global::BillingSystem.Properties.Resources.user_add;
-            this.tsmAddSubscriber.Name = "tsmAddSubscriber";
-            this.tsmAddSubscriber.Size = new System.Drawing.Size(236, 22);
-            this.tsmAddSubscriber.Text = "Добавить пользователя";
-            this.tsmAddSubscriber.Click += new System.EventHandler(this.tsmAddSubscriber_Click);
+            this.tsmiAddSubscriber.Image = global::BillingSystem.Properties.Resources.user_add;
+            this.tsmiAddSubscriber.Name = "tsmiAddSubscriber";
+            this.tsmiAddSubscriber.Size = new System.Drawing.Size(236, 22);
+            this.tsmiAddSubscriber.Text = "Добавить пользователя";
+            this.tsmiAddSubscriber.Click += new System.EventHandler(this.tsmAddSubscriber_Click);
             // 
-            // tsmEditSubscriber
+            // tsmiEditSubscriber
             // 
-            this.tsmEditSubscriber.Image = global::BillingSystem.Properties.Resources.user_edit;
-            this.tsmEditSubscriber.Name = "tsmEditSubscriber";
-            this.tsmEditSubscriber.Size = new System.Drawing.Size(236, 22);
-            this.tsmEditSubscriber.Text = "Редактировать пользователя";
-            this.tsmEditSubscriber.Click += new System.EventHandler(this.tsmEditSubscriber_Click);
+            this.tsmiEditSubscriber.Image = global::BillingSystem.Properties.Resources.user_edit;
+            this.tsmiEditSubscriber.Name = "tsmiEditSubscriber";
+            this.tsmiEditSubscriber.Size = new System.Drawing.Size(236, 22);
+            this.tsmiEditSubscriber.Text = "Редактировать пользователя";
+            this.tsmiEditSubscriber.Click += new System.EventHandler(this.tsmEditSubscriber_Click);
             // 
-            // tsmInfoSubscriber
+            // tsmiInfoSubscriber
             // 
-            this.tsmInfoSubscriber.Image = global::BillingSystem.Properties.Resources.user_go;
-            this.tsmInfoSubscriber.Name = "tsmInfoSubscriber";
-            this.tsmInfoSubscriber.Size = new System.Drawing.Size(236, 22);
-            this.tsmInfoSubscriber.Text = "Информация о пользователе";
-            this.tsmInfoSubscriber.Click += new System.EventHandler(this.tsmInfoSubscriber_Click);
+            this.tsmiInfoSubscriber.Image = global::BillingSystem.Properties.Resources.user_go;
+            this.tsmiInfoSubscriber.Name = "tsmiInfoSubscriber";
+            this.tsmiInfoSubscriber.Size = new System.Drawing.Size(236, 22);
+            this.tsmiInfoSubscriber.Text = "Информация о пользователе";
+            this.tsmiInfoSubscriber.Click += new System.EventHandler(this.tsmInfoSubscriber_Click);
             // 
             // тарифыToolStripMenuItem
             // 
             this.тарифыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmAddTariff,
-            this.tsmEditTariff});
+            this.tsmiAddTariff,
+            this.tsmiEditTariff});
             this.тарифыToolStripMenuItem.Name = "тарифыToolStripMenuItem";
             this.тарифыToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
             this.тарифыToolStripMenuItem.Text = "Тарифы";
             // 
-            // tsmAddTariff
+            // tsmiAddTariff
             // 
-            this.tsmAddTariff.Image = global::BillingSystem.Properties.Resources.telephone_add;
-            this.tsmAddTariff.Name = "tsmAddTariff";
-            this.tsmAddTariff.Size = new System.Drawing.Size(174, 22);
-            this.tsmAddTariff.Text = "Добавить тариф";
+            this.tsmiAddTariff.Image = global::BillingSystem.Properties.Resources.telephone_add;
+            this.tsmiAddTariff.Name = "tsmiAddTariff";
+            this.tsmiAddTariff.Size = new System.Drawing.Size(174, 22);
+            this.tsmiAddTariff.Text = "Добавить тариф";
             // 
-            // tsmEditTariff
+            // tsmiEditTariff
             // 
-            this.tsmEditTariff.Image = global::BillingSystem.Properties.Resources.telephone_edit;
-            this.tsmEditTariff.Name = "tsmEditTariff";
-            this.tsmEditTariff.Size = new System.Drawing.Size(174, 22);
-            this.tsmEditTariff.Text = "Изменить тарифы";
-            this.tsmEditTariff.Click += new System.EventHandler(this.tsmEditTariff_Click);
+            this.tsmiEditTariff.Image = global::BillingSystem.Properties.Resources.telephone_edit;
+            this.tsmiEditTariff.Name = "tsmiEditTariff";
+            this.tsmiEditTariff.Size = new System.Drawing.Size(174, 22);
+            this.tsmiEditTariff.Text = "Изменить тарифы";
+            this.tsmiEditTariff.Click += new System.EventHandler(this.tsmEditTariff_Click);
             // 
             // инструментыToolStripMenuItem
             // 
             this.инструментыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmDeposit,
-            this.tsmCharge,
-            this.tsmMonthlyInfo});
+            this.tsmiDeposit,
+            this.tsmiCharge,
+            this.tsmiMonthlyInfo});
             this.инструментыToolStripMenuItem.Name = "инструментыToolStripMenuItem";
             this.инструментыToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
             this.инструментыToolStripMenuItem.Text = "Инструменты";
             // 
-            // tsmDeposit
+            // tsmiDeposit
             // 
-            this.tsmDeposit.Image = global::BillingSystem.Properties.Resources.money_add;
-            this.tsmDeposit.Name = "tsmDeposit";
-            this.tsmDeposit.Size = new System.Drawing.Size(186, 22);
-            this.tsmDeposit.Text = "Пополнить счет";
-            this.tsmDeposit.Click += new System.EventHandler(this.tsmDeposit_Click);
+            this.tsmiDeposit.Image = global::BillingSystem.Properties.Resources.money_add;
+            this.tsmiDeposit.Name = "tsmiDeposit";
+            this.tsmiDeposit.Size = new System.Drawing.Size(186, 22);
+            this.tsmiDeposit.Text = "Пополнить счет";
+            this.tsmiDeposit.Click += new System.EventHandler(this.tsmDeposit_Click);
             // 
-            // tsmCharge
+            // tsmiCharge
             // 
-            this.tsmCharge.Image = global::BillingSystem.Properties.Resources.moneybox;
-            this.tsmCharge.Name = "tsmCharge";
-            this.tsmCharge.Size = new System.Drawing.Size(186, 22);
-            this.tsmCharge.Text = "Обсчитать";
-            this.tsmCharge.Click += new System.EventHandler(this.tsmCharge_Click);
+            this.tsmiCharge.Image = global::BillingSystem.Properties.Resources.moneybox;
+            this.tsmiCharge.Name = "tsmiCharge";
+            this.tsmiCharge.Size = new System.Drawing.Size(186, 22);
+            this.tsmiCharge.Text = "Обсчитать";
+            this.tsmiCharge.Click += new System.EventHandler(this.tsmCharge_Click);
+            // 
+            // tsmiMonthlyInfo
+            // 
+            this.tsmiMonthlyInfo.Name = "tsmiMonthlyInfo";
+            this.tsmiMonthlyInfo.Size = new System.Drawing.Size(186, 22);
+            this.tsmiMonthlyInfo.Text = "Статистика за месяц";
+            this.tsmiMonthlyInfo.Click += new System.EventHandler(this.tsmMonthlyInfo_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmCallsImport,
+            this.tsmiCallsImport,
             this.toolStripSeparator1,
-            this.импортТарифовToolStripMenuItem});
+            this.tsmiTariffImport});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(113, 20);
-            this.toolStripMenuItem1.Text = "Экспорт/Импорт";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(59, 20);
+            this.toolStripMenuItem1.Text = "Сервис";
             // 
-            // tsmCallsImport
+            // tsmiCallsImport
             // 
-            this.tsmCallsImport.Image = global::BillingSystem.Properties.Resources.document_import;
-            this.tsmCallsImport.Name = "tsmCallsImport";
-            this.tsmCallsImport.Size = new System.Drawing.Size(168, 22);
-            this.tsmCallsImport.Text = "Импорт звонков";
-            this.tsmCallsImport.Click += new System.EventHandler(this.tsmCallsImport_Click);
+            this.tsmiCallsImport.Image = global::BillingSystem.Properties.Resources.document_import;
+            this.tsmiCallsImport.Name = "tsmiCallsImport";
+            this.tsmiCallsImport.Size = new System.Drawing.Size(168, 22);
+            this.tsmiCallsImport.Text = "Импорт звонков";
+            this.tsmiCallsImport.Click += new System.EventHandler(this.tsmCallsImport_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(165, 6);
             // 
-            // импортТарифовToolStripMenuItem
+            // tsmiTariffImport
             // 
-            this.импортТарифовToolStripMenuItem.Image = global::BillingSystem.Properties.Resources.document_import;
-            this.импортТарифовToolStripMenuItem.Name = "импортТарифовToolStripMenuItem";
-            this.импортТарифовToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.импортТарифовToolStripMenuItem.Text = "Импорт тарифов";
+            this.tsmiTariffImport.Image = global::BillingSystem.Properties.Resources.document_import;
+            this.tsmiTariffImport.Name = "tsmiTariffImport";
+            this.tsmiTariffImport.Size = new System.Drawing.Size(168, 22);
+            this.tsmiTariffImport.Text = "Импорт тарифов";
             // 
-            // tsmMonthlyInfo
+            // tsmHelp
             // 
-            this.tsmMonthlyInfo.Name = "tsmMonthlyInfo";
-            this.tsmMonthlyInfo.Size = new System.Drawing.Size(186, 22);
-            this.tsmMonthlyInfo.Text = "Статистика за месяц";
-            this.tsmMonthlyInfo.Click += new System.EventHandler(this.tsmMonthlyInfo_Click);
+            this.tsmHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiAbout});
+            this.tsmHelp.Name = "tsmHelp";
+            this.tsmHelp.Size = new System.Drawing.Size(65, 20);
+            this.tsmHelp.Text = "Справка";
+            // 
+            // tsmiAbout
+            // 
+            this.tsmiAbout.Name = "tsmiAbout";
+            this.tsmiAbout.Size = new System.Drawing.Size(152, 22);
+            this.tsmiAbout.Text = "О программе";
             // 
             // FormSearch
             // 
@@ -465,22 +482,24 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem tsmCallsImport;
+        private System.Windows.Forms.ToolStripMenuItem tsmiCallsImport;
         private System.Windows.Forms.ToolStripMenuItem тарифыToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tsmAddTariff;
-        private System.Windows.Forms.ToolStripMenuItem tsmEditTariff;
+        private System.Windows.Forms.ToolStripMenuItem tsmiAddTariff;
+        private System.Windows.Forms.ToolStripMenuItem tsmiEditTariff;
         private System.Windows.Forms.ToolStripMenuItem инструментыToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tsmDeposit;
-        private System.Windows.Forms.ToolStripMenuItem tsmCharge;
-        private System.Windows.Forms.ToolStripMenuItem импортТарифовToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem пользователиToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tsmAddSubscriber;
-        private System.Windows.Forms.ToolStripMenuItem tsmEditSubscriber;
-        private System.Windows.Forms.ToolStripMenuItem tsmInfoSubscriber;
-        private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tsmSaveToCSV;
+        private System.Windows.Forms.ToolStripMenuItem tsmiDeposit;
+        private System.Windows.Forms.ToolStripMenuItem tsmiCharge;
+        private System.Windows.Forms.ToolStripMenuItem tsmiTariffImport;
+        private System.Windows.Forms.ToolStripMenuItem tsmSubscribers;
+        private System.Windows.Forms.ToolStripMenuItem tsmiAddSubscriber;
+        private System.Windows.Forms.ToolStripMenuItem tsmiEditSubscriber;
+        private System.Windows.Forms.ToolStripMenuItem tsmiInfoSubscriber;
+        private System.Windows.Forms.ToolStripMenuItem tsmFile;
+        private System.Windows.Forms.ToolStripMenuItem tsmiSaveToCsvItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem tsmMonthlyInfo;
+        private System.Windows.Forms.ToolStripMenuItem tsmiMonthlyInfo;
+        private System.Windows.Forms.ToolStripMenuItem tsmHelp;
+        private System.Windows.Forms.ToolStripMenuItem tsmiAbout;
 
     }
 }

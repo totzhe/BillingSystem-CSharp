@@ -34,23 +34,29 @@
             this.btnCalculate = new System.Windows.Forms.Button();
             this.btnCharge = new System.Windows.Forms.Button();
             this.dateTimePickerMonth = new System.Windows.Forms.DateTimePicker();
+            this.gbCharge = new System.Windows.Forms.GroupBox();
+            this.lblDateSelect = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCharges)).BeginInit();
+            this.gbCharge.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvCharges
             // 
             this.dgvCharges.AllowUserToAddRows = false;
             this.dgvCharges.AllowUserToDeleteRows = false;
+            this.dgvCharges.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvCharges.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvCharges.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCharges.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.phoneNumber,
             this.sum});
-            this.dgvCharges.Location = new System.Drawing.Point(12, 12);
+            this.dgvCharges.Location = new System.Drawing.Point(16, 50);
             this.dgvCharges.Name = "dgvCharges";
             this.dgvCharges.ReadOnly = true;
             this.dgvCharges.RowHeadersVisible = false;
-            this.dgvCharges.Size = new System.Drawing.Size(240, 150);
+            this.dgvCharges.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgvCharges.Size = new System.Drawing.Size(345, 349);
             this.dgvCharges.TabIndex = 0;
             // 
             // phoneNumber
@@ -69,19 +75,19 @@
             // 
             // btnCalculate
             // 
-            this.btnCalculate.Location = new System.Drawing.Point(306, 59);
+            this.btnCalculate.Location = new System.Drawing.Point(16, 406);
             this.btnCalculate.Name = "btnCalculate";
-            this.btnCalculate.Size = new System.Drawing.Size(75, 23);
+            this.btnCalculate.Size = new System.Drawing.Size(164, 28);
             this.btnCalculate.TabIndex = 1;
-            this.btnCalculate.Text = "Рассчитать";
+            this.btnCalculate.Text = "Расчет";
             this.btnCalculate.UseVisualStyleBackColor = true;
             this.btnCalculate.Click += new System.EventHandler(this.btnCalculate_Click);
             // 
             // btnCharge
             // 
-            this.btnCharge.Location = new System.Drawing.Point(306, 89);
+            this.btnCharge.Location = new System.Drawing.Point(205, 406);
             this.btnCharge.Name = "btnCharge";
-            this.btnCharge.Size = new System.Drawing.Size(75, 23);
+            this.btnCharge.Size = new System.Drawing.Size(160, 28);
             this.btnCharge.TabIndex = 2;
             this.btnCharge.Text = "Списать";
             this.btnCharge.UseVisualStyleBackColor = true;
@@ -89,23 +95,53 @@
             // 
             // dateTimePickerMonth
             // 
-            this.dateTimePickerMonth.Location = new System.Drawing.Point(258, 12);
+            this.dateTimePickerMonth.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateTimePickerMonth.Location = new System.Drawing.Point(115, 24);
             this.dateTimePickerMonth.Name = "dateTimePickerMonth";
-            this.dateTimePickerMonth.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePickerMonth.Size = new System.Drawing.Size(246, 20);
             this.dateTimePickerMonth.TabIndex = 3;
+            // 
+            // gbCharge
+            // 
+            this.gbCharge.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbCharge.Controls.Add(this.lblDateSelect);
+            this.gbCharge.Controls.Add(this.btnCalculate);
+            this.gbCharge.Controls.Add(this.dgvCharges);
+            this.gbCharge.Controls.Add(this.btnCharge);
+            this.gbCharge.Controls.Add(this.dateTimePickerMonth);
+            this.gbCharge.Location = new System.Drawing.Point(12, 12);
+            this.gbCharge.Name = "gbCharge";
+            this.gbCharge.Size = new System.Drawing.Size(382, 450);
+            this.gbCharge.TabIndex = 4;
+            this.gbCharge.TabStop = false;
+            this.gbCharge.Text = "Списание со счета";
+            // 
+            // lblDateSelect
+            // 
+            this.lblDateSelect.AutoSize = true;
+            this.lblDateSelect.Location = new System.Drawing.Point(15, 27);
+            this.lblDateSelect.Name = "lblDateSelect";
+            this.lblDateSelect.Size = new System.Drawing.Size(85, 13);
+            this.lblDateSelect.TabIndex = 4;
+            this.lblDateSelect.Text = "Выберите дату:";
             // 
             // FormChargeCalls
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(782, 398);
-            this.Controls.Add(this.dateTimePickerMonth);
-            this.Controls.Add(this.btnCharge);
-            this.Controls.Add(this.btnCalculate);
-            this.Controls.Add(this.dgvCharges);
+            this.ClientSize = new System.Drawing.Size(414, 474);
+            this.Controls.Add(this.gbCharge);
+            this.MaximumSize = new System.Drawing.Size(430, 512);
+            this.MinimumSize = new System.Drawing.Size(430, 512);
             this.Name = "FormChargeCalls";
             this.Text = "FormChargeCalls";
             ((System.ComponentModel.ISupportInitialize)(this.dgvCharges)).EndInit();
+            this.gbCharge.ResumeLayout(false);
+            this.gbCharge.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -118,5 +154,7 @@
         private System.Windows.Forms.Button btnCalculate;
         private System.Windows.Forms.Button btnCharge;
         private System.Windows.Forms.DateTimePicker dateTimePickerMonth;
+        private System.Windows.Forms.GroupBox gbCharge;
+        private System.Windows.Forms.Label lblDateSelect;
     }
 }

@@ -181,7 +181,7 @@
             // 
             // btnSaveToFile
             // 
-            this.btnSaveToFile.Location = new System.Drawing.Point(607, 410);
+            this.btnSaveToFile.Location = new System.Drawing.Point(607, 406);
             this.btnSaveToFile.Name = "btnSaveToFile";
             this.btnSaveToFile.Size = new System.Drawing.Size(192, 23);
             this.btnSaveToFile.TabIndex = 6;
@@ -259,7 +259,7 @@
             // 
             this.gbSelectNumber.Controls.Add(this.lblSelectNo);
             this.gbSelectNumber.Controls.Add(this.lbNumbers);
-            this.gbSelectNumber.Location = new System.Drawing.Point(607, 28);
+            this.gbSelectNumber.Location = new System.Drawing.Point(608, 28);
             this.gbSelectNumber.Name = "gbSelectNumber";
             this.gbSelectNumber.Size = new System.Drawing.Size(191, 136);
             this.gbSelectNumber.TabIndex = 15;
@@ -337,7 +337,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(807, 445);
+            this.ClientSize = new System.Drawing.Size(816, 445);
             this.Controls.Add(this.lblBalanceFromText);
             this.Controls.Add(this.lblBalanceToText);
             this.Controls.Add(this.lblBalanceText);
@@ -349,6 +349,8 @@
             this.Controls.Add(this.gbDetailType);
             this.Controls.Add(this.btnSaveToFile);
             this.Controls.Add(this.dgvInf);
+            this.MaximumSize = new System.Drawing.Size(832, 483);
+            this.MinimumSize = new System.Drawing.Size(832, 483);
             this.Name = "FormDetailedInf";
             this.Text = "Детализированная информация по номеру";
             ((System.ComponentModel.ISupportInitialize)(this.dgvInf)).EndInit();

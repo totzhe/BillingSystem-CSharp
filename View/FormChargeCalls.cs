@@ -23,8 +23,10 @@ namespace BillingSystem.View
         /// <param name="controller">Контроллер списания средств за звонки</param>
         public FormChargeCalls(IChargeCallsController controller)
         {
+            this.Text = "Списание средств со счета";
             _controller = controller;
             InitializeComponent();
+            
         }
 
         private void btnCalculate_Click(object sender, EventArgs e)
