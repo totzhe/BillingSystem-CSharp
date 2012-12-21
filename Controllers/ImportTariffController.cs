@@ -3,20 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using BillingSystem.View;
 using BillingSystem.Model;
 
 namespace BillingSystem.Controllers
 {
-    /// <summary>
-    /// Конроллер для изменения тарифов
-    /// </summary>
-    public class EditTariffController : ITariffController
+    public class ImportTariffController : ITariffController
     {
         public List<Tariff> tariff { get; set; }
         public long? selectTariffId { get; set; }
 
-        public EditTariffController()
+        public ImportTariffController()
         {
             tariff = Tariff.SelectActiveTariff();
         }
@@ -25,10 +21,8 @@ namespace BillingSystem.Controllers
         {
             if (tbName != String.Empty && tbDescription != String.Empty)
             {
-                Tariff.EditTariffData(selectTariffId, tbName, tbDescription);
+                selectTariffId = Tariff.Add(tbName, tbDescription);
                 Price.EditPrice(selectTariffId, dgvPrice);
-                tariff.Clear();
-                tariff = Tariff.SelectActiveTariff();
             }
             else
             {
@@ -36,9 +30,9 @@ namespace BillingSystem.Controllers
             }
         }
 
-        public List<string[]> Import(string FileName)
+        public List<string[]> Import(string fileName)
         {
-            throw new NotImplementedException();
+            return FileExporter.CSVtoList(fileName);
         }
     }
 }
