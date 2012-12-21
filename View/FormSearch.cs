@@ -69,10 +69,7 @@ namespace BillingSystem
             _controller.ShowAddTariff();
         }
 
-        private void tsmEditTariff_Click(object sender, EventArgs e)
-        {
-            _controller.ShowEditTariff();
-        }
+        
 
         private void tsmCharge_Click(object sender, EventArgs e)
         {
@@ -122,6 +119,21 @@ namespace BillingSystem
         private void импортТарифовToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _controller.ShowImportTariff();
+        }
+
+        private void tsmiAddTariff_Click(object sender, EventArgs e)
+        {
+            _controller.ShowAddTariff();
+        }
+
+        private void tsmiTariffImport_Click(object sender, EventArgs e)
+        {
+            _controller.ShowImportTariff();
+        }
+
+        private void tsmEditTariff_Click(object sender, EventArgs e)
+        {
+            _controller.ShowEditTariff();
         }
     }
 }
