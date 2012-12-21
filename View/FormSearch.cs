@@ -64,10 +64,12 @@ namespace BillingSystem
             }
         }
 
-        private void tsmEditTariff_Click(object sender, EventArgs e)
+        private void tsmAddTariff_Click(object sender, EventArgs e)
         {
-            _controller.ShowEditTariff();
+            _controller.ShowAddTariff();
         }
+
+        
 
         private void tsmCharge_Click(object sender, EventArgs e)
         {
@@ -112,6 +114,26 @@ namespace BillingSystem
         private void tsmMonthlyInfo_Click(object sender, EventArgs e)
         {
             _controller.ShowMonthlyInfo();
+        }
+
+        private void импортТарифовToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _controller.ShowImportTariff();
+        }
+
+        private void tsmiAddTariff_Click(object sender, EventArgs e)
+        {
+            _controller.ShowAddTariff();
+        }
+
+        private void tsmiTariffImport_Click(object sender, EventArgs e)
+        {
+            _controller.ShowImportTariff();
+        }
+
+        private void tsmEditTariff_Click(object sender, EventArgs e)
+        {
+            _controller.ShowEditTariff();
         }
     }
 }

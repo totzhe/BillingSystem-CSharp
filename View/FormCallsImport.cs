@@ -80,7 +80,5 @@ namespace BillingSystem.View
                 dgvImportCalls.Rows.Add(item[Constants.Outgoing], item[Constants.Incoming], item[Constants.StartTime], item[Constants.EndTime]);
             }
         }
-
-       
     }
 }
