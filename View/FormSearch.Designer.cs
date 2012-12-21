@@ -62,11 +62,11 @@
             this.инструментыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmDeposit = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmCharge = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmMonthlyInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmCallsImport = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.импортТарифовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmMonthlyInfo = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSearchResults)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -347,6 +347,7 @@
             this.tsmAddTariff.Name = "tsmAddTariff";
             this.tsmAddTariff.Size = new System.Drawing.Size(174, 22);
             this.tsmAddTariff.Text = "Добавить тариф";
+            this.tsmAddTariff.Click += new System.EventHandler(this.tsmAddTariff_Click);
             // 
             // tsmEditTariff
             // 
@@ -382,6 +383,13 @@
             this.tsmCharge.Text = "Обсчитать";
             this.tsmCharge.Click += new System.EventHandler(this.tsmCharge_Click);
             // 
+            // tsmMonthlyInfo
+            // 
+            this.tsmMonthlyInfo.Name = "tsmMonthlyInfo";
+            this.tsmMonthlyInfo.Size = new System.Drawing.Size(186, 22);
+            this.tsmMonthlyInfo.Text = "Статистика за месяц";
+            this.tsmMonthlyInfo.Click += new System.EventHandler(this.tsmMonthlyInfo_Click);
+            // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -411,13 +419,7 @@
             this.импортТарифовToolStripMenuItem.Name = "импортТарифовToolStripMenuItem";
             this.импортТарифовToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.импортТарифовToolStripMenuItem.Text = "Импорт тарифов";
-            // 
-            // tsmMonthlyInfo
-            // 
-            this.tsmMonthlyInfo.Name = "tsmMonthlyInfo";
-            this.tsmMonthlyInfo.Size = new System.Drawing.Size(186, 22);
-            this.tsmMonthlyInfo.Text = "Статистика за месяц";
-            this.tsmMonthlyInfo.Click += new System.EventHandler(this.tsmMonthlyInfo_Click);
+            this.импортТарифовToolStripMenuItem.Click += new System.EventHandler(this.импортТарифовToolStripMenuItem_Click);
             // 
             // FormSearch
             // 

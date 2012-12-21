@@ -9,14 +9,14 @@ using BillingSystem.Model;
 namespace BillingSystem.Controllers
 {
     /// <summary>
-    /// Конроллер для изменения тарифов
+    /// Контроллер для добавления тарифов
     /// </summary>
-    public class EditTariffController : ITariffController
+    public class AddTariffController : ITariffController
     {
         public List<Tariff> tariff { get; set; }
         public long? selectTariffId { get; set; }
 
-        public EditTariffController()
+        public AddTariffController()
         {
             tariff = Tariff.SelectActiveTariff();
         }
@@ -25,10 +25,8 @@ namespace BillingSystem.Controllers
         {
             if (tbName != String.Empty && tbDescription != String.Empty)
             {
-                Tariff.EditTariffData(selectTariffId, tbName, tbDescription);
+                selectTariffId = Tariff.Add(tbName, tbDescription);
                 Price.EditPrice(selectTariffId, dgvPrice);
-                tariff.Clear();
-                tariff = Tariff.SelectActiveTariff();
             }
             else
             {
