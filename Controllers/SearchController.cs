@@ -130,7 +130,27 @@ namespace BillingSystem.Controllers
         public void ShowEditTariff()
         {
             EditTariffController controller = new EditTariffController();
-            FormEditTariff form = new FormEditTariff(controller);
+            FormTariff form = new FormTariff(controller);
+            form.ShowDialog();
+        }
+
+        /// <summary>
+        /// Вызывает форму добавления тарифов.
+        /// </summary>
+        public void ShowAddTariff()
+        {
+            AddTariffController controller = new AddTariffController();
+            FormTariff form = new FormTariff(controller);
+            form.ShowDialog();
+        }
+
+        /// <summary>
+        /// Вызывает форму импорта тарифов.
+        /// </summary>
+        public void ShowImportTariff()
+        {
+            ImportTariffController controller = new ImportTariffController();
+            FormTariff form = new FormTariff(controller);
             form.ShowDialog();
         }
 

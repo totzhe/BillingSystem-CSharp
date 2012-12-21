@@ -55,6 +55,16 @@ namespace BillingSystem.Controllers
         void ShowEditTariff();
 
         /// <summary>
+        /// Вызывает форму добавления тарифа.
+        /// </summary>
+        void ShowAddTariff();
+
+        /// <summary>
+        /// Вызывает форму импорта тарифа.
+        /// </summary>
+        void ShowImportTariff();
+
+        /// <summary>
         /// Вызывает форму расчета и списания стоимости звонков.
         /// </summary>
         void ChargeCalls();
