@@ -25,13 +25,13 @@ namespace BillingSystem.View
         {
             _controller = controller;
             InitializeComponent();
-            Text = _controller.GetFullName();
+            this.Text = "Пополнение счета абонента:" + _controller.GetFullName();
             lblBalance.Text = _controller.GetBalance();
         }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            _controller.Confirm(textBoxSum.Text);
+            _controller.Confirm(mtbSum.Text);
             this.DialogResult = DialogResult.OK;
         }
 

@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +13,7 @@ namespace BillingSystem.Controllers
     /// </summary>
     public class CallsImportController : ICallsImportController 
     {
-        private List<Call> _listCall = new List<Call>();
+        private List<Call> _calls = new List<Call>();
         
         private Random rnd = new Random();
 
@@ -23,12 +23,12 @@ namespace BillingSystem.Controllers
         /// <param name="filename">Имя файла</param>
         public void OpenFile(string filename)
         {
-            _listCall = new List<Call>();
+            _calls = new List<Call>();
             
             List<string[]> _items = FileExporter.CSVtoList(filename);
             foreach (string[] item in _items)
             {
-                _listCall.Add(new Call(item[0], item[1], DateTime.Parse(item[2]), DateTime.Parse(item[3])));
+                _calls.Add(new Call(item[0], item[1], DateTime.Parse(item[2]), DateTime.Parse(item[3])));
             }
         }
 
@@ -37,9 +37,9 @@ namespace BillingSystem.Controllers
         /// </summary>
         public void AddCall()
         {
-            foreach (Call item in _listCall)
+            foreach (Call call in _calls)
             {
-                item.Add();
+                call.Add();
             }
         }
 
@@ -50,7 +50,7 @@ namespace BillingSystem.Controllers
         public List<Dictionary<string, string>> GetCalls()
         {
             List<Dictionary<string, string>> result = new List<Dictionary<string, string>>();
-            foreach (Call call in _listCall)
+            foreach (Call call in _calls)
             {
                 result.Add(call.ToDictionary());
             }
@@ -81,7 +81,7 @@ namespace BillingSystem.Controllers
                 DateTime finish = start.AddSeconds(rnd4);
                 if (finish > to)
                     finish = DateTime.Now;
-                _listCall.Add(new Call(listPN[rnd1].Number, listPN[rnd2].Number, start, finish));
+                _calls.Add(new Call(listPN[rnd1].Number, listPN[rnd2].Number, start, finish));
             }
         }
     }

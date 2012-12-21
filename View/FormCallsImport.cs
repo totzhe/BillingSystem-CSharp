@@ -24,8 +24,8 @@ namespace BillingSystem.View
         /// <param name="controller">Контроллер импорта звонков</param>
         public FormCallsImport(CallsImportController controller)
         {
+            this.Text = "Импорт звонков";
             _controller = controller;
-            
             InitializeComponent();
         }
 
@@ -38,13 +38,13 @@ namespace BillingSystem.View
         {
             string fn = string.Empty;
 
-            openFileDialog.FileName = fn;
-            openFileDialog.DefaultExt = "csv";
-            openFileDialog.Filter = "Текстовый файл|*.csv";
             openFileDialog.Title = "Открыть";
+            openFileDialog.DefaultExt = "csv";
+            openFileDialog.Filter = "CSV (разделители - точки с запятами)|*.csv";
+            openFileDialog.FileName = fn;
             openFileDialog.Multiselect = false;
             
-            if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 fn = openFileDialog.FileName;
                 this.Text = fn;
@@ -55,6 +55,7 @@ namespace BillingSystem.View
                     dgvImportCalls.Rows.Add(item[Constants.Outgoing], item[Constants.Incoming], item[Constants.StartTime], item[Constants.EndTime]);
                 }
             }
+
         }
 
         /// <summary>

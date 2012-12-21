@@ -50,9 +50,9 @@
             // btnOpenFile
             // 
             this.btnOpenFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnOpenFile.Location = new System.Drawing.Point(13, 340);
+            this.btnOpenFile.Location = new System.Drawing.Point(13, 376);
             this.btnOpenFile.Name = "btnOpenFile";
-            this.btnOpenFile.Size = new System.Drawing.Size(101, 23);
+            this.btnOpenFile.Size = new System.Drawing.Size(121, 23);
             this.btnOpenFile.TabIndex = 0;
             this.btnOpenFile.Text = "Открыть...";
             this.btnOpenFile.UseVisualStyleBackColor = true;
@@ -78,8 +78,9 @@
             this.dgvImportCalls.Location = new System.Drawing.Point(13, 13);
             this.dgvImportCalls.Name = "dgvImportCalls";
             this.dgvImportCalls.RowHeadersVisible = false;
+            this.dgvImportCalls.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvImportCalls.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvImportCalls.Size = new System.Drawing.Size(545, 321);
+            this.dgvImportCalls.Size = new System.Drawing.Size(559, 347);
             this.dgvImportCalls.TabIndex = 1;
             // 
             // fromNumber
@@ -105,21 +106,22 @@
             // btnAdd
             // 
             this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAdd.Location = new System.Drawing.Point(482, 340);
+            this.btnAdd.Location = new System.Drawing.Point(363, 376);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.Size = new System.Drawing.Size(209, 23);
             this.btnAdd.TabIndex = 2;
-            this.btnAdd.Text = "Добавить";
+            this.btnAdd.Text = "Добавить в БД";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnRnd
             // 
-            this.btnRnd.Location = new System.Drawing.Point(120, 340);
+            this.btnRnd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnRnd.Location = new System.Drawing.Point(161, 376);
             this.btnRnd.Name = "btnRnd";
-            this.btnRnd.Size = new System.Drawing.Size(75, 23);
+            this.btnRnd.Size = new System.Drawing.Size(163, 23);
             this.btnRnd.TabIndex = 3;
-            this.btnRnd.Text = "Рандом";
+            this.btnRnd.Text = "Генерация звонков";
             this.btnRnd.UseVisualStyleBackColor = true;
             this.btnRnd.Click += new System.EventHandler(this.btnRnd_Click);
             // 
@@ -127,14 +129,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(570, 376);
+            this.ClientSize = new System.Drawing.Size(584, 412);
             this.Controls.Add(this.btnRnd);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.dgvImportCalls);
             this.Controls.Add(this.btnOpenFile);
-            this.MinimumSize = new System.Drawing.Size(584, 414);
+            this.MaximumSize = new System.Drawing.Size(600, 450);
+            this.MinimumSize = new System.Drawing.Size(600, 450);
             this.Name = "FormCallsImport";
-            this.Text = "Импортировать телефонные звонки";
+            this.Text = "Импорт звонков";
             ((System.ComponentModel.ISupportInitialize)(this.dgvImportCalls)).EndInit();
             this.ResumeLayout(false);
 

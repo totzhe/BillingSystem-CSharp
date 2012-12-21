@@ -150,11 +150,26 @@ namespace BillingSystem.View
             Search();
         }
 
+        private void saveFileToCSV()
+        {
+
+        }
+
         private void btnSaveToFile_Click(object sender, EventArgs e)
         {
-            if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK && saveFileDialog.FileName.Length > 0)
+            string fn = string.Empty;
+
+            saveFileDialog.Title = "Сохранить";
+            saveFileDialog.DefaultExt = "csv";
+            saveFileDialog.Filter = "CSV (разделители - точки с запятами)|*.csv";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                FileExporter.DGVtoCSV(dgvInf, saveFileDialog.FileName);
+                fn = saveFileDialog.FileName;
+                saveFileDialog.Title = fn;
+                if (fn != string.Empty)
+                {
+                    FileExporter.DGVtoCSV(dgvInf, fn);
+                }
             }
         }
 
