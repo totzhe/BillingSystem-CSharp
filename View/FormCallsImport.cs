@@ -41,21 +41,23 @@ namespace BillingSystem.View
             openFileDialog.Title = "Открыть";
             openFileDialog.DefaultExt = "csv";
             openFileDialog.Filter = "CSV (разделители - точки с запятами)|*.csv";
-            openFileDialog.FileName = fn;
             openFileDialog.Multiselect = false;
+            openFileDialog.FileName = fn;
             
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 fn = openFileDialog.FileName;
-                this.Text = fn;
-                dgvImportCalls.Rows.Clear();
-                _controller.OpenFile(fn);
-                foreach (Dictionary<string, string> item in _controller.GetCalls())
+                if (fn != string.Empty)
                 {
-                    dgvImportCalls.Rows.Add(item[Constants.Outgoing], item[Constants.Incoming], item[Constants.StartTime], item[Constants.EndTime]);
+                    this.Text = fn;
+                    dgvImportCalls.Rows.Clear();
+                    _controller.OpenFile(fn);
+                    foreach (Dictionary<string, string> item in _controller.GetCalls())
+                    {
+                        dgvImportCalls.Rows.Add(item[Constants.Outgoing], item[Constants.Incoming], item[Constants.StartTime], item[Constants.EndTime]);
+                    }
                 }
             }
-
         }
 
         /// <summary>
@@ -78,7 +80,5 @@ namespace BillingSystem.View
                 dgvImportCalls.Rows.Add(item[Constants.Outgoing], item[Constants.Incoming], item[Constants.StartTime], item[Constants.EndTime]);
             }
         }
-
-       
     }
 }

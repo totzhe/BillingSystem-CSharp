@@ -11,6 +11,19 @@ namespace BillingSystem.Controllers
     /// </summary>
     class CallsDetailedInfController : DetailedInfController
     {
+        private double _totalSum = 0;
+
+        /// <summary>
+        /// Полная стоимость
+        /// </summary>
+        public override double TotalSum
+        {
+            get
+            {
+                return _totalSum;
+            }
+        }
+        
         /// <summary>
         /// Создает экземпляр класса CallsDetailedInfController.
         /// </summary>
@@ -50,6 +63,7 @@ namespace BillingSystem.Controllers
                     Tariff tariff = pn.SelectTariffByDate(c.StartTime);
                     item[3] = Constants.Outgoing;
                     item[5] = Math.Round(BillingOperations.CalculateCallCost(c, tariff), 2).ToString() + " " + Constants.Currency;
+                    _totalSum += Math.Round(BillingOperations.CalculateCallCost(c, tariff), 2);
                 }
                 item[4] = c.Duration.ToString();
                 searchResult.Add(item);

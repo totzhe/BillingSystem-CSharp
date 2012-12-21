@@ -11,6 +11,16 @@ namespace BillingSystem.Controllers
     /// </summary>
     class TariffsDetailedInfController : DetailedInfController
     {
+        private double _totalSum;
+
+        /// <summary>
+        /// Полная стоимость
+        /// </summary>
+        public override double TotalSum
+        {
+            get { return _totalSum; }
+        }
+        
         /// <summary>
         /// Создает экземпляр класса TariffsDetailedInfController.
         /// </summary>
@@ -31,11 +41,20 @@ namespace BillingSystem.Controllers
         {
             PhoneNumber pn = PhoneNumber.SelectPhoneNumberByNumber(phoneNumber);
             List<TariffHistory> tariffHistory = pn.SelectTariffHistory(from, to);
+            List<Charge> charges = pn.SelectCharges(from, to);
             List<string[]> searchResult = new List<string[]>();
+
+            foreach (Charge ch in charges)
+            {
+                if (ch.GetService().Name == "Смена тарифа")
+                {
+                    _totalSum += Math.Round(ch.Sum, 2);
+                }
+            }
 
             foreach (TariffHistory th in tariffHistory)
             {
-                string[] items = new string[5];
+                string[] items = new string[6];
                 items[0] = th.StartDate.ToShortDateString();
                 items[1] = th.StartDate.ToLongTimeString();
                 items[2] = th.TariffName;
@@ -49,6 +68,7 @@ namespace BillingSystem.Controllers
                     items[3] = Constants.NoInfo;
                     items[4] = Constants.NoInfo;
                 }
+                items[5] = Service.SelectServiceByName("Смена тарифа").Cost.ToString() + " " + Constants.Currency;
                 searchResult.Add(items);
             }
             return searchResult;

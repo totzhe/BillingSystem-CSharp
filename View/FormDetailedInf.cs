@@ -117,12 +117,13 @@ namespace BillingSystem.View
             {
                 dgvInf.Rows.Clear();
                 dgvInf.Columns.Clear();
-                dgvInf.ColumnCount = 5;
+                dgvInf.ColumnCount = 6;
                 dgvInf.Columns[0].Name = "Дата подключения";
                 dgvInf.Columns[1].Name = "Время подключения";
                 dgvInf.Columns[2].Name = "Тарифный план";
                 dgvInf.Columns[3].Name = "Дата отключения";
                 dgvInf.Columns[4].Name = "Время отключения";
+                dgvInf.Columns[5].Name = "Стоимость";
             }
             if (rbtnPayments.Checked == true)
             {
@@ -150,25 +151,25 @@ namespace BillingSystem.View
             Search();
         }
 
-        private void saveFileToCSV()
-        {
-
-        }
-
         private void btnSaveToFile_Click(object sender, EventArgs e)
         {
             string fn = string.Empty;
 
             saveFileDialog.Title = "Сохранить";
-            saveFileDialog.DefaultExt = "csv";
-            saveFileDialog.Filter = "CSV (разделители - точки с запятами)|*.csv";
+            saveFileDialog.Filter = "CSV (разделители - точки с запятыми)|*.csv|HTML-страницы (*.html)|*.html";
+            saveFileDialog.AddExtension = true;
+            saveFileDialog.FileName = fn;
+
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 fn = saveFileDialog.FileName;
-                saveFileDialog.Title = fn;
-                if (fn != string.Empty)
+                if (saveFileDialog.FilterIndex == 1 && fn != string.Empty)
                 {
                     FileExporter.DGVtoCSV(dgvInf, fn);
+                }
+                if (saveFileDialog.FilterIndex == 2 && fn != string.Empty)
+                {
+                    FileExporter.DetailedInfToHtml(dgvInf, dtpFrom.Value, dtpTo.Value, this.Text, lbNumbers.SelectedItem.ToString(), _controller.TotalSum, fn);
                 }
             }
         }
@@ -245,11 +246,6 @@ namespace BillingSystem.View
                 initDataGridView();
                 Search();
             }
-        }
-
-        private void lblBalance_Click(object sender, EventArgs e)
-        {
-
         }
 
         // TODO: Сдеать, чтобы при нажатии кнопки "Поиск" контроллер переключался на соответствующий выбронному радиобаттону и затем вызывал метод CallsSearch

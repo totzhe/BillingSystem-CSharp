@@ -44,5 +44,13 @@ namespace BillingSystem.Controllers
         /// </summary>
         /// <returns>Баланс</returns>
         string GetBalance();
+
+        /// <summary>
+        /// Полная стоимость
+        /// </summary>
+        double TotalSum
+        {
+            get;
+        }
     }
 }
