@@ -11,6 +11,19 @@ namespace BillingSystem.Controllers
     /// </summary>
     class ChargesDetailedInfController : DetailedInfController
     {
+        private double _totalSum = 0;
+
+        /// <summary>
+        /// Полная стоимость
+        /// </summary>
+        public override double TotalSum
+        {
+            get
+            {
+                return _totalSum;
+            }
+        }
+        
         /// <summary>
         /// Создает экземпляр класса ChargesDetailedInfController.
         /// </summary>
@@ -39,6 +52,7 @@ namespace BillingSystem.Controllers
                 item[1] = c.Date.ToLongTimeString();
                 item[2] = c.GetService().Name;
                 item[3] = Math.Round(c.Sum, 2).ToString() + " " + Constants.Currency;
+                _totalSum += Math.Round(c.Sum, 2);
                 result.Add(item);
             }
             return result;

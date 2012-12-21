@@ -28,7 +28,7 @@ namespace BillingSystem.Controllers
         {
             from = new DateTime(date.Year, date.Month, 1, 0, 0, 0, 0);
             to = new DateTime(date.Year, date.Month, DateTime.DaysInMonth(date.Year, date.Month), 23, 59, 59, 59);
-            _charges = BillingOperations.CalculateCharges(from, to);
+            _charges = BillingOperations.CalculateCallsCharges(from, to);
             calculated = true;
         }
 

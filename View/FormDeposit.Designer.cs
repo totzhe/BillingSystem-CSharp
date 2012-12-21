@@ -64,7 +64,7 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.lblBalance.AutoSize = true;
-            this.lblBalance.Location = new System.Drawing.Point(106, 26);
+            this.lblBalance.Location = new System.Drawing.Point(111, 26);
             this.lblBalance.Name = "lblBalance";
             this.lblBalance.Size = new System.Drawing.Size(45, 13);
             this.lblBalance.TabIndex = 3;

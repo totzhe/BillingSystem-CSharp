@@ -29,7 +29,7 @@ namespace BillingSystem.Model
         /// <param name="from">Начальная дата</param>
         /// <param name="to">Конечная дата</param>
         /// <returns>Списания</returns>
-        public static List<Charge> CalculateCharges(DateTime from, DateTime to)
+        public static List<Charge> CalculateCallsCharges(DateTime from, DateTime to)
         {
             Service service = Service.SelectServiceByName(Constants.ChargeCalls);
             List<PhoneNumber> phones = PhoneNumber.SelectAllPhoneNumbers();
@@ -105,7 +105,7 @@ namespace BillingSystem.Model
         }
 
         /// <summary>
-        /// Рассчитывает стоимость за все звонки.
+        /// Рассчитывает стоимость звонка.
         /// </summary>
         /// <param name="call">Звонок</param>
         /// <param name="tariff">Тариф</param>

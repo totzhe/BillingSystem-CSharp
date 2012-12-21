@@ -80,5 +80,10 @@ namespace BillingSystem.Controllers
         /// <returns>Детализированная информация</returns>
         public abstract List<string[]> Search(string phoneNumber, DateTime from, DateTime to);
 
+        public abstract double TotalSum
+        {
+            get;
+        }
+
     }
 }

@@ -183,7 +183,7 @@
             // 
             this.btnSaveToFile.Location = new System.Drawing.Point(607, 406);
             this.btnSaveToFile.Name = "btnSaveToFile";
-            this.btnSaveToFile.Size = new System.Drawing.Size(192, 23);
+            this.btnSaveToFile.Size = new System.Drawing.Size(192, 27);
             this.btnSaveToFile.TabIndex = 6;
             this.btnSaveToFile.Text = "Сохранить в ...";
             this.btnSaveToFile.UseVisualStyleBackColor = true;
@@ -300,7 +300,6 @@
             this.lblBalance.Size = new System.Drawing.Size(56, 13);
             this.lblBalance.TabIndex = 21;
             this.lblBalance.Text = "lblBalance";
-            this.lblBalance.Click += new System.EventHandler(this.lblBalance_Click);
             // 
             // lblBalanceText
             // 
