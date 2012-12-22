@@ -28,74 +28,85 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBoxSurname = new System.Windows.Forms.TextBox();
-            this.textBoxPatronymic = new System.Windows.Forms.TextBox();
-            this.textBoxName = new System.Windows.Forms.TextBox();
-            this.textBoxEmail = new System.Windows.Forms.TextBox();
+            this.tbSurname = new System.Windows.Forms.TextBox();
+            this.tbPatronymic = new System.Windows.Forms.TextBox();
+            this.tbName = new System.Windows.Forms.TextBox();
+            this.tbEmail = new System.Windows.Forms.TextBox();
             this.btnAddNumber = new System.Windows.Forms.Button();
             this.btnEditNumber = new System.Windows.Forms.Button();
-            this.textBoxLogin = new System.Windows.Forms.TextBox();
+            this.tbLogin = new System.Windows.Forms.TextBox();
             this.btnResetPassword = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnDeleteNumber = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblSurname = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
+            this.lblPatronymic = new System.Windows.Forms.Label();
+            this.lblLogin = new System.Windows.Forms.Label();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.gbSubscriberInf = new System.Windows.Forms.GroupBox();
+            this.gbSubsPnones = new System.Windows.Forms.GroupBox();
             this.dgvPhoneNumbers = new System.Windows.Forms.DataGridView();
             this.Number = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tariff = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gbSubscriberInf.SuspendLayout();
+            this.gbSubsPnones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPhoneNumbers)).BeginInit();
             this.SuspendLayout();
             // 
-            // textBoxSurname
+            // tbSurname
             // 
-            this.textBoxSurname.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbSurname.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxSurname.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxSurname.Location = new System.Drawing.Point(113, 12);
-            this.textBoxSurname.Name = "textBoxSurname";
-            this.textBoxSurname.Size = new System.Drawing.Size(199, 30);
-            this.textBoxSurname.TabIndex = 7;
+            this.tbSurname.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbSurname.Location = new System.Drawing.Point(80, 26);
+            this.tbSurname.MaximumSize = new System.Drawing.Size(150, 20);
+            this.tbSurname.MinimumSize = new System.Drawing.Size(150, 20);
+            this.tbSurname.Name = "tbSurname";
+            this.tbSurname.Size = new System.Drawing.Size(150, 20);
+            this.tbSurname.TabIndex = 7;
             // 
-            // textBoxPatronymic
+            // tbPatronymic
             // 
-            this.textBoxPatronymic.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbPatronymic.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxPatronymic.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxPatronymic.Location = new System.Drawing.Point(113, 106);
-            this.textBoxPatronymic.Name = "textBoxPatronymic";
-            this.textBoxPatronymic.Size = new System.Drawing.Size(199, 30);
-            this.textBoxPatronymic.TabIndex = 9;
+            this.tbPatronymic.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbPatronymic.Location = new System.Drawing.Point(80, 83);
+            this.tbPatronymic.MaximumSize = new System.Drawing.Size(150, 20);
+            this.tbPatronymic.MinimumSize = new System.Drawing.Size(150, 20);
+            this.tbPatronymic.Name = "tbPatronymic";
+            this.tbPatronymic.Size = new System.Drawing.Size(150, 20);
+            this.tbPatronymic.TabIndex = 9;
             // 
-            // textBoxName
+            // tbName
             // 
-            this.textBoxName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxName.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxName.Location = new System.Drawing.Point(113, 59);
-            this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(199, 30);
-            this.textBoxName.TabIndex = 8;
+            this.tbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbName.Location = new System.Drawing.Point(80, 54);
+            this.tbName.MaximumSize = new System.Drawing.Size(150, 20);
+            this.tbName.MinimumSize = new System.Drawing.Size(150, 20);
+            this.tbName.Name = "tbName";
+            this.tbName.Size = new System.Drawing.Size(150, 20);
+            this.tbName.TabIndex = 8;
             // 
-            // textBoxEmail
+            // tbEmail
             // 
-            this.textBoxEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxEmail.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxEmail.Location = new System.Drawing.Point(113, 196);
-            this.textBoxEmail.Name = "textBoxEmail";
-            this.textBoxEmail.Size = new System.Drawing.Size(199, 30);
-            this.textBoxEmail.TabIndex = 11;
+            this.tbEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbEmail.Location = new System.Drawing.Point(80, 141);
+            this.tbEmail.MaximumSize = new System.Drawing.Size(150, 20);
+            this.tbEmail.MinimumSize = new System.Drawing.Size(150, 20);
+            this.tbEmail.Name = "tbEmail";
+            this.tbEmail.Size = new System.Drawing.Size(150, 20);
+            this.tbEmail.TabIndex = 11;
             // 
             // btnAddNumber
             // 
-            this.btnAddNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddNumber.Location = new System.Drawing.Point(193, 244);
+            this.btnAddNumber.Location = new System.Drawing.Point(8, 120);
             this.btnAddNumber.Name = "btnAddNumber";
-            this.btnAddNumber.Size = new System.Drawing.Size(119, 36);
+            this.btnAddNumber.Size = new System.Drawing.Size(200, 23);
             this.btnAddNumber.TabIndex = 13;
             this.btnAddNumber.Text = "Добавить номер";
             this.btnAddNumber.UseVisualStyleBackColor = true;
@@ -103,30 +114,31 @@
             // 
             // btnEditNumber
             // 
-            this.btnEditNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEditNumber.Location = new System.Drawing.Point(318, 244);
+            this.btnEditNumber.Location = new System.Drawing.Point(8, 149);
             this.btnEditNumber.Name = "btnEditNumber";
-            this.btnEditNumber.Size = new System.Drawing.Size(119, 36);
+            this.btnEditNumber.Size = new System.Drawing.Size(200, 23);
             this.btnEditNumber.TabIndex = 14;
             this.btnEditNumber.Text = "Изменить номер";
             this.btnEditNumber.UseVisualStyleBackColor = true;
             this.btnEditNumber.Click += new System.EventHandler(this.btnEditNumber_Click);
             // 
-            // textBoxLogin
+            // tbLogin
             // 
-            this.textBoxLogin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbLogin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxLogin.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxLogin.Location = new System.Drawing.Point(113, 151);
-            this.textBoxLogin.Name = "textBoxLogin";
-            this.textBoxLogin.Size = new System.Drawing.Size(199, 30);
-            this.textBoxLogin.TabIndex = 10;
+            this.tbLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbLogin.Location = new System.Drawing.Point(80, 112);
+            this.tbLogin.MaximumSize = new System.Drawing.Size(150, 20);
+            this.tbLogin.MinimumSize = new System.Drawing.Size(150, 20);
+            this.tbLogin.Name = "tbLogin";
+            this.tbLogin.Size = new System.Drawing.Size(150, 20);
+            this.tbLogin.TabIndex = 10;
             // 
             // btnResetPassword
             // 
-            this.btnResetPassword.Location = new System.Drawing.Point(17, 246);
+            this.btnResetPassword.Location = new System.Drawing.Point(20, 176);
             this.btnResetPassword.Name = "btnResetPassword";
-            this.btnResetPassword.Size = new System.Drawing.Size(100, 36);
+            this.btnResetPassword.Size = new System.Drawing.Size(210, 23);
             this.btnResetPassword.TabIndex = 16;
             this.btnResetPassword.Text = "Сбросить пароль";
             this.btnResetPassword.UseVisualStyleBackColor = true;
@@ -134,10 +146,9 @@
             // 
             // btnOK
             // 
-            this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnOK.Location = new System.Drawing.Point(15, 327);
+            this.btnOK.Location = new System.Drawing.Point(11, 239);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(75, 23);
+            this.btnOK.Size = new System.Drawing.Size(252, 23);
             this.btnOK.TabIndex = 17;
             this.btnOK.Text = "ОК";
             this.btnOK.UseVisualStyleBackColor = true;
@@ -145,10 +156,9 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnCancel.Location = new System.Drawing.Point(96, 327);
+            this.btnCancel.Location = new System.Drawing.Point(278, 239);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.Size = new System.Drawing.Size(214, 23);
             this.btnCancel.TabIndex = 18;
             this.btnCancel.Text = "Отмена";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -156,66 +166,102 @@
             // 
             // btnDeleteNumber
             // 
-            this.btnDeleteNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDeleteNumber.Location = new System.Drawing.Point(443, 244);
+            this.btnDeleteNumber.Location = new System.Drawing.Point(8, 178);
             this.btnDeleteNumber.Name = "btnDeleteNumber";
-            this.btnDeleteNumber.Size = new System.Drawing.Size(119, 36);
+            this.btnDeleteNumber.Size = new System.Drawing.Size(200, 23);
             this.btnDeleteNumber.TabIndex = 15;
             this.btnDeleteNumber.Text = "Удалить номер";
             this.btnDeleteNumber.UseVisualStyleBackColor = true;
             this.btnDeleteNumber.Click += new System.EventHandler(this.btnDeleteNumber_Click);
             // 
-            // label1
+            // lblSurname
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(13, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 19);
-            this.label1.TabIndex = 20;
-            this.label1.Text = "Фамилия:";
+            this.lblSurname.AutoSize = true;
+            this.lblSurname.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblSurname.Location = new System.Drawing.Point(17, 29);
+            this.lblSurname.MaximumSize = new System.Drawing.Size(63, 13);
+            this.lblSurname.MinimumSize = new System.Drawing.Size(43, 13);
+            this.lblSurname.Name = "lblSurname";
+            this.lblSurname.Size = new System.Drawing.Size(59, 13);
+            this.lblSurname.TabIndex = 20;
+            this.lblSurname.Text = "Фамилия:";
             // 
-            // label2
+            // lblName
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(13, 65);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 19);
-            this.label2.TabIndex = 21;
-            this.label2.Text = "Имя:";
+            this.lblName.AutoSize = true;
+            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblName.Location = new System.Drawing.Point(17, 57);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(32, 13);
+            this.lblName.TabIndex = 21;
+            this.lblName.Text = "Имя:";
             // 
-            // label3
+            // lblPatronymic
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(13, 112);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(84, 19);
-            this.label3.TabIndex = 22;
-            this.label3.Text = "Отчество:";
+            this.lblPatronymic.AutoSize = true;
+            this.lblPatronymic.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblPatronymic.Location = new System.Drawing.Point(17, 86);
+            this.lblPatronymic.Name = "lblPatronymic";
+            this.lblPatronymic.Size = new System.Drawing.Size(57, 13);
+            this.lblPatronymic.TabIndex = 22;
+            this.lblPatronymic.Text = "Отчество:";
             // 
-            // label4
+            // lblLogin
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblLogin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(13, 157);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(60, 19);
-            this.label4.TabIndex = 23;
-            this.label4.Text = "Логин:";
+            this.lblLogin.AutoSize = true;
+            this.lblLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblLogin.Location = new System.Drawing.Point(17, 115);
+            this.lblLogin.Name = "lblLogin";
+            this.lblLogin.Size = new System.Drawing.Size(41, 13);
+            this.lblLogin.TabIndex = 23;
+            this.lblLogin.Text = "Логин:";
             // 
-            // label5
+            // lblEmail
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(13, 207);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(60, 19);
-            this.label5.TabIndex = 24;
-            this.label5.Text = "E-mail:";
+            this.lblEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblEmail.Location = new System.Drawing.Point(17, 144);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(38, 13);
+            this.lblEmail.TabIndex = 24;
+            this.lblEmail.Text = "E-mail:";
+            // 
+            // gbSubscriberInf
+            // 
+            this.gbSubscriberInf.Controls.Add(this.lblSurname);
+            this.gbSubscriberInf.Controls.Add(this.lblEmail);
+            this.gbSubscriberInf.Controls.Add(this.tbName);
+            this.gbSubscriberInf.Controls.Add(this.lblLogin);
+            this.gbSubscriberInf.Controls.Add(this.btnResetPassword);
+            this.gbSubscriberInf.Controls.Add(this.tbPatronymic);
+            this.gbSubscriberInf.Controls.Add(this.lblPatronymic);
+            this.gbSubscriberInf.Controls.Add(this.tbSurname);
+            this.gbSubscriberInf.Controls.Add(this.lblName);
+            this.gbSubscriberInf.Controls.Add(this.tbEmail);
+            this.gbSubscriberInf.Controls.Add(this.tbLogin);
+            this.gbSubscriberInf.Location = new System.Drawing.Point(12, 12);
+            this.gbSubscriberInf.Name = "gbSubscriberInf";
+            this.gbSubscriberInf.Size = new System.Drawing.Size(251, 214);
+            this.gbSubscriberInf.TabIndex = 25;
+            this.gbSubscriberInf.TabStop = false;
+            this.gbSubscriberInf.Text = "Данные абонента";
+            // 
+            // gbSubsPnones
+            // 
+            this.gbSubsPnones.Controls.Add(this.dgvPhoneNumbers);
+            this.gbSubsPnones.Controls.Add(this.btnAddNumber);
+            this.gbSubsPnones.Controls.Add(this.btnDeleteNumber);
+            this.gbSubsPnones.Controls.Add(this.btnEditNumber);
+            this.gbSubsPnones.Location = new System.Drawing.Point(278, 15);
+            this.gbSubsPnones.Name = "gbSubsPnones";
+            this.gbSubsPnones.Size = new System.Drawing.Size(214, 211);
+            this.gbSubsPnones.TabIndex = 26;
+            this.gbSubsPnones.TabStop = false;
+            this.gbSubsPnones.Text = "Телефонные номера абонента";
             // 
             // dgvPhoneNumbers
             // 
@@ -223,16 +269,19 @@
             this.dgvPhoneNumbers.AllowUserToDeleteRows = false;
             this.dgvPhoneNumbers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvPhoneNumbers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvPhoneNumbers.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvPhoneNumbers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPhoneNumbers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Number,
             this.Tariff});
-            this.dgvPhoneNumbers.Location = new System.Drawing.Point(318, 12);
+            this.dgvPhoneNumbers.Location = new System.Drawing.Point(8, 19);
+            this.dgvPhoneNumbers.MultiSelect = false;
             this.dgvPhoneNumbers.Name = "dgvPhoneNumbers";
+            this.dgvPhoneNumbers.ReadOnly = true;
             this.dgvPhoneNumbers.RowHeadersVisible = false;
             this.dgvPhoneNumbers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPhoneNumbers.Size = new System.Drawing.Size(244, 214);
-            this.dgvPhoneNumbers.TabIndex = 25;
+            this.dgvPhoneNumbers.Size = new System.Drawing.Size(200, 95);
+            this.dgvPhoneNumbers.TabIndex = 16;
             // 
             // Number
             // 
@@ -252,51 +301,44 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(580, 362);
-            this.Controls.Add(this.dgvPhoneNumbers);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnDeleteNumber);
+            this.ClientSize = new System.Drawing.Size(504, 276);
+            this.Controls.Add(this.gbSubsPnones);
+            this.Controls.Add(this.gbSubscriberInf);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
-            this.Controls.Add(this.btnResetPassword);
-            this.Controls.Add(this.textBoxLogin);
-            this.Controls.Add(this.btnEditNumber);
-            this.Controls.Add(this.btnAddNumber);
-            this.Controls.Add(this.textBoxEmail);
-            this.Controls.Add(this.textBoxSurname);
-            this.Controls.Add(this.textBoxPatronymic);
-            this.Controls.Add(this.textBoxName);
-            this.MinimumSize = new System.Drawing.Size(555, 400);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(520, 314);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(520, 314);
             this.Name = "FormSubscriber";
-            this.Text = "FormSubscriber";
+            this.gbSubscriberInf.ResumeLayout(false);
+            this.gbSubscriberInf.PerformLayout();
+            this.gbSubsPnones.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPhoneNumbers)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBoxSurname;
-        private System.Windows.Forms.TextBox textBoxPatronymic;
-        private System.Windows.Forms.TextBox textBoxName;
-        private System.Windows.Forms.TextBox textBoxEmail;
+        private System.Windows.Forms.TextBox tbSurname;
+        private System.Windows.Forms.TextBox tbPatronymic;
+        private System.Windows.Forms.TextBox tbName;
+        private System.Windows.Forms.TextBox tbEmail;
         private System.Windows.Forms.Button btnAddNumber;
         private System.Windows.Forms.Button btnEditNumber;
-        private System.Windows.Forms.TextBox textBoxLogin;
+        private System.Windows.Forms.TextBox tbLogin;
         private System.Windows.Forms.Button btnResetPassword;
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnDeleteNumber;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblSurname;
+        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.Label lblPatronymic;
+        private System.Windows.Forms.Label lblLogin;
+        private System.Windows.Forms.Label lblEmail;
+        private System.Windows.Forms.GroupBox gbSubscriberInf;
+        private System.Windows.Forms.GroupBox gbSubsPnones;
         private System.Windows.Forms.DataGridView dgvPhoneNumbers;
         private System.Windows.Forms.DataGridViewTextBoxColumn Number;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tariff;

@@ -14,60 +14,55 @@ namespace BillingSystem.Model
         private long _id;
 
         /// <summary>
-        /// Возвращает или задает идентификатор звонка.
+        /// Возвращает идентификатор звонка.
         /// </summary>
         public long ID
         {
             get { return _id; }
-            set { }
         }
 
         private string _callingNumber;
 
         /// <summary>
-        /// Возвращает или задает строку, содержащую номер телефона вызывающего абонента.
+        /// Возвращает строку, содержащую номер телефона вызывающего абонента.
         /// </summary>
         public string CallingNumber
         {
             get { return _callingNumber; }
-            set { }
         }
 
         private string _calledNumber;
 
         /// <summary>
-        /// Возвращает или задает строку, содержащую номер телефона вызываемого абонента.
+        /// Возвращает строку, содержащую номер телефона вызываемого абонента.
         /// </summary>
         public string CalledNumber
         {
             get { return _calledNumber; }
-            set { }
         }
 
         private DateTime _startTime;
 
         /// <summary>
-        /// Возвращает или задает объект типа DateTime, содержащего время начала разговора.
+        /// Возвращает время начала разговора.
         /// </summary>
         public DateTime StartTime
         {
             get { return _startTime; }
-            set { }
         }
 
         private DateTime _endTime;
 
         /// <summary>
-        /// Возвращает или задает объект типа DateTime, содержащего время окончания разговора.
+        /// Возвращает время окончания разговора.
         /// </summary>
         public DateTime EndTime
         {
             get { return _endTime; }
-            set { }
         }
 
         /// <summary>
-        /// Возвращает или задает объект типа TimeSpan, содержащего длительность разговора.
+        /// Возвращает длительность разговора.
         /// </summary>
         public TimeSpan Duration
         {
@@ -163,8 +158,5 @@ namespace BillingSystem.Model
             result.Add(Constants.EndTime, EndTime.ToString());
             return result;
         }
-
-        // TODO: Добавить конструкторы в зависимости от того, как объекты будут читаться из БД
-        // TODO: Добавить методы по мере необходимости
     }
 }

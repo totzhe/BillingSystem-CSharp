@@ -13,34 +13,31 @@ namespace BillingSystem.Model
         private long _id;
 
         /// <summary>
-        /// Возвращает или задает идентификатор платежа.
+        /// Возвращает идентификатор платежа.
         /// </summary>
         public long ID
         {
             get { return _id; }
-            set { }
         }
 
         private long _subscriberID;
 
         /// <summary>
-        /// Возвращает или задает идентификатор абонента, на счет которого поступил платеж.
+        /// Возвращает идентификатор абонента, на счет которого поступил платеж.
         /// </summary>
         public long SubscriberID
         {
             get { return _subscriberID; }
-            set { }
         }
 
         private double _sum;
 
         /// <summary>
-        /// Возвращает или задает сумму платежа.
+        /// Возвращает сумму платежа.
         /// </summary>
         public double Sum
         {
             get { return _sum; }
-            set { }
         }
 
         private DateTime _date;
@@ -51,7 +48,6 @@ namespace BillingSystem.Model
         public DateTime Date
         {
             get { return _date; }
-            set { }
         }
 
         /// <summary>

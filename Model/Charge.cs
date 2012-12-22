@@ -14,56 +14,51 @@ namespace BillingSystem.Model
         private long _id;
 
         /// <summary>
-        /// Возвращает или задает идентификатор списания.
+        /// Возвращает идентификатор списания.
         /// </summary>
         public long ID
         {
             get { return _id; }
-            set { }
         }
 
         private long _phoneID;
 
         /// <summary>
-        /// Возвращает или задает идентификатор телефонного номера у списания.
+        /// Возвращает идентификатор телефонного номера у списания.
         /// </summary>
         public long PhoneID
         {
             get { return _phoneID; }
-            set { }
         }
 
         private long _serviceID;
 
         /// <summary>
-        /// Возвращает или задает идентификатор услуги, за которую произведено списание.
+        /// Возвращает идентификатор услуги, за которую произведено списание.
         /// </summary>
         public long ServiceID
         {
             get { return _serviceID; }
-            set { }
         }
 
         private double _sum;
 
         /// <summary>
-        /// Возвращает или задает сумму списания.
+        /// Возвращает сумму списания.
         /// </summary>
         public double Sum
         {
             get { return _sum; }
-            set { }
         }
 
         private DateTime _date;
 
         /// <summary>
-        /// Возвращает или задает дату списания.
+        /// Возвращает дату списания.
         /// </summary>
         public DateTime Date
         {
             get { return _date; }
-            set { }
         }
 
         private PhoneNumber _phoneNumber;
@@ -83,7 +78,7 @@ namespace BillingSystem.Model
         /// <summary>
         /// Инициализирует новый экземпляр класса Charge, получая в качесте аргументов следущие параметры:
         /// </summary>
-        /// <param name="item">Телефонный номер</param>
+        /// <param name="phone">Телефонный номер</param>
         /// <param name="service">Услуга</param>
         /// <param name="sum">Сумма</param>
         /// <param name="date">Дата</param>
@@ -123,18 +118,16 @@ namespace BillingSystem.Model
         }
 
         /// <summary>
-        /// Обновляет поле баланса в таблице базы данных.
+        /// Сохраняет списание в базе данных.
         /// </summary>
         public void WriteOff()
         {
             try
             {
                 connection.Open();
-                string queryString = @"UPDATE subscriber SET balance = balance - @sum WHERE id = @id; 
-                INSERT INTO charge (phone_id, service_id, sum, date) VALUES (@phone_id, @service_id, @sum, @date)";
+                string queryString = @"INSERT INTO charge (phone_id, service_id, sum, date) VALUES (@phone_id, @service_id, @sum, @date)";
                 MySqlCommand cmd = new MySqlCommand(queryString, connection);
                 cmd.Parameters.AddWithValue("@sum", _sum);
-                cmd.Parameters.AddWithValue("@id", _phoneNumber.SubscriberID);
                 cmd.Parameters.AddWithValue("@phone_id", _phoneID);
                 cmd.Parameters.AddWithValue("@service_id", _serviceID);
                 cmd.Parameters.AddWithValue("@date", _date);
@@ -151,7 +144,7 @@ namespace BillingSystem.Model
         }
 
         /// <summary>
-        /// Удаляет запись о списании с заданным идентификатором услуги из таблицы базы данных. 
+        /// Удаляет записи о списаниях с заданным идентификатором услуги из таблицы базы данных. 
         /// </summary>
         /// <param name="serviceID">Идентификатор услуги</param>
         /// <param name="from">Дата начала</param>

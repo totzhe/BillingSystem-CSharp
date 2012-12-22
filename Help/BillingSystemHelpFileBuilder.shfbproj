@@ -17,18 +17,20 @@
     <!-- SHFB properties -->
     <OutputPath>.\Help\</OutputPath>
     <HtmlHelpName>BillingSystemDocumentation</HtmlHelpName>
-    <Language>en-US</Language>
+    <Language>ru-RU</Language>
     <SyntaxFilters>CSharp</SyntaxFilters>
     <SdkLinkTarget>Self</SdkLinkTarget>
     <RootNamespaceContainer>False</RootNamespaceContainer>
     <PresentationStyle>VS2010</PresentationStyle>
     <Preliminary>False</Preliminary>
     <NamingMethod>Guid</NamingMethod>
-    <HelpTitle>BillingSystem</HelpTitle>
+    <HelpTitle>Документация BillingSystem</HelpTitle>
     <ContentPlacement>BelowNamespaces</ContentPlacement>
     <DocumentationSources>
-      <DocumentationSource sourceFile="..\bin\Debug\BillingSystem.exe" xmlns="" />
-<DocumentationSource sourceFile="..\bin\Debug\BillingSystem.xml" xmlns="" /></DocumentationSources>
+      <DocumentationSource sourceFile="..\bin\Debug\BillingSystem.exe" />
+<DocumentationSource sourceFile="..\bin\Debug\BillingSystem.xml" /></DocumentationSources>
+    <MissingTags>AutoDocumentCtors, AutoDocumentDispose</MissingTags>
+    <VisibleItems>None</VisibleItems>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in
        order for Visual Studio to perform the build.  The others are optional

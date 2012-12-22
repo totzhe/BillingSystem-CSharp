@@ -19,11 +19,12 @@ namespace BillingSystem.View
         private ITariffController _controller;
 
         /// <summary>
-        /// инициализирует новый экземпляр класса FormTariff. Принимает в качестве параметра контроллер добавления тарифа.
+        /// Инициализирует новый экземпляр класса FormTariff. Принимает в качестве параметра контроллер добавления тарифа.
         /// </summary>
         /// <param name="controller"></param>
         public FormTariff(AddTariffController controller)
         {
+            Text = "Добавление тарифа";           
             InitializeComponent();
             _controller = controller;
             btnSave.Text = "Добавить";
@@ -33,11 +34,12 @@ namespace BillingSystem.View
         }
 
         /// <summary>
-        /// инициализирует новый экземпляр класса FormTariff. Принимает в качестве параметра контроллер редактирования тарифа.
+        /// Инициализирует новый экземпляр класса FormTariff. Принимает в качестве параметра контроллер редактирования тарифа.
         /// </summary>
         /// <param name="controller"></param>
         public FormTariff(EditTariffController controller)
         {
+            Text = "Редактирование тарифа";
             InitializeComponent();
             _controller = controller;
             btnSave.Text = "Изменить";
@@ -50,11 +52,12 @@ namespace BillingSystem.View
         }
 
         /// <summary>
-        /// инициализирует новый экземпляр класса FormTariff. Принимает в качестве параметра контроллер импорта тарифа.
+        /// Инициализирует новый экземпляр класса FormTariff. Принимает в качестве параметра контроллер импорта тарифа.
         /// </summary>
         /// <param name="controller"></param>
         public FormTariff(ImportTariffController controller)
         {
+            this.Text = "Импорт тарифа";
             InitializeComponent();
             _controller = controller;
             btnSave.Text = "Добавить";

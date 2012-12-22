@@ -135,10 +135,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(414, 474);
             this.Controls.Add(this.gbCharge);
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(430, 512);
+            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(430, 512);
             this.Name = "FormChargeCalls";
-            this.Text = "FormChargeCalls";
+            this.Text = "Списание средств со счетов";
             ((System.ComponentModel.ISupportInitialize)(this.dgvCharges)).EndInit();
             this.gbCharge.ResumeLayout(false);
             this.gbCharge.PerformLayout();

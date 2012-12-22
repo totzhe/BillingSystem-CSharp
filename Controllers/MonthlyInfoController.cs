@@ -19,7 +19,7 @@ namespace BillingSystem.Controllers
         /// <summary>
         /// Возвращает все списания за месяц.
         /// </summary>
-        /// <param name="date">Последняя дата списания</param>
+        /// <param name="date">Месяц</param>
         /// <returns>Списания</returns>
         public List<Dictionary<string, string>> GetCharges(DateTime date)
         {
@@ -50,7 +50,7 @@ namespace BillingSystem.Controllers
         /// <summary>
         /// Возвращает все платежи абонентов за месяц.
         /// </summary>
-        /// <param name="date">Дата последнего платежа</param>
+        /// <param name="date">Месяц</param>
         /// <returns>Платежи</returns>
         public List<Dictionary<string, string>> GetPayments(DateTime date)
         {
@@ -79,7 +79,7 @@ namespace BillingSystem.Controllers
         }
 
         /// <summary>
-        /// Возвращает сумму списаний в указанной валюте.
+        /// Возвращает сумму списаний за месяц.
         /// </summary>
         /// <returns>Сумма</returns>
         public string GetChargesSum()
@@ -88,12 +88,21 @@ namespace BillingSystem.Controllers
         }
 
         /// <summary>
-        /// Возвращает сумму платежей в указанной валюте.
+        /// Возвращает сумму платежей за месяц.
         /// </summary>
         /// <returns>Сумма</returns>
         public string GetPaymentsSum()
         {
             return Math.Round(payments_sum, 2) + " " + Constants.Currency;
+        }
+
+        /// <summary>
+        /// Возвращает общий долг всех абонентов за месяц.
+        /// </summary>
+        /// <returns>Сумма</returns>
+        public string GetDebt()
+        {
+            return Math.Round(charges_sum - payments_sum , 2) + " " + Constants.Currency;
         }
     }
 }

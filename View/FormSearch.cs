@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using BillingSystem.Controllers;
 using BillingSystem.Model;
+using BillingSystem.View;
 
 namespace BillingSystem
 {
@@ -102,7 +103,7 @@ namespace BillingSystem
         private void tsmSaveToCSV_Click(object sender, EventArgs e)
         {
             saveFileDialog.DefaultExt = "csv";
-            saveFileDialog.Filter = "Текстовый файл|*.csv";
+            saveFileDialog.Filter = "CSV (*.csv)|*.csv";
             saveFileDialog.Title = "Сохранить";
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK && saveFileDialog.FileName != string.Empty)
@@ -134,6 +135,12 @@ namespace BillingSystem
         private void tsmEditTariff_Click(object sender, EventArgs e)
         {
             _controller.ShowEditTariff();
+        }
+
+        private void tsmiAbout_Click(object sender, EventArgs e)
+        {
+            Form about = new FormSupport();
+            about.Visible = true;
         }
     }
 }

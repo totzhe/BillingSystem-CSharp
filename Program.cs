@@ -5,10 +5,13 @@ using System.Windows.Forms;
 
 namespace BillingSystem
 {
+    /// <summary>
+    /// Класс стартера программы.
+    /// </summary>
     static class Program
     {
         /// <summary>
-        /// The main entry point for the application.
+        /// Главная точка входа в приложение.
         /// </summary>
         [STAThread]
         static void Main()

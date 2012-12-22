@@ -206,7 +206,7 @@
             // btnCostDel
             // 
             this.btnCostDel.Enabled = false;
-            this.btnCostDel.Location = new System.Drawing.Point(201, 178);
+            this.btnCostDel.Location = new System.Drawing.Point(207, 187);
             this.btnCostDel.Name = "btnCostDel";
             this.btnCostDel.Size = new System.Drawing.Size(75, 23);
             this.btnCostDel.TabIndex = 5;
@@ -284,6 +284,7 @@
             this.id,
             this.NameTariff});
             this.dgvNameTariff.Location = new System.Drawing.Point(12, 13);
+            this.dgvNameTariff.MultiSelect = false;
             this.dgvNameTariff.Name = "dgvNameTariff";
             this.dgvNameTariff.RowHeadersVisible = false;
             this.dgvNameTariff.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -311,9 +312,10 @@
             this.ClientSize = new System.Drawing.Size(730, 424);
             this.Controls.Add(this.dgvNameTariff);
             this.Controls.Add(this.gbInfo);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(746, 455);
             this.Name = "FormTariff";
-            this.Text = "FormEditTariff";
             this.gbInfo.ResumeLayout(false);
             this.gbDataTarrif.ResumeLayout(false);
             this.gbDataTarrif.PerformLayout();

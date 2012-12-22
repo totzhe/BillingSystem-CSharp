@@ -9,6 +9,9 @@ using System.Windows.Forms;
 
 namespace BillingSystem.View
 {
+    /// <summary>
+    /// Класс формы, отображающей краткую информацию о программе. Наследует класс System.Windows.Forms.Form.
+    /// </summary>
     public partial class FormSupport : Form
     {
         public FormSupport()
