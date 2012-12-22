@@ -15,34 +15,31 @@ namespace BillingSystem.Model
         private long _tariffID;
 
         /// <summary>
-        /// Возвращает или задает идентификатор тарифа.
+        /// Возвращает идентификатор тарифа.
         /// </summary>
         public long TariffID
         {
             get { return _tariffID; }
-            set { }
         }
 
         private string _prefix;
 
         /// <summary>
-        /// Возвращает или задает строку, содержащую префикс телефонного номера.
+        /// Возвращает строку, содержащую префикс телефонного номера.
         /// </summary>
         public string Prefix
         {
             get { return _prefix; }
-            set { }
         }
 
         private double _cost;
 
         /// <summary>
-        /// Возвращает или задает стоимость.
+        /// Возвращает стоимость.
         /// </summary>
         public double Cost
         {
             get { return _cost; }
-            set { }
         }
 
         /// <summary>

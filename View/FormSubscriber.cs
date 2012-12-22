@@ -7,31 +7,33 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using BillingSystem.Controllers;
-//using BillingSystem.Model;
 
 namespace BillingSystem.View
-{
+{    
+    /// <summary>
+    /// Класс формы заполнения или редактирования данных об абоненте. Наследует класс System.Windows.Forms.Form.
+    /// </summary>
     public partial class FormSubscriber : Form
     {
         private ISubscriberController _controller;
 
         public FormSubscriber(AddSubscriberController controller)
         {
-            //здесь - контроллер AddSubscriberController
+            Text = "Добавление абонента";
             _controller = controller;
             InitializeComponent();
         }
 
         public FormSubscriber(EditSubscriberController controller)
         {
-            //здесь - контроллер EditSubscriberController
+            Text = "Редактирование абонента";
             InitializeComponent();
             _controller = controller;
-            textBoxName.Text = _controller.getName();
-            textBoxSurname.Text = _controller.getSurname();
-            textBoxPatronymic.Text = _controller.getPatronymic();
-            textBoxEmail.Text = _controller.getEmail();
-            textBoxLogin.Text = _controller.getLogin();
+            tbName.Text = _controller.getName();
+            tbSurname.Text = _controller.getSurname();
+            tbPatronymic.Text = _controller.getPatronymic();
+            tbEmail.Text = _controller.getEmail();
+            tbLogin.Text = _controller.getLogin();
             RefreshNumbers();
         }
 
@@ -60,13 +62,12 @@ namespace BillingSystem.View
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            _controller.ConfirmChanges(textBoxName.Text, textBoxPatronymic.Text, textBoxSurname.Text, textBoxEmail.Text, textBoxLogin.Text);
+            _controller.ConfirmChanges(tbName.Text, tbPatronymic.Text, tbSurname.Text, tbEmail.Text, tbLogin.Text);
             DialogResult = DialogResult.OK;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            //_controller.Cancel();
             DialogResult = DialogResult.Cancel;
         }
 

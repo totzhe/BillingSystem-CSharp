@@ -13,12 +13,11 @@ namespace BillingSystem.Model
         protected long _id;
 
         /// <summary>
-        /// Возвращает или задает идентификатор пользователя.
+        /// Возвращает идентификатор пользователя.
         /// </summary>
         public long ID
         {
             get { return _id; }
-            set { }
         }
 
         protected string _name;

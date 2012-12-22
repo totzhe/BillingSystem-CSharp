@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewSearchResults = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SubscriberSurname = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -98,7 +98,7 @@
             this.dataGridViewSearchResults.ReadOnly = true;
             this.dataGridViewSearchResults.RowHeadersVisible = false;
             this.dataGridViewSearchResults.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewSearchResults.Size = new System.Drawing.Size(712, 508);
+            this.dataGridViewSearchResults.Size = new System.Drawing.Size(712, 486);
             this.dataGridViewSearchResults.TabIndex = 4;
             this.dataGridViewSearchResults.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSearchResults_CellDoubleClick);
             // 
@@ -129,8 +129,8 @@
             // 
             // PhoneNumbers
             // 
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.PhoneNumbers.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.PhoneNumbers.DefaultCellStyle = dataGridViewCellStyle1;
             this.PhoneNumbers.HeaderText = "Телефоны";
             this.PhoneNumbers.Name = "PhoneNumbers";
             this.PhoneNumbers.ReadOnly = true;
@@ -435,19 +435,20 @@
             // tsmiAbout
             // 
             this.tsmiAbout.Name = "tsmiAbout";
-            this.tsmiAbout.Size = new System.Drawing.Size(152, 22);
+            this.tsmiAbout.Size = new System.Drawing.Size(149, 22);
             this.tsmiAbout.Text = "О программе";
+            this.tsmiAbout.Click += new System.EventHandler(this.tsmiAbout_Click);
             // 
             // FormSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(908, 562);
+            this.ClientSize = new System.Drawing.Size(908, 543);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridViewSearchResults);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(800, 600);
+            this.MinimumSize = new System.Drawing.Size(800, 400);
             this.Name = "FormSearch";
             this.Text = "Биллинговая система";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSearchResults)).EndInit();

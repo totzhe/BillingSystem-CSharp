@@ -84,15 +84,15 @@
             // 
             // gbPutMoney
             // 
-            this.gbPutMoney.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)));
             this.gbPutMoney.Controls.Add(this.mtbSum);
             this.gbPutMoney.Controls.Add(this.label1);
             this.gbPutMoney.Controls.Add(this.btnPutMoney);
             this.gbPutMoney.Controls.Add(this.lblBalance);
             this.gbPutMoney.Controls.Add(this.lblCurBalance);
             this.gbPutMoney.Controls.Add(this.btnCancel);
-            this.gbPutMoney.Location = new System.Drawing.Point(12, 17);
+            this.gbPutMoney.Location = new System.Drawing.Point(12, 12);
+            this.gbPutMoney.MaximumSize = new System.Drawing.Size(258, 136);
+            this.gbPutMoney.MinimumSize = new System.Drawing.Size(258, 136);
             this.gbPutMoney.Name = "gbPutMoney";
             this.gbPutMoney.Size = new System.Drawing.Size(258, 136);
             this.gbPutMoney.TabIndex = 5;
@@ -127,10 +127,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(283, 165);
             this.Controls.Add(this.gbPutMoney);
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(299, 203);
+            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(299, 203);
             this.Name = "FormDeposit";
-            this.Text = "FormDeposit";
+            this.Text = "Пополнение счета абонента";
             this.gbPutMoney.ResumeLayout(false);
             this.gbPutMoney.PerformLayout();
             this.ResumeLayout(false);

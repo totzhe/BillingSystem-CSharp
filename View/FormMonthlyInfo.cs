@@ -23,9 +23,10 @@ namespace BillingSystem.View
         /// <param name="controller"></param>
         public FormMonthlyInfo(IMonthlyInfoController controller)
         {
-            this.Text = "Просмотр статистики за месяц и выставление счета";
+            this.Text = "Просмотр статистики за месяц";
             _controller = controller;
             InitializeComponent();
+            Search();
         }
 
         private void Search()
@@ -37,13 +38,13 @@ namespace BillingSystem.View
             {
                 dgvCharges.Rows.Add(d["number"], d["sum"]);
             }
-            lblChargesSum.Text = _controller.GetChargesSum();
+            lblTotalCompounded.Text = _controller.GetChargesSum();
             foreach (Dictionary<string, string> dict in _controller.GetPayments(dateTimePickerMonth.Value))
             {
-                    dgvPayments.Rows.Add(dict["subscriber"], dict["sum"]);
+                dgvPayments.Rows.Add(dict["subscriber"], dict["sum"]);
             }
-
-            lblPaymentsSum.Text = _controller.GetPaymentsSum();
+            lblTotalLiquidate.Text = _controller.GetPaymentsSum();
+            lblTotalCost.Text = _controller.GetDebt();
         }
 
         private void dateTimePickerMonth_CloseUp(object sender, EventArgs e)

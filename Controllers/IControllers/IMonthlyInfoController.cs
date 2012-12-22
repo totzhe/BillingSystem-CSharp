@@ -32,5 +32,11 @@ namespace BillingSystem.Controllers
         /// </summary>
         /// <returns>Сумма</returns>
         string GetPaymentsSum();
+
+        /// <summary>
+        /// Возвращает общий долг всех абонентов за месяц.
+        /// </summary>
+        /// <returns>Сумма</returns>
+        string GetDebt();
     }
 }

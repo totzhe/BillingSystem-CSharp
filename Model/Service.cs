@@ -14,34 +14,31 @@ namespace BillingSystem.Model
         private long _id;
 
         /// <summary>
-        /// Возвращает или задает идентификатор услуги.
+        /// Возвращает идентификатор услуги.
         /// </summary>
         public long ID
         {
             get { return _id; }
-            set { }
         }
 
         private string _name;
 
         /// <summary>
-        /// Возвращает или задает наименование услуги.
+        /// Возвращает наименование услуги.
         /// </summary>
         public string Name
         {
             get { return _name; }
-            set { }
         }
 
         private double _cost;
 
         /// <summary>
-        /// Возвращает или задает стоимость пользования услугой.
+        /// Возвращает стоимость пользования услугой.
         /// </summary>
         public double Cost
         {
             get { return _cost; }
-            set { }
         }
 
         private static MySqlConnection _connection;

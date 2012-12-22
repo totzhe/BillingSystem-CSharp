@@ -410,4 +410,7 @@
         F7C/XH3EwExMTEwExMTEwExMTEwExMTEwEx8x9xMBMTExMBMTExMBMTExMBMTExMBMTExMBMTExMB//Z
 </value>
   </data>
+  <data name="tbAboutContent.Text" xml:space="preserve">
+    <value>BillingSystem  - программный комплекс, осуществляющий учет объема потребляемых абонентами услуг, расчет и списание денежных средств в соответствии с тарифами компании (опреатора), предоставляющей услуги. Цикл выполняемых ими операций именуется биллингом. </value>
+  </data>
 </root>
