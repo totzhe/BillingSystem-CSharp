@@ -7,50 +7,52 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using BillingSystem.Controllers;
-//using BillingSystem.Model;
 
 namespace BillingSystem.View
 {
+    /// <summary>
+    /// Класс формы заполнения или редактирования данных об абоненте. Наследует класс System.Windows.Forms.Form.
+    /// </summary>
     public partial class FormSubscriber : Form
     {
         private ISubscriberController _controller;
 
         public FormSubscriber(AddSubscriberController controller)
         {
-            //здесь - контроллер AddSubscriberController
+            Text = "Добавление абонента";
             _controller = controller;
             InitializeComponent();
         }
 
         public FormSubscriber(EditSubscriberController controller)
         {
-            //здесь - контроллер EditSubscriberController
+            Text = "Редактирование абонента";
             InitializeComponent();
             _controller = controller;
-            textBoxName.Text = _controller.getName();
-            textBoxSurname.Text = _controller.getSurname();
-            textBoxPatronymic.Text = _controller.getPatronymic();
-            textBoxEmail.Text = _controller.getEmail();
-            textBoxLogin.Text = _controller.getLogin();
+            tbName.Text = _controller.getName();
+            tbSurname.Text = _controller.getSurname();
+            tbPatronymic.Text = _controller.getPatronymic();
+            tbEmail.Text = _controller.getEmail();
+            tbLogin.Text = _controller.getLogin();
             RefreshNumbers();
         }
 
         private void RefreshNumbers()
         {
-            int ind = listBoxPhoneNumbers.SelectedIndex;
-            listBoxPhoneNumbers.Items.Clear();
+            int ind = lbPnones.SelectedIndex;
+            lbPnones.Items.Clear();
             List<string> phoneNumbers = _controller.getPhoneNumbers();
             foreach (string phone in phoneNumbers)
             {
-                listBoxPhoneNumbers.Items.Add(phone);
+                lbPnones.Items.Add(phone);
             }
-            if (listBoxPhoneNumbers.Items.Count > ind)
+            if (lbPnones.Items.Count > ind)
             {
-                listBoxPhoneNumbers.SelectedIndex = ind;
+                lbPnones.SelectedIndex = ind;
             }
             else
             {
-                listBoxPhoneNumbers.SelectedIndex = listBoxPhoneNumbers.Items.Count - 1;
+                lbPnones.SelectedIndex = lbPnones.Items.Count - 1;
             }
         }
         // TODO: Кнопка "Редактировать" должна быть активна, только когда выбран номер телефона
@@ -58,7 +60,7 @@ namespace BillingSystem.View
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            _controller.ConfirmChanges(textBoxName.Text, textBoxPatronymic.Text, textBoxSurname.Text, textBoxEmail.Text, textBoxLogin.Text);
+            _controller.ConfirmChanges(tbName.Text, tbPatronymic.Text, tbSurname.Text, tbEmail.Text, tbLogin.Text);
             DialogResult = DialogResult.OK;
         }
 
@@ -75,8 +77,8 @@ namespace BillingSystem.View
 
         private void btnEditNumber_Click(object sender, EventArgs e)
         {
-            if(listBoxPhoneNumbers.SelectedIndex >= 0)
-                _controller.EditPhoneNumber(listBoxPhoneNumbers.SelectedItem.ToString());
+            if(lbPnones.SelectedIndex >= 0)
+                _controller.EditPhoneNumber(lbPnones.SelectedItem.ToString());
         }
 
         private void btnAddNumber_Click(object sender, EventArgs e)
@@ -87,8 +89,8 @@ namespace BillingSystem.View
 
         private void btnDeleteNumber_Click(object sender, EventArgs e)
         {
-            if (listBoxPhoneNumbers.SelectedIndex >= 0)
-                _controller.DeletePhoneNumber(listBoxPhoneNumbers.SelectedItem.ToString());
+            if (lbPnones.SelectedIndex >= 0)
+                _controller.DeletePhoneNumber(lbPnones.SelectedItem.ToString());
             RefreshNumbers();
         }
     }

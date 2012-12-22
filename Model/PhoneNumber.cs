@@ -14,7 +14,7 @@ namespace BillingSystem.Model
         private long _id;
 
         /// <summary>
-        /// Возвращает или задает идентификатор телефона.
+        /// Возвращает идентификатор телефона.
         /// </summary>
         public long ID
         {
@@ -35,12 +35,11 @@ namespace BillingSystem.Model
         private string _number;
 
         /// <summary>
-        /// Возвращает или задает строку, содержащую номер телефона.
+        /// Возвращает строку, содержащую номер телефона.
         /// </summary>
         public string Number
         {
             get { return _number; }
-            set { }
         }
 
         private long _tariffID;

@@ -23,12 +23,11 @@ namespace BillingSystem.Model
         }
 
         /// <summary>
-        /// Возвращает или задает баланс на счете абонента.
+        /// Возвращает баланс на счету абонента.
         /// </summary>
         public double Balance
         {
             get { return GetBalanceByDate(DateTime.Now); }
-            set { /*_balance = value;*/ }
         }
 
         private static MySqlConnection _connection;

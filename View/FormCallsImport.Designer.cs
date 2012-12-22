@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCallsImport));
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.btnOpenFile = new System.Windows.Forms.Button();
             this.dgvImportCalls = new System.Windows.Forms.DataGridView();
@@ -44,17 +45,12 @@
             // 
             this.openFileDialog.DefaultExt = "csv";
             this.openFileDialog.FileName = "openFileDialog";
-            this.openFileDialog.Filter = "Текст|.*csv";
-            this.openFileDialog.Title = "Открыть";
+            resources.ApplyResources(this.openFileDialog, "openFileDialog");
             // 
             // btnOpenFile
             // 
-            this.btnOpenFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnOpenFile.Location = new System.Drawing.Point(13, 376);
+            resources.ApplyResources(this.btnOpenFile, "btnOpenFile");
             this.btnOpenFile.Name = "btnOpenFile";
-            this.btnOpenFile.Size = new System.Drawing.Size(121, 23);
-            this.btnOpenFile.TabIndex = 0;
-            this.btnOpenFile.Text = "Открыть...";
             this.btnOpenFile.UseVisualStyleBackColor = true;
             this.btnOpenFile.Click += new System.EventHandler(this.btnOpenFile_Click);
             // 
@@ -64,9 +60,7 @@
             this.dgvImportCalls.AllowUserToDeleteRows = false;
             this.dgvImportCalls.AllowUserToResizeColumns = false;
             this.dgvImportCalls.AllowUserToResizeRows = false;
-            this.dgvImportCalls.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.dgvImportCalls, "dgvImportCalls");
             this.dgvImportCalls.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvImportCalls.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvImportCalls.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -75,69 +69,55 @@
             this.toNumber,
             this.start_time,
             this.end_time});
-            this.dgvImportCalls.Location = new System.Drawing.Point(13, 13);
             this.dgvImportCalls.Name = "dgvImportCalls";
             this.dgvImportCalls.RowHeadersVisible = false;
-            this.dgvImportCalls.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvImportCalls.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvImportCalls.Size = new System.Drawing.Size(559, 347);
-            this.dgvImportCalls.TabIndex = 1;
             // 
             // fromNumber
             // 
-            this.fromNumber.HeaderText = "С номера";
+            resources.ApplyResources(this.fromNumber, "fromNumber");
             this.fromNumber.Name = "fromNumber";
             // 
             // toNumber
             // 
-            this.toNumber.HeaderText = "На номер";
+            resources.ApplyResources(this.toNumber, "toNumber");
             this.toNumber.Name = "toNumber";
             // 
             // start_time
             // 
-            this.start_time.HeaderText = "Время начала";
+            resources.ApplyResources(this.start_time, "start_time");
             this.start_time.Name = "start_time";
             // 
             // end_time
             // 
-            this.end_time.HeaderText = "Время заверешения";
+            resources.ApplyResources(this.end_time, "end_time");
             this.end_time.Name = "end_time";
             // 
             // btnAdd
             // 
-            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAdd.Location = new System.Drawing.Point(363, 376);
+            resources.ApplyResources(this.btnAdd, "btnAdd");
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(209, 23);
-            this.btnAdd.TabIndex = 2;
-            this.btnAdd.Text = "Добавить в БД";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnRnd
             // 
-            this.btnRnd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnRnd.Location = new System.Drawing.Point(161, 376);
+            resources.ApplyResources(this.btnRnd, "btnRnd");
             this.btnRnd.Name = "btnRnd";
-            this.btnRnd.Size = new System.Drawing.Size(163, 23);
-            this.btnRnd.TabIndex = 3;
-            this.btnRnd.Text = "Генерация звонков";
             this.btnRnd.UseVisualStyleBackColor = true;
             this.btnRnd.Click += new System.EventHandler(this.btnRnd_Click);
             // 
             // FormCallsImport
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 412);
             this.Controls.Add(this.btnRnd);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.dgvImportCalls);
             this.Controls.Add(this.btnOpenFile);
-            this.MaximumSize = new System.Drawing.Size(600, 450);
-            this.MinimumSize = new System.Drawing.Size(600, 450);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormCallsImport";
-            this.Text = "Импорт звонков";
             ((System.ComponentModel.ISupportInitialize)(this.dgvImportCalls)).EndInit();
             this.ResumeLayout(false);
 

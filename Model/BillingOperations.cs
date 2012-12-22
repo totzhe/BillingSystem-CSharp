@@ -35,7 +35,6 @@ namespace BillingSystem.Model
             List<PhoneNumber> phones = PhoneNumber.SelectAllPhoneNumbers();
             double full_sum = 0;
             int phones_count = 0;
-            //int calls_count = 0;
             List<Charge> result = new List<Charge>();
             foreach (PhoneNumber pn in phones)
             {
@@ -80,16 +79,6 @@ namespace BillingSystem.Model
                 {
                     connection.Close();
                 }
-                /*List<Call> calls = pn.SelectCalls(from, to);
-                foreach (Call call in calls)
-                {
-                    if (call.CallingNumber == pn.Number)
-                    {
-                        Tariff tariff = pn.SelectTariffByDate(call.StartTime);
-                        sum += CalculateCallCost(call, tariff);
-                        calls_count++;
-                    }
-                }*/
                 if (sum > 0)
                 {
                     DateTime time = (to.Month == DateTime.Now.Month && to.Year == DateTime.Now.Year || to > DateTime.Now) ? DateTime.Now : to;
@@ -116,7 +105,6 @@ namespace BillingSystem.Model
             double cost = price.Cost * (call.Duration.TotalSeconds);
             return Math.Round(cost, 2);
         }
-
 
         //TODO: какие-нибудь еще методы по мере необходимости
     }

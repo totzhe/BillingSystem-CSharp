@@ -14,56 +14,51 @@ namespace BillingSystem.Model
         private long _id;
 
         /// <summary>
-        /// Возвращает или задает идентификатор списания.
+        /// Возвращает идентификатор списания.
         /// </summary>
         public long ID
         {
             get { return _id; }
-            set { }
         }
 
         private long _phoneID;
 
         /// <summary>
-        /// Возвращает или задает идентификатор телефонного номера у списания.
+        /// Возвращает идентификатор телефонного номера у списания.
         /// </summary>
         public long PhoneID
         {
             get { return _phoneID; }
-            set { }
         }
 
         private long _serviceID;
 
         /// <summary>
-        /// Возвращает или задает идентификатор услуги, за которую произведено списание.
+        /// Возвращает идентификатор услуги, за которую произведено списание.
         /// </summary>
         public long ServiceID
         {
             get { return _serviceID; }
-            set { }
         }
 
         private double _sum;
 
         /// <summary>
-        /// Возвращает или задает сумму списания.
+        /// Возвращает сумму списания.
         /// </summary>
         public double Sum
         {
             get { return _sum; }
-            set { }
         }
 
         private DateTime _date;
 
         /// <summary>
-        /// Возвращает или задает дату списания.
+        /// Возвращает дату списания.
         /// </summary>
         public DateTime Date
         {
             get { return _date; }
-            set { }
         }
 
         private PhoneNumber _phoneNumber;

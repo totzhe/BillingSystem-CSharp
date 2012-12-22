@@ -156,7 +156,7 @@ namespace BillingSystem.View
             string fn = string.Empty;
 
             saveFileDialog.Title = "Сохранить";
-            saveFileDialog.Filter = "CSV (разделители - точки с запятыми)|*.csv|HTML-страницы (*.html)|*.html";
+            saveFileDialog.Filter = "CSV (*.csv)|*.csv|HTML-страницы (*.html)|*.html";
             saveFileDialog.AddExtension = true;
             saveFileDialog.FileName = fn;
 

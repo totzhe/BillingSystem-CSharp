@@ -96,7 +96,9 @@
     <Compile Include="Model\FileExporter.cs" />
     <Compile Include="Tests\DatabaseUtilsTest.cs" />
     <Compile Include="Tests\EditSubscriberControllerTest.cs" />
-    <Compile Include="View\FormCallsImport.cs" />
+    <Compile Include="View\FormCallsImport.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\FormCallsImport.Designer.cs">
       <DependentUpon>FormCallsImport.cs</DependentUpon>
     </Compile>
@@ -155,12 +157,6 @@
     </Compile>
     <Compile Include="View\FormSelectTariff.Designer.cs">
       <DependentUpon>FormSelectTariff.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\FormStatistics.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\FormStatistics.Designer.cs">
-      <DependentUpon>FormStatistics.cs</DependentUpon>
     </Compile>
     <Compile Include="View\FormSubscriber.cs">
       <SubType>Form</SubType>

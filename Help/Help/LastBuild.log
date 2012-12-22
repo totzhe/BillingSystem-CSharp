@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shfbBuild product="Sandcastle Help File Builder" version="1.9.6.0" projectFile="C:\Users\Андрей\Documents\GitHub\BillingSystem-CSharp\Help\BillingSystemHelpFileBuilder.shfbproj" started="19.12.2012 2:30:57">
+<shfbBuild product="Sandcastle Help File Builder" version="1.9.6.0" projectFile="C:\Users\Андрей\Documents\GitHub\BillingSystem-CSharp\Help\BillingSystemHelpFileBuilder.shfbproj" started="22.12.2012 14:48:32">
 <buildStep step="Initializing">
 Finding tools...
 Found Sandcastle tools in &#39;C:\Program Files (x86)\Sandcastle\&#39;
@@ -16,12 +16,12 @@ Copying XML comments files
     C:\Users\Андрей\Documents\GitHub\BillingSystem-CSharp\bin\Debug\BillingSystem.XML -&gt; C:\Users\Андрей\Documents\GitHub\BillingSystem-CSharp\Help\Help\Working\BillingSystem.XML
 </buildStep>
 <buildStep step="GenerateSharedContent">
-Generating shared content files (en-US, Английский (США))...
-    Last step completed in 00:00:00.5600
+Generating shared content files (ru-RU, Русский (Россия))...
+    Last step completed in 00:00:00.7320
 </buildStep>
 <buildStep step="GenerateApiFilter">
 Generating API filter for MRefBuilder...
-    Last step completed in 00:00:00.1450
+    Last step completed in 00:00:00.2470
 </buildStep>
 <buildStep step="GenerateReflectionInfo">
 Generating reflection information...
@@ -29,22 +29,26 @@ Generating reflection information...
   MRefBuilder (v2.7.2.0)
   Copyright c 2006-2012, Microsoft Corporation, All Rights Reserved
   Info: Loaded 1 assemblies for reflection and 0 dependency assemblies.
-  Info: Wrote information on 7 namespaces, 51 types, and 259 members
+  Info: Wrote information on 7 namespaces, 52 types, and 291 members
   XslTransform (v2.7.2.0)
   Copyright c 2006-2012, Microsoft Corporation, All Rights Reserved
   Info: Applying XSL transformation &#39;C:\Program Files (x86)\Sandcastle\ProductionTransforms\MergeDuplicates.xsl&#39;.
-    Last step completed in 00:00:09.9826
+    Last step completed in 00:00:10.6096
 </buildStep>
 <buildStep step="GenerateNamespaceSummaries">
 Generating namespace summary information...
-    Last step completed in 00:00:00.1410
+    Last step completed in 00:00:00.2400
 </buildStep>
 <buildStep step="ApplyVisibilityProperties">
 Applying visibility properties to reflection information file
     7 attribute nodes removed
     0 explicit interface implementations removed
-    55 local and base class EII elements removed
-    Last step completed in 00:00:00.4670
+    50 local and base class EII elements removed
+    5183 inherited member elements removed
+    23 protected members noted for removal
+    0 protected inherited framework members noted for removal
+    Removing previously noted unwanted APIs and elements
+    Last step completed in 00:00:01.2001
 </buildStep>
 <buildStep step="TransformReflectionInfo">
 Transforming reflection output...
@@ -56,12 +60,12 @@ Transforming reflection output...
   XslTransform (v2.7.2.0)
   Copyright c 2006-2012, Microsoft Corporation, All Rights Reserved
   Info: Applying XSL transformation &#39;C:\Program Files (x86)\Sandcastle\ProductionTransforms\ReflectionToManifest.xsl&#39;.
-    Last step completed in 00:00:19.0941
+    Last step completed in 00:00:08.2005
 </buildStep>
 <buildStep step="ModifyHelpTopicFilenames">
 Modifying help topic filenames in reflection information file
     No changes required
-    Last step completed in 00:00:00.7680
+    Last step completed in 00:00:00.0830
 </buildStep>
 <buildStep step="CopyStandardContent">
 Copying standard help content...
@@ -259,12 +263,12 @@ C:\Program Files (x86)\Sandcastle\\Presentation\VS2010\branding -&gt; C:\Users\�
     C:\Program Files (x86)\Sandcastle\Presentation\VS2010\branding\ps-instrumentedLink.xslt -> C:\Users\Андрей\Documents\GitHub\BillingSystem-CSharp\Help\Help\Working\branding\ps-instrumentedLink.xslt
     C:\Program Files (x86)\Sandcastle\Presentation\VS2010\branding\ps-languageSpecificText.xslt -> C:\Users\Андрей\Documents\GitHub\BillingSystem-CSharp\Help\Help\Working\branding\ps-languageSpecificText.xslt
     C:\Program Files (x86)\Sandcastle\Presentation\VS2010\branding\ps-codesnippet.xslt -> C:\Users\Андрей\Documents\GitHub\BillingSystem-CSharp\Help\Help\Working\branding\ps-codesnippet.xslt
-    Last step completed in 00:00:04.2722
+    Last step completed in 00:00:05.1453
 </buildStep>
 <buildStep step="CopyAdditionalContent">
 Copying additional content files...
 No additional content to copy
-    Last step completed in 00:00:00.0700
+    Last step completed in 00:00:00.0950
 </buildStep>
 <buildStep step="MergeTablesOfContents">
 Merging conceptual and additional tables of contents...
@@ -277,17 +281,17 @@ Generating intermediate table of contents file...
   Copyright c 2006-2012, Microsoft Corporation, All Rights Reserved
   Info: Applying XSL transformation &#39;C:\Program Files (x86)\Sandcastle\\ProductionTransforms\CreateVSToc.xsl&#39;.
 Generating conceptual content intermediate TOC file...
-    Last step completed in 00:00:02.3651
+    Last step completed in 00:00:01.8191
 </buildStep>
 <buildStep step="CreateBuildAssemblerConfigs">
 Creating Sandcastle configuration files...
     sandcastle.config
-    Last step completed in 00:00:00.3240
+    Last step completed in 00:00:00.2150
 </buildStep>
 <buildStep step="MergeCustomConfigs">
 Merging custom build component configurations
 C:\Users\Андрей\Documents\GitHub\BillingSystem-CSharp\Help\Help\Working\sandcastle.config
-    Last step completed in 00:00:00.2000
+    Last step completed in 00:00:00.2030
 </buildStep>
 <buildStep step="BuildReferenceTopics">
 Building reference help topics...
@@ -296,93 +300,18 @@ Building reference help topics...
   Copyright c 2006-2012, Microsoft Corporation, All Rights Reserved
   Info: Loading configuration...
   Info: Processing topics...
-  Warn: ShowMissingComponent: [N:BillingSystem] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [T:BillingSystem.ConnectionManager] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [M:BillingSystem.ConnectionManager.GetConnection] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [M:BillingSystem.ConnectionManager.GetConnection] Missing &lt;returns&gt; documentation
   Warn: ResolveReferenceLinksComponent2: [M:BillingSystem.ConnectionManager.GetConnection] Unknown reference link target &#39;T:MySql.Data.MySqlClient.MySqlConnection&#39;.
-  Warn: ShowMissingComponent: [M:BillingSystem.ConnectionManager.Init(System.String)] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [M:BillingSystem.ConnectionManager.Init(System.String)] Missing &lt;param name=&quot;connectionString&quot;/&gt; documentation
-  Warn: ShowMissingComponent: [T:BillingSystem.Constants] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [F:BillingSystem.Constants.ChargeCalls] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [F:BillingSystem.Constants.ConnectionString] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [F:BillingSystem.Constants.Currency] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [F:BillingSystem.Constants.DefaultPasswordHash] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [F:BillingSystem.Constants.EndTime] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [F:BillingSystem.Constants.Incoming] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [F:BillingSystem.Constants.No] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [F:BillingSystem.Constants.NoInfo] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [F:BillingSystem.Constants.Outgoing] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [F:BillingSystem.Constants.StartTime] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [F:BillingSystem.Constants.TariffChanging] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [T:BillingSystem.DatabaseUtils] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [M:BillingSystem.DatabaseUtils.Connect(System.String)] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [M:BillingSystem.DatabaseUtils.Connect(System.String)] Missing &lt;param name=&quot;ConnectionString&quot;/&gt; documentation
-  Warn: ShowMissingComponent: [M:BillingSystem.DatabaseUtils.GetStringOrNull(MySql.Data.MySqlClient.MySqlDataReader,System.String)] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [M:BillingSystem.DatabaseUtils.GetStringOrNull(MySql.Data.MySqlClient.MySqlDataReader,System.String)] Missing &lt;returns&gt; documentation
-  Warn: ShowMissingComponent: [M:BillingSystem.DatabaseUtils.GetStringOrNull(MySql.Data.MySqlClient.MySqlDataReader,System.String)] Missing &lt;param name=&quot;reader&quot;/&gt; documentation
-  Warn: ShowMissingComponent: [M:BillingSystem.DatabaseUtils.GetStringOrNull(MySql.Data.MySqlClient.MySqlDataReader,System.String)] Missing &lt;param name=&quot;columnName&quot;/&gt; documentation
+  Warn: ResolveConceptualLinksComponent: [M:BillingSystem.DatabaseUtils.GetStringOrNull(MySql.Data.MySqlClient.MySqlDataReader,System.String)] Unknown conceptual link target &#39;b8020aae-374d-46a9-bcb7-8cc2390b93b6&#39;.
+  Warn: ResolveConceptualLinksComponent: [M:BillingSystem.DatabaseUtils.GetStringOrNull(MySql.Data.MySqlClient.MySqlDataReader,System.String)] Unknown conceptual link target &#39;175ce3ff-9bbf-4e64-8421-faeb81a0bb51&#39;.
   Warn: ResolveReferenceLinksComponent2: [M:BillingSystem.DatabaseUtils.GetStringOrNull(MySql.Data.MySqlClient.MySqlDataReader,System.String)] Unknown reference link target &#39;T:MySql.Data.MySqlClient.MySqlDataReader&#39;.
   Warn: ResolveReferenceLinksComponent2: [M:BillingSystem.DatabaseUtils.GetStringOrNull(MySql.Data.MySqlClient.MySqlDataReader,System.String)] Unknown reference link target &#39;T:MySql.Data.MySqlClient.MySqlDataReader&#39;.
   Warn: ResolveReferenceLinksComponent2: [M:BillingSystem.DatabaseUtils.GetStringOrNull(MySql.Data.MySqlClient.MySqlDataReader,System.String)] Unknown reference link target &#39;T:MySql.Data.MySqlClient.MySqlDataReader&#39;.
-  Warn: ShowMissingComponent: [N:BillingSystem.Controllers] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [F:BillingSystem.Controllers.DetailedInfController._subscriber] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [M:BillingSystem.Controllers.DetailedInfController.GetBalanceByDate(System.DateTime)] Missing &lt;returns&gt; documentation
-  Warn: ShowMissingComponent: [T:BillingSystem.Controllers.EditTariffController] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [T:BillingSystem.Controllers.IEditTariffController] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [M:BillingSystem.Controllers.ISelectTariffController.GetActiveTariffs] Missing &lt;returns&gt; documentation
-  Warn: ShowMissingComponent: [N:BillingSystem.Controllers.IControllers] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [N:BillingSystem.Exceptions] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [N:BillingSystem.Model] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [F:BillingSystem.Model.Person._id] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [F:BillingSystem.Model.Person._login] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [F:BillingSystem.Model.Person._name] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [F:BillingSystem.Model.Person._passwordHash] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [F:BillingSystem.Model.Person._patronymic] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [F:BillingSystem.Model.Person._surname] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [M:BillingSystem.Model.PhoneNumber.SelectCharges(System.DateTime,System.DateTime)] Missing &lt;returns&gt; documentation
-  Warn: ShowMissingComponent: [M:BillingSystem.Model.PhoneNumber.SelectPhoneNumberByID(System.Int64)] Missing &lt;param name=&quot;phoneNumberID&quot;/&gt; documentation
-  Warn: ShowMissingComponent: [M:BillingSystem.Model.Tariff.SelectCallPrice(System.String)] Missing &lt;returns&gt; documentation
-  Warn: ShowMissingComponent: [M:BillingSystem.Model.Tariff.SelectCallPrice(System.String)] Missing &lt;param name=&quot;phone&quot;/&gt; documentation
-  Warn: ShowMissingComponent: [T:BillingSystem.Model.TariffHistory] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [M:BillingSystem.Model.TariffHistory.#ctor(System.Int64,System.Int64,System.DateTime,System.Nullable{{System.DateTime}})] Missing &lt;param name=&quot;phoneID&quot;/&gt; documentation
-  Warn: ShowMissingComponent: [M:BillingSystem.Model.TariffHistory.#ctor(System.Int64,System.Int64,System.DateTime,System.Nullable{{System.DateTime}})] Missing &lt;param name=&quot;tariffID&quot;/&gt; documentation
-  Warn: ShowMissingComponent: [M:BillingSystem.Model.TariffHistory.#ctor(System.Int64,System.Int64,System.DateTime,System.Nullable{{System.DateTime}})] Missing &lt;param name=&quot;startDate&quot;/&gt; documentation
-  Warn: ShowMissingComponent: [M:BillingSystem.Model.TariffHistory.#ctor(System.Int64,System.Int64,System.DateTime,System.Nullable{{System.DateTime}})] Missing &lt;param name=&quot;endDate&quot;/&gt; documentation
-  Warn: ShowMissingComponent: [M:BillingSystem.Model.TariffHistory.#ctor(System.Int64,System.Int64,System.Int64,System.String,System.DateTime,System.Nullable{{System.DateTime}})] Missing &lt;param name=&quot;id&quot;/&gt; documentation
-  Warn: ShowMissingComponent: [M:BillingSystem.Model.TariffHistory.#ctor(System.Int64,System.Int64,System.Int64,System.String,System.DateTime,System.Nullable{{System.DateTime}})] Missing &lt;param name=&quot;phoneID&quot;/&gt; documentation
-  Warn: ShowMissingComponent: [M:BillingSystem.Model.TariffHistory.#ctor(System.Int64,System.Int64,System.Int64,System.String,System.DateTime,System.Nullable{{System.DateTime}})] Missing &lt;param name=&quot;tariffID&quot;/&gt; documentation
-  Warn: ShowMissingComponent: [M:BillingSystem.Model.TariffHistory.#ctor(System.Int64,System.Int64,System.Int64,System.String,System.DateTime,System.Nullable{{System.DateTime}})] Missing &lt;param name=&quot;tariffName&quot;/&gt; documentation
-  Warn: ShowMissingComponent: [M:BillingSystem.Model.TariffHistory.#ctor(System.Int64,System.Int64,System.Int64,System.String,System.DateTime,System.Nullable{{System.DateTime}})] Missing &lt;param name=&quot;startDate&quot;/&gt; documentation
-  Warn: ShowMissingComponent: [M:BillingSystem.Model.TariffHistory.#ctor(System.Int64,System.Int64,System.Int64,System.String,System.DateTime,System.Nullable{{System.DateTime}})] Missing &lt;param name=&quot;endDate&quot;/&gt; documentation
-  Warn: ShowMissingComponent: [P:BillingSystem.Model.TariffHistory.EndDate] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [P:BillingSystem.Model.TariffHistory.ID] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [P:BillingSystem.Model.TariffHistory.PhoneID] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [P:BillingSystem.Model.TariffHistory.StartDate] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [P:BillingSystem.Model.TariffHistory.TariffID] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [P:BillingSystem.Model.TariffHistory.TariffName] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [N:BillingSystem.Tests] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [T:BillingSystem.Tests.DatabaseUtilsTest] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [M:BillingSystem.Tests.DatabaseUtilsTest.Connect] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [T:BillingSystem.Tests.EditSubscriberControllerTest] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [M:BillingSystem.Tests.EditSubscriberControllerTest.Connect] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [M:BillingSystem.Tests.EditSubscriberControllerTest.NormalConditionsTest] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [M:BillingSystem.Tests.EditSubscriberControllerTest.NotExistingSubscriberTest] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [N:BillingSystem.View] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [M:BillingSystem.View.FormMonthlyInfo.#ctor(BillingSystem.Controllers.IMonthlyInfoController)] Missing &lt;param name=&quot;controller&quot;/&gt; documentation
-  Warn: ShowMissingComponent: [T:BillingSystem.View.FormSelectTariff] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [M:BillingSystem.View.FormSelectTariff.#ctor(BillingSystem.Controllers.ISelectTariffController)] Missing &lt;param name=&quot;controller&quot;/&gt; documentation
-  Warn: ShowMissingComponent: [T:BillingSystem.View.FormStatistics] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [T:BillingSystem.View.FormSubscriber] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [M:BillingSystem.View.FormSubscriber.#ctor(BillingSystem.Controllers.AddSubscriberController)] Missing &lt;param name=&quot;controller&quot;/&gt; documentation
-  Warn: ShowMissingComponent: [M:BillingSystem.View.FormSubscriber.#ctor(BillingSystem.Controllers.EditSubscriberController)] Missing &lt;param name=&quot;controller&quot;/&gt; documentation
-  Warn: ShowMissingComponent: [T:BillingSystem.View.FormSupport] Missing &lt;summary&gt; documentation
-  Info: Processed 481 topics
-    Last step completed in 00:07:11.5087
+  Info: Processed 442 topics
+    Last step completed in 00:02:22.1461
 </buildStep>
 <buildStep step="CombiningIntermediateTocFiles">
 Combining conceptual and API intermediate TOC files...
-    Last step completed in 00:00:00.0090
+    Last step completed in 00:00:00.0860
 </buildStep>
 <buildStep step="ExtractingHtmlInfo">
 Extracting HTML info for HTML Help 1 and/or website...
@@ -391,18 +320,18 @@ Sandcastle Help File Builder, version 1.9.6.0
 Copyright c 2006-2012, Eric Woodruff, All Rights Reserved
 E-Mail: Eric@EWoodruff.us
 
-Using LCID &#39;1033&#39;, code page &#39;65001&#39;, encoding charset &#39;UTF-8&#39;.
+Using LCID &#39;1049&#39;, code page &#39;1251&#39;, encoding charset &#39;Windows-1251&#39;.
 
 Processing Help 1 files in C:\Users\Ђ&#173;&#164;аҐ&#169;\Documents\GitHub\BillingSystem-CSharp\Help\Help\Working\Output\HtmlHelp1
-Processed 481 HTML files
+Processed 442 HTML files
 Sorting keywords and generating See Also indices
 Saving HTML Help 1 keyword index to C:\Users\Ђ&#173;&#164;аҐ&#169;\Documents\GitHub\BillingSystem-CSharp\Help\Help\Working\BillingSystemDocumentation.hhk
 Saving HTML Help 1 table of contents to C:\Users\Ђ&#173;&#164;аҐ&#169;\Documents\GitHub\BillingSystem-CSharp\Help\Help\Working\BillingSystemDocumentation.hhc
-    Last step completed in 00:00:04.8643
+    Last step completed in 00:00:09.3045
 </buildStep>
 <buildStep step="GenerateHelpFormatTableOfContents">
 Generating HTML Help 1 table of contents file...
-    Last step completed in 00:00:00.0040
+    Last step completed in 00:00:00.0030
 </buildStep>
 <buildStep step="GenerateHelpFileIndex">
 Generating HTML Help 1 index file...
@@ -410,7 +339,7 @@ Generating HTML Help 1 index file...
 </buildStep>
 <buildStep step="GenerateHelpProject">
 Generating HTML Help 1 project file...
-    Last step completed in 00:00:00.1760
+    Last step completed in 00:00:00.0380
 </buildStep>
 <buildStep step="CompilingHelpFile">
 Compiling HTML Help 1 file...
@@ -425,13 +354,13 @@ Compiling HTML Help 1 file...
   
   
   
-  Compile time: 0 minutes, 11 seconds
+  Compile time: 0 minutes, 12 seconds
   
-  483	Topics
+  444	Topics
   
-  5,427	Local links
+  5,000	Local links
   
-  23,109	Internet links
+  675	Internet links
   
   0	Graphics
   
@@ -439,19 +368,19 @@ Compiling HTML Help 1 file...
   
   
   
-  Created c:\Users\Андрей\Documents\GitHub\BillingSystem-CSharp\Help\Help\Working\Output\HtmlHelp1\BillingSystemDocumentation.chm, 910,458 bytes
+  Created c:\Users\Андрей\Documents\GitHub\BillingSystem-CSharp\Help\Help\Working\Output\HtmlHelp1\BillingSystemDocumentation.chm, 538,713 bytes
   
-  Compression decreased file by 9,241,810 bytes.
+  Compression decreased file by 3,521,321 bytes.
   
-    Last step completed in 00:00:20.9722
+    Last step completed in 00:00:18.0470
 </buildStep>
 <buildStep step="CleanIntermediates">
 Removing intermediate files...
-    Last step completed in 00:00:00.2980
+    Last step completed in 00:00:00.6410
 </buildStep>
 <buildStep step="Completed">
 
-Build completed successfully at 12.19.2012 02:39 .  Total time: 00:08:17,0484
+Build completed successfully at 12.22.2012 02:51 .  Total time: 00:03:20,0334
 
 </buildStep>
 </shfbBuild>

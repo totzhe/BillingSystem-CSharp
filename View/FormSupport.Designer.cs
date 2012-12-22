@@ -29,25 +29,16 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSupport));
-            this.btnOK = new System.Windows.Forms.Button();
             this.lblProgramName = new System.Windows.Forms.Label();
             this.lblCopyrights = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.tbAboutProgramContent = new System.Windows.Forms.TextBox();
+            this.tbAboutContent = new System.Windows.Forms.TextBox();
             this.lnklblEmail1 = new System.Windows.Forms.LinkLabel();
             this.lnllblEmail2 = new System.Windows.Forms.LinkLabel();
             this.lnklblEmail3 = new System.Windows.Forms.LinkLabel();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnOK
-            // 
-            this.btnOK.Location = new System.Drawing.Point(276, 256);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(75, 23);
-            this.btnOK.TabIndex = 0;
-            this.btnOK.Text = "OK";
-            this.btnOK.UseVisualStyleBackColor = true;
             // 
             // lblProgramName
             // 
@@ -79,14 +70,18 @@
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
-            // tbAboutProgramContent
+            // tbAboutContent
             // 
-            this.tbAboutProgramContent.Location = new System.Drawing.Point(21, 130);
-            this.tbAboutProgramContent.Multiline = true;
-            this.tbAboutProgramContent.Name = "tbAboutProgramContent";
-            this.tbAboutProgramContent.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbAboutProgramContent.Size = new System.Drawing.Size(330, 120);
-            this.tbAboutProgramContent.TabIndex = 4;
+            this.tbAboutContent.BackColor = System.Drawing.Color.White;
+            this.tbAboutContent.Enabled = false;
+            this.tbAboutContent.ForeColor = System.Drawing.Color.Black;
+            this.tbAboutContent.Location = new System.Drawing.Point(21, 156);
+            this.tbAboutContent.Multiline = true;
+            this.tbAboutContent.Name = "tbAboutContent";
+            this.tbAboutContent.ReadOnly = true;
+            this.tbAboutContent.Size = new System.Drawing.Size(330, 120);
+            this.tbAboutContent.TabIndex = 4;
+            this.tbAboutContent.Text = resources.GetString("tbAboutContent.Text");
             // 
             // lnklblEmail1
             // 
@@ -118,21 +113,32 @@
             this.lnklblEmail3.TabStop = true;
             this.lnklblEmail3.Text = "vragovR@yandex.ru";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(19, 140);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(117, 13);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Сведения о продукте:";
+            // 
             // FormSupport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(367, 291);
+            this.ClientSize = new System.Drawing.Size(367, 292);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lnklblEmail3);
             this.Controls.Add(this.lnllblEmail2);
             this.Controls.Add(this.lnklblEmail1);
-            this.Controls.Add(this.tbAboutProgramContent);
+            this.Controls.Add(this.tbAboutContent);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lblCopyrights);
             this.Controls.Add(this.lblProgramName);
-            this.Controls.Add(this.btnOK);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(383, 330);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(383, 330);
             this.Name = "FormSupport";
             this.Text = "О программе BillingSystem";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -143,13 +149,13 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Label lblProgramName;
         private System.Windows.Forms.Label lblCopyrights;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox tbAboutProgramContent;
+        private System.Windows.Forms.TextBox tbAboutContent;
         private System.Windows.Forms.LinkLabel lnklblEmail1;
         private System.Windows.Forms.LinkLabel lnllblEmail2;
         private System.Windows.Forms.LinkLabel lnklblEmail3;
+        private System.Windows.Forms.Label label1;
     }
 }

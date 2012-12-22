@@ -40,7 +40,7 @@ namespace BillingSystem.View
 
             openFileDialog.Title = "Открыть";
             openFileDialog.DefaultExt = "csv";
-            openFileDialog.Filter = "CSV (разделители - точки с запятами)|*.csv";
+            openFileDialog.Filter = "CSV (*.csv)|*.csv";
             openFileDialog.Multiselect = false;
             openFileDialog.FileName = fn;
             

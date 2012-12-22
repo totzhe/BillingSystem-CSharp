@@ -23,7 +23,7 @@ namespace BillingSystem.View
         /// <param name="controller"></param>
         public FormMonthlyInfo(IMonthlyInfoController controller)
         {
-            this.Text = "Просмотр статистики за месяц и выставление счета";
+            this.Text = "Просмотр статистики за месяц";
             _controller = controller;
             InitializeComponent();
         }

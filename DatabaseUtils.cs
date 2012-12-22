@@ -7,6 +7,9 @@ using BillingSystem.Model;
 
 namespace BillingSystem
 {
+    /// <summary>
+    /// Класс утилит базы данных.
+    /// </summary>
     public static class DatabaseUtils
     {
         private static MySqlConnection _connection;
@@ -22,12 +25,22 @@ namespace BillingSystem
             }
         }
 
+        /// <summary>
+        /// Подключается к базе данных.
+        /// </summary>
+        /// <param name="ConnectionString"></param>
         public static void Connect(string ConnectionString)
         {
             ConnectionManager.Init(ConnectionString);
             _connection = ConnectionManager.GetConnection();
         }
 
+        /// <summary>
+        /// Возвращает строку или null.
+        /// </summary>
+        /// <param name="reader">Ридер</param>
+        /// <param name="columnName">Имя атрибута.</param>
+        /// <returns></returns>
         public static string GetStringOrNull(this MySqlDataReader reader, string columnName)
         {
             return reader.IsDBNull(reader.GetOrdinal(columnName)) ? null : reader.GetString(columnName);

@@ -80,9 +80,9 @@
             this.dataGridViewSearchResults.AllowUserToDeleteRows = false;
             this.dataGridViewSearchResults.AllowUserToResizeColumns = false;
             this.dataGridViewSearchResults.AllowUserToResizeRows = false;
-            this.dataGridViewSearchResults.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewSearchResults.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewSearchResults.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewSearchResults.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridViewSearchResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -98,7 +98,7 @@
             this.dataGridViewSearchResults.ReadOnly = true;
             this.dataGridViewSearchResults.RowHeadersVisible = false;
             this.dataGridViewSearchResults.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewSearchResults.Size = new System.Drawing.Size(712, 508);
+            this.dataGridViewSearchResults.Size = new System.Drawing.Size(712, 305);
             this.dataGridViewSearchResults.TabIndex = 4;
             this.dataGridViewSearchResults.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSearchResults_CellDoubleClick);
             // 
@@ -437,17 +437,18 @@
             this.tsmiAbout.Name = "tsmiAbout";
             this.tsmiAbout.Size = new System.Drawing.Size(152, 22);
             this.tsmiAbout.Text = "О программе";
+            this.tsmiAbout.Click += new System.EventHandler(this.tsmiAbout_Click);
             // 
             // FormSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(908, 562);
+            this.ClientSize = new System.Drawing.Size(908, 362);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridViewSearchResults);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(800, 600);
+            this.MinimumSize = new System.Drawing.Size(800, 400);
             this.Name = "FormSearch";
             this.Text = "Биллинговая система";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSearchResults)).EndInit();

@@ -14,34 +14,31 @@ namespace BillingSystem.Model
         private long _id;
 
         /// <summary>
-        /// Возвращает или задает идентификатор тарифа.
+        /// Возвращает идентификатор тарифа.
         /// </summary>
         public long ID
         {
             get { return _id; }
-            set { }
         }
 
         private string _name;
 
         /// <summary>
-        /// Возвращает или задает название тарифа.
+        /// Возвращает название тарифа.
         /// </summary>
         public string Name
         {
             get { return _name; }
-            set { }
         }
 
         private string _description;
 
         /// <summary>
-        /// Возвращает или задает описание тарифного плана.
+        /// Возвращает описание тарифного плана.
         /// </summary>
         public string Description
         {
             get { return _description; }
-            set { }
         }
 
         private bool _active;
@@ -57,7 +54,7 @@ namespace BillingSystem.Model
 
         private List<Price> _price;
         /// <summary>
-        /// Возвращаяет список цена тарифа
+        /// Возвращает список цен тарифа
         /// </summary>
         public List<Price> Price
         {

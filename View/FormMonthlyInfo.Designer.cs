@@ -338,10 +338,12 @@
             this.Controls.Add(this.gbPayments);
             this.Controls.Add(this.lblPaymentsSum);
             this.Controls.Add(this.lblChargesSum);
-            this.MaximumSize = new System.Drawing.Size(633, 527);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(550, 500);
+            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(550, 500);
             this.Name = "FormMonthlyInfo";
-            this.Text = "Просмотр статистики за месяц и выставление счета";
+            this.Text = "Просмотр статистики за месяц";
             this.gbPayments.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPayments)).EndInit();
             this.gpMonthlyInfo.ResumeLayout(false);
