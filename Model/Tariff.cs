@@ -294,7 +294,7 @@ namespace BillingSystem.Model
         /// <summary>
         /// Возвращает стоимость звонка на определенные номера с указанным префиксом.
         /// </summary>
-        /// <param name="phone"></param>
+        /// <param name="item"></param>
         /// <returns></returns>
         public Price SelectCallPrice(string phone)
         {
@@ -303,11 +303,11 @@ namespace BillingSystem.Model
             {
                 connection.Open();
 
-                string query = "SELECT * FROM price WHERE tariff_id = @tariff_id AND @phone LIKE CONCAT(prefix, '%') ORDER BY LENGTH(prefix) DESC LIMIT 1";
+                string query = "SELECT * FROM price WHERE tariff_id = @tariff_id AND @item LIKE CONCAT(prefix, '%') ORDER BY LENGTH(prefix) DESC LIMIT 1";
 
                 MySqlCommand cmd = new MySqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@tariff_id", ID);
-                cmd.Parameters.AddWithValue("@phone", phone);
+                cmd.Parameters.AddWithValue("@item", phone);
 
                 MySqlDataReader r = cmd.ExecuteReader();
                 if (r.Read())

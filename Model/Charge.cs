@@ -83,7 +83,7 @@ namespace BillingSystem.Model
         /// <summary>
         /// Инициализирует новый экземпляр класса Charge, получая в качесте аргументов следущие параметры:
         /// </summary>
-        /// <param name="phone">Телефонный номер</param>
+        /// <param name="item">Телефонный номер</param>
         /// <param name="service">Услуга</param>
         /// <param name="sum">Сумма</param>
         /// <param name="date">Дата</param>
