@@ -90,7 +90,7 @@ namespace BillingSystem.View
                 dgvPrice.Rows.Clear();
                 foreach (Price item in _controller.tariff[e.RowIndex].Price)
                 {
-                    dgvPrice.Rows.Add(item.Prefix, Math.Round(item.Cost, 2));
+                    dgvPrice.Rows.Add(item.Prefix, item.Cost);
                 }
                 _controller.selectTariffId = _controller.tariff[e.RowIndex].ID;
             }

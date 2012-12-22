@@ -37,22 +37,20 @@ namespace BillingSystem.View
 
         private void RefreshNumbers()
         {
-            int ind = 0;
-            if(dgvPhoneNumbers.CurrentRow != null)
-                ind = dgvPhoneNumbers.CurrentRow.Index;
-            dgvPhoneNumbers.Rows.Clear();
-            List<string[]> items = _controller.getPhoneNumbers();
-            foreach (string[] item in items)
+            int ind = listBoxPhoneNumbers.SelectedIndex;
+            listBoxPhoneNumbers.Items.Clear();
+            List<string> phoneNumbers = _controller.getPhoneNumbers();
+            foreach (string phone in phoneNumbers)
             {
-                dgvPhoneNumbers.Rows.Add(item);
+                listBoxPhoneNumbers.Items.Add(phone);
             }
-            if (dgvPhoneNumbers.Rows.Count > ind)
+            if (listBoxPhoneNumbers.Items.Count > ind)
             {
-                dgvPhoneNumbers.CurrentCell = dgvPhoneNumbers.Rows[ind].Cells[0];
+                listBoxPhoneNumbers.SelectedIndex = ind;
             }
             else
             {
-                dgvPhoneNumbers.CurrentCell = dgvPhoneNumbers.Rows[dgvPhoneNumbers.Rows.Count].Cells[0];
+                listBoxPhoneNumbers.SelectedIndex = listBoxPhoneNumbers.Items.Count - 1;
             }
         }
         // TODO: Кнопка "Редактировать" должна быть активна, только когда выбран номер телефона
@@ -77,11 +75,8 @@ namespace BillingSystem.View
 
         private void btnEditNumber_Click(object sender, EventArgs e)
         {
-            if (dgvPhoneNumbers.CurrentRow != null)
-            {
-                _controller.EditPhoneNumber(dgvPhoneNumbers.CurrentRow.Cells[0].Value.ToString());
-                RefreshNumbers();
-            }
+            if(listBoxPhoneNumbers.SelectedIndex >= 0)
+                _controller.EditPhoneNumber(listBoxPhoneNumbers.SelectedItem.ToString());
         }
 
         private void btnAddNumber_Click(object sender, EventArgs e)
@@ -92,8 +87,8 @@ namespace BillingSystem.View
 
         private void btnDeleteNumber_Click(object sender, EventArgs e)
         {
-            if (dgvPhoneNumbers.CurrentRow != null)
-                _controller.DeletePhoneNumber(dgvPhoneNumbers.CurrentRow.Cells[0].Value.ToString());
+            if (listBoxPhoneNumbers.SelectedIndex >= 0)
+                _controller.DeletePhoneNumber(listBoxPhoneNumbers.SelectedItem.ToString());
             RefreshNumbers();
         }
     }

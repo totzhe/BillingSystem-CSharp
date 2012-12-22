@@ -84,7 +84,7 @@ namespace BillingSystem.Model
 
                 string query = "SELECT * FROM subscriber s WHERE LOWER(name) LIKE LOWER (CONCAT('%',@name,'%')) AND LOWER(patronymic) LIKE LOWER (CONCAT('%',@patr,'%')) AND LOWER(surname) LIKE LOWER (CONCAT('%',@surname,'%'))";
                 if (phoneNumber != string.Empty)
-                    query += "AND number in (SELECT subscriber_id FROM phone_number WHERE number LIKE CONCAT('%',@item,'%')";
+                    query += "AND number in (SELECT subscriber_id FROM phone_number WHERE number LIKE CONCAT('%',@phone,'%')";
                 if (debt > 0)
                 {
                     query += " AND (SELECT (SELECT IFNULL(SUM(sum), 0) FROM payment WHERE subscriber_id = s.id) - (SELECT IFNULL(SUM(sum), 0) FROM charge WHERE phone_id IN (SELECT id FROM phone_number WHERE subscriber_id = s.id)) as b FROM dual) < @balance";
@@ -95,7 +95,7 @@ namespace BillingSystem.Model
                 cmd.Parameters.AddWithValue("@surname", surname);
                 cmd.Parameters.AddWithValue("@patr", patronymic);
                 if (phoneNumber != string.Empty) 
-                    cmd.Parameters.AddWithValue("@item", phoneNumber);
+                    cmd.Parameters.AddWithValue("@phone", phoneNumber);
                 if (debt > 0)
                 {
                     cmd.Parameters.AddWithValue("@balance", -debt);

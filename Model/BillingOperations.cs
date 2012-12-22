@@ -55,7 +55,7 @@ namespace BillingSystem.Model
                                 SELECT tariff_id FROM tariff_history 
                                 WHERE phone_id = @phone_id AND start_date <= c.start_time AND (end_date > c.start_time OR end_date IS NULL)
                             )
-                            AND c.called_number LIKE CONCAT(prefix, '%') 
+                            AND @number LIKE CONCAT(prefix, '%') 
                         )
                         ORDER BY LENGTH(prefix) DESC LIMIT 1
                     )
