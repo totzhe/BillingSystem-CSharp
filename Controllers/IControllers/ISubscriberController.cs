@@ -41,10 +41,10 @@ namespace BillingSystem.Controllers
         string getLogin();
 
         /// <summary>
-        /// Возвращает список имеющихся у абонента телефонных  номеров.
+        /// Возвращает список имеющихся у абонента телефонных  номеров и их тарифы.
         /// </summary>
-        /// <returns>Телефонные номера</returns>
-        List<string> getPhoneNumbers();
+        /// <returns>Телефонные номера и их тарифы</returns>
+        List<string[]> getPhoneNumbers();
 
         /// <summary>
         /// Добавляет абоненту телефонный номер.

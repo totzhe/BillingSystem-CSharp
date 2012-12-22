@@ -126,18 +126,26 @@ namespace BillingSystem.Controllers
         }
 
         /// <summary>
-        /// Возвращает номера телефонов абонента.
+        /// Возвращает номера телефонов абонента и их тарифы.
         /// </summary>
-        /// <returns>Номера телефонов</returns>
-        public virtual List<string> getPhoneNumbers()
+        /// <returns>Номера телефонов и текущие тарифы у них</returns>
+        public virtual List<string[]> getPhoneNumbers()
         {
-            List<string> result = new List<string>();
+            List<PhoneNumber> activePhones = new List<PhoneNumber>();
             foreach (PhoneNumber n in phones)
-                result.Add(n.Number);
+                activePhones.Add(n);
             foreach (PhoneNumber n in _phonesToAdd)
-                result.Add(n.Number);
+                activePhones.Add(n);
             foreach (PhoneNumber n in _phonesToDelete)
-                result.Remove(n.Number);
+                activePhones.Remove(n);
+            List<string[]> result = new List<string[]>();
+            foreach (PhoneNumber phone in activePhones)
+            {
+                string[] item = new string[2];
+                item[0] = phone.Number;
+                item[1] = phone.GetTariff().Name;
+                result.Add(item);
+            }
             return result;
         }
 

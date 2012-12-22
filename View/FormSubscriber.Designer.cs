@@ -32,7 +32,6 @@
             this.textBoxPatronymic = new System.Windows.Forms.TextBox();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.textBoxEmail = new System.Windows.Forms.TextBox();
-            this.listBoxPhoneNumbers = new System.Windows.Forms.ListBox();
             this.btnAddNumber = new System.Windows.Forms.Button();
             this.btnEditNumber = new System.Windows.Forms.Button();
             this.textBoxLogin = new System.Windows.Forms.TextBox();
@@ -45,6 +44,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.dgvPhoneNumbers = new System.Windows.Forms.DataGridView();
+            this.Number = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tariff = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPhoneNumbers)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxSurname
@@ -54,7 +57,7 @@
             this.textBoxSurname.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxSurname.Location = new System.Drawing.Point(113, 12);
             this.textBoxSurname.Name = "textBoxSurname";
-            this.textBoxSurname.Size = new System.Drawing.Size(124, 30);
+            this.textBoxSurname.Size = new System.Drawing.Size(199, 30);
             this.textBoxSurname.TabIndex = 7;
             // 
             // textBoxPatronymic
@@ -64,7 +67,7 @@
             this.textBoxPatronymic.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxPatronymic.Location = new System.Drawing.Point(113, 106);
             this.textBoxPatronymic.Name = "textBoxPatronymic";
-            this.textBoxPatronymic.Size = new System.Drawing.Size(124, 30);
+            this.textBoxPatronymic.Size = new System.Drawing.Size(199, 30);
             this.textBoxPatronymic.TabIndex = 9;
             // 
             // textBoxName
@@ -74,36 +77,25 @@
             this.textBoxName.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxName.Location = new System.Drawing.Point(113, 59);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(124, 30);
+            this.textBoxName.Size = new System.Drawing.Size(199, 30);
             this.textBoxName.TabIndex = 8;
             // 
             // textBoxEmail
             // 
-            this.textBoxEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxEmail.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxEmail.Location = new System.Drawing.Point(137, 194);
-            this.textBoxEmail.Name = "textBoxEmail";
-            this.textBoxEmail.Size = new System.Drawing.Size(100, 30);
-            this.textBoxEmail.TabIndex = 11;
-            // 
-            // listBoxPhoneNumbers
-            // 
-            this.listBoxPhoneNumbers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.textBoxEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listBoxPhoneNumbers.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.listBoxPhoneNumbers.FormattingEnabled = true;
-            this.listBoxPhoneNumbers.ItemHeight = 19;
-            this.listBoxPhoneNumbers.Location = new System.Drawing.Point(247, 12);
-            this.listBoxPhoneNumbers.Name = "listBoxPhoneNumbers";
-            this.listBoxPhoneNumbers.Size = new System.Drawing.Size(119, 270);
-            this.listBoxPhoneNumbers.TabIndex = 12;
+            this.textBoxEmail.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxEmail.Location = new System.Drawing.Point(113, 196);
+            this.textBoxEmail.Name = "textBoxEmail";
+            this.textBoxEmail.Size = new System.Drawing.Size(199, 30);
+            this.textBoxEmail.TabIndex = 11;
             // 
             // btnAddNumber
             // 
-            this.btnAddNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddNumber.Location = new System.Drawing.Point(253, 298);
+            this.btnAddNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddNumber.Location = new System.Drawing.Point(193, 244);
             this.btnAddNumber.Name = "btnAddNumber";
-            this.btnAddNumber.Size = new System.Drawing.Size(119, 23);
+            this.btnAddNumber.Size = new System.Drawing.Size(119, 36);
             this.btnAddNumber.TabIndex = 13;
             this.btnAddNumber.Text = "Добавить номер";
             this.btnAddNumber.UseVisualStyleBackColor = true;
@@ -111,10 +103,10 @@
             // 
             // btnEditNumber
             // 
-            this.btnEditNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEditNumber.Location = new System.Drawing.Point(253, 340);
+            this.btnEditNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEditNumber.Location = new System.Drawing.Point(318, 244);
             this.btnEditNumber.Name = "btnEditNumber";
-            this.btnEditNumber.Size = new System.Drawing.Size(119, 23);
+            this.btnEditNumber.Size = new System.Drawing.Size(119, 36);
             this.btnEditNumber.TabIndex = 14;
             this.btnEditNumber.Text = "Изменить номер";
             this.btnEditNumber.UseVisualStyleBackColor = true;
@@ -125,14 +117,14 @@
             this.textBoxLogin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxLogin.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxLogin.Location = new System.Drawing.Point(12, 194);
+            this.textBoxLogin.Location = new System.Drawing.Point(113, 151);
             this.textBoxLogin.Name = "textBoxLogin";
-            this.textBoxLogin.Size = new System.Drawing.Size(100, 30);
+            this.textBoxLogin.Size = new System.Drawing.Size(199, 30);
             this.textBoxLogin.TabIndex = 10;
             // 
             // btnResetPassword
             // 
-            this.btnResetPassword.Location = new System.Drawing.Point(12, 246);
+            this.btnResetPassword.Location = new System.Drawing.Point(17, 246);
             this.btnResetPassword.Name = "btnResetPassword";
             this.btnResetPassword.Size = new System.Drawing.Size(100, 36);
             this.btnResetPassword.TabIndex = 16;
@@ -143,7 +135,7 @@
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnOK.Location = new System.Drawing.Point(12, 376);
+            this.btnOK.Location = new System.Drawing.Point(15, 327);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 17;
@@ -154,7 +146,7 @@
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnCancel.Location = new System.Drawing.Point(93, 376);
+            this.btnCancel.Location = new System.Drawing.Point(96, 327);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 18;
@@ -164,10 +156,10 @@
             // 
             // btnDeleteNumber
             // 
-            this.btnDeleteNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDeleteNumber.Location = new System.Drawing.Point(253, 376);
+            this.btnDeleteNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDeleteNumber.Location = new System.Drawing.Point(443, 244);
             this.btnDeleteNumber.Name = "btnDeleteNumber";
-            this.btnDeleteNumber.Size = new System.Drawing.Size(119, 23);
+            this.btnDeleteNumber.Size = new System.Drawing.Size(119, 36);
             this.btnDeleteNumber.TabIndex = 15;
             this.btnDeleteNumber.Text = "Удалить номер";
             this.btnDeleteNumber.UseVisualStyleBackColor = true;
@@ -209,7 +201,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(13, 162);
+            this.label4.Location = new System.Drawing.Point(13, 157);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(60, 19);
             this.label4.TabIndex = 23;
@@ -217,20 +209,51 @@
             // 
             // label5
             // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(137, 162);
+            this.label5.Location = new System.Drawing.Point(13, 207);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(60, 19);
             this.label5.TabIndex = 24;
             this.label5.Text = "E-mail:";
             // 
+            // dgvPhoneNumbers
+            // 
+            this.dgvPhoneNumbers.AllowUserToAddRows = false;
+            this.dgvPhoneNumbers.AllowUserToDeleteRows = false;
+            this.dgvPhoneNumbers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvPhoneNumbers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvPhoneNumbers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPhoneNumbers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Number,
+            this.Tariff});
+            this.dgvPhoneNumbers.Location = new System.Drawing.Point(318, 12);
+            this.dgvPhoneNumbers.Name = "dgvPhoneNumbers";
+            this.dgvPhoneNumbers.RowHeadersVisible = false;
+            this.dgvPhoneNumbers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPhoneNumbers.Size = new System.Drawing.Size(244, 214);
+            this.dgvPhoneNumbers.TabIndex = 25;
+            // 
+            // Number
+            // 
+            this.Number.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Number.HeaderText = "Номер";
+            this.Number.Name = "Number";
+            this.Number.ReadOnly = true;
+            // 
+            // Tariff
+            // 
+            this.Tariff.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Tariff.HeaderText = "Тариф";
+            this.Tariff.Name = "Tariff";
+            this.Tariff.ReadOnly = true;
+            // 
             // FormSubscriber
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 412);
+            this.ClientSize = new System.Drawing.Size(580, 362);
+            this.Controls.Add(this.dgvPhoneNumbers);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -243,14 +266,14 @@
             this.Controls.Add(this.textBoxLogin);
             this.Controls.Add(this.btnEditNumber);
             this.Controls.Add(this.btnAddNumber);
-            this.Controls.Add(this.listBoxPhoneNumbers);
             this.Controls.Add(this.textBoxEmail);
             this.Controls.Add(this.textBoxSurname);
             this.Controls.Add(this.textBoxPatronymic);
             this.Controls.Add(this.textBoxName);
-            this.MinimumSize = new System.Drawing.Size(400, 450);
+            this.MinimumSize = new System.Drawing.Size(555, 400);
             this.Name = "FormSubscriber";
             this.Text = "FormSubscriber";
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPhoneNumbers)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -262,7 +285,6 @@
         private System.Windows.Forms.TextBox textBoxPatronymic;
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.TextBox textBoxEmail;
-        private System.Windows.Forms.ListBox listBoxPhoneNumbers;
         private System.Windows.Forms.Button btnAddNumber;
         private System.Windows.Forms.Button btnEditNumber;
         private System.Windows.Forms.TextBox textBoxLogin;
@@ -275,5 +297,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataGridView dgvPhoneNumbers;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Number;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tariff;
     }
 }
