@@ -100,7 +100,7 @@ namespace BillingSystem.Model
                 }
             }
             full_sum = Math.Round(full_sum, 2);
-            System.Windows.Forms.MessageBox.Show("Будет списано " + full_sum.ToString() + " " + Constants.Currency + " с " + phones_count.ToString() + " номеров.", "Расчет завершен");
+            //System.Windows.Forms.MessageBox.Show("Будет списано " + full_sum.ToString() + " " + Constants.Currency + " с " + phones_count.ToString() + " номеров.", "Расчет завершен");
             return result;
         }
 
