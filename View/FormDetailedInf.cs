@@ -88,6 +88,7 @@ namespace BillingSystem.View
         /// </summary>
         private void Search()
         {
+            _controller.TotalSum = 0;
             List<string[]> items = _controller.Search(lbNumbers.SelectedItem.ToString(), dtpFrom.Value, dtpTo.Value);
             dgvInf.Rows.Clear();
             foreach (string[] item in items)
@@ -147,7 +148,7 @@ namespace BillingSystem.View
         }
 
         private void lbNumbers_SelectedIndexChanged(object sender, EventArgs e)
-        {   
+        {
             Search();
         }
 
@@ -182,7 +183,7 @@ namespace BillingSystem.View
         }
 
         private void dtpTo_CloseUp(object sender, EventArgs e)
-        {  
+        {
             dtpTo.Value = dtpTo.Value.Date.AddHours(23).AddMinutes(59).AddSeconds(59).AddMilliseconds(59);
             initBalance();
             Search();

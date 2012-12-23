@@ -51,6 +51,7 @@ namespace BillingSystem.Controllers
         double TotalSum
         {
             get;
+            set;
         }
     }
 }

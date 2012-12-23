@@ -28,7 +28,7 @@ namespace BillingSystem
         /// <summary>
         /// Хеш пароля по умолчанию.
         /// </summary>
-        public const string DefaultPasswordHash = "111";
+        public const string DefaultPasswordHash = "8cb2237d0679ca88db6464eac60da96345513964";
 
         /// <summary>
         /// Строка подключения.

@@ -51,8 +51,6 @@
             this.lblLiquidate = new System.Windows.Forms.Label();
             this.lblTotalCompounded = new System.Windows.Forms.Label();
             this.lblCompounded = new System.Windows.Forms.Label();
-            this.lblTotalDebt = new System.Windows.Forms.Label();
-            this.lblDebt = new System.Windows.Forms.Label();
             this.gbPayments.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPayments)).BeginInit();
             this.gpMonthlyInfo.SuspendLayout();
@@ -242,8 +240,6 @@
             this.gbDigits.Controls.Add(this.lblLiquidate);
             this.gbDigits.Controls.Add(this.lblTotalCompounded);
             this.gbDigits.Controls.Add(this.lblCompounded);
-            this.gbDigits.Controls.Add(this.lblTotalDebt);
-            this.gbDigits.Controls.Add(this.lblDebt);
             this.gbDigits.Location = new System.Drawing.Point(245, 12);
             this.gbDigits.Name = "gbDigits";
             this.gbDigits.Size = new System.Drawing.Size(265, 136);
@@ -256,7 +252,7 @@
             this.lblTotalCost.AutoSize = true;
             this.lblTotalCost.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblTotalCost.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.lblTotalCost.Location = new System.Drawing.Point(165, 110);
+            this.lblTotalCost.Location = new System.Drawing.Point(165, 109);
             this.lblTotalCost.Name = "lblTotalCost";
             this.lblTotalCost.Size = new System.Drawing.Size(29, 13);
             this.lblTotalCost.TabIndex = 7;
@@ -267,7 +263,7 @@
             this.lblTotal.AutoSize = true;
             this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblTotal.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.lblTotal.Location = new System.Drawing.Point(7, 110);
+            this.lblTotal.Location = new System.Drawing.Point(16, 109);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(102, 13);
             this.lblTotal.TabIndex = 6;
@@ -276,7 +272,7 @@
             // lblTotalLiquidate
             // 
             this.lblTotalLiquidate.AutoSize = true;
-            this.lblTotalLiquidate.Location = new System.Drawing.Point(165, 81);
+            this.lblTotalLiquidate.Location = new System.Drawing.Point(165, 66);
             this.lblTotalLiquidate.Name = "lblTotalLiquidate";
             this.lblTotalLiquidate.Size = new System.Drawing.Size(26, 13);
             this.lblTotalLiquidate.TabIndex = 5;
@@ -285,7 +281,7 @@
             // lblLiquidate
             // 
             this.lblLiquidate.AutoSize = true;
-            this.lblLiquidate.Location = new System.Drawing.Point(7, 81);
+            this.lblLiquidate.Location = new System.Drawing.Point(16, 63);
             this.lblLiquidate.Name = "lblLiquidate";
             this.lblLiquidate.Size = new System.Drawing.Size(137, 13);
             this.lblLiquidate.TabIndex = 4;
@@ -294,7 +290,7 @@
             // lblTotalCompounded
             // 
             this.lblTotalCompounded.AutoSize = true;
-            this.lblTotalCompounded.Location = new System.Drawing.Point(165, 52);
+            this.lblTotalCompounded.Location = new System.Drawing.Point(165, 27);
             this.lblTotalCompounded.Name = "lblTotalCompounded";
             this.lblTotalCompounded.Size = new System.Drawing.Size(26, 13);
             this.lblTotalCompounded.TabIndex = 3;
@@ -303,29 +299,11 @@
             // lblCompounded
             // 
             this.lblCompounded.AutoSize = true;
-            this.lblCompounded.Location = new System.Drawing.Point(7, 52);
+            this.lblCompounded.Location = new System.Drawing.Point(16, 27);
             this.lblCompounded.Name = "lblCompounded";
             this.lblCompounded.Size = new System.Drawing.Size(115, 13);
             this.lblCompounded.TabIndex = 2;
             this.lblCompounded.Text = "Начислено за месяц:";
-            // 
-            // lblTotalDebt
-            // 
-            this.lblTotalDebt.AutoSize = true;
-            this.lblTotalDebt.Location = new System.Drawing.Point(165, 25);
-            this.lblTotalDebt.Name = "lblTotalDebt";
-            this.lblTotalDebt.Size = new System.Drawing.Size(26, 13);
-            this.lblTotalDebt.TabIndex = 1;
-            this.lblTotalDebt.Text = "sum";
-            // 
-            // lblDebt
-            // 
-            this.lblDebt.AutoSize = true;
-            this.lblDebt.Location = new System.Drawing.Point(7, 25);
-            this.lblDebt.Name = "lblDebt";
-            this.lblDebt.Size = new System.Drawing.Size(130, 13);
-            this.lblDebt.TabIndex = 0;
-            this.lblDebt.Text = "Долг на начало месяца:";
             // 
             // FormMonthlyInfo
             // 
@@ -383,7 +361,5 @@
         private System.Windows.Forms.Label lblLiquidate;
         private System.Windows.Forms.Label lblTotalCompounded;
         private System.Windows.Forms.Label lblCompounded;
-        private System.Windows.Forms.Label lblTotalDebt;
-        private System.Windows.Forms.Label lblDebt;
     }
 }

@@ -18,10 +18,8 @@ namespace BillingSystem.Controllers
         /// </summary>
         public override double TotalSum
         {
-            get
-            { 
-                return _totalSum;
-            }
+            get { return _totalSum; }
+            set { _totalSum = value; }
         }
         
         /// <summary>

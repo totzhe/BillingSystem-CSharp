@@ -83,6 +83,7 @@ namespace BillingSystem.Controllers
         public abstract double TotalSum
         {
             get;
+            set;
         }
 
     }
