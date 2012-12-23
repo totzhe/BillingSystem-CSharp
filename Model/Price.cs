@@ -78,6 +78,11 @@ namespace BillingSystem.Model
             }
         }
 
+        /// <summary>
+        /// Изменяет цены тарифов
+        /// </summary>
+        /// <param name="id">id тарифы</param>
+        /// <param name="dgv">DataGrid c ценами</param>
         public static void EditPrice(long? id, DataGridView dgv)
         {
             try
