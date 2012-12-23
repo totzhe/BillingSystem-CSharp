@@ -94,8 +94,11 @@
     <Compile Include="DatabaseUtils.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Model\FileExporter.cs" />
-    <Compile Include="Tests\DatabaseUtilsTest.cs" />
-    <Compile Include="Tests\EditSubscriberControllerTest.cs" />
+    <Compile Include="Tests\ModelBillingOperationsTest.cs" />
+    <Compile Include="Tests\ModelPhoneNumberTest.cs" />
+    <Compile Include="Tests\ModelServiceTest.cs" />
+    <Compile Include="Tests\ModelSubscriberTest.cs" />
+    <Compile Include="Tests\ModelTariffTest.cs" />
     <Compile Include="View\FormCallsImport.cs">
       <SubType>Form</SubType>
     </Compile>
