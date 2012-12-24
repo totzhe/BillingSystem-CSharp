@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1E3E2518-2A01-4ED2-A0AB-9BEF28978557}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BillingSystem</RootNamespace>
+    <AssemblyName>BillingSystem</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Kent.Boogaart.HelperTrinity">
+      <HintPath>Lib\Kent.Boogaart.HelperTrinity.dll</HintPath>
+    </Reference>
+    <Reference Include="Kent.Boogaart.KBCsv">
+      <HintPath>Lib\Kent.Boogaart.KBCsv.dll</HintPath>
+    </Reference>
+    <Reference Include="mysql.data">
+      <HintPath>Lib\mysql.data.dll</HintPath>
+    </Reference>
+    <Reference Include="mysql.data.entity">
+      <HintPath>Lib\mysql.data.entity.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ConnectionManager.cs" />
+    <Compile Include="Controllers\AddSubscriberController.cs" />
+    <Compile Include="Controllers\AddTariffController.cs" />
+    <Compile Include="Controllers\CallsDetailedInfController.cs" />
+    <Compile Include="Controllers\CallsImportController.cs" />
+    <Compile Include="Controllers\ChargeCallsController.cs" />
+    <Compile Include="Controllers\DepositController.cs" />
+    <Compile Include="Controllers\DetailedInfController.cs" />
+    <Compile Include="Controllers\EditTariffController.cs" />
+    <Compile Include="Controllers\IControllers\IChargeCallsController.cs" />
+    <Compile Include="Controllers\IControllers\ICallsImportController.cs" />
+    <Compile Include="Controllers\IControllers\IDepositController.cs" />
+    <Compile Include="Controllers\IControllers\ITariffController.cs" />
+    <Compile Include="Controllers\IControllers\IDetailedInfController.cs" />
+    <Compile Include="Controllers\IControllers\ISelectTariffController.cs" />
+    <Compile Include="Controllers\IControllers\ISearchController.cs" />
+    <Compile Include="Controllers\IControllers\ISubscriberController.cs" />
+    <Compile Include="Controllers\IControllers\IMonthlyInfoController.cs" />
+    <Compile Include="Controllers\ImportTariffController.cs" />
+    <Compile Include="Controllers\MonthlyInfoController.cs" />
+    <Compile Include="Controllers\PaymentsDetailedInfController.cs" />
+    <Compile Include="Controllers\ChargesDetailedInfController.cs" />
+    <Compile Include="Controllers\SubscriberController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\EditSubscriberController.cs" />
+    <Compile Include="Controllers\TariffsDetailedInfController.cs" />
+    <Compile Include="Exceptions\ModelObjectNotFound.cs" />
+    <Compile Include="Exceptions\NoConnectionException.cs" />
+    <Compile Include="Controllers\ChangeTariffController.cs" />
+    <Compile Include="DatabaseUtils.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="Model\FileExporter.cs" />
+    <Compile Include="View\FormCallsImport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormCallsImport.Designer.cs">
+      <DependentUpon>FormCallsImport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormChargeCalls.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormChargeCalls.Designer.cs">
+      <DependentUpon>FormChargeCalls.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormDeposit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormDeposit.Designer.cs">
+      <DependentUpon>FormDeposit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormTariff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormTariff.Designer.cs">
+      <DependentUpon>FormTariff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormMonthlyInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormMonthlyInfo.Designer.cs">
+      <DependentUpon>FormMonthlyInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormSearch.Designer.cs">
+      <DependentUpon>FormSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\BillingOperations.cs" />
+    <Compile Include="Model\Call.cs" />
+    <Compile Include="Model\Charge.cs" />
+    <Compile Include="Model\Payment.cs" />
+    <Compile Include="Model\PhoneNumber.cs" />
+    <Compile Include="Model\Price.cs" />
+    <Compile Include="Model\Service.cs" />
+    <Compile Include="Model\Subscriber.cs" />
+    <Compile Include="Model\Tariff.cs" />
+    <Compile Include="Model\TariffHistory.cs" />
+    <Compile Include="Model\Person.cs" />
+    <Compile Include="Model\Staff.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\FormDetailedInf.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormDetailedInf.Designer.cs">
+      <DependentUpon>FormDetailedInf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormSelectTariff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormSelectTariff.Designer.cs">
+      <DependentUpon>FormSelectTariff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormSubscriber.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormSubscriber.Designer.cs">
+      <DependentUpon>FormSubscriber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormSupport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormSupport.Designer.cs">
+      <DependentUpon>FormSupport.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="View\FormCallsImport.resx">
+      <DependentUpon>FormCallsImport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormChargeCalls.resx">
+      <DependentUpon>FormChargeCalls.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormDeposit.resx">
+      <DependentUpon>FormDeposit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormTariff.resx">
+      <DependentUpon>FormTariff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormMonthlyInfo.resx">
+      <DependentUpon>FormMonthlyInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormSearch.resx">
+      <DependentUpon>FormSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="View\FormDetailedInf.resx">
+      <DependentUpon>FormDetailedInf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormSelectTariff.resx">
+      <DependentUpon>FormSelectTariff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormSubscriber.resx">
+      <DependentUpon>FormSubscriber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormSupport.resx">
+      <DependentUpon>FormSupport.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user_go.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\script_save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\database_save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document_export.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document_import.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\telephone_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\telephone_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\moneybox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\money_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\google_custom_search.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
