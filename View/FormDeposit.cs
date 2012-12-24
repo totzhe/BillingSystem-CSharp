@@ -25,7 +25,7 @@ namespace BillingSystem.View
         {
             _controller = controller;
             InitializeComponent();
-            this.Text = "Пополнение счета абонента:" + _controller.GetFullName();
+            this.Text = "Пополнение счета: " + _controller.GetFullName();
             lblBalance.Text = _controller.GetBalance();
         }
 

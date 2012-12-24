@@ -351,6 +351,7 @@
             this.MaximumSize = new System.Drawing.Size(832, 483);
             this.MinimumSize = new System.Drawing.Size(832, 483);
             this.Name = "FormDetailedInf";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Детализированная информация по номеру";
             ((System.ComponentModel.ISupportInitialize)(this.dgvInf)).EndInit();
             this.gbDetailType.ResumeLayout(false);

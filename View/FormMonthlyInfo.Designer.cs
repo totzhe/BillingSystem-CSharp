@@ -30,7 +30,6 @@
         {
             this.lblChargesSum = new System.Windows.Forms.Label();
             this.lblPaymentsSum = new System.Windows.Forms.Label();
-            this.dateTimePickerMonth = new System.Windows.Forms.DateTimePicker();
             this.gbPayments = new System.Windows.Forms.GroupBox();
             this.dgvPayments = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,8 +50,6 @@
             this.lblLiquidate = new System.Windows.Forms.Label();
             this.lblTotalCompounded = new System.Windows.Forms.Label();
             this.lblCompounded = new System.Windows.Forms.Label();
-            this.lblTotalDebt = new System.Windows.Forms.Label();
-            this.lblDebt = new System.Windows.Forms.Label();
             this.gbPayments.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPayments)).BeginInit();
             this.gpMonthlyInfo.SuspendLayout();
@@ -77,20 +74,12 @@
             this.lblPaymentsSum.Size = new System.Drawing.Size(0, 13);
             this.lblPaymentsSum.TabIndex = 8;
             // 
-            // dateTimePickerMonth
-            // 
-            this.dateTimePickerMonth.Location = new System.Drawing.Point(16, 103);
-            this.dateTimePickerMonth.Name = "dateTimePickerMonth";
-            this.dateTimePickerMonth.Size = new System.Drawing.Size(185, 20);
-            this.dateTimePickerMonth.TabIndex = 5;
-            this.dateTimePickerMonth.CloseUp += new System.EventHandler(this.dateTimePickerMonth_CloseUp);
-            // 
             // gbPayments
             // 
             this.gbPayments.Controls.Add(this.dgvPayments);
-            this.gbPayments.Location = new System.Drawing.Point(245, 154);
+            this.gbPayments.Location = new System.Drawing.Point(245, 118);
             this.gbPayments.Name = "gbPayments";
-            this.gbPayments.Size = new System.Drawing.Size(265, 299);
+            this.gbPayments.Size = new System.Drawing.Size(265, 332);
             this.gbPayments.TabIndex = 10;
             this.gbPayments.TabStop = false;
             this.gbPayments.Text = "Платежи";
@@ -103,11 +92,11 @@
             this.dgvPayments.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2});
-            this.dgvPayments.Location = new System.Drawing.Point(10, 19);
+            this.dgvPayments.Location = new System.Drawing.Point(9, 19);
             this.dgvPayments.Name = "dgvPayments";
             this.dgvPayments.ReadOnly = true;
             this.dgvPayments.RowHeadersVisible = false;
-            this.dgvPayments.Size = new System.Drawing.Size(245, 270);
+            this.dgvPayments.Size = new System.Drawing.Size(246, 300);
             this.dgvPayments.TabIndex = 6;
             // 
             // dataGridViewTextBoxColumn1
@@ -130,14 +119,13 @@
             // 
             // gpMonthlyInfo
             // 
-            this.gpMonthlyInfo.Controls.Add(this.dateTimePickerMonth);
             this.gpMonthlyInfo.Controls.Add(this.lblYear);
             this.gpMonthlyInfo.Controls.Add(this.cbYear);
             this.gpMonthlyInfo.Controls.Add(this.cbMonth);
             this.gpMonthlyInfo.Controls.Add(this.lblSelectMonth);
             this.gpMonthlyInfo.Location = new System.Drawing.Point(12, 12);
             this.gpMonthlyInfo.Name = "gpMonthlyInfo";
-            this.gpMonthlyInfo.Size = new System.Drawing.Size(214, 136);
+            this.gpMonthlyInfo.Size = new System.Drawing.Size(214, 104);
             this.gpMonthlyInfo.TabIndex = 11;
             this.gpMonthlyInfo.TabStop = false;
             this.gpMonthlyInfo.Text = "Выбор месяца и года";
@@ -159,28 +147,17 @@
             this.cbYear.Name = "cbYear";
             this.cbYear.Size = new System.Drawing.Size(131, 21);
             this.cbYear.TabIndex = 13;
+            this.cbYear.SelectedIndexChanged += new System.EventHandler(this.SelectedMonthChanged);
             // 
             // cbMonth
             // 
             this.cbMonth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMonth.FormattingEnabled = true;
-            this.cbMonth.Items.AddRange(new object[] {
-            "Январь",
-            "Февраль",
-            "Март",
-            "Апрель",
-            "Май",
-            "Июнь",
-            "Июль",
-            "Август",
-            "Сентябрь",
-            "Октябрь",
-            "Ноябрь",
-            "Декабрь"});
             this.cbMonth.Location = new System.Drawing.Point(70, 27);
             this.cbMonth.Name = "cbMonth";
             this.cbMonth.Size = new System.Drawing.Size(131, 21);
             this.cbMonth.TabIndex = 12;
+            this.cbMonth.SelectedIndexChanged += new System.EventHandler(this.SelectedMonthChanged);
             // 
             // lblSelectMonth
             // 
@@ -194,9 +171,9 @@
             // gbCharges
             // 
             this.gbCharges.Controls.Add(this.dgvCharges);
-            this.gbCharges.Location = new System.Drawing.Point(12, 154);
+            this.gbCharges.Location = new System.Drawing.Point(12, 118);
             this.gbCharges.Name = "gbCharges";
-            this.gbCharges.Size = new System.Drawing.Size(214, 299);
+            this.gbCharges.Size = new System.Drawing.Size(214, 332);
             this.gbCharges.TabIndex = 9;
             this.gbCharges.TabStop = false;
             this.gbCharges.Text = "Списания";
@@ -209,11 +186,11 @@
             this.dgvCharges.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.phoneNumber,
             this.sum});
-            this.dgvCharges.Location = new System.Drawing.Point(16, 19);
+            this.dgvCharges.Location = new System.Drawing.Point(10, 19);
             this.dgvCharges.Name = "dgvCharges";
             this.dgvCharges.ReadOnly = true;
             this.dgvCharges.RowHeadersVisible = false;
-            this.dgvCharges.Size = new System.Drawing.Size(185, 270);
+            this.dgvCharges.Size = new System.Drawing.Size(191, 300);
             this.dgvCharges.TabIndex = 4;
             // 
             // phoneNumber
@@ -242,11 +219,9 @@
             this.gbDigits.Controls.Add(this.lblLiquidate);
             this.gbDigits.Controls.Add(this.lblTotalCompounded);
             this.gbDigits.Controls.Add(this.lblCompounded);
-            this.gbDigits.Controls.Add(this.lblTotalDebt);
-            this.gbDigits.Controls.Add(this.lblDebt);
             this.gbDigits.Location = new System.Drawing.Point(245, 12);
             this.gbDigits.Name = "gbDigits";
-            this.gbDigits.Size = new System.Drawing.Size(265, 136);
+            this.gbDigits.Size = new System.Drawing.Size(265, 104);
             this.gbDigits.TabIndex = 12;
             this.gbDigits.TabStop = false;
             this.gbDigits.Text = "Средства";
@@ -256,7 +231,7 @@
             this.lblTotalCost.AutoSize = true;
             this.lblTotalCost.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblTotalCost.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.lblTotalCost.Location = new System.Drawing.Point(165, 110);
+            this.lblTotalCost.Location = new System.Drawing.Point(162, 80);
             this.lblTotalCost.Name = "lblTotalCost";
             this.lblTotalCost.Size = new System.Drawing.Size(29, 13);
             this.lblTotalCost.TabIndex = 7;
@@ -267,7 +242,7 @@
             this.lblTotal.AutoSize = true;
             this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblTotal.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.lblTotal.Location = new System.Drawing.Point(7, 110);
+            this.lblTotal.Location = new System.Drawing.Point(16, 80);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(102, 13);
             this.lblTotal.TabIndex = 6;
@@ -276,7 +251,7 @@
             // lblTotalLiquidate
             // 
             this.lblTotalLiquidate.AutoSize = true;
-            this.lblTotalLiquidate.Location = new System.Drawing.Point(165, 81);
+            this.lblTotalLiquidate.Location = new System.Drawing.Point(165, 53);
             this.lblTotalLiquidate.Name = "lblTotalLiquidate";
             this.lblTotalLiquidate.Size = new System.Drawing.Size(26, 13);
             this.lblTotalLiquidate.TabIndex = 5;
@@ -285,7 +260,7 @@
             // lblLiquidate
             // 
             this.lblLiquidate.AutoSize = true;
-            this.lblLiquidate.Location = new System.Drawing.Point(7, 81);
+            this.lblLiquidate.Location = new System.Drawing.Point(16, 53);
             this.lblLiquidate.Name = "lblLiquidate";
             this.lblLiquidate.Size = new System.Drawing.Size(137, 13);
             this.lblLiquidate.TabIndex = 4;
@@ -294,7 +269,7 @@
             // lblTotalCompounded
             // 
             this.lblTotalCompounded.AutoSize = true;
-            this.lblTotalCompounded.Location = new System.Drawing.Point(165, 52);
+            this.lblTotalCompounded.Location = new System.Drawing.Point(165, 27);
             this.lblTotalCompounded.Name = "lblTotalCompounded";
             this.lblTotalCompounded.Size = new System.Drawing.Size(26, 13);
             this.lblTotalCompounded.TabIndex = 3;
@@ -303,29 +278,11 @@
             // lblCompounded
             // 
             this.lblCompounded.AutoSize = true;
-            this.lblCompounded.Location = new System.Drawing.Point(7, 52);
+            this.lblCompounded.Location = new System.Drawing.Point(16, 27);
             this.lblCompounded.Name = "lblCompounded";
             this.lblCompounded.Size = new System.Drawing.Size(115, 13);
             this.lblCompounded.TabIndex = 2;
             this.lblCompounded.Text = "Начислено за месяц:";
-            // 
-            // lblTotalDebt
-            // 
-            this.lblTotalDebt.AutoSize = true;
-            this.lblTotalDebt.Location = new System.Drawing.Point(165, 25);
-            this.lblTotalDebt.Name = "lblTotalDebt";
-            this.lblTotalDebt.Size = new System.Drawing.Size(26, 13);
-            this.lblTotalDebt.TabIndex = 1;
-            this.lblTotalDebt.Text = "sum";
-            // 
-            // lblDebt
-            // 
-            this.lblDebt.AutoSize = true;
-            this.lblDebt.Location = new System.Drawing.Point(7, 25);
-            this.lblDebt.Name = "lblDebt";
-            this.lblDebt.Size = new System.Drawing.Size(130, 13);
-            this.lblDebt.TabIndex = 0;
-            this.lblDebt.Text = "Долг на начало месяца:";
             // 
             // FormMonthlyInfo
             // 
@@ -362,7 +319,6 @@
 
         private System.Windows.Forms.Label lblChargesSum;
         private System.Windows.Forms.Label lblPaymentsSum;
-        private System.Windows.Forms.DateTimePicker dateTimePickerMonth;
         private System.Windows.Forms.GroupBox gbPayments;
         private System.Windows.Forms.DataGridView dgvPayments;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
@@ -383,7 +339,5 @@
         private System.Windows.Forms.Label lblLiquidate;
         private System.Windows.Forms.Label lblTotalCompounded;
         private System.Windows.Forms.Label lblCompounded;
-        private System.Windows.Forms.Label lblTotalDebt;
-        private System.Windows.Forms.Label lblDebt;
     }
 }

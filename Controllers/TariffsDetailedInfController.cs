@@ -11,7 +11,7 @@ namespace BillingSystem.Controllers
     /// </summary>
     class TariffsDetailedInfController : DetailedInfController
     {
-        private double _totalSum;
+        private double _totalSum = 0;
 
         /// <summary>
         /// Полная стоимость
@@ -19,6 +19,7 @@ namespace BillingSystem.Controllers
         public override double TotalSum
         {
             get { return _totalSum; }
+            set { _totalSum = value; }
         }
         
         /// <summary>

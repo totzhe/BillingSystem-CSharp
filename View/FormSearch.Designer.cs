@@ -450,6 +450,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(800, 400);
             this.Name = "FormSearch";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Биллинговая система";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSearchResults)).EndInit();
             this.groupBox1.ResumeLayout(false);

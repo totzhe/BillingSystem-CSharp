@@ -33,9 +33,11 @@
             this.sum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnCalculate = new System.Windows.Forms.Button();
             this.btnCharge = new System.Windows.Forms.Button();
-            this.dateTimePickerMonth = new System.Windows.Forms.DateTimePicker();
             this.gbCharge = new System.Windows.Forms.GroupBox();
-            this.lblDateSelect = new System.Windows.Forms.Label();
+            this.lblYear = new System.Windows.Forms.Label();
+            this.cbYear = new System.Windows.Forms.ComboBox();
+            this.cbMonth = new System.Windows.Forms.ComboBox();
+            this.lblSelectMonth = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCharges)).BeginInit();
             this.gbCharge.SuspendLayout();
             this.SuspendLayout();
@@ -44,8 +46,8 @@
             // 
             this.dgvCharges.AllowUserToAddRows = false;
             this.dgvCharges.AllowUserToDeleteRows = false;
-            this.dgvCharges.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvCharges.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvCharges.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvCharges.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCharges.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -56,7 +58,7 @@
             this.dgvCharges.ReadOnly = true;
             this.dgvCharges.RowHeadersVisible = false;
             this.dgvCharges.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgvCharges.Size = new System.Drawing.Size(345, 349);
+            this.dgvCharges.Size = new System.Drawing.Size(349, 349);
             this.dgvCharges.TabIndex = 0;
             // 
             // phoneNumber
@@ -93,26 +95,18 @@
             this.btnCharge.UseVisualStyleBackColor = true;
             this.btnCharge.Click += new System.EventHandler(this.btnCharge_Click);
             // 
-            // dateTimePickerMonth
-            // 
-            this.dateTimePickerMonth.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateTimePickerMonth.Location = new System.Drawing.Point(115, 24);
-            this.dateTimePickerMonth.Name = "dateTimePickerMonth";
-            this.dateTimePickerMonth.Size = new System.Drawing.Size(246, 20);
-            this.dateTimePickerMonth.TabIndex = 3;
-            // 
             // gbCharge
             // 
-            this.gbCharge.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbCharge.Controls.Add(this.lblDateSelect);
+            this.gbCharge.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbCharge.Controls.Add(this.lblYear);
+            this.gbCharge.Controls.Add(this.cbYear);
+            this.gbCharge.Controls.Add(this.cbMonth);
+            this.gbCharge.Controls.Add(this.lblSelectMonth);
             this.gbCharge.Controls.Add(this.btnCalculate);
             this.gbCharge.Controls.Add(this.dgvCharges);
             this.gbCharge.Controls.Add(this.btnCharge);
-            this.gbCharge.Controls.Add(this.dateTimePickerMonth);
             this.gbCharge.Location = new System.Drawing.Point(12, 12);
             this.gbCharge.Name = "gbCharge";
             this.gbCharge.Size = new System.Drawing.Size(382, 450);
@@ -120,14 +114,41 @@
             this.gbCharge.TabStop = false;
             this.gbCharge.Text = "Списание со счета";
             // 
-            // lblDateSelect
+            // lblYear
             // 
-            this.lblDateSelect.AutoSize = true;
-            this.lblDateSelect.Location = new System.Drawing.Point(15, 27);
-            this.lblDateSelect.Name = "lblDateSelect";
-            this.lblDateSelect.Size = new System.Drawing.Size(85, 13);
-            this.lblDateSelect.TabIndex = 4;
-            this.lblDateSelect.Text = "Выберите дату:";
+            this.lblYear.AutoSize = true;
+            this.lblYear.Location = new System.Drawing.Point(210, 26);
+            this.lblYear.Name = "lblYear";
+            this.lblYear.Size = new System.Drawing.Size(28, 13);
+            this.lblYear.TabIndex = 18;
+            this.lblYear.Text = "Год:";
+            // 
+            // cbYear
+            // 
+            this.cbYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbYear.FormattingEnabled = true;
+            this.cbYear.Location = new System.Drawing.Point(244, 23);
+            this.cbYear.Name = "cbYear";
+            this.cbYear.Size = new System.Drawing.Size(121, 21);
+            this.cbYear.TabIndex = 17;
+            // 
+            // cbMonth
+            // 
+            this.cbMonth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbMonth.FormattingEnabled = true;
+            this.cbMonth.Location = new System.Drawing.Point(67, 23);
+            this.cbMonth.Name = "cbMonth";
+            this.cbMonth.Size = new System.Drawing.Size(121, 21);
+            this.cbMonth.TabIndex = 16;
+            // 
+            // lblSelectMonth
+            // 
+            this.lblSelectMonth.AutoSize = true;
+            this.lblSelectMonth.Location = new System.Drawing.Point(18, 26);
+            this.lblSelectMonth.Name = "lblSelectMonth";
+            this.lblSelectMonth.Size = new System.Drawing.Size(43, 13);
+            this.lblSelectMonth.TabIndex = 15;
+            this.lblSelectMonth.Text = "Месяц:";
             // 
             // FormChargeCalls
             // 
@@ -140,6 +161,7 @@
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(430, 512);
             this.Name = "FormChargeCalls";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Списание средств со счетов";
             ((System.ComponentModel.ISupportInitialize)(this.dgvCharges)).EndInit();
             this.gbCharge.ResumeLayout(false);
@@ -155,8 +177,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn sum;
         private System.Windows.Forms.Button btnCalculate;
         private System.Windows.Forms.Button btnCharge;
-        private System.Windows.Forms.DateTimePicker dateTimePickerMonth;
         private System.Windows.Forms.GroupBox gbCharge;
-        private System.Windows.Forms.Label lblDateSelect;
+        private System.Windows.Forms.Label lblYear;
+        private System.Windows.Forms.ComboBox cbYear;
+        private System.Windows.Forms.ComboBox cbMonth;
+        private System.Windows.Forms.Label lblSelectMonth;
     }
 }

@@ -28,7 +28,7 @@ namespace BillingSystem
         /// <summary>
         /// Хеш пароля по умолчанию.
         /// </summary>
-        public const string DefaultPasswordHash = "111";
+        public const string DefaultPasswordHash = "8cb2237d0679ca88db6464eac60da96345513964";
 
         /// <summary>
         /// Строка подключения.
@@ -60,10 +60,15 @@ namespace BillingSystem
         /// Смена тарифа.
         /// </summary>
         public const string TariffChanging = "Смена тарифа";
-        
+
         /// <summary>
         /// Оплата звонков.
         /// </summary>
         public const string ChargeCalls = "Оплата звонков";
+
+        /// <summary>
+        /// Минимальный год, используемый системой.
+        /// </summary>
+        public const int MinYear = 2000;
     }
 }

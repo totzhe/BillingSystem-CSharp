@@ -316,6 +316,7 @@
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(746, 455);
             this.Name = "FormTariff";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.gbInfo.ResumeLayout(false);
             this.gbDataTarrif.ResumeLayout(false);
             this.gbDataTarrif.PerformLayout();
