@@ -140,6 +140,7 @@
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(383, 330);
             this.Name = "FormSupport";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "О программе BillingSystem";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

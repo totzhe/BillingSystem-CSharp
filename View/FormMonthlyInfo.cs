@@ -26,28 +26,40 @@ namespace BillingSystem.View
             this.Text = "Просмотр статистики за месяц";
             _controller = controller;
             InitializeComponent();
-            Search();
+            for (int i = 1; i <= 12; i++)
+            {
+                cbMonth.Items.Add(System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i));
+            }
+            cbMonth.SelectedIndex = DateTime.Now.Month-1;
+            for (int i = Constants.MinYear; i <= DateTime.Now.Year; i++)
+            {
+                cbYear.Items.Add(i);
+            }
+            cbYear.SelectedItem = DateTime.Now.Year;
         }
 
         private void Search()
         {
-            dgvCharges.Rows.Clear();
-            dgvPayments.Rows.Clear();
-            
-            foreach (Dictionary<string, string> d in _controller.GetCharges(dateTimePickerMonth.Value))
+            if (cbYear.SelectedItem != null && cbMonth.SelectedIndex >= 0)
             {
-                dgvCharges.Rows.Add(d["number"], d["sum"]);
+                dgvCharges.Rows.Clear();
+                dgvPayments.Rows.Clear();
+
+                foreach (Dictionary<string, string> d in _controller.GetCharges(new DateTime((int)cbYear.SelectedItem, cbMonth.SelectedIndex + 1, 1, 0, 0, 0, 1)))
+                {
+                    dgvCharges.Rows.Add(d["number"], d["sum"]);
+                }
+                lblTotalCompounded.Text = _controller.GetChargesSum();
+                foreach (Dictionary<string, string> dict in _controller.GetPayments(new DateTime((int)cbYear.SelectedItem, cbMonth.SelectedIndex + 1, 1, 0, 0, 0, 1)))
+                {
+                    dgvPayments.Rows.Add(dict["subscriber"], dict["sum"]);
+                }
+                lblTotalLiquidate.Text = _controller.GetPaymentsSum();
+                lblTotalCost.Text = _controller.GetDebt();
             }
-            lblTotalCompounded.Text = _controller.GetChargesSum();
-            foreach (Dictionary<string, string> dict in _controller.GetPayments(dateTimePickerMonth.Value))
-            {
-                dgvPayments.Rows.Add(dict["subscriber"], dict["sum"]);
-            }
-            lblTotalLiquidate.Text = _controller.GetPaymentsSum();
-            lblTotalCost.Text = _controller.GetDebt();
         }
 
-        private void dateTimePickerMonth_CloseUp(object sender, EventArgs e)
+        private void SelectedMonthChanged(object sender, EventArgs e)
         {
             Search();
         }

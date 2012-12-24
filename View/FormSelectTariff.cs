@@ -23,9 +23,9 @@ namespace BillingSystem.View
         /// <param name="controller">Контроллер выбора тарифа</param>
         public FormSelectTariff(ISelectTariffController controller)
         {
-            Text = "Редактирование номера";
             _controller = controller;
             InitializeComponent();
+            Text = "Выбор тарифа: " + _controller.GetPhoneNumber();
             cbTariff.Items.AddRange(_controller.GetActiveTariffs());
             cbTariff.SelectedIndex = 0;
             lblCurrentTariffName.Text = _controller.GetCurrentTariffName();

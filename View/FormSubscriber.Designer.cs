@@ -56,8 +56,8 @@
             // 
             // tbSurname
             // 
-            this.tbSurname.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbSurname.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbSurname.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbSurname.Location = new System.Drawing.Point(80, 26);
             this.tbSurname.MaximumSize = new System.Drawing.Size(150, 20);
@@ -68,8 +68,8 @@
             // 
             // tbPatronymic
             // 
-            this.tbPatronymic.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbPatronymic.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbPatronymic.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbPatronymic.Location = new System.Drawing.Point(80, 83);
             this.tbPatronymic.MaximumSize = new System.Drawing.Size(150, 20);
@@ -80,8 +80,8 @@
             // 
             // tbName
             // 
-            this.tbName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbName.Location = new System.Drawing.Point(80, 54);
             this.tbName.MaximumSize = new System.Drawing.Size(150, 20);
@@ -92,8 +92,8 @@
             // 
             // tbEmail
             // 
-            this.tbEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbEmail.Location = new System.Drawing.Point(80, 141);
             this.tbEmail.MaximumSize = new System.Drawing.Size(150, 20);
@@ -104,7 +104,7 @@
             // 
             // btnAddNumber
             // 
-            this.btnAddNumber.Location = new System.Drawing.Point(8, 120);
+            this.btnAddNumber.Location = new System.Drawing.Point(8, 224);
             this.btnAddNumber.Name = "btnAddNumber";
             this.btnAddNumber.Size = new System.Drawing.Size(200, 23);
             this.btnAddNumber.TabIndex = 13;
@@ -114,7 +114,7 @@
             // 
             // btnEditNumber
             // 
-            this.btnEditNumber.Location = new System.Drawing.Point(8, 149);
+            this.btnEditNumber.Location = new System.Drawing.Point(8, 253);
             this.btnEditNumber.Name = "btnEditNumber";
             this.btnEditNumber.Size = new System.Drawing.Size(200, 23);
             this.btnEditNumber.TabIndex = 14;
@@ -124,8 +124,8 @@
             // 
             // tbLogin
             // 
-            this.tbLogin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbLogin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbLogin.Location = new System.Drawing.Point(80, 112);
             this.tbLogin.MaximumSize = new System.Drawing.Size(150, 20);
@@ -146,9 +146,9 @@
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(11, 239);
+            this.btnOK.Location = new System.Drawing.Point(12, 239);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(252, 23);
+            this.btnOK.Size = new System.Drawing.Size(251, 38);
             this.btnOK.TabIndex = 17;
             this.btnOK.Text = "ОК";
             this.btnOK.UseVisualStyleBackColor = true;
@@ -156,9 +156,9 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(278, 239);
+            this.btnCancel.Location = new System.Drawing.Point(12, 289);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(214, 23);
+            this.btnCancel.Size = new System.Drawing.Size(251, 38);
             this.btnCancel.TabIndex = 18;
             this.btnCancel.Text = "Отмена";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -166,7 +166,7 @@
             // 
             // btnDeleteNumber
             // 
-            this.btnDeleteNumber.Location = new System.Drawing.Point(8, 178);
+            this.btnDeleteNumber.Location = new System.Drawing.Point(8, 282);
             this.btnDeleteNumber.Name = "btnDeleteNumber";
             this.btnDeleteNumber.Size = new System.Drawing.Size(200, 23);
             this.btnDeleteNumber.TabIndex = 15;
@@ -208,8 +208,8 @@
             // 
             // lblLogin
             // 
-            this.lblLogin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblLogin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblLogin.AutoSize = true;
             this.lblLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblLogin.Location = new System.Drawing.Point(17, 115);
@@ -220,8 +220,8 @@
             // 
             // lblEmail
             // 
-            this.lblEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblEmail.Location = new System.Drawing.Point(17, 144);
@@ -258,7 +258,7 @@
             this.gbSubsPnones.Controls.Add(this.btnEditNumber);
             this.gbSubsPnones.Location = new System.Drawing.Point(278, 15);
             this.gbSubsPnones.Name = "gbSubsPnones";
-            this.gbSubsPnones.Size = new System.Drawing.Size(214, 211);
+            this.gbSubsPnones.Size = new System.Drawing.Size(214, 315);
             this.gbSubsPnones.TabIndex = 26;
             this.gbSubsPnones.TabStop = false;
             this.gbSubsPnones.Text = "Телефонные номера абонента";
@@ -280,7 +280,7 @@
             this.dgvPhoneNumbers.ReadOnly = true;
             this.dgvPhoneNumbers.RowHeadersVisible = false;
             this.dgvPhoneNumbers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPhoneNumbers.Size = new System.Drawing.Size(200, 95);
+            this.dgvPhoneNumbers.Size = new System.Drawing.Size(200, 192);
             this.dgvPhoneNumbers.TabIndex = 16;
             // 
             // Number
@@ -301,16 +301,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(504, 276);
+            this.ClientSize = new System.Drawing.Size(504, 342);
             this.Controls.Add(this.gbSubsPnones);
             this.Controls.Add(this.gbSubscriberInf);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(520, 314);
+            this.MaximumSize = new System.Drawing.Size(520, 380);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(520, 314);
+            this.MinimumSize = new System.Drawing.Size(520, 380);
             this.Name = "FormSubscriber";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.gbSubscriberInf.ResumeLayout(false);
             this.gbSubscriberInf.PerformLayout();
             this.gbSubsPnones.ResumeLayout(false);

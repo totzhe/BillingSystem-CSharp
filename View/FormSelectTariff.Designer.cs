@@ -44,9 +44,9 @@
             // 
             this.cbTariff.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTariff.FormattingEnabled = true;
-            this.cbTariff.Location = new System.Drawing.Point(147, 207);
+            this.cbTariff.Location = new System.Drawing.Point(116, 52);
             this.cbTariff.Name = "cbTariff";
-            this.cbTariff.Size = new System.Drawing.Size(156, 21);
+            this.cbTariff.Size = new System.Drawing.Size(153, 21);
             this.cbTariff.TabIndex = 0;
             this.cbTariff.SelectedIndexChanged += new System.EventHandler(this.comboBoxTariff_SelectedIndexChanged);
             // 
@@ -72,7 +72,7 @@
             // 
             // textBoxDescription
             // 
-            this.textBoxDescription.Location = new System.Drawing.Point(15, 74);
+            this.textBoxDescription.Location = new System.Drawing.Point(15, 105);
             this.textBoxDescription.Multiline = true;
             this.textBoxDescription.Name = "textBoxDescription";
             this.textBoxDescription.Size = new System.Drawing.Size(288, 124);
@@ -105,7 +105,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 58);
+            this.label1.Location = new System.Drawing.Point(12, 89);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(60, 13);
             this.label1.TabIndex = 25;
@@ -114,11 +114,11 @@
             // lblSelectNewTariff
             // 
             this.lblSelectNewTariff.AutoSize = true;
-            this.lblSelectNewTariff.Location = new System.Drawing.Point(12, 210);
+            this.lblSelectNewTariff.Location = new System.Drawing.Point(12, 55);
             this.lblSelectNewTariff.Name = "lblSelectNewTariff";
-            this.lblSelectNewTariff.Size = new System.Drawing.Size(129, 13);
+            this.lblSelectNewTariff.Size = new System.Drawing.Size(78, 13);
             this.lblSelectNewTariff.TabIndex = 24;
-            this.lblSelectNewTariff.Text = "Выберите новый тариф:";
+            this.lblSelectNewTariff.Text = "Новый тариф:";
             // 
             // lblCurTariff
             // 
@@ -142,7 +142,8 @@
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(359, 343);
             this.Name = "FormSelectTariff";
-            this.Text = "Редактирование номера";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Выбор тарифа: ";
             this.gbCurrentNumberInfo.ResumeLayout(false);
             this.gbCurrentNumberInfo.PerformLayout();
             this.ResumeLayout(false);

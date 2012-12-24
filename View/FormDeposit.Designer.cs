@@ -60,9 +60,9 @@
             // 
             // lblBalance
             // 
-            this.lblBalance.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblBalance.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblBalance.AutoSize = true;
             this.lblBalance.Location = new System.Drawing.Point(111, 26);
             this.lblBalance.Name = "lblBalance";
@@ -72,9 +72,9 @@
             // 
             // lblCurBalance
             // 
-            this.lblCurBalance.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCurBalance.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCurBalance.AutoSize = true;
             this.lblCurBalance.Location = new System.Drawing.Point(8, 26);
             this.lblCurBalance.Name = "lblCurBalance";
@@ -101,8 +101,8 @@
             // 
             // mtbSum
             // 
-            this.mtbSum.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.mtbSum.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.mtbSum.Location = new System.Drawing.Point(112, 53);
             this.mtbSum.Mask = "0000";
             this.mtbSum.Name = "mtbSum";
@@ -111,9 +111,9 @@
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(9, 56);
             this.label1.Name = "label1";
@@ -132,7 +132,8 @@
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(299, 203);
             this.Name = "FormDeposit";
-            this.Text = "Пополнение счета абонента";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Пополнение счета: ";
             this.gbPutMoney.ResumeLayout(false);
             this.gbPutMoney.PerformLayout();
             this.ResumeLayout(false);

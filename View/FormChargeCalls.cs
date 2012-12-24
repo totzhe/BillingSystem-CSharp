@@ -26,13 +26,23 @@ namespace BillingSystem.View
             this.Text = "Списание средств со счетов";
             _controller = controller;
             InitializeComponent();
+            for (int i = 1; i <= 12; i++)
+            {
+                cbMonth.Items.Add(System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i));
+            }
+            cbMonth.SelectedIndex = DateTime.Now.Month - 1;
+            for (int i = Constants.MinYear; i <= DateTime.Now.Year; i++)
+            {
+                cbYear.Items.Add(i);
+            }
+            cbYear.SelectedItem = DateTime.Now.Year;
             
         }
 
         private void btnCalculate_Click(object sender, EventArgs e)
         {
             dgvCharges.Rows.Clear();
-            _controller.CalculateCharges(dateTimePickerMonth.Value);
+            _controller.CalculateCharges(new DateTime((int)cbYear.SelectedItem, cbMonth.SelectedIndex + 1, 1, 0, 0, 0, 1));
             foreach (Dictionary<string, string> d in _controller.GetCharges())
             {
                 dgvCharges.Rows.Add(d["number"], d["sum"]);

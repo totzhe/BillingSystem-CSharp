@@ -60,10 +60,15 @@ namespace BillingSystem
         /// Смена тарифа.
         /// </summary>
         public const string TariffChanging = "Смена тарифа";
-        
+
         /// <summary>
         /// Оплата звонков.
         /// </summary>
         public const string ChargeCalls = "Оплата звонков";
+
+        /// <summary>
+        /// Минимальный год, используемый системой.
+        /// </summary>
+        public const int MinYear = 2000;
     }
 }
