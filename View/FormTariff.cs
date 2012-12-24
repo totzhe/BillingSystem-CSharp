@@ -29,6 +29,7 @@ namespace BillingSystem.View
             _controller = controller;
             btnSave.Text = "Добавить";
             dgvNameTariff.Visible = false;
+            btnImport.Visible = false;
             gbInfo.Location = new System.Drawing.Point(12, 12);
             gbInfo.Size = new System.Drawing.Size(700, 407);
         }

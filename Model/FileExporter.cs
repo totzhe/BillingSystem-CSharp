@@ -114,7 +114,7 @@ namespace BillingSystem.Model
                 writer.WriteLine("<td colspan=");
                 writer.WriteLine("'" + (dgvInf.ColumnCount - 1).ToString() + "'></td>");
                 writer.WriteLine("<td><b>Итого: ");
-                writer.WriteLine(totalSum.ToString() + "</b></td>");
+                writer.WriteLine(totalSum.ToString() + " " + Constants.Currency + "</b></td>");
                 writer.WriteLine("</tr>");
                 writer.WriteLine("</table>");
                 writer.WriteLine("</body>");

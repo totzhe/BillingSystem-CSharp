@@ -33,8 +33,8 @@ namespace BillingSystem
         /// <summary>
         /// Строка подключения.
         /// </summary>
-        public const string ConnectionString = @"server=vragov.com;userid=billing;password=billing;database=billing;charset=utf8";
-        //public const string ConnectionString = @"server=localhost;userid=root;password=;database=billing;charset=utf8";
+        //public const string ConnectionString = @"server=vragov.com;userid=billing;password=billing;database=billing;charset=utf8";
+        public const string ConnectionString = @"server=localhost;userid=root;password=;database=billing;charset=utf8";
 
         /// <summary>
         /// Входящий.

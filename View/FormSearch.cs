@@ -140,7 +140,7 @@ namespace BillingSystem
         private void tsmiAbout_Click(object sender, EventArgs e)
         {
             Form about = new FormSupport();
-            about.Visible = true;
+            about.ShowDialog();
         }
     }
 }
