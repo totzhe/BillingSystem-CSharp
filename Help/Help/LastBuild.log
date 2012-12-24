@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shfbBuild product="Sandcastle Help File Builder" version="1.9.6.0" projectFile="C:\Users\Андрей\Documents\GitHub\BillingSystem-CSharp\Help\BillingSystemHelpFileBuilder.shfbproj" started="22.12.2012 14:48:32">
+<shfbBuild product="Sandcastle Help File Builder" version="1.9.6.0" projectFile="C:\Users\Андрей\Documents\GitHub\BillingSystem-CSharp\Help\BillingSystemHelpFileBuilder.shfbproj" started="24.12.2012 11:55:57">
 <buildStep step="Initializing">
 Finding tools...
 Found Sandcastle tools in &#39;C:\Program Files (x86)\Sandcastle\&#39;
@@ -17,11 +17,11 @@ Copying XML comments files
 </buildStep>
 <buildStep step="GenerateSharedContent">
 Generating shared content files (ru-RU, Русский (Россия))...
-    Last step completed in 00:00:00.7320
+    Last step completed in 00:00:00.6111
 </buildStep>
 <buildStep step="GenerateApiFilter">
 Generating API filter for MRefBuilder...
-    Last step completed in 00:00:00.2470
+    Last step completed in 00:00:00.1440
 </buildStep>
 <buildStep step="GenerateReflectionInfo">
 Generating reflection information...
@@ -29,15 +29,15 @@ Generating reflection information...
   MRefBuilder (v2.7.2.0)
   Copyright c 2006-2012, Microsoft Corporation, All Rights Reserved
   Info: Loaded 1 assemblies for reflection and 0 dependency assemblies.
-  Info: Wrote information on 7 namespaces, 52 types, and 291 members
+  Info: Wrote information on 7 namespaces, 52 types, and 294 members
   XslTransform (v2.7.2.0)
   Copyright c 2006-2012, Microsoft Corporation, All Rights Reserved
   Info: Applying XSL transformation &#39;C:\Program Files (x86)\Sandcastle\ProductionTransforms\MergeDuplicates.xsl&#39;.
-    Last step completed in 00:00:10.6096
+    Last step completed in 00:00:11.4510
 </buildStep>
 <buildStep step="GenerateNamespaceSummaries">
 Generating namespace summary information...
-    Last step completed in 00:00:00.2400
+    Last step completed in 00:00:00.0815
 </buildStep>
 <buildStep step="ApplyVisibilityProperties">
 Applying visibility properties to reflection information file
@@ -48,7 +48,7 @@ Applying visibility properties to reflection information file
     23 protected members noted for removal
     0 protected inherited framework members noted for removal
     Removing previously noted unwanted APIs and elements
-    Last step completed in 00:00:01.2001
+    Last step completed in 00:00:00.2985
 </buildStep>
 <buildStep step="TransformReflectionInfo">
 Transforming reflection output...
@@ -60,12 +60,12 @@ Transforming reflection output...
   XslTransform (v2.7.2.0)
   Copyright c 2006-2012, Microsoft Corporation, All Rights Reserved
   Info: Applying XSL transformation &#39;C:\Program Files (x86)\Sandcastle\ProductionTransforms\ReflectionToManifest.xsl&#39;.
-    Last step completed in 00:00:08.2005
+    Last step completed in 00:00:05.2032
 </buildStep>
 <buildStep step="ModifyHelpTopicFilenames">
 Modifying help topic filenames in reflection information file
     No changes required
-    Last step completed in 00:00:00.0830
+    Last step completed in 00:00:00.0935
 </buildStep>
 <buildStep step="CopyStandardContent">
 Copying standard help content...
@@ -263,16 +263,16 @@ C:\Program Files (x86)\Sandcastle\\Presentation\VS2010\branding -&gt; C:\Users\�
     C:\Program Files (x86)\Sandcastle\Presentation\VS2010\branding\ps-instrumentedLink.xslt -> C:\Users\Андрей\Documents\GitHub\BillingSystem-CSharp\Help\Help\Working\branding\ps-instrumentedLink.xslt
     C:\Program Files (x86)\Sandcastle\Presentation\VS2010\branding\ps-languageSpecificText.xslt -> C:\Users\Андрей\Documents\GitHub\BillingSystem-CSharp\Help\Help\Working\branding\ps-languageSpecificText.xslt
     C:\Program Files (x86)\Sandcastle\Presentation\VS2010\branding\ps-codesnippet.xslt -> C:\Users\Андрей\Documents\GitHub\BillingSystem-CSharp\Help\Help\Working\branding\ps-codesnippet.xslt
-    Last step completed in 00:00:05.1453
+    Last step completed in 00:00:04.1590
 </buildStep>
 <buildStep step="CopyAdditionalContent">
 Copying additional content files...
 No additional content to copy
-    Last step completed in 00:00:00.0950
+    Last step completed in 00:00:00.1040
 </buildStep>
 <buildStep step="MergeTablesOfContents">
 Merging conceptual and additional tables of contents...
-    Last step completed in 00:00:00.0040
+    Last step completed in 00:00:00.0045
 </buildStep>
 <buildStep step="GenerateIntermediateTableOfContents">
 Generating intermediate table of contents file...
@@ -281,17 +281,17 @@ Generating intermediate table of contents file...
   Copyright c 2006-2012, Microsoft Corporation, All Rights Reserved
   Info: Applying XSL transformation &#39;C:\Program Files (x86)\Sandcastle\\ProductionTransforms\CreateVSToc.xsl&#39;.
 Generating conceptual content intermediate TOC file...
-    Last step completed in 00:00:01.8191
+    Last step completed in 00:00:01.6417
 </buildStep>
 <buildStep step="CreateBuildAssemblerConfigs">
 Creating Sandcastle configuration files...
     sandcastle.config
-    Last step completed in 00:00:00.2150
+    Last step completed in 00:00:00.3495
 </buildStep>
 <buildStep step="MergeCustomConfigs">
 Merging custom build component configurations
 C:\Users\Андрей\Documents\GitHub\BillingSystem-CSharp\Help\Help\Working\sandcastle.config
-    Last step completed in 00:00:00.2030
+    Last step completed in 00:00:00.1145
 </buildStep>
 <buildStep step="BuildReferenceTopics">
 Building reference help topics...
@@ -300,18 +300,19 @@ Building reference help topics...
   Copyright c 2006-2012, Microsoft Corporation, All Rights Reserved
   Info: Loading configuration...
   Info: Processing topics...
+  Warn: ResolveReferenceLinksComponent2: [T:BillingSystem.ConnectionManager] MSDN URL not found for target &#39;T:System.Object&#39;.
   Warn: ResolveReferenceLinksComponent2: [M:BillingSystem.ConnectionManager.GetConnection] Unknown reference link target &#39;T:MySql.Data.MySqlClient.MySqlConnection&#39;.
   Warn: ResolveConceptualLinksComponent: [M:BillingSystem.DatabaseUtils.GetStringOrNull(MySql.Data.MySqlClient.MySqlDataReader,System.String)] Unknown conceptual link target &#39;b8020aae-374d-46a9-bcb7-8cc2390b93b6&#39;.
   Warn: ResolveConceptualLinksComponent: [M:BillingSystem.DatabaseUtils.GetStringOrNull(MySql.Data.MySqlClient.MySqlDataReader,System.String)] Unknown conceptual link target &#39;175ce3ff-9bbf-4e64-8421-faeb81a0bb51&#39;.
   Warn: ResolveReferenceLinksComponent2: [M:BillingSystem.DatabaseUtils.GetStringOrNull(MySql.Data.MySqlClient.MySqlDataReader,System.String)] Unknown reference link target &#39;T:MySql.Data.MySqlClient.MySqlDataReader&#39;.
   Warn: ResolveReferenceLinksComponent2: [M:BillingSystem.DatabaseUtils.GetStringOrNull(MySql.Data.MySqlClient.MySqlDataReader,System.String)] Unknown reference link target &#39;T:MySql.Data.MySqlClient.MySqlDataReader&#39;.
   Warn: ResolveReferenceLinksComponent2: [M:BillingSystem.DatabaseUtils.GetStringOrNull(MySql.Data.MySqlClient.MySqlDataReader,System.String)] Unknown reference link target &#39;T:MySql.Data.MySqlClient.MySqlDataReader&#39;.
-  Info: Processed 442 topics
-    Last step completed in 00:02:22.1461
+  Info: Processed 445 topics
+    Last step completed in 00:02:22.0005
 </buildStep>
 <buildStep step="CombiningIntermediateTocFiles">
 Combining conceptual and API intermediate TOC files...
-    Last step completed in 00:00:00.0860
+    Last step completed in 00:00:00.0640
 </buildStep>
 <buildStep step="ExtractingHtmlInfo">
 Extracting HTML info for HTML Help 1 and/or website...
@@ -323,23 +324,23 @@ E-Mail: Eric@EWoodruff.us
 Using LCID &#39;1049&#39;, code page &#39;1251&#39;, encoding charset &#39;Windows-1251&#39;.
 
 Processing Help 1 files in C:\Users\Ђ&#173;&#164;аҐ&#169;\Documents\GitHub\BillingSystem-CSharp\Help\Help\Working\Output\HtmlHelp1
-Processed 442 HTML files
+Processed 445 HTML files
 Sorting keywords and generating See Also indices
 Saving HTML Help 1 keyword index to C:\Users\Ђ&#173;&#164;аҐ&#169;\Documents\GitHub\BillingSystem-CSharp\Help\Help\Working\BillingSystemDocumentation.hhk
 Saving HTML Help 1 table of contents to C:\Users\Ђ&#173;&#164;аҐ&#169;\Documents\GitHub\BillingSystem-CSharp\Help\Help\Working\BillingSystemDocumentation.hhc
-    Last step completed in 00:00:09.3045
+    Last step completed in 00:00:09.6007
 </buildStep>
 <buildStep step="GenerateHelpFormatTableOfContents">
 Generating HTML Help 1 table of contents file...
-    Last step completed in 00:00:00.0030
+    Last step completed in 00:00:00.0035
 </buildStep>
 <buildStep step="GenerateHelpFileIndex">
 Generating HTML Help 1 index file...
-    Last step completed in 00:00:00.0040
+    Last step completed in 00:00:00.0030
 </buildStep>
 <buildStep step="GenerateHelpProject">
 Generating HTML Help 1 project file...
-    Last step completed in 00:00:00.0380
+    Last step completed in 00:00:00.4521
 </buildStep>
 <buildStep step="CompilingHelpFile">
 Compiling HTML Help 1 file...
@@ -354,13 +355,13 @@ Compiling HTML Help 1 file...
   
   
   
-  Compile time: 0 minutes, 12 seconds
+  Compile time: 0 minutes, 10 seconds
   
-  444	Topics
+  447	Topics
   
-  5,000	Local links
+  5,037	Local links
   
-  675	Internet links
+  2	Internet links
   
   0	Graphics
   
@@ -368,19 +369,19 @@ Compiling HTML Help 1 file...
   
   
   
-  Created c:\Users\Андрей\Documents\GitHub\BillingSystem-CSharp\Help\Help\Working\Output\HtmlHelp1\BillingSystemDocumentation.chm, 538,713 bytes
+  Created c:\Users\Андрей\Documents\GitHub\BillingSystem-CSharp\Help\Help\Working\Output\HtmlHelp1\BillingSystemDocumentation.chm, 534,119 bytes
   
-  Compression decreased file by 3,521,321 bytes.
+  Compression decreased file by 3,491,978 bytes.
   
-    Last step completed in 00:00:18.0470
+    Last step completed in 00:00:27.2440
 </buildStep>
 <buildStep step="CleanIntermediates">
 Removing intermediate files...
-    Last step completed in 00:00:00.6410
+    Last step completed in 00:00:00.8971
 </buildStep>
 <buildStep step="Completed">
 
-Build completed successfully at 12.22.2012 02:51 .  Total time: 00:03:20,0334
+Build completed successfully at 12.24.2012 11:59 .  Total time: 00:03:25,4951
 
 </buildStep>
 </shfbBuild>
